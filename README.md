@@ -1,5 +1,8 @@
 # Cryptsu's source code.
-This is my source code for my CTF blogs :) 
+This is my source code for my CTF blogs :) I've always wanted to create a website that looks cool, while is still able to share thoughts and knowledges (which is not much and I hope I don't get too much style-over-substance, lol) 
+
+## Node.js version
+The Node version for this code is **v19.4.0**. Hope it would help anyone in the future trying to build this *(if there is even a reader in this hopeless blog)* :3
 
 ## Influences
 
@@ -9,5 +12,5 @@ The structure of the code is inspired from the work of [jarv.is](https://github.
 ### Visualization
 For visualization, I got my inspirations from these websites, which are from CTF bloggers. While most of them are just adapted from already existed Hugo templates, which I could just found online, some of them have very cool contents (some I just copy the styles, sorry :<)
 
-- https://chovid99.github.io/: For the homepage's icon and text typing stuffs.
-- https://mystiz.hk/: For inspiring me to use Mono-fonts / have cool table of content on my page. He also writes really cool Crypto posts.
+- https://chovid99.github.io/: For the homepage's icon and text typing stuffs / page structure.
+- https://mystiz.hk/: For inspiring me to use Mono-fonts / have cool table of content / table-style on my page. He also writes really cool Crypto posts.
