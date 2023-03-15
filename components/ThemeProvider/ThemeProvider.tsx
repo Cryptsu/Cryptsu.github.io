@@ -13,7 +13,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     setCurrentTheme 
   ] = useState("");
 
-  // Set theme to whatever we're having
+  // This component is triggered once during the page visit.
   useOnce(() => {
     let userConfigTheme = getLocalStorage(StorageConst.KEY_THEME);
     userConfigTheme = typeof userConfigTheme === 'string' ? userConfigTheme : ThemeConst.THEME_DEFAULT; 

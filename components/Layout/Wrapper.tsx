@@ -8,6 +8,7 @@ const Wrapper = styled("div",
     minHeight: "100vh",
 
     background: theme.colors.pageBackground,
+    backgroundImage: 'url("/images/assets/grain.png")',
   }
 )
 

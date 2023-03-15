@@ -1,7 +1,6 @@
 import useTheme from "@/hooks/useTheme";
 import { ThemeClassMap } from "@/lib/styles/stiches.config";
 import Wrapper from "./Wrapper";
-
 import type { PropsWithChildren } from "react";
 
 type LayoutProps = PropsWithChildren<{}>;
@@ -17,6 +16,5 @@ const Layout = ({ children }: LayoutProps) => {
     </div>
   )
 }
-
 
 export default Layout;
