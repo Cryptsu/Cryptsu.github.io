@@ -123,7 +123,7 @@ export const {
 ///////////////////////////////////////////////////////////////////////////
 export const lightTheme = createTheme({
   colors: {
-    contentText: "$black"
+    pageBackground: "$white"
   }
 })
 
