@@ -1,4 +1,5 @@
 import { styled, theme } from "@/lib/styles/stiches.config"
+import type { ComponentProps } from "react";
 
 const H1 = styled("p", 
   {
@@ -15,9 +16,11 @@ const H1 = styled("p",
 
 export default function Test() {
   return (
-    <H1>
-      Together, you and me. A multi-species team.
-    </H1>
+    <>
+      <H1>
+        Raccacoonie
+      </H1>
+    </>
   )
 }
   

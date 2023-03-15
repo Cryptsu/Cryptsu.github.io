@@ -1,3 +1,5 @@
+"use client"
+
 import useTheme from "@/hooks/useTheme";
 import { ThemeClassMap } from "@/lib/styles/stiches.config";
 import Wrapper from "./Wrapper";
