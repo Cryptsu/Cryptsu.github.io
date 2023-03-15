@@ -7,6 +7,9 @@ import hexToRgba from "hex-to-rgba";
 // Fonts
 import { JetBrainsMono } from "./utils/fonts";
 
+// Consts
+import { ThemeConst } from "@/lib/consts";
+
 
 ///////////////////////////////////////////////////////////////////////////
 //                              DEFAULT-THEME
@@ -17,7 +20,7 @@ export const {
   globalCss,
   keyframes,
   getCssText,
-  theme: defaultTheme,
+  theme,
   createTheme,
   config,
 } = createStitches({
@@ -118,17 +121,20 @@ export const {
 ///////////////////////////////////////////////////////////////////////////
 //                              SPINOFF-THEME(s)
 ///////////////////////////////////////////////////////////////////////////
-const lightTheme = createTheme({
-
+export const lightTheme = createTheme({
+  colors: {
+    contentText: "$black"
+  }
 })
 
 ///////////////////////////////////////////////////////////////////////////
 //                              ALL THEMES
 ///////////////////////////////////////////////////////////////////////////
-export type ThemeType = typeof defaultTheme;
-export const themes = [
-  defaultTheme,
-];
+export const ThemeClassMap = {
+  [ThemeConst.THEME_DARK]: theme.className,
+  [ThemeConst.THEME_LIGHT]: lightTheme.className,
+};
+
 
 ///////////////////////////////////////////////////////////////////////////
 //                              GLOBAL CONFIG

@@ -1,18 +1,33 @@
 import { useCallback, useEffect, useState } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
-import { ThemeType } from "@/lib/styles/stiches.config";
+
+import { getLocalStorage, setLocalStorage } from "@/lib/helpers/storage";
+import { ThemeConst, StorageConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 
-type ThemeProviderProps = PropsWithChildren<{
-  themes: [ThemeType];
-}>
+type ThemeProviderProps = PropsWithChildren<{}>
 
-export default function ThemeProvider ({ themes, children }: ThemeProviderProps) {
-  const [ currentTheme, setCurrentTheme ] = useState(themes[0]);
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  const userConfigTheme = getLocalStorage(StorageConst.KEY_THEME);
+  const [ 
+    currentTheme, 
+    setCurrentTheme 
+  ] = useState(typeof userConfigTheme === "string" ? userConfigTheme : ThemeConst.THEME_DEFAULT);
 
   return (
-    <>
+    <ThemeContext.Provider
+      value={{
+        activeTheme: currentTheme,
+        setTheme: 
+          (theme: string) => { 
+            setCurrentTheme(theme);
+            setLocalStorage(StorageConst.KEY_THEME, theme);
+          },
+      }}
+    >
       {children}
-    </> 
+    </ThemeContext.Provider> 
   )
 }
+
+export default ThemeProvider;
