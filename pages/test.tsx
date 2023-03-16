@@ -1,5 +1,5 @@
 import { styled, theme } from "@/lib/styles/stiches.config"
-import type { ComponentProps } from "react";
+import { LockLockedIcon } from "@/components/Icons";
 
 const H1 = styled("p", 
   {
@@ -14,12 +14,18 @@ const H1 = styled("p",
   }
 )
 
+const Icon = styled("svg", {
+  width: "100px",
+  height: "100px",
+  verticalAlign: "-0.25em",
+  margin: "0 0.075em",
+  fill: "currentColor",
+});
+
 export default function Test() {
   return (
     <>
-      <H1>
-        Raccacoonie
-      </H1>
+      <LockLockedIcon style={{ transform: "scale(30)" }}/>
     </>
   )
 }

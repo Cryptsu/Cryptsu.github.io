@@ -1,0 +1,1 @@
+export { default as LockLockedIcon } from "open-iconic/svg/lock-locked.svg";
