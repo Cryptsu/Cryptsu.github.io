@@ -52,13 +52,16 @@ export const {
       white: "#DCFFEE",
       
       // Purpose
+      //   -> Header
+      logoText: "$primary",
+
       //   -> Layout
       pageBackground: "$blackest",
 
       //   -> Content
       contentText: "$white",
       
-      //   -> Header
+      //   -> Intro
       hashtagActive: "$primary",
       hashtagInactive: "#44966E",
       divider: hexToRgba("#BCDACB", 0.25),
@@ -89,10 +92,12 @@ export const {
 
     fonts: {
       content: `${JetBrainsMono.style.fontFamily}, monospace`,
-      code: `${JetBrainsMono.style.fontFamily}, monospace`
+      code: "$content",
+      logo: "$content",
     },
 
     fontSizes: {
+      // Content
       h0: "48px",
       h1: "42px",
       h2: "33px",
@@ -100,9 +105,13 @@ export const {
       h4: "20px",
       h5: "16px",
       h6: "12.5px",
+
+      // Others
+      logo: "$h3",
     },
 
     fontWeights: {
+      // Content
       h0: 800,
       h1: 800,
       h2: 800,
@@ -110,7 +119,34 @@ export const {
       h4: "bold",
       h5: "normal",
       h6: "normal",
-    }
+
+      // Others
+      logo: "$h3",
+    },
+
+    letterSpacings: {
+      // Content
+      h0: "-0.05em",
+      h1: "-0.05em",
+      h2: "-0.05em",
+      h3: "-0.05em",
+      h4: "-0.05em",
+      h5: "-0.04em",
+      h6: "-0.04em",
+
+      // Others
+      logo: "$h3",
+    },
+
+    lineHeights: {
+      h0: "normal",
+      h1: "normal",
+      h2: "normal",
+      h3: "normal",
+      h4: "normal",
+      h5: "150%",
+      h6: "150%",
+    },
   },
 
   utils: {

@@ -1,19 +1,23 @@
 import { theme } from "@/lib/styles/stiches.config";
 import { styled } from "@stitches/react";
-import { AssetsConst } from "@/lib/consts";
-import { BLOG_NAME } from "@/lib/consts/app.const";
+import BlogName from "./BlogName";
+import Lock from "./Lock";
 
 const Logo = () => {
   return (
     <CSSWrapper>
-      {BLOG_NAME}
+      <Lock/>
+      <BlogName/>
+      <Lock/>
     </CSSWrapper>
   )
 }
 
 const CSSWrapper = styled("div", 
   {
-    color: theme.colors.primary,
+    display: "flex",
+    alignItems: "center",
+    gap: 24,
   }
 )
 
