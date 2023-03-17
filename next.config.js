@@ -7,10 +7,6 @@ const nextConfig = {
     loader: "akamai",
     path: ""
   },
-
-  // Allows Github Page to find /_next folder.
-  basePath: "/nextjs-pages",
-  assetPrefix: "/nextjs-pages",
 }
 
 const webpackConfig = {
