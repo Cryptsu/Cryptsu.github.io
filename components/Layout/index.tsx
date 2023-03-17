@@ -1,6 +1,6 @@
-import { ThemeClassMap, theme } from "@/lib/styles/stiches.config";
-import { styled } from "@stitches/react";
+import Style from "@/components/Style";
 import useTheme from "@/hooks/useTheme";
+import { ThemeClassMap, theme } from "@/lib/styles/stiches.config";
 import { AssetsConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 
@@ -11,23 +11,22 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className={ThemeClassMap[activeTheme]}>
-      <CSSWrapper>
+      <Style style={LayoutStyles} isInline={true}>
         {children}
-      </CSSWrapper>
+      </Style>
     </div>
   )
 }
 
-const CSSWrapper = styled("div", 
-  {
-    // Spans the whole window
-    // display: "flex",
-    // flexDirection: "column",
-    minHeight: "100vh",
+const LayoutStyles = {
+  // Spans the whole window
+  // display: "flex",
+  // flexDirection: "column",
+  minHeight: "100vh",
 
-    background: theme.colors.pageBackground,
-    backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
-  }
-)
+  // Background with something sprinkle in.
+  background: theme.colors.pageBackground,
+  backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
+}
 
 export default Layout;

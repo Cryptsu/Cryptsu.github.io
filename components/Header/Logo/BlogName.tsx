@@ -1,11 +1,12 @@
+import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { BLOG_NAME } from "@/lib/consts/app.const";
 
 const BlogName = () => {
   return (
-    <div style={BlogNameStyles}>
+    <Style style={BlogNameStyles} isInline={true}>
       {BLOG_NAME}
-    </div>
+    </Style>
   )
 }
 

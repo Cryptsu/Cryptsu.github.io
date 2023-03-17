@@ -1,14 +1,14 @@
-import { theme } from "@/lib/styles/stiches.config";
+import Style from "@/components/Style";
 import BlogName from "./BlogName";
 import Lock from "./Lock";
 
 const Logo = () => {
   return (
-    <div style={LogoStyles}>
+    <Style style={LogoStyles} isInline={true}>
       <Lock/>
       <BlogName/>
       <Lock/>
-    </div>
+    </Style>
   )
 }
 
