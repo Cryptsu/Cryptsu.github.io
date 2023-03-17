@@ -8,7 +8,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-    
+
 permissions:
   contents: write
 
@@ -35,4 +35,5 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
+        branch: gh-pages # Branch that serves the website.
         folder: out # The folder the action should deploy.
