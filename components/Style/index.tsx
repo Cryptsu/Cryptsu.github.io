@@ -10,7 +10,7 @@ type StyleProps = PropsWithChildren<{
   isInline?: boolean
 }>;
 
-export default function Style({style, children, isInline=true}: StyleProps)
+export default function Style({style, children, isInline=false}: StyleProps)
 {
   let CSSWrapper = styled("div", style);
   return (

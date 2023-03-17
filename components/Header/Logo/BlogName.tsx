@@ -11,13 +11,13 @@ const BlogName = () => {
 }
 
 const BlogNameStyles = {
-  color: theme.colors.logoText.value,
-  fontSize: theme.fontSizes.logo.value,
-  fontWeight: theme.fontWeights.logo.value,
-  fontFamily: theme.fonts.logo.value,
-  letterSpacing: theme.letterSpacings.logo.value,
+  color: theme.colors.logoText,
+  fontSize: theme.fontSizes.logo,
+  fontWeight: theme.fontWeights.logo,
+  fontFamily: theme.fonts.logo,
+  letterSpacing: theme.letterSpacings.logo,
   textDecoration: "underline",
-  textAlign: "center" as "center", // WTF code that keeps TypeScript compiler's mouth shut
+  textAlign: "center", // WTF code that keeps TypeScript compiler's mouth shut
 }
 
 export default BlogName;

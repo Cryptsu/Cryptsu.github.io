@@ -54,6 +54,7 @@ export const {
       // Purpose
       //   -> Header
       logoText: "$primary",
+      blurBackground: hexToRgba("#101010", 0.5),
 
       //   -> Layout
       pageBackground: "$blackest",
