@@ -1,5 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import { getCssText } from '@/lib/styles/stiches.config'
+import { ThemeClassMap, theme } from "@/lib/styles/stiches.config";
+import { ThemeConst } from '@/lib/consts';
 
 export default function Document() {
   return (
@@ -8,7 +10,8 @@ export default function Document() {
         {/* Enable Server-side rendering */}
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
       </Head>
-      <body> 
+      {/* TODO: This is a quick fix for page flickering. Very bad. */}
+      <body className={ThemeClassMap[ThemeConst.THEME_DEFAULT]}> 
         <Main />
         <NextScript />
       </body>

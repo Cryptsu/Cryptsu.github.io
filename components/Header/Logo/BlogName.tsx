@@ -1,25 +1,22 @@
 import { theme } from "@/lib/styles/stiches.config";
-import { styled } from "@stitches/react";
 import { BLOG_NAME } from "@/lib/consts/app.const";
 
 const BlogName = () => {
   return (
-    <CSSWrapper>
+    <div style={BlogNameStyles}>
       {BLOG_NAME}
-    </CSSWrapper>
+    </div>
   )
 }
 
-const CSSWrapper = styled("div", 
-  {
-    color: theme.colors.logoText,
-    fontSize: theme.fontSizes.logo,
-    fontWeight: theme.fontWeights.logo,
-    fontFamily: theme.fonts.logo,
-    letterSpacing: theme.letterSpacings.logo,
-    textDecoration: "underline",
-    textAlign: "center",
-  }
-)
+const BlogNameStyles = {
+  color: theme.colors.logoText.value,
+  fontSize: theme.fontSizes.logo.value,
+  fontWeight: theme.fontWeights.logo.value,
+  fontFamily: theme.fonts.logo.value,
+  letterSpacing: theme.letterSpacings.logo.value,
+  textDecoration: "underline",
+  textAlign: "center",
+}
 
 export default BlogName;
