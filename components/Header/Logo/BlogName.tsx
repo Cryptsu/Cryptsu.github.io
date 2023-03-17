@@ -16,7 +16,7 @@ const BlogNameStyles = {
   fontFamily: theme.fonts.logo.value,
   letterSpacing: theme.letterSpacings.logo.value,
   textDecoration: "underline",
-  textAlign: "center",
+  textAlign: "center" as "center", // WTF code that keeps TypeScript compiler's mouth shut
 }
 
 export default BlogName;
