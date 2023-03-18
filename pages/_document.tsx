@@ -13,7 +13,7 @@ export default function Document() {
       {/* TODO: This is a quick fix for page flickering. Very bad looking. */}
       <body 
         className={ThemeClassMap[ThemeConst.THEME_DEFAULT]} 
-        style={{backgroundColor: theme.colors.pageBackground.value}}
+        style={{backgroundColor: theme.colors.pageBackground.computedValue}}
       > 
         <Main />
         <NextScript />
