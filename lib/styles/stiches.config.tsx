@@ -181,10 +181,4 @@ export const globalStyles = globalCss({
     margin: 0,
     padding: 0,
   },
-
-
-  // TODO: sort of a quick fix for page loading sucks.
-  'body': {
-    backgroundColor: "$pageBackground",
-  }
 });

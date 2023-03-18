@@ -1,9 +1,6 @@
 import Logo from "./Logo";
 import Style from "@/components/Style"
 import { theme } from "@/lib/styles/stiches.config";
-import { CSSProperties } from "react";
-import hexToRgba from "hex-to-rgba";
-import { AssetsConst } from "@/lib/consts";
 
 const Header = () => {
   return (

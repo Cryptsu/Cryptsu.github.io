@@ -14,20 +14,20 @@ export default function Style({style, children, isInline=false}: StyleProps)
 {
   // Somehow, wrap an element like this will cause 
   // serverside rendering to include all CSS styles
-  // of the generated class during load in <head/>.
+  // of the generated class during page load in <head/>.
   let CSSWrapper = styled("div", style);
   return (
     <CSSWrapper>
       {children}
     </CSSWrapper>
   )
-  // return (
-  //   isInline
-  //     ? <div style={style}>
-  //         {children}
-  //       </div>
-  //     : <CSSWrapper>
-  //         {children}
-  //       </CSSWrapper>
-  // )
+  return (
+    isInline
+      ? <div style={style}>
+          {children}
+        </div>
+      : <CSSWrapper>
+          {children}
+        </CSSWrapper>
+  )
 }

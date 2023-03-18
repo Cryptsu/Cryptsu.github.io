@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className={ThemeClassMap[activeTheme]}>
-      <Style style={LayoutStyles} isInline={true}>
+      <Style style={LayoutStyles}>
         {children}
       </Style>
     </div>
@@ -25,7 +25,7 @@ const LayoutStyles = {
   minHeight: "100vh",
 
   // Background with something sprinkle in.
-  background: theme.colors.pageBackground,
+  backgroundColor: theme.colors.pageBackground,
   backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
 }
 

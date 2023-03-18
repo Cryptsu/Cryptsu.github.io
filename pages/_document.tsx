@@ -10,8 +10,11 @@ export default function Document() {
         {/* Enable Server-side rendering */}
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
       </Head>
-      {/* TODO: This is a quick fix for page flickering. Very bad. */}
-      <body className={ThemeClassMap[ThemeConst.THEME_DEFAULT]}> 
+      {/* TODO: This is a quick fix for page flickering. Very bad looking. */}
+      <body 
+        className={ThemeClassMap[ThemeConst.THEME_DEFAULT]} 
+        style={{backgroundColor: theme.colors.pageBackground.value}}
+      > 
         <Main />
         <NextScript />
       </body>

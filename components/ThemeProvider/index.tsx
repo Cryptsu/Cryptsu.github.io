@@ -20,6 +20,12 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
     setCurrentTheme(userConfigTheme);
     setLocalStorage(StorageConst.KEY_THEME, userConfigTheme);
+
+    // Remove "prepended-theme" class in body
+    // TODO: This hack works, but ugly as hell. Please change.
+    let bodyElement = document.getElementsByTagName("body")[0];
+    bodyElement.removeAttribute("class");
+    bodyElement.removeAttribute("style");
   }, []);
 
   return (
