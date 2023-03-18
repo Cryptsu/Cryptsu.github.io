@@ -4,7 +4,7 @@ import { BLOG_NAME } from "@/lib/consts/app.const";
 
 const BlogName = () => {
   return (
-    <Style style={BlogNameStyles} isInline={true}>
+    <Style style={BlogNameStyles}>
       {BLOG_NAME}
     </Style>
   )

@@ -4,11 +4,9 @@ import { theme } from "@/lib/styles/stiches.config";
 
 const Header = () => {
   return (
-    <Style style={ExpensiveStyles}>
-      <Style style={HeaderStyles} isInline={true}>
-        <Style style={LogoGroupStyles} isInline={true}>
-          <Logo/>      
-        </Style>
+    <Style style={HeaderStyles}>
+      <Style style={LogoGroupStyles}>
+        <Logo/>      
       </Style>
     </Style>
   )
@@ -33,9 +31,6 @@ const HeaderStyles = {
   borderStyle: "dashed",
   borderColor: theme.colors.divider,
   position: "relative",
-}
-
-const ExpensiveStyles = {
   backdropFilter: "blur(4px)",
   backgroundColor: theme.colors.blurBackground,
 }

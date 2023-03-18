@@ -4,7 +4,7 @@ import Lock from "./Lock";
 
 const Logo = () => {
   return (
-    <Style style={LogoStyles} isInline={true}>
+    <Style style={LogoStyles}>
       <Lock/>
       <BlogName/>
       <Lock/>

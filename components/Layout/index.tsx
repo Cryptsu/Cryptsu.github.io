@@ -8,13 +8,10 @@ type LayoutProps = PropsWithChildren<{}>;
 
 const Layout = ({ children }: LayoutProps) => {
   const { activeTheme } = useTheme();
-
   return (
-    <div className={ThemeClassMap[activeTheme]}>
-      <Style style={LayoutStyles}>
-        {children}
-      </Style>
-    </div>
+    <Style className={ThemeClassMap[activeTheme]} style={LayoutStyles}>
+      {children}
+    </Style>
   )
 }
 

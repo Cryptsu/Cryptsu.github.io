@@ -7,27 +7,20 @@ import type { PropsWithChildren, ReactNode } from "react";
 //       then we might consider changing this.
 type StyleProps = PropsWithChildren<{
   style: any,
-  isInline?: boolean
+  as?: ReactNode,
+  [x: string]: any,
 }>;
 
-export default function Style({style, children, isInline=false}: StyleProps)
+export default function Style({style, as, children, ...otherProps}: StyleProps)
 {
+
   // Somehow, wrap an element like this will cause 
   // serverside rendering to include all CSS styles
   // of the generated class during page load in <head/>.
   let CSSWrapper = styled("div", style);
   return (
-    <CSSWrapper>
+    <CSSWrapper as={as} {...otherProps}>
       {children}
     </CSSWrapper>
-  )
-  return (
-    isInline
-      ? <div style={style}>
-          {children}
-        </div>
-      : <CSSWrapper>
-          {children}
-        </CSSWrapper>
   )
 }
