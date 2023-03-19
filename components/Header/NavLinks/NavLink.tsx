@@ -18,7 +18,6 @@ const NavLink = ({children, href, ...otherProps}: NavLinkProps) => {
     <CustomLink 
       href={href} 
       style={NavLinkStyles} 
-      hasMovingUnderline={true}
       {...otherProps}
     >
       {children}
