@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { styled } from "@/lib/styles/stiches.config";
 import type { PropsWithChildren, ReactNode } from "react";
 
@@ -7,7 +8,9 @@ import type { PropsWithChildren, ReactNode } from "react";
 //       then we might consider changing this.
 type StyleProps = PropsWithChildren<{
   style: any,
-  as?: ReactNode,
+  as?: ReactNode | JSX.Element | typeof Link,
+
+  // Other props
   [x: string]: any,
 }>;
 

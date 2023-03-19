@@ -1,11 +1,11 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { BLOG_NAME } from "@/lib/consts/app.const";
+import { TxtConst } from "@/lib/consts";
 
 const BlogName = () => {
   return (
     <Style style={BlogNameStyles}>
-      {BLOG_NAME}
+      {TxtConst.TXT_BLOG_NAME}
     </Style>
   )
 }

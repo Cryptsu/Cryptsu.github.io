@@ -54,6 +54,7 @@ export const {
       // Purpose
       //   -> Header
       logoText: "$primary",
+      navLink: "$primary",
       blurBackground: hexToRgba("#101010", 0.5),
 
       //   -> Layout
@@ -93,6 +94,7 @@ export const {
 
     fonts: {
       content: `${JetBrainsMono.style.fontFamily}, monospace`,
+      navlink: "$content",
       code: "$content",
       logo: "$content",
     },
@@ -109,6 +111,7 @@ export const {
 
       // Others
       logo: "$h3",
+      navlink: "$h4",
     },
 
     fontWeights: {
@@ -123,6 +126,7 @@ export const {
 
       // Others
       logo: "$h3",
+      navlink: "$h4",
     },
 
     letterSpacings: {
@@ -137,6 +141,7 @@ export const {
 
       // Others
       logo: "$h3",
+      navlink: "$h4",
     },
 
     lineHeights: {
@@ -181,4 +186,17 @@ export const globalStyles = globalCss({
     margin: 0,
     padding: 0,
   },
+
+  // Easier to customize link.
+  'a': {
+    '&:hover': {
+      textDecoration: "none"
+    },
+    '&:link': {
+      textDecoration: "none"
+    },
+    '&:active': {
+      textDecoration: "none"
+    }
+  }
 });

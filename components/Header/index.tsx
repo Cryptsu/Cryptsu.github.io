@@ -1,18 +1,19 @@
-import Logo from "./Logo";
 import Style from "@/components/Style"
+import Logo from "./Logo";
+import NavLinks from "./NavLinks";
 import { theme } from "@/lib/styles/stiches.config";
 
 const Header = () => {
   return (
     <Style style={HeaderStyles}>
       <Style style={NavLinkGroupStyles}>
-        defadsfasfsdaffdsfsafa
+        <NavLinks/>
       </Style>
       <Style style={LogoGroupStyles}>
         <Logo/>      
       </Style>
       <Style style={ButtonsGroupStyles}>
-        abc
+        
       </Style>
     </Style>
   )
@@ -21,8 +22,8 @@ const Header = () => {
 const HeaderStyles = {
   display: "grid",
   gridTemplateAreas: "'navlinks logo buttons'",
-  gridTemplateColumns: "2fr 1fr 2fr",
-  gap: "10px",
+  gridTemplateColumns: "1fr 1fr 1fr",
+  gap: 10,
 
   // Padding
   paddingLeft: 200,
@@ -46,7 +47,6 @@ const NavLinkGroupStyles = {
   gridArea: "navlinks",
 
   // Others
-  color: theme.colors.primary,
   display: "flex",
   justifyContent: "left",
   alignItems: "center",
@@ -69,7 +69,6 @@ const ButtonsGroupStyles = {
   gridArea: "buttons",
 
   // Others
-  color: theme.colors.primary,
   display: "flex",
   justifyContent: "right",
   alignItems: "center",

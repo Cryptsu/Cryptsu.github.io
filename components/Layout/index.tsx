@@ -8,17 +8,18 @@ type LayoutProps = PropsWithChildren<{}>;
 
 const Layout = ({ children }: LayoutProps) => {
   const { activeTheme } = useTheme();
+
   return (
-    <Style className={ThemeClassMap[activeTheme]} style={LayoutStyles}>
-      {children}
-    </Style>
+    <div className={ThemeClassMap[activeTheme]}>
+      <Style style={LayoutStyles}>
+        {children}
+      </Style>
+    </div>
   )
 }
 
 const LayoutStyles = {
   // Spans the whole window
-  // display: "flex",
-  // flexDirection: "column",
   minHeight: "100vh",
 
   // Background with something sprinkle in.
