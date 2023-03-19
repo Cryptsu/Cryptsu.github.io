@@ -131,7 +131,6 @@ export const {
 
       // Others
       logo: "$h3",
-      customLinkDefault: "$h5",
     },
 
     letterSpacings: {

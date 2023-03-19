@@ -33,7 +33,7 @@ const NavLinkStyles = {
   color: theme.colors.navLink,
 
   // Set moving underline
-  movUnderline: `${theme.colors.navLinkLineHover} 2px 8px 8px`,
+  movUnderline: `${theme.colors.navLinkLineHover} 2px 10px 8px`,
 
   // Set space in grid
   gridRow: "1/2",
