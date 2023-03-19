@@ -1,7 +1,9 @@
 import { theme } from "@/lib/styles/stiches.config";
 import Link from "next/link";
 import Style from "@/components/Style";
-import { PropsWithChildren } from "react";
+import CustomLink from "@/components/CustomLink";
+
+import type { PropsWithChildren } from "react";
 
 type NavLinkProps = PropsWithChildren <{
   // Need to aquire link
@@ -11,32 +13,23 @@ type NavLinkProps = PropsWithChildren <{
   [x: string]: any,
 }>
 
-const NavLink = ({children, ...otherProps}: NavLinkProps) => {
+const NavLink = ({children, href, ...otherProps}: NavLinkProps) => {
   return (
-    <Style as={Link} style={NavLinkStyles} {...otherProps}>
+    <CustomLink 
+      href={href} 
+      style={NavLinkStyles} 
+      hasMovingUnderline={true}
+      {...otherProps}
+    >
       {children}
-    </Style>
+    </CustomLink>
   )
 }
 
 const NavLinkStyles = {
   color: theme.colors.navLink,
-  fontFamily: theme.fonts.navlink,
-  letterSpacing: theme.letterSpacings.navlink,
+  backgroundImage: theme.colors.navLinkLineHover,
   gridRow: "1/2",
-
-  // To create this nice link line drawing animation 
-  // when we hover on the link.
-  // Idea of jarv.is!! Not mine.
-  backgroundImage: `linear-gradient(${theme.colors.navLink}, ${theme.colors.navLink})`,
-  backgroundSize: "0% 2px",
-  backgroundPosition: "0% 100%",
-  backgroundRepeat: "no-repeat",
-  paddingBottom: "3px",
-  transition: "background-size 0.2s ease-in-out",
-  '&:hover': {
-    backgroundSize: "100% 2px",
-  }
 };
 
 export default NavLink;

@@ -52,10 +52,17 @@ export const {
       white: "#DCFFEE",
       
       // Purpose
+      //   -> CustomLink
+      customLinkDefault: "$primary",
+      customLinkDefaultBackgroundHover: hexToRgba("#454C48", 0.5),
+      customLinkDefaultLineHover: "linear-gradient($grey, $grey)",
+      
       //   -> Header
       logoText: "$primary",
-      navLink: "$primary",
       blurBackground: hexToRgba("#101010", 0.5),
+        //       -> navLink
+        navLink: "$primary",
+        navLinkLineHover: "linear-gradient($primary, $primary)",
 
       //   -> Layout
       pageBackground: "$blackest",
@@ -93,25 +100,25 @@ export const {
     },
 
     fonts: {
+      customLinkDefault: "$content",
       content: `${JetBrainsMono.style.fontFamily}, monospace`,
-      navlink: "$content",
       code: "$content",
       logo: "$content",
     },
 
     fontSizes: {
       // Content
-      h0: "48px",
-      h1: "42px",
-      h2: "33px",
-      h3: "26px",
-      h4: "20px",
-      h5: "16px",
-      h6: "12.5px",
+      h0: "69px",
+      h1: "54px",
+      h2: "42px",
+      h3: "33px",
+      h4: "26px",
+      h5: "20px",
+      h6: "15.63px",
 
       // Others
       logo: "$h3",
-      navlink: "$h4",
+      customLinkDefault: "$h5",
     },
 
     fontWeights: {
@@ -126,7 +133,7 @@ export const {
 
       // Others
       logo: "$h3",
-      navlink: "$h4",
+      customLinkDefault: "$h5",
     },
 
     letterSpacings: {
@@ -141,7 +148,7 @@ export const {
 
       // Others
       logo: "$h3",
-      navlink: "$h4",
+      customLinkDefault: "$h5",
     },
 
     lineHeights: {
@@ -156,7 +163,7 @@ export const {
   },
 
   utils: {
-
+    
   }
 })
 
