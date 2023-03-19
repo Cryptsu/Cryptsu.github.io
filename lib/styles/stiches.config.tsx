@@ -53,7 +53,6 @@ export const {
       
       // Purpose
       //   -> CustomLink
-      customLinkDefault: "$primary",
       customLinkDefaultBackgroundHover: hexToRgba("#454C48", 0.5),
       customLinkDefaultLineHover: "linear-gradient($grey, $grey)",
       
@@ -100,8 +99,8 @@ export const {
     },
 
     fonts: {
-      customLinkDefault: "$content",
       content: `${JetBrainsMono.style.fontFamily}, monospace`,
+      navlink: "$content",
       code: "$content",
       logo: "$content",
     },
@@ -118,7 +117,7 @@ export const {
 
       // Others
       logo: "$h3",
-      customLinkDefault: "$h5",
+      navlink: "$h5",
     },
 
     fontWeights: {
@@ -148,7 +147,7 @@ export const {
 
       // Others
       logo: "$h3",
-      customLinkDefault: "$h5",
+      navlink: "$h5",
     },
 
     lineHeights: {

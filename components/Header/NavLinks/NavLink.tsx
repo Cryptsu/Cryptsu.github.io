@@ -27,8 +27,16 @@ const NavLink = ({children, href, ...otherProps}: NavLinkProps) => {
 }
 
 const NavLinkStyles = {
+  // Font customize
+  fontFamily: theme.fonts.navlink,
+  fontSize: theme.fontSizes.navlink,
+  letterSpacing: theme.letterSpacings.navlink,
   color: theme.colors.navLink,
+
+  // Set line
   backgroundImage: theme.colors.navLinkLineHover,
+
+  // Set space in grid
   gridRow: "1/2",
 };
 

@@ -7,14 +7,20 @@ import type { PropsWithChildren, ReactNode } from "react";
 //       if stitches.dev work more on Static Extraction,
 //       then we might consider changing this.
 type StyleProps = PropsWithChildren<{
+  // Default style
   style: any,
+
+  // CSS overwrite!
+  css?: any,
+
+  // Inline style to children
   as?: ReactNode | JSX.Element | typeof Link,
 
   // Other props
   [x: string]: any,
 }>;
 
-export default function Style({style, as, children, ...otherProps}: StyleProps)
+export default function Style({style, children, ...otherProps}: StyleProps)
 {
 
   // Somehow, wrap an element like this will cause 
@@ -22,7 +28,7 @@ export default function Style({style, as, children, ...otherProps}: StyleProps)
   // of the generated class during page load in <head/>.
   let CSSWrapper = styled("div", style);
   return (
-    <CSSWrapper as={as} {...otherProps}>
+    <CSSWrapper {...otherProps}>
       {children}
     </CSSWrapper>
   )

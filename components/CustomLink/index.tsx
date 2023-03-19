@@ -26,11 +26,12 @@ const CustomLink = ({
 }: CustomLinkProps) => {
   return (
     <Style 
+      css={style}
       as={Link} 
       style={
         hasMovingUnderline 
-          ? { ...CustomLinkStylesUnderlined, ...style }
-          : { ...CustomLinkStylesDefault, ...style }
+          ? CustomLinkStylesUnderlined
+          : CustomLinkStylesDefault
         } {
       ...otherProps}
     >
@@ -40,11 +41,6 @@ const CustomLink = ({
 }
 
 const CustomLinkStylesDefault = {
-  color: theme.colors.customLinkDefault,
-  fontSize: theme.fontSizes.customLinkDefault,
-  fontFamily: theme.fonts.customLinkDefault,
-  letterSpacing: theme.letterSpacings.customLinkDefault,
-
   // When hover, we should expect some background
   // color with a radius
   padding: 8,

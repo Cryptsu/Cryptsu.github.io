@@ -19,8 +19,6 @@ const NavLinks = () => {
 const NavLinksStyles = {
   display: "grid",
   gap: 10,
-  fontSize: theme.fontSizes.navlink,
-  letterSpacing: theme.letterSpacings.navlink,
 }
 
 export default NavLinks;
