@@ -53,15 +53,14 @@ export const {
       
       // Purpose
       //   -> CustomLink
-      customLinkDefaultBackgroundHover: hexToRgba("#454C48", 0.5),
-      customLinkDefaultLineHover: "linear-gradient($grey, $grey)",
+      customLinkBackground: hexToRgba("#454C48", 0.5),
       
       //   -> Header
       logoText: "$primary",
       blurBackground: hexToRgba("#101010", 0.5),
         //       -> navLink
         navLink: "$primary",
-        navLinkLineHover: "linear-gradient($primary, $primary)",
+        navLinkLineHover: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
 
       //   -> Layout
       pageBackground: "$blackest",
@@ -162,7 +161,33 @@ export const {
   },
 
   utils: {
-    
+    movUnderline: (attrsStr: string) => {
+      let color = "#101010";
+      let thickness = "1px";
+      let marginX = "0px";
+      let marginY = "0px";
+
+      let attrs = attrsStr.split(" ");
+      color              = (attrs[0] === undefined ? color     : attrs[0]);
+      thickness          = (attrs[1] === undefined ? thickness : attrs[1]);
+      marginX            = (attrs[2] === undefined ? marginX   : attrs[2]);
+      marginY            = (attrs[3] === undefined ? marginY   : attrs[3]);
+
+      return {
+        backgroundImage: color,
+        backgroundSize: `0% ${thickness}`,
+        backgroundPosition: `calc(0% + ${marginX}) calc(100% - ${marginY})`,
+        backgroundRepeat: "no-repeat",
+        transition: "background-size 0.2s ease-in-out",
+        '&:hover': {
+          backgroundSize: `calc(100% - ${marginX}*2) ${thickness}`
+        }
+      }
+    },
+
+    movUnderlineColor: (color: string) => ({
+      backgroundImage: color,
+    })
   }
 })
 

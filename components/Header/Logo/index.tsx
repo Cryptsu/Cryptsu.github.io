@@ -6,7 +6,7 @@ import { LinkConst } from "@/lib/consts";
 
 const Logo = () => {
   return (
-    <CustomLink style={LogoStyles} href={LinkConst.LINK_HOME} hasMovingUnderline={false}>
+    <CustomLink style={LogoStyles} href={LinkConst.LINK_HOME}>
       <Lock/>
       <BlogName/>
       <Lock/>

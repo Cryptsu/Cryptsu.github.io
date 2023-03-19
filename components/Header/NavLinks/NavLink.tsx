@@ -33,8 +33,8 @@ const NavLinkStyles = {
   letterSpacing: theme.letterSpacings.navlink,
   color: theme.colors.navLink,
 
-  // Set line
-  backgroundImage: theme.colors.navLinkLineHover,
+  // Set moving underline
+  movUnderline: `${theme.colors.navLinkLineHover} 2px 8px 8px`,
 
   // Set space in grid
   gridRow: "1/2",
