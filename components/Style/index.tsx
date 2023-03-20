@@ -1,8 +1,8 @@
 import React from "react";
-import Link from "next/link";
 import { styled } from "@/lib/styles/stiches.config";
 import type { CSS } from "@stitches/react";
-import type { PropsWithChildren, ReactNode } from "react";
+import type { PropsWithChildren } from "react";
+import type { NextNode } from "@/types/next-node";
 
 // TODO: This is where if somehow, in the future,
 //       if stitches.dev work more on Static Extraction,
@@ -15,7 +15,7 @@ type StyleProps = PropsWithChildren<{
   css?: CSS,
 
   // Inline style to children
-  as?: ReactNode | typeof Link,
+  as?: NextNode,
 
   // Other props
   [x: string]: any,
@@ -23,7 +23,6 @@ type StyleProps = PropsWithChildren<{
 
 export default function Style({style, children, ...otherProps}: StyleProps)
 {
-
   // Somehow, wrap an element like this will cause 
   // serverside rendering to include all CSS styles
   // of the generated class during page load in <head/>.
