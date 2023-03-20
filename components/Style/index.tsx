@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "@/lib/styles/stiches.config";
 import type { CSS } from "@stitches/react";
 import type { PropsWithChildren } from "react";
-import type { NextNode } from "@/types/next-node";
+import type { NextNode } from "@/types/next.d";
 
 // TODO: This is where if somehow, in the future,
 //       if stitches.dev work more on Static Extraction,

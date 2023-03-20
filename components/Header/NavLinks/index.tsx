@@ -2,7 +2,6 @@ import NavLink from "./NavLink";
 import Style from "@/components/Style";
 import NavLinkConfig from "@/lib/config/navlink.config";
 import type { CSS } from "@stitches/react";
-import type { NavLinkConfigType } from "@/lib/config/navlink.config";
 
 const NavLinks = () => {
   return (

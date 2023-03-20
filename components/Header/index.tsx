@@ -13,7 +13,7 @@ const Header = () => {
       <Style style={LogoGroupStyles}>
         <Logo/>      
       </Style>
-      <Style style={ButtonsGroupStyles}>
+      <Style style={ToggleButtonsGroupStyles}>
         
       </Style>
     </Style>
@@ -65,7 +65,7 @@ const LogoGroupStyles: CSS = {
   paddingBottom: 12,
 }
 
-const ButtonsGroupStyles: CSS = {
+const ToggleButtonsGroupStyles: CSS = {
   // For grid display
   gridArea: "buttons",
 
