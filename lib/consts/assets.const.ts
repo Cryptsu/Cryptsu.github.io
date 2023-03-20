@@ -1,4 +1,4 @@
-export const GRAIN_PNG = "/images/assets/grain.png";
+const GRAIN_PNG = "/images/assets/grain.png";
 
 const AssetsConst = {
   GRAIN_PNG

@@ -1,17 +1,17 @@
 import NavLink from "./NavLink";
 import Style from "@/components/Style";
-import { LinkConst, TxtConst } from "@/lib/consts";
+import NavLinkConfig from "@/lib/config/navlink.config";
 import type { CSS } from "@stitches/react";
+import type { NavLinkConfigType } from "@/lib/config/navlink.config";
 
 const NavLinks = () => {
   return (
     <Style style={NavLinksStyles}>
-      <NavLink href={LinkConst.LINK_HOME}>
-        {TxtConst.TXT_NAV_HOME}
-      </NavLink>
-      <NavLink href={LinkConst.LINK_TEST}>
-        {TxtConst.TXT_NAV_TEST}
-      </NavLink>
+      {NavLinkConfig.navItems.map((navItem, index) => 
+        <NavLink key={index} href={navItem.href}>
+          {navItem.name}
+        </NavLink>
+      )}
     </Style>
   )
 }

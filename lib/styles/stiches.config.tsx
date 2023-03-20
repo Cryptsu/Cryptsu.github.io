@@ -157,6 +157,10 @@ export const {
       h5: "150%",
       h6: "150%",
     },
+
+    transitions: {
+      movUnderline: "background-size 0.2s ease-in-out"
+    }
   },
 
   utils: {
@@ -179,7 +183,7 @@ export const {
         backgroundSize: `0% ${thickness}`,
         backgroundPosition: `calc(0% + ${marginX}) calc(100% - ${marginY})`,
         backgroundRepeat: "no-repeat",
-        transition: "background-size 0.2s ease-in-out",
+        transition: "$movUnderline",
         '&:hover': {
           backgroundSize: `calc(100% - ${marginX}*2) ${thickness}`
         }

@@ -15,7 +15,7 @@ type StyleProps = PropsWithChildren<{
   css?: CSS,
 
   // Inline style to children
-  as?: ReactNode | JSX.Element | typeof Link,
+  as?: ReactNode | typeof Link,
 
   // Other props
   [x: string]: any,
