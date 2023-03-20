@@ -1,6 +1,7 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { TxtConst } from "@/lib/consts";
+import type { CSS } from "@stitches/react";
 
 const BlogName = () => {
   return (
@@ -10,7 +11,7 @@ const BlogName = () => {
   )
 }
 
-const BlogNameStyles = {
+const BlogNameStyles: CSS = {
   color: theme.colors.logoText,
   fontSize: theme.fontSizes.logo,
   fontWeight: theme.fontWeights.logo,

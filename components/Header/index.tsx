@@ -2,6 +2,7 @@ import Style from "@/components/Style"
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import { theme } from "@/lib/styles/stiches.config";
+import type { CSS } from "@stitches/react";
 
 const Header = () => {
   return (
@@ -19,7 +20,7 @@ const Header = () => {
   )
 }
 
-const HeaderStyles = {
+const HeaderStyles: CSS = {
   display: "grid",
   gridTemplateAreas: "'navlinks logo buttons'",
   gridTemplateColumns: "1fr 1fr 1fr",
@@ -42,7 +43,7 @@ const HeaderStyles = {
   backgroundColor: theme.colors.blurBackground,
 }
 
-const NavLinkGroupStyles = {
+const NavLinkGroupStyles: CSS = {
   // For grid display
   gridArea: "navlinks",
 
@@ -52,7 +53,7 @@ const NavLinkGroupStyles = {
   alignItems: "center",
 }
 
-const LogoGroupStyles = {
+const LogoGroupStyles: CSS = {
   // For grid display
   gridArea: "logo", 
 
@@ -64,7 +65,7 @@ const LogoGroupStyles = {
   paddingBottom: 12,
 }
 
-const ButtonsGroupStyles = {
+const ButtonsGroupStyles: CSS = {
   // For grid display
   gridArea: "buttons",
 

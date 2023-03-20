@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { styled } from "@/lib/styles/stiches.config";
+import type { CSS } from "@stitches/react";
 import type { PropsWithChildren, ReactNode } from "react";
 
 // TODO: This is where if somehow, in the future,
@@ -8,10 +9,10 @@ import type { PropsWithChildren, ReactNode } from "react";
 //       then we might consider changing this.
 type StyleProps = PropsWithChildren<{
   // Default style
-  style: any,
+  style: CSS,
 
   // CSS overwrite!
-  css?: any,
+  css?: CSS,
 
   // Inline style to children
   as?: ReactNode | JSX.Element | typeof Link,

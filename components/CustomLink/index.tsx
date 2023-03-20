@@ -1,14 +1,15 @@
 import { theme } from "@/lib/styles/stiches.config";
 import Link from "next/link";
 import Style from "@/components/Style";
-import { PropsWithChildren } from "react";
+import type { CSS } from "@stitches/react";
+import type { PropsWithChildren } from "react";
 
 type CustomLinkProps = PropsWithChildren <{
   // Need to aquire link
   href: string,
 
   // Style overriding
-  style?: any,
+  style?: CSS,
 
   // Other props
   [x: string]: any,
@@ -31,7 +32,7 @@ const CustomLink = ({
   )
 }
 
-const CustomLinkStyles = {
+const CustomLinkStyles: CSS = {
   // When hover, we should expect some background
   // color with a radius
   padding: 8,

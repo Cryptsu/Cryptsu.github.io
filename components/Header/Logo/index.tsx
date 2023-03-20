@@ -3,6 +3,7 @@ import CustomLink from "@/components/CustomLink";
 import BlogName from "./BlogName";
 import Lock from "./Lock";
 import { LinkConst } from "@/lib/consts";
+import type { CSS } from "@stitches/react";
 
 const Logo = () => {
   return (
@@ -14,7 +15,7 @@ const Logo = () => {
   )
 }
 
-const LogoStyles = {
+const LogoStyles: CSS = {
   display: "flex",
   alignItems: "center",
   gap: 24,

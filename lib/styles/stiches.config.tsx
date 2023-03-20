@@ -106,13 +106,13 @@ export const {
 
     fontSizes: {
       // Content
-      h0: "69px",
-      h1: "54px",
-      h2: "42px",
-      h3: "33px",
-      h4: "26px",
-      h5: "20px",
-      h6: "15.63px",
+      h0: "55px",
+      h1: "43px",
+      h2: "33.5px",
+      h3: "26px",
+      h4: "20px",
+      h5: "16px",
+      h6: "12.5px",
 
       // Others
       logo: "$h3",
@@ -161,6 +161,8 @@ export const {
 
   utils: {
     movUnderline: (attrsStr: string) => {
+      // This code is created from Jarv.is's idea
+      // of a moving line under an element :)
       let color = "#101010";
       let thickness = "1px";
       let marginX = "0px";

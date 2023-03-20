@@ -1,7 +1,7 @@
 import NavLink from "./NavLink";
 import Style from "@/components/Style";
 import { LinkConst, TxtConst } from "@/lib/consts";
-import { theme } from "@/lib/styles/stiches.config";
+import type { CSS } from "@stitches/react";
 
 const NavLinks = () => {
   return (
@@ -16,7 +16,7 @@ const NavLinks = () => {
   )
 }
 
-const NavLinksStyles = {
+const NavLinksStyles: CSS = {
   display: "grid",
   gap: 10,
 }
