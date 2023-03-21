@@ -57,7 +57,7 @@ and we use **one of these 4 equations as our strategy to guess the next output**
 
 This challenge is about a Go Application that emulates some sort of online casino stuffs. You interact with the server by sending some JSON data as input, and expect some text data as output.
 
-<img src="/images/posts/casino2/example-command.png" style="zoom:60%;" />
+<img src="/images/posts/casino2/example-command.png" />
 
 You can:
 
@@ -105,12 +105,12 @@ You can:
 
   
   
-  The server also generates a number `n` between $[0, 2023)$. If your `n` $\neq$ server's `n`, you will lose :<, else you will win :>
+  The server also generates a number `n` between $[0, 2023)$. If your `n` $\neq$ server's `n`, you will lose :\<, else you will win :>
   
   - *when you lose*, you lose `amount` and you will have `balance` - `amount` coin units left.
   - *when you win*, you gain $2022$ * `amount`.
 
-  Also, the server will tell you **what `n` they generated**. *( <- This will become important later on )*
+  Also, the server will tell you **what `n` they generated**. *( \<- This will become important later on )*
   
   
 
@@ -275,13 +275,13 @@ require (
 
 So, I began searching for clues, like *"iavl v0.19.2 attack"*, *"cosmos iavl v0.19.2 tree vulnerability attack"*, then I came upon this blog:
 
-<img src="/images/posts/casino2/vuln-search.png" style="zoom:75%;" />
+<img src="/images/posts/casino2/vuln-search.png" />
 
 which was suspicious, because it released around the time of `v0.19.3` according to this [change log](https://github.com/cosmos/iavl/releases). **" Pass IAVL Proof Verification?"** Maybe there's some way we can craft a fake `proofData` to send to the `PrintFlag` function for any `balance` we wish to? Anyways, reading through the blog *(not the one I screenshot-ed above, [this one, dunno why it's not in Google search anymore :confused:](https://sanebow.me/bnb-hack-iavl-explained) that one's just for showcase that we tried to find stuffs)*, it seems like whatever bug they found, it was really bad. So I thought to myself: **This must be it**.
 
 Then I noticed the change in `v0.19.3`, it seems like the change in the newer version suggests something about the attack we should come up with :)
 
-<img src="/images/posts/casino2/change-log-to-attack.png" style="zoom:80%;" />
+<img src="/images/posts/casino2/change-log-to-attack.png" />
 
 However, our investigation about the tree stuff ends here, because this is where me and my teammate stopped *(you know why :slightly_smiling_face:)*; and also this blog's about attacking the Go's `rand` stuff :kissing: If you want to read more about the **IAVL bug**, you should visit these two links, provided by a fellow Discord member:
 
@@ -332,19 +332,19 @@ r := rand.Intn(2023)
 
 Staring at a single line of code won't help a thing. So I decided to use the power of **ctrl-click-into-a-function-because-it-helps-us-going-back-to-its-definition-and-i-hope-i-could-have-a-better-name-for-this** in **VSCode** and dive into the code hierarchy and here is the progress:
 
-<img src="/images/posts/casino2/backtracking.png" style="zoom:45%;" />
+<img src="/images/posts/casino2/backtracking.png"  />
 
 ---
 
 As you can see, we've got pretty much everything up until the `Int63()` function. To look at the code for that, we need to go to `rng.go`, which is at the same directory as `rand.go` *(the reason I got this is because my friend found the code for `Int63()` at https://go.dev/src/math/rand/rng.go, and I was like wait aren't we also have this file in the system too?)*, and we've got the complete picture:
 
-<img src="/images/posts/casino2/backtracking_v2.png" style="zoom:45%;" />
+<img src="/images/posts/casino2/backtracking_v2.png"  />
 
 ---
 
 While the above graph looks kinda crazy *(or not, idk...)*, when we create an abstract map for them, it is actually surprisingly simple if we just focus on the case where `n = 2023` or `n` is a relatively small number to $2^{31}$ in general.
 
-<img src="/images/posts/casino2/abstraction.png" style="zoom:60%;" />
+<img src="/images/posts/casino2/abstraction.png"  />
 
 
 

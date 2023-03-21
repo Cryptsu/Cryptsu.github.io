@@ -1,12 +1,15 @@
+import { MDXRemote } from "next-mdx-remote";
 import { compilePost } from "@/lib/helpers/compile-post";
 import { getPostSlugs } from "@/lib/helpers/process-posts";
-import { PostFrontMatterType, PostWithSourceType } from "@/types/post";
+import type { PostFrontMatterType, PostWithSourceType } from "@/types/post";
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 
-const Post = () => {
+const components = {}
+
+const Post = ({frontMatter, sourceContent}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      
+      <MDXRemote {...sourceContent} components={components}/>
     </>
   )
 }
@@ -27,7 +30,8 @@ export const getStaticProps: GetStaticProps<PostWithSourceType, Pick<PostFrontMa
     props: {
       frontMatter,
       sourceContent,
-    }
+    },
+    revalidate: 2, // For debug...
   }
 }
 
