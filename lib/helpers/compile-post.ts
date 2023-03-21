@@ -1,10 +1,19 @@
 import { serialize } from "next-mdx-remote/serialize";
 import { getPostData } from "./process-posts"
-import type { PostWithSources } from "@/types/post";
+
+// remark/rehype markdown plugins
+import remarkGfm from "remark-gfm";
+import remarkUnwrapImages from "remark-unwrap-images";
+import rehypeSlug from "rehype-slug";
+import rehypePrism from "rehype-prism-plus";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
+
+import type { PostWithSourceType } from "@/types/post";
 
 export const compilePost 
   = async (slug: string)
-  : Promise<PostWithSources> => 
+  : Promise<PostWithSourceType> => 
 {
   const { 
     frontMatter, 
@@ -16,26 +25,36 @@ export const compilePost
     mdxOptions: {
       remarkPlugins: [
         [
-          remarkGfm,
-          {
-
-          }
+          remarkGfm,  // Supports tables, footnotes, etc...
         ],
 
         [
-          remarkUnwrapImages
+          remarkUnwrapImages  // Remove redundant lines in paragraphs?
         ],
 
         [
-          remarkMath
+          remarkMath  // To display one-line latex.
         ]
       ],
 
       rehypePlugins: [
         [
-          rehypeKatex
+          rehypeKatex  // To display multi-line latex.
+        ],
+
+        [
+          rehypeSlug   // Attaches IDs to headers based on the content. Maybe useful for table of content?
+        ],
+
+        [
+          rehypePrism  // Syntax highlighting for code.
         ]
       ]
     }
   });
+
+  return {
+    frontMatter,
+    sourceContent
+  }
 }

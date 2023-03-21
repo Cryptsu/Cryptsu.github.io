@@ -2,8 +2,8 @@ import { theme } from "@/lib/styles/stiches.config";
 import Link from "next/link";
 import Style from "@/components/Style";
 import CustomLink from "@/components/CustomLink";
-
 import type { PropsWithChildren } from "react";
+import type { CSS } from "@stitches/react";
 
 type NavLinkProps = PropsWithChildren <{
   // Need to aquire link
@@ -25,7 +25,7 @@ const NavLink = ({children, href, ...otherProps}: NavLinkProps) => {
   )
 }
 
-const NavLinkStyles = {
+const NavLinkStyles: CSS = {
   // Font customize
   fontFamily: theme.fonts.navlink,
   fontSize: theme.fontSizes.navlink,

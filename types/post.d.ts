@@ -9,7 +9,7 @@ export type PostFrontMatterType = {
   tags?: string[];
 };
 
-export type PostWithSources = {
+export type PostWithSourceType = {
   frontMatter: PostFrontMatterType,
-  sourceContent: MDXRemoteSerializeResult<Record<string, never>>
+  sourceContent: MDXRemoteSerializeResult<Record<string, unknown>>
 };
