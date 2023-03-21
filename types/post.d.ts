@@ -1,3 +1,5 @@
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+
 export type PostFrontMatterType = {
   title: string;
   date: string;
@@ -5,4 +7,9 @@ export type PostFrontMatterType = {
   description?: string;
   coverImage?: string;
   tags?: string[];
+};
+
+export type PostWithSources = {
+  frontMatter: PostFrontMatterType,
+  sourceContent: MDXRemoteSerializeResult<Record<string, never>>
 };

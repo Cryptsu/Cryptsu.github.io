@@ -34,9 +34,6 @@ const NavLinkStyles = {
 
   // Set moving underline
   movUnderline: `${theme.colors.navLinkLineHover} 2px 12px 6px`,
-
-  // Set space in grid
-  gridRow: "1/2",
 };
 
 export default NavLink;
