@@ -1,15 +1,21 @@
 import { MDXRemote } from "next-mdx-remote";
 import { compilePost } from "@/lib/helpers/compile-post";
 import { getPostSlugs } from "@/lib/helpers/process-posts";
-import type { PostFrontMatterType, PostWithSourceType } from "@/types/post";
-import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 
-const components = {}
+// All MDX components
+import * as mdxComponents from "@/components/MDXComponents";
+
+import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import type { MDXRemoteProps } from "next-mdx-remote";
+import type { PostFrontMatterType, PostWithSourceType } from "@/types/post";
+
+// Import styles of LaTeX code, because rehype-katex not do it for you...
+import "katex/dist/katex.min.css" 
 
 const Post = ({frontMatter, sourceContent}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <MDXRemote {...sourceContent} components={components}/>
+      <MDXRemote {...sourceContent} components={mdxComponents as MDXRemoteProps["components"]}/>
     </>
   )
 }

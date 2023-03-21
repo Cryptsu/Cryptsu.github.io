@@ -8,6 +8,7 @@ import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import remarkEmoji from "remark-emoji";
 
 import type { PostWithSourceType } from "@/types/post";
 
@@ -34,6 +35,10 @@ export const compilePost
 
         [
           remarkMath  // To display one-line latex.
+        ],
+
+        [
+          remarkEmoji // Add supports for Emojis.
         ]
       ],
 
