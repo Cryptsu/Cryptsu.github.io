@@ -13,6 +13,7 @@ import type { PostFrontMatterType, PostWithSourceType } from "@/types/post";
 import "katex/dist/katex.min.css" 
 
 const Post = ({frontMatter, sourceContent}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(frontMatter);
   return (
     <>
       <MDXRemote {...sourceContent} components={mdxComponents as MDXRemoteProps["components"]}/>
