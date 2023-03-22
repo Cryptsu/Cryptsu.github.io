@@ -9,7 +9,6 @@ type ParagraphProps = PropsWithChildren<{
 }>
 
 const Paragraph = ({children, ...otherProps}: ParagraphProps) => {
-  console.log(children)
   return (
     <Style style={ParagraphStyles} elementName={HtmlConst.P}>
       {children}
@@ -25,6 +24,10 @@ const ParagraphStyles: CSS = {
   letterSpacing: theme.letterSpacings.content,
   lineHeight: theme.lineHeights.content,
   color: theme.colors.contentText,
+
+  // Create margin
+  marginTop: 12,
+  marginBottom: 12,
 };
 
 export default Paragraph;

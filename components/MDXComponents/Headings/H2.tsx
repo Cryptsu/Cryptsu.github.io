@@ -25,6 +25,10 @@ const H2Styles: CSS = {
   lineHeight: theme.lineHeights.h2,
   color: theme.colors.contentText,
   textTransform: "uppercase",
+
+  // Create margin
+  marginTop: 16,
+  marginBottom: 16,
 };
 
 export default H2;

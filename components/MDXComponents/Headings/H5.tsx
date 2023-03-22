@@ -25,6 +25,10 @@ const H5Styles: CSS = {
   lineHeight: theme.lineHeights.h5,
   color: theme.colors.contentText,
   textTransform: "uppercase",
+
+  // Create margin
+  marginTop: 8,
+  marginBottom: 8,
 };
 
 export default H5;

@@ -25,6 +25,10 @@ const H4Styles: CSS = {
   lineHeight: theme.lineHeights.h4,
   color: theme.colors.contentText,
   textTransform: "uppercase",
+
+  // Create margin
+  marginTop: 12,
+  marginBottom: 12,
 };
 
 export default H4;

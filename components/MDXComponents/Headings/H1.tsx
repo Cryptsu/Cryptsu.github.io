@@ -36,6 +36,10 @@ const H1Styles: CSS = {
   borderRight: 0,
   borderStyle: "dashed",
   borderColor: theme.colors.divider,
+
+  // Create margin
+  marginTop: 16,
+  marginBottom: 16,
 };
 
 export default H1;

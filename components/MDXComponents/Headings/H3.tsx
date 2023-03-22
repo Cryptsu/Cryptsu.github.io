@@ -25,6 +25,10 @@ const H3Styles: CSS = {
   lineHeight: theme.lineHeights.h3,
   color: theme.colors.contentText,
   textTransform: "uppercase",
+
+  // Create margin
+  marginTop: 12,
+  marginBottom: 12,
 };
 
 export default H3;

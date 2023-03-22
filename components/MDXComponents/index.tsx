@@ -6,3 +6,4 @@ export { default as h5 } from "./Headings/H5";
 export { default as h6 } from "./Headings/H6";
 
 export { default as p } from "./Paragraph";
+export { default as blockquote } from "./Blockquote";
