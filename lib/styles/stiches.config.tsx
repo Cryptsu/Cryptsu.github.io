@@ -105,7 +105,7 @@ export const {
     },
 
     fontSizes: {
-      // Content
+      // Headings
       h0: "55px",
       h1: "43px",
       h2: "33.5px",
@@ -117,10 +117,11 @@ export const {
       // Others
       logo: "$h3",
       navlink: "$h5",
+      content: "$h5",
     },
 
     fontWeights: {
-      // Content
+      // Headings
       h0: 800,
       h1: 800,
       h2: 800,
@@ -131,10 +132,11 @@ export const {
 
       // Others
       logo: "$h3",
+      content: "$h5",
     },
 
     letterSpacings: {
-      // Content
+      // Headings
       h0: "-0.05em",
       h1: "-0.05em",
       h2: "-0.05em",
@@ -146,9 +148,11 @@ export const {
       // Others
       logo: "$h3",
       navlink: "$h5",
+      content: "$h5",
     },
 
     lineHeights: {
+      // Headings
       h0: "normal",
       h1: "normal",
       h2: "normal",
@@ -156,6 +160,8 @@ export const {
       h4: "normal",
       h5: "150%",
       h6: "150%",
+
+      content: "$h5",
     },
 
     transitions: {

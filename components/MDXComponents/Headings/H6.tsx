@@ -1,4 +1,5 @@
 import Style from "@/components/Style"
+import { theme } from "@/lib/styles/stiches.config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -15,7 +16,14 @@ const H6 = ({children, ...otherProps}: H6Props) => {
 }
 
 const H6Styles: CSS = {
-
+  // Font customizing
+  fontFamily: theme.fonts.content,
+  fontSize: theme.fontSizes.h6,
+  fontWeight: theme.fontWeights.h6,
+  letterSpacing: theme.letterSpacings.h6,
+  lineHeight: theme.lineHeights.h6,
+  color: theme.colors.contentText,
+  textTransform: "uppercase",
 };
 
 export default H6;

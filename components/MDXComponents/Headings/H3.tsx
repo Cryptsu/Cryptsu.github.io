@@ -1,4 +1,5 @@
 import Style from "@/components/Style"
+import { theme } from "@/lib/styles/stiches.config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -15,7 +16,14 @@ const H3 = ({children, ...otherProps}: H3Props) => {
 }
 
 const H3Styles: CSS = {
-
+  // Font customizing
+  fontFamily: theme.fonts.content,
+  fontSize: theme.fontSizes.h3,
+  fontWeight: theme.fontWeights.h3,
+  letterSpacing: theme.letterSpacings.h3,
+  lineHeight: theme.lineHeights.h3,
+  color: theme.colors.contentText,
+  textTransform: "uppercase",
 };
 
 export default H3;
