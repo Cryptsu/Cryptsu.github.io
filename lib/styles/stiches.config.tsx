@@ -77,6 +77,14 @@ export const {
       tableBorder: "$grey",
       tableText: "$white",
 
+      //   -> Link
+      linkText: "$tertiary",
+      clickedLinkText: "$senary",
+      activeLinkText: "$secondary",
+      linkTextUnderlineHover: "linear-gradient(90deg, $tertiary 0%, $tertiary 100%)",
+      clickedLinkTextUnderlineHover: "linear-gradient(90deg, $secondary 0%, $secondary 100%)",
+      activeLinkTextUnderlineHover: "linear-gradient(90deg, $secondary 0%, $secondary 100%)",
+
       //   -> Quoteblock
       quoteLegend: "$black",
       quoteBackground: hexToRgba("#A8EFCD", 0.02),
@@ -93,8 +101,11 @@ export const {
       codeBoxMinimize: "$yellow",
       codeBoxMaximize: "$green",
       codeBoxCopy: "$secondary",
-
-      codeText: "$white",
+      codeBoxBorderInv: "$pageBackground",
+      codeBoxInside: "linear-gradient($pageBackground, $pageBackground)",
+      codeHighlight: "$white",
+      codeNoHighlight: "$primary",
+      codeInlineBackground: "$black",
     },
 
     fonts: {
@@ -118,6 +129,7 @@ export const {
       logo: "$h3",
       navlink: "$h5",
       content: "$h5",
+      codeBlock: "$h5",
     },
 
     fontWeights: {
@@ -149,6 +161,7 @@ export const {
       logo: "$h3",
       navlink: "$h5",
       content: "$h5",
+      codeBlock: "$h5",
     },
 
     lineHeights: {

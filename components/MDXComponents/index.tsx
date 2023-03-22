@@ -7,3 +7,5 @@ export { default as h6 } from "./Headings/H6";
 
 export { default as p } from "./Paragraph";
 export { default as blockquote } from "./Blockquote";
+export { default as code } from "./Code";
+export { default as a } from "./ParsedLink";

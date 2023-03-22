@@ -52,7 +52,10 @@ export const compilePost
         ],
 
         [
-          rehypePrism  // Syntax highlighting for code.
+          rehypePrism,  // Syntax highlighting for code.
+          {
+            ignoreMissing: true,
+          }
         ]
       ]
     }

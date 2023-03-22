@@ -10,7 +10,7 @@ type BlockquoteProps = PropsWithChildren<{
 
 const Blockquote = ({children, ...otherProps}: BlockquoteProps) => {
   return (
-    <Style style={BlockquoteStyles} elementName={HtmlConst.BLOCKQUOTE}>
+    <Style style={BlockquoteStyles} elementName={HtmlConst.BLOCKQUOTE} {...otherProps}>
       <Style style={BlockquoteInnerStyles}>
         {children}
       </Style>

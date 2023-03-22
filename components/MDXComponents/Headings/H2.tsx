@@ -10,7 +10,7 @@ type H2Props = PropsWithChildren<{
 
 const H2 = ({children, ...otherProps}: H2Props) => {
   return (
-    <Style style={H2Styles} elementName={HtmlConst.H2}>
+    <Style style={H2Styles} elementName={HtmlConst.H2} {...otherProps}>
       {children}
     </Style>
   )
