@@ -1,7 +1,1 @@
-const POSTS_DIR = "posts";
-
-const AppConfig = {
-  POSTS_DIR
-};
-
-export default AppConfig;
+export const POSTS_DIR = "posts";

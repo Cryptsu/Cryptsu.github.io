@@ -160,6 +160,22 @@ export const {
 
     transitions: {
       movUnderline: "background-size 0.2s ease-in-out"
+    },
+
+    zIndices: {
+
+    },
+
+    shadows: {
+
+    },
+
+    borderWidths: {
+
+    },
+
+    borderStyles: {
+      
     }
   },
 
