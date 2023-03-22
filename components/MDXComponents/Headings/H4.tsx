@@ -1,5 +1,6 @@
 import Style from "@/components/Style"
 import { theme } from "@/lib/styles/stiches.config";
+import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -9,7 +10,7 @@ type H4Props = PropsWithChildren<{
 
 const H4 = ({children, ...otherProps}: H4Props) => {
   return (
-    <Style style={H4Styles}>
+    <Style style={H4Styles} elementName={HtmlConst.H4}>
       {children}
     </Style>
   )

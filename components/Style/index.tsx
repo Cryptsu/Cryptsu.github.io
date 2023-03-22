@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "@/lib/styles/stiches.config";
+import { HtmlConst } from "@/lib/consts";
 import type { CSS } from "@stitches/react";
 import type { PropsWithChildren } from "react";
 import type { NextNode } from "@/types/next.d";
@@ -17,16 +18,19 @@ type StyleProps = PropsWithChildren<{
   // Inline style to children
   as?: NextNode,
 
+  // Customize element name
+  elementName?: typeof HtmlConst[keyof (typeof HtmlConst)],
+
   // Other props
   [x: string]: any,
 }>;
 
-export default function Style({style, children, ...otherProps}: StyleProps)
+export default function Style({style, children, elementName=HtmlConst.DIV, ...otherProps}: StyleProps)
 {
   // Somehow, wrap an element like this will cause 
   // serverside rendering to include all CSS styles
   // of the generated class during page load in <head/>.
-  let CSSWrapper = styled("div", style);
+  let CSSWrapper = styled(elementName, style);
   return (
     <CSSWrapper {...otherProps}>
       {children}
