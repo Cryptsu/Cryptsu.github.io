@@ -1,7 +1,1 @@
-const KEY_THEME = "theme";
-
-const StorageConst = {
-  KEY_THEME,
-};
-
-export default StorageConst;
+export const KEY_THEME = "theme";
