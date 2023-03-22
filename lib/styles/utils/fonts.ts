@@ -7,4 +7,5 @@ export const JetBrainsMono = JetBrainsMonoLoader({
   display: "fallback",
   preload: true,
   subsets: ["latin", "vietnamese"],
+  style: ["italic", "normal"]
 });
