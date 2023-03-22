@@ -175,6 +175,14 @@ export const {
     },
 
     borderStyles: {
+
+    },
+
+    radii: {
+
+    },
+
+    space: {
       
     }
   },
@@ -224,7 +232,11 @@ export const lightTheme = createTheme({
 ///////////////////////////////////////////////////////////////////////////
 //                              ALL THEMES
 ///////////////////////////////////////////////////////////////////////////
-export const ThemeClassMap = {
+type ThemeClassMapType = {
+  [themeName: string]: string
+}
+
+export const ThemeClassMap: ThemeClassMapType = {
   [ThemeConst.THEME_DARK]: theme.className,
   [ThemeConst.THEME_LIGHT]: lightTheme.className,
 };
