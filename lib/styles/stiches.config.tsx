@@ -113,6 +113,7 @@ export const {
       navlink: "$content",
       code: "$content",
       logo: "$content",
+      list: "$content",
     },
 
     fontSizes: {
@@ -130,6 +131,7 @@ export const {
       navlink: "$h5",
       content: "$h5",
       codeBlock: "$h5",
+      list: "$h5",
     },
 
     fontWeights: {
@@ -162,6 +164,7 @@ export const {
       navlink: "$h5",
       content: "$h5",
       codeBlock: "$h5",
+      list: "$h5",
     },
 
     lineHeights: {

@@ -23,6 +23,7 @@ const CodeInlineStyles: CSS = {
   paddingRight: 8,
   backgroundColor: theme.colors.codeInlineBackground,
   borderRadius: 8,
+  textTransform: "none",
 };
 
 export default CodeInline;

@@ -34,7 +34,6 @@ const CodeBlockStyles: CSS = {
   fontSize: theme.fontSizes.codeBlock,
   letterSpacing: theme.letterSpacings.codeBlock,
   width: "100%",
-
 };
 
 const CodeBlockHighlightStyles: CSS = {
@@ -60,6 +59,7 @@ const CodeBlockHighlightStyles: CSS = {
 
 const CodeBlockNonStyles: CSS = {
   color: theme.colors.codeNoHighlight,
+
 };
 
 

@@ -151,11 +151,7 @@ There is no highlight!
   // ...
   ```
 
-
-
 - **show balance with proof**: You give your `username` to the server and it gives you the `balance` along with a `proofData` to prove that you actually own that amount of money.
-
-  
   
   **<u>*example request:*</u>**
   
@@ -288,8 +284,11 @@ However, our investigation about the tree stuff ends here, because this is where
 
 - [Binance Chain Bridge Exploitation Writeup - Part 1](https://blog.verichains.io/p/binance-bridge-exploitation-preliminary)
 - [Binance Chain Bridge Exploitation Writeup - Part 2](https://blog.verichains.io/p/binance-chain-bridge-exploitation)
+1. abstract
+2. The second way you could dig at this challenge is by exploiting the `rand.Intn(n)` function from `math/rand` library. Remember, the server creates random numbers in $[0, 2023)$ and you can try to guess them in order to gain/or lose money. 
 
-### The Go `math/rand` stuff
+
+### The Go `math/rand` stuff $\frac{1}{4}$
 
 The second way you could dig at this challenge is by exploiting the `rand.Intn(n)` function from `math/rand` library. Remember, the server creates random numbers in $[0, 2023)$ and you can try to guess them in order to gain/or lose money. 
 

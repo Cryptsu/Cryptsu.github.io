@@ -10,6 +10,8 @@ import Blockquote from '@/components/MDXComponents/Blockquote';
 import ParsedLink from '@/components/MDXComponents/ParsedLink';
 import CodeInline from '@/components/MDXComponents/CodeInline';
 import CodeBlock from '@/components/MDXComponents/CodeBlock';
+import UnorderedList from '@/components/MDXComponents/UnorderedList';
+import OrderedList from '@/components/MDXComponents/OrderedList';
 
 export type MDXComponentsConfigType = {
   [componentName: string]: {
@@ -33,7 +35,10 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   code: [
     {replacedElement: CodeBlock, classNames: ["code-highlight"]},
     {replacedElement: CodeInline}
-  ]
+  ],
+
+  ul: [{replacedElement: UnorderedList}],
+  ol: [{replacedElement: OrderedList}]
 };
 
 export default MDXComponentsConfig;

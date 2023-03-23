@@ -18,10 +18,10 @@ const H1 = ({children, ...otherProps}: H1Props) => {
 
 const H1Styles: CSS = {
   // Font customizing
-  fontFamily: theme.fonts.content,
-  fontSize: theme.fontSizes.h1,
-  fontWeight: theme.fontWeights.h1,
-  letterSpacing: theme.letterSpacings.h1,
+  fontFamily: `${theme.fonts.content} !important`,
+  fontSize: `${theme.fontSizes.h1} !important`,
+  fontWeight: `${theme.fontWeights.h1} !important`,
+  letterSpacing: `${theme.letterSpacings.h1} !important`,
   lineHeight: theme.lineHeights.h1,
   color: theme.colors.contentText,
   textTransform: "uppercase",
