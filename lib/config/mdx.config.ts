@@ -8,6 +8,8 @@ import H6 from '@/components/MDXComponents/Headings/H6';
 import Paragraph from '@/components/MDXComponents/Paragraph';
 import Blockquote from '@/components/MDXComponents/Blockquote';
 import ParsedLink from '@/components/MDXComponents/ParsedLink';
+import CodeInline from '@/components/MDXComponents/CodeInline';
+import CodeBlock from '@/components/MDXComponents/CodeBlock';
 
 export type MDXComponentsConfigType = {
   [componentName: string]: {
@@ -27,6 +29,11 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   p: [{replacedElement: Paragraph}],
   blockquote: [{replacedElement: Blockquote}],
   a: [{replacedElement: ParsedLink}],
+
+  code: [
+    {replacedElement: CodeBlock, classNames: ["code-highlight"]},
+    {replacedElement: CodeInline}
+  ]
 };
 
 export default MDXComponentsConfig;

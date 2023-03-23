@@ -5,14 +5,19 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type CodeBlockProps = PropsWithChildren<{
-  highlight: boolean
+  className?: string
 }>
 
-const CodeBlock = ({children, highlight, ...otherProps}: CodeBlockProps) => {
+const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
+  const classNames = className?.split(' ');
+  const isCodeBlockHighlighted = (
+    classNames?.find(className => /language-*/.test(className))
+  ) !== undefined;
+
   return (
-    <Style style={CodeBlockStyles} elementName={HtmlConst.CODE}>
+    <Style className={className} style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
       {
-        highlight
+        isCodeBlockHighlighted
           ? <Style style={CodeBlockHighlightStyles}>
               {children}
             </Style>

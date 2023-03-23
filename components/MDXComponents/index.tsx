@@ -16,19 +16,65 @@ import type { MDXComponentsConfigType } from "@/lib/config/mdx.config";
 import type { MDXRemoteProps } from "next-mdx-remote";
 import React from "react";
 
-const compileComponents = (MDXComponentsConfig: MDXComponentsConfigType) => {
+const CompileComponentsConfig 
+  = (MDXComponentsConfig: MDXComponentsConfigType)
+  : MDXRemoteProps["components"] => 
+{
   let mdxComponents: MDXRemoteProps["components"] = {};
   for (let componentName of Object.keys(MDXComponentsConfig)) {
-    mdxComponents[componentName] = ({children, ...otherProps}) => {
+    mdxComponents[componentName] = ({children, className, ...otherProps}) => {
+      // Get all classnames
+      const classNames = (
+        className 
+          ? className.split(' ') 
+          : []
+      );
+
+      for (let replaceConfig of MDXComponentsConfig[componentName]) {
+        // If no additional class are provided, return
+        if (!replaceConfig.classNames)
+          return (
+            <Style 
+              as={replaceConfig.replacedElement} 
+              className={className}
+              {...otherProps}
+            >
+              {children}
+            </Style>
+          )
+
+        // If additonal classes are provided, then cross check.
+        let existMatch = true;
+        for (let configClassName of replaceConfig.classNames) {
+          if (!classNames.includes(configClassName)) {
+            existMatch = false;
+            break;
+          }
+        }
+
+        // If match, return
+        if (existMatch) {
+          return (
+            <Style 
+              as={replaceConfig.replacedElement} 
+              className={className}
+              {...otherProps}
+            >
+              {children}
+            </Style>
+          )
+        }
+      }
+      
+      // Default value if there is no replacement yet...
       return (
-        <Style as={MDXComponentsConfig[componentName][0].replacedElement} {...otherProps}>
+        <Style elementName={componentName} className={className} {...otherProps}>
           {children}
         </Style>
       )
     };
-    console.log(mdxComponents[componentName].toString())
   }
   return mdxComponents;
 }
 
-export default compileComponents(MDXComponentsConfig);
+export default CompileComponentsConfig(MDXComponentsConfig);
