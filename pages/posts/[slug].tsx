@@ -4,7 +4,6 @@ import { getPostSlugs } from "@/lib/helpers/process-posts";
 
 // All MDX components
 import mdxComponents from "@/components/MDXComponents";
-// import * as mdxComponents from "@/components/MDXComponents";
 
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import type { MDXRemoteProps } from "next-mdx-remote";
