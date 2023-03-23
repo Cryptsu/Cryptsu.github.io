@@ -10,7 +10,7 @@ import type { NextNode } from "@/types/next.d";
 //       then we might consider changing this.
 type StyleProps = PropsWithChildren<{
   // Default style
-  style: CSS,
+  style?: CSS,
 
   // CSS overwrite!
   css?: CSS,
@@ -25,7 +25,7 @@ type StyleProps = PropsWithChildren<{
   [x: string]: any,
 }>;
 
-export default function Style({style, children, elementName=HtmlConst.DIV, ...otherProps}: StyleProps)
+export default function Style({style={}, children, elementName=HtmlConst.DIV, ...otherProps}: StyleProps)
 {
   // Somehow, wrap an element like this will cause 
   // serverside rendering to include all CSS styles

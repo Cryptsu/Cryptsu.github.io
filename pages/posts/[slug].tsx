@@ -3,7 +3,8 @@ import { compilePost } from "@/lib/helpers/compile-post";
 import { getPostSlugs } from "@/lib/helpers/process-posts";
 
 // All MDX components
-import * as mdxComponents from "@/components/MDXComponents";
+import mdxComponents from "@/components/MDXComponents";
+// import * as mdxComponents from "@/components/MDXComponents";
 
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import type { MDXRemoteProps } from "next-mdx-remote";
@@ -15,6 +16,7 @@ import "katex/dist/katex.min.css"
 const Post = ({frontMatter, sourceContent}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
+      {/* <MDXRemote {...sourceContent}/> */}
       <MDXRemote {...sourceContent} components={mdxComponents as MDXRemoteProps["components"]}/>
     </>
   )
