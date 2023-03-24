@@ -102,10 +102,8 @@ There is no highlight!
 ```
 
 
-- **bet** a number `n` between $[0, 2023)$ with some non-negative `amount` (*if you put in a negative number, the server will correct it to become positive anyways :sneezing_face:  -- this became the exploit point of the first challenge, Casino 1, because it didn't check whether the amount is negative or not.*) 
+- bet a number `n` between $[0, 2023)$ with some non-negative `amount` (*if you put in a negative number, the server will correct it to become positive anyways :sneezing_face:  -- this became the exploit point of the first challenge, Casino 1, because it didn't check whether the amount is negative or not.*) 
 
-  
-  
   The server also generates a number `n` between $[0, 2023)$. If your `n` $\neq$ server's `n`, you will lose :\<, else you will win :>
   
   - *when you lose*, you lose `amount` and you will have `balance` - `amount` coin units left.
@@ -285,6 +283,7 @@ However, our investigation about the tree stuff ends here, because this is where
 - [Binance Chain Bridge Exploitation Writeup - Part 1](https://blog.verichains.io/p/binance-bridge-exploitation-preliminary)
 - [Binance Chain Bridge Exploitation Writeup - Part 2](https://blog.verichains.io/p/binance-chain-bridge-exploitation)
 1. abstract
+	1. shit
 2. The second way you could dig at this challenge is by exploiting the `rand.Intn(n)` function from `math/rand` library. Remember, the server creates random numbers in $[0, 2023)$ and you can try to guess them in order to gain/or lose money. 
 
 

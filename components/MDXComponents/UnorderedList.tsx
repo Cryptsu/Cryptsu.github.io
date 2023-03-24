@@ -23,22 +23,22 @@ const UnorderedListStyles: CSS = {
   letterSpacing: theme.letterSpacings.content,
   
   margin: 8,
-  marginLeft: 48,
-  marginRight: 48,
+  marginLeft: 32,
+  marginRight: 32,
   listStyle: 'none',
 
+  // TODO: This would not work if ListItem is not <li></li>
+  // Please keep this in mind when update content in the 
+  // future.
   [HtmlConst.LI]: {
     marginBottom: 8,
+    [`${HtmlConst.LI}:before`]: {
+      content: "◦",
+    },
   },
+
   [`${HtmlConst.LI}:before`]: {
-    marginRight: 8,
-    content: "--",
-    borderRadius: "100%",
-    color: theme.colors.contentText,
-    width: 16,
-    textAlign: "center",
-    display: "inline-block",
-    fontWeight: "bold",
+    content: "•",
   }
 };
 

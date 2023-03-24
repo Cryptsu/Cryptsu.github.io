@@ -17,31 +17,29 @@ const OrderedList = ({children, ...otherProps}: OrderedListProps) => {
 }
 
 const OrderedListStyles: CSS = {
+  position: "relative",
+
   fontFamily: theme.fonts.content,
   fontSize: theme.fontSizes.content,
   color: theme.colors.contentText,
   letterSpacing: theme.letterSpacings.content,
 
   margin: 8,
-  marginLeft: 48,
-  marginRight: 48,
+  marginLeft: 32,
+  marginRight: 32,
   listStyle: 'none',
 
+  // TODO: This would not work if ListItem is not <li></li>
+  // Please keep this in mind when update content in the 
+  // future.
   counterReset: "ListItemNo",
-  [HtmlConst.LI]: {
+  [`${HtmlConst.LI}`]: {
     counterIncrement: "ListItemNo",
-    marginBottom: 8,
   },
   [`${HtmlConst.LI}:before`]: {
-    marginRight: 8,
-    content: 'counter(ListItemNo)"."',
-    borderRadius: "100%",
-    color: theme.colors.contentText,
-    width: 16,
-    textAlign: "center",
-    display: "inline-block",
-    fontWeight: "bold",
-  }
+    content: 'counters(ListItemNo, ".")"."',
+  },
+
 };
 
 export default OrderedList;
