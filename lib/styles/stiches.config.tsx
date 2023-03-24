@@ -54,6 +54,9 @@ export const {
       // Purpose
       //   -> CustomLink
       customLinkBackground: hexToRgba("#454C48", 0.5),
+
+      //   -> List
+      listHeading: "$primary",
       
       //   -> Header
       logoText: "$primary",

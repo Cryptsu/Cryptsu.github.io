@@ -17,19 +17,18 @@ const UnorderedList = ({children, ...otherProps}: UnorderedListProps) => {
 }
 
 const UnorderedListStyles: CSS = {
+  position: "relative",
+
   fontFamily: theme.fonts.content,
   fontSize: theme.fontSizes.content,
   color: theme.colors.contentText,
   letterSpacing: theme.letterSpacings.content,
   
   margin: 8,
-  marginLeft: 32,
-  marginRight: 32,
+  marginLeft: 48,
+  marginRight: 48,
   listStyle: 'none',
 
-  // TODO: This would not work if ListItem is not <li></li>
-  // Please keep this in mind when update content in the 
-  // future.
   [HtmlConst.LI]: {
     marginBottom: 8,
     [`${HtmlConst.LI}:before`]: {
@@ -38,7 +37,16 @@ const UnorderedListStyles: CSS = {
   },
 
   [`${HtmlConst.LI}:before`]: {
+    position: "absolute",
+    left: -24,
+    marginRight: 8, 
     content: "•",
+    borderRadius: "100%",
+    color: theme.colors.listHeading,
+    width: 16,
+    textAlign: "center",
+    display: "inline-block",
+    fontWeight: "bold",
   }
 };
 

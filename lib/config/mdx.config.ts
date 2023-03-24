@@ -12,7 +12,6 @@ import CodeInline from '@/components/MDXComponents/CodeInline';
 import CodeBlock from '@/components/MDXComponents/CodeBlock';
 import UnorderedList from '@/components/MDXComponents/UnorderedList';
 import OrderedList from '@/components/MDXComponents/OrderedList';
-import ListItem from '@/components/MDXComponents/ListItem';
 
 export type MDXComponentsConfigType = {
   [componentName: string]: {
@@ -40,7 +39,6 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
 
   ul: [{replacedElement: UnorderedList}],
   ol: [{replacedElement: OrderedList}],
-  li: [{replacedElement: ListItem}]
 };
 
 export default MDXComponentsConfig;

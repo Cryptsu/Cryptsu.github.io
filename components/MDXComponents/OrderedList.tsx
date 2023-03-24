@@ -25,21 +25,26 @@ const OrderedListStyles: CSS = {
   letterSpacing: theme.letterSpacings.content,
 
   margin: 8,
-  marginLeft: 32,
-  marginRight: 32,
+  marginLeft: 48,
+  marginRight: 48,
   listStyle: 'none',
 
-  // TODO: This would not work if ListItem is not <li></li>
-  // Please keep this in mind when update content in the 
-  // future.
   counterReset: "ListItemNo",
-  [`${HtmlConst.LI}`]: {
+  [HtmlConst.LI]: {
     counterIncrement: "ListItemNo",
+    marginBottom: 8,
   },
-  [`${HtmlConst.LI}:before`]: {
-    content: 'counters(ListItemNo, ".")"."',
-  },
-
+  [`${HtmlConst.LI}:before`]: {    
+    position: "absolute",
+    left: -24,
+    paddingRight: 8,
+    content: 'counter(ListItemNo)"."',
+    borderRadius: "100%",
+    color: theme.colors.listHeading,
+    textAlign: "center",
+    display: "inline-block",
+    fontWeight: "bold",
+  }
 };
 
 export default OrderedList;
