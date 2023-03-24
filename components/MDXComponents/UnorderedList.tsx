@@ -28,7 +28,17 @@ const UnorderedListStyles: CSS = {
   listStyle: 'none',
 
   [HtmlConst.LI]: {
-    color: "blue",
+    marginBottom: 8,
+  },
+  [`${HtmlConst.LI}:before`]: {
+    marginRight: 8,
+    content: "--",
+    borderRadius: "100%",
+    color: theme.colors.contentText,
+    width: 16,
+    textAlign: "center",
+    display: "inline-block",
+    fontWeight: "bold",
   }
 };
 
