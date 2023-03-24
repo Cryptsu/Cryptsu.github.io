@@ -55,6 +55,8 @@ const CodeBlockHighlightStyles: CSS = {
   // backgroundImage: `${theme.colors.codeBoxInside}`,
   // backgroundPosition: "0% 0%, calc(0% + 4px) calc(0% + 4px)",
 
+  overflowX: "auto",
+
 };
 
 const CodeBlockNonStyles: CSS = {

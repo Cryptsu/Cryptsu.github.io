@@ -12,6 +12,9 @@ import CodeInline from '@/components/MDXComponents/CodeInline';
 import CodeBlock from '@/components/MDXComponents/CodeBlock';
 import UnorderedList from '@/components/MDXComponents/UnorderedList';
 import OrderedList from '@/components/MDXComponents/OrderedList';
+import BlogImg from '@/components/MDXComponents/BlogImg';
+import MathInline from '@/components/MDXComponents/MathInline';
+import MathBlock from '@/components/MDXComponents/MathBlock';
 
 export type MDXComponentsConfigType = {
   [componentName: string]: {
@@ -39,6 +42,9 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
 
   ul: [{replacedElement: UnorderedList}],
   ol: [{replacedElement: OrderedList}],
+  img: [{replacedElement: BlogImg}],
+  span: [{replacedElement: MathInline, classNames: ["math-inline", "math"]}],
+  div: [{replacedElement: MathBlock, classNames: ["math-display", "math"]}]
 };
 
 export default MDXComponentsConfig;
