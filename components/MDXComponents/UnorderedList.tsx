@@ -10,24 +10,26 @@ type UnorderedListProps = PropsWithChildren<{
 
 const UnorderedList = ({children, ...otherProps}: UnorderedListProps) => {
   return (
-    <Style style={UnorderedListStyles} elementName={HtmlConst.UL}>
+    <Style style={UnorderedListStyles} elementName={HtmlConst.UL} {...otherProps}>
       {children}
     </Style>
   )
 }
 
 const UnorderedListStyles: CSS = {
-  fontFamily: theme.fonts.list,
-  fontSize: theme.fontSizes.list,
+  fontFamily: theme.fonts.content,
+  fontSize: theme.fontSizes.content,
   color: theme.colors.contentText,
-  letterSpacing: theme.letterSpacings.list,
+  letterSpacing: theme.letterSpacings.content,
   
-  display: "grid",
-  gap: 8,
   margin: 8,
   marginLeft: 48,
   marginRight: 48,
+  listStyle: 'none',
 
+  [HtmlConst.LI]: {
+    color: "blue",
+  }
 };
 
 export default UnorderedList;

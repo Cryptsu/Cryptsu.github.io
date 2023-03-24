@@ -19,26 +19,15 @@ const CompileComponentsConfig
       );
 
       for (let replaceConfig of MDXComponentsConfig[componentName]) {
-        // If no additional class are provided, return
-        if (!replaceConfig.classNames)
-          return (
-            <Style 
-              as={replaceConfig.replacedElement} 
-              className={className}
-              {...otherProps}
-            >
-              {children}
-            </Style>
-          )
-
         // If additonal classes are provided, then cross check.
         let existMatch = true;
-        for (let configClassName of replaceConfig.classNames) {
-          if (!classNames.includes(configClassName)) {
-            existMatch = false;
-            break;
+        if (replaceConfig.classNames)
+          for (let configClassName of replaceConfig.classNames) {
+            if (!classNames.includes(configClassName)) {
+              existMatch = false;
+              break;
+            }
           }
-        }
 
         // If match, return
         if (existMatch) {

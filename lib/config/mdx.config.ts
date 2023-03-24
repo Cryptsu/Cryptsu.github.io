@@ -38,7 +38,7 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   ],
 
   ul: [{replacedElement: UnorderedList}],
-  ol: [{replacedElement: OrderedList}]
+  ol: [{replacedElement: OrderedList}],
 };
 
 export default MDXComponentsConfig;

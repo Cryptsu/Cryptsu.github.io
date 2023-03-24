@@ -10,24 +10,26 @@ type OrderedListProps = PropsWithChildren<{
 
 const OrderedList = ({children, ...otherProps}: OrderedListProps) => {
   return (
-    <Style style={OrderedListStyles} elementName={HtmlConst.OL}>
+    <Style style={OrderedListStyles} elementName={HtmlConst.OL} {...otherProps}>
       {children}
     </Style>
   )
 }
 
 const OrderedListStyles: CSS = {
-  fontFamily: theme.fonts.list,
-  fontSize: theme.fontSizes.list,
+  fontFamily: theme.fonts.content,
+  fontSize: theme.fontSizes.content,
   color: theme.colors.contentText,
-  letterSpacing: theme.letterSpacings.list,
-  
-  display: "grid",
-  gap: 8,
-  margin: 8,
-  marginLeft: 60,
-  marginRight: 60,
+  letterSpacing: theme.letterSpacings.content,
 
+  margin: 8,
+  marginLeft: 48,
+  marginRight: 48,
+  listStyle: 'none',
+
+  [HtmlConst.LI]: {
+    color: "blue",
+  }
 };
 
 export default OrderedList;
