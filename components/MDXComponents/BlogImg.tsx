@@ -25,9 +25,16 @@ const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) =>
       >
         {children}
       </Style>
-      <Style style={BlogImgDescriptionStyles}>
-        {alt}
-      </Style>
+
+      {
+        alt 
+          ? <Style style={BlogImgDescriptionStyles}>
+              {alt}
+            </Style>
+          : <>
+            </>
+      }
+      
     </Style>
   )
 }
