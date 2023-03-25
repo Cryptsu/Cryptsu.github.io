@@ -11,8 +11,8 @@ type ButtonProps = PropsWithChildren<{
 const Button = ({children, style, ...otherProps}: ButtonProps) => {
   return (
     <Style 
-      style={ButtonStyles} 
       css={style}
+      style={ButtonStyles} 
       {...otherProps}
     >
       {children}
@@ -29,17 +29,12 @@ const ButtonStyles: CSS = {
   color: theme.colors.contentText,
   
   borderRadius: 8,
-  borderColor: theme.colors.black,
   borderStyle: "solid",
-  boxShadow: `0 5px ${theme.colors.grey}`,
-
   '&:hover': {
-    backgroundColor: theme.colors.grey,
+    backgroundColor: theme.colors.buttonHoverBackground,
   },
-
   '&:active': {
     transform: "translateY(4px)",
-    boxShadow: `0 1px ${theme.colors.grey}`,
   }
 };
 

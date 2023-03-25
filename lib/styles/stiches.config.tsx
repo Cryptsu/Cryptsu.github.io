@@ -52,6 +52,9 @@ export const {
       white: "#DCFFEE",
       
       // Purpose
+      //   -> Button
+      buttonHoverBackground: "$grey",
+
       //   -> CustomLink
       customLinkBackground: hexToRgba("#454C48", 0.5),
 
@@ -110,8 +113,12 @@ export const {
       codeHighlight: "$white",
       codeNoHighlight: "$primary",
       codeBackground: "$black",
+      //    -> Copy
+      copyBtnBorder: "$secondary",
+      copyIcon: "$white",
+      copyBtnHoverBackground: "$secondary",
 
-      //    -> Math block
+      //   -> Math block
       mathDivider: hexToRgba("#454C48", 0.5),
     },
 
@@ -196,7 +203,8 @@ export const {
     },
 
     shadows: {
-
+      codeCopyBtnNormal: "0 4px #265D8B",
+      codeCopyBtnClick: "0 1px #265D8B",
     },
 
     borderWidths: {
