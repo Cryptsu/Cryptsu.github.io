@@ -32,13 +32,13 @@ const UnorderedListStyles: CSS = {
   // TODO: This ListItemNo is entangled with the one at OrderedList.
   // If this value is changed in the future, please check here.
   counterReset: "ListItemNo",
-  [HtmlConst.LI]: {
+  [`& ${HtmlConst.LI}`]: {
     [`${HtmlConst.LI}:before`]: {
       content: "◦",
   },
   },
 
-  [`${HtmlConst.LI}:before`]: {
+  [`& ${HtmlConst.LI}:before`]: {
     content: "•",
     color: theme.colors.listHeading,
     fontWeight: theme.fontWeights.listHeading,

@@ -1,14 +1,14 @@
 import { styled, theme } from "@/lib/styles/stiches.config"
 import Header from "@/components/Header"
-import H1 from "@/components/MDXComponents/Headings/H1"
+import Button from "@/components/Button"
 
 export default function Test() {
   return (
     <>
       <Header/>
-      <H1>
-        Hello, world!
-      </H1>
+      <Button>
+        shit
+      </Button>
     </>
   )
 }

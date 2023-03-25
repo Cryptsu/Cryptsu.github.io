@@ -37,8 +37,14 @@ const CustomLinkStyles: CSS = {
   // color with a radius
   padding: 8,
   borderRadius: 16,
+  userSelect: "none",
+
   '&:hover': {
     backgroundColor: theme.colors.customLinkBackground,
+  },
+  
+  '&:active': {
+    transform: "translateY(4px)"
   }
 };
 

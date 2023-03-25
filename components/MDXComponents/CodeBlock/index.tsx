@@ -18,7 +18,9 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
     <Style className={className} style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
       <Style style={CodeBlockWrapperStyles}>
         <Style style={CodeBlockInnerStyles}>
+          <Style style={CodeBlockInnerInnerStyles}>
           {children}
+          </Style>
         </Style>
       </Style>
     </Style>
@@ -50,9 +52,12 @@ const CodeBlockWrapperStyles: CSS = {
 
 const CodeBlockInnerStyles: CSS = {
   padding: 16,
-  backgroundImage: `linear-gradient(45deg, ${theme.colors.codeBackground}, ${theme.colors.codeBackground})`,
+  backgroundImage: `linear-gradient(0deg, ${theme.colors.codeBackground}, ${theme.colors.codeBackground})`,
+  borderRadius: 12,
+}
+
+const CodeBlockInnerInnerStyles: CSS = {
   overflowX: "auto",
-  borderRadius: "inherit",
 }
 
 export default CodeBlock;

@@ -21,6 +21,7 @@ const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) =>
           width,
           height
         }} 
+        alt={alt}
         {...otherProps}
       >
         {children}
