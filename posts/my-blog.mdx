@@ -79,20 +79,20 @@ You can:
   const InitialBalance = 2023
   
   func (c *Casino) Register(username string) error {
-  	exist, err := c.tree.Has([]byte(username))
-  	if err != nil {
-  		log.Fatal(err)
-  	}
-  	if exist {
-  		return errors.New("player-exists")
-  	}
-  	if c.numAccounts >= MaxPlayers {
-  		return errors.New("max-players")
-  	}
-  	c.numAccounts += 1
-  	c.setBalance(username, big.NewInt(InitialBalance))
-  	fmt.Printf("Added user: %s.\n", username)
-  	return nil
+    exist, err := c.tree.Has([]byte(username))
+    if err != nil {
+      log.Fatal(err)
+    }
+    if exist {
+      return errors.New("player-exists")
+    }
+    if c.numAccounts >= MaxPlayers {
+      return errors.New("max-players")
+    }
+    c.numAccounts += 1
+    c.setBalance(username, big.NewInt(InitialBalance))
+    fmt.Printf("Added user: %s.\n", username)
+    return nil
   }
   // ...
   ```
@@ -125,26 +125,26 @@ There is no highlight!
   // casino.go
   // ...
   func (c *Casino) Bet(username string, amount *big.Int, n int) error {
-  	currentBalance, err := c.getBalance(username)
-  	if err != nil {
-  		return err
-  	}
-  	amount.Abs(amount)
-  	if currentBalance.Cmp(amount) < 0 {
-  		return errors.New("insufficient-balance")
-  	}
-  	r := rand.Intn(2023)
-  	if r == n { // correct guess
-  		reward := new(big.Int).Mul(amount, big.NewInt(2022))
-  		currentBalance.Add(currentBalance, reward)
-  		c.setBalance(username, currentBalance)
-  		fmt.Printf("YOU WIN! Current balance: %d (+%d).\n", currentBalance, reward)
-  	} else {
-  		currentBalance.Sub(currentBalance, amount)
-  		c.setBalance(username, currentBalance)
-  		fmt.Printf("YOU LOSE (%d != %d)! Current balance: %d (-%d).\n", r, n, currentBalance, amount)
-  	}
-  	return nil
+    currentBalance, err := c.getBalance(username)
+    if err != nil {
+      return err
+    }
+    amount.Abs(amount)
+    if currentBalance.Cmp(amount) < 0 {
+      return errors.New("insufficient-balance")
+    }
+    r := rand.Intn(2023)
+    if r == n { // correct guess
+      reward := new(big.Int).Mul(amount, big.NewInt(2022))
+      currentBalance.Add(currentBalance, reward)
+      c.setBalance(username, currentBalance)
+      fmt.Printf("YOU WIN! Current balance: %d (+%d).\n", currentBalance, reward)
+    } else {
+      currentBalance.Sub(currentBalance, amount)
+      c.setBalance(username, currentBalance)
+      fmt.Printf("YOU LOSE (%d != %d)! Current balance: %d (-%d).\n", r, n, currentBalance, amount)
+    }
+    return nil
   }
   // ...
   ```
@@ -163,19 +163,19 @@ There is no highlight!
   // casino.go
   // ...
   func (c *Casino) ShowBalanceWithProof(username string) error {
-  	value, proof, err := c.tree.GetWithProof([]byte(username))
-  	if err != nil {
-  		log.Fatal(err)
-  	}
-  	if value == nil {
-  		return errors.New("player-not-exist")
-  	}
-  	proofData, err := proof.ToProto().Marshal()
-  	if err != nil {
-  		log.Fatal(err)
-  	}
-  	fmt.Printf("%d, %s\n", new(big.Int).SetBytes(value), base64.StdEncoding.EncodeToString(proofData))
-  	return nil
+    value, proof, err := c.tree.GetWithProof([]byte(username))
+    if err != nil {
+      log.Fatal(err)
+    }
+    if value == nil {
+      return errors.New("player-not-exist")
+    }
+    proofData, err := proof.ToProto().Marshal()
+    if err != nil {
+      log.Fatal(err)
+    }
+    fmt.Printf("%d, %s\n", new(big.Int).SetBytes(value), base64.StdEncoding.EncodeToString(proofData))
+    return nil
   }
   // ...
   ```
@@ -196,29 +196,29 @@ There is no highlight!
   // flag_seller.go
   // ...
   func (fs *FlagSeller) PrintFlag(usename string, balance *big.Int, proofData []byte) error {
-  	var pbProof iavlproto.RangeProof
-  	if err := proto.Unmarshal(proofData, &pbProof); err != nil {
-  		return fmt.Errorf("bad proof format: %w", err)
-  	}
-  	proof, err := iavl.RangeProofFromProto(&pbProof)
-  	if err != nil {
-  		return fmt.Errorf("bad proof format: %w", err)
-  	}
-  	if err := proof.Verify(fs.dbRootRetriever()); err != nil {
-  		return fmt.Errorf("proof verification failed: %w", err)
-  	}
-  	if err := proof.VerifyItem([]byte(usename), balance.Bytes()); err != nil {
-  		return fmt.Errorf("proof verification failed: %w", err)
-  	}
+    var pbProof iavlproto.RangeProof
+    if err := proto.Unmarshal(proofData, &pbProof); err != nil {
+      return fmt.Errorf("bad proof format: %w", err)
+    }
+    proof, err := iavl.RangeProofFromProto(&pbProof)
+    if err != nil {
+      return fmt.Errorf("bad proof format: %w", err)
+    }
+    if err := proof.Verify(fs.dbRootRetriever()); err != nil {
+      return fmt.Errorf("proof verification failed: %w", err)
+    }
+    if err := proof.VerifyItem([]byte(usename), balance.Bytes()); err != nil {
+      return fmt.Errorf("proof verification failed: %w", err)
+    }
   
-  	l := balance.BitLen() / 8
-  	dot3 := "..."
-  	if l >= len(fs.flag) {
-  		l = len(fs.flag)
-  		dot3 = ""
-  	}
-  	fmt.Printf("Your flag is: %s%s\n", fs.flag[:l], dot3)
-  	return nil
+    l := balance.BitLen() / 8
+    dot3 := "..."
+    if l >= len(fs.flag) {
+      l = len(fs.flag)
+      dot3 = ""
+    }
+    fmt.Printf("Your flag is: %s%s\n", fs.flag[:l], dot3)
+    return nil
   }
   // ...
   ```
@@ -237,18 +237,18 @@ First one is the **IAVL bug**. You can see that users' data is stored in the `Ca
 // casino.go
 import (
 // ...
-	"github.com/cosmos/iavl"
+  "github.com/cosmos/iavl"
 // ...
 type Casino struct {
-	tree        *iavl.MutableTree
-	numAccounts int
+  tree        *iavl.MutableTree
+  numAccounts int
 }
     
 func NewCasino() *Casino {
-	tree, err := iavl.NewMutableTree(db.NewMemDB(), 128, true)
-	if err != nil {
-		log.Fatal(err)
-	}
+  tree, err := iavl.NewMutableTree(db.NewMemDB(), 128, true)
+  if err != nil {
+    log.Fatal(err)
+  }
 // ...
 ```
 
@@ -262,9 +262,9 @@ module casino
 go 1.19
 
 require (
-	github.com/cosmos/iavl v0.19.2
-	github.com/golang/protobuf v1.5.2
-	github.com/tendermint/tm-db v0.6.6
+  github.com/cosmos/iavl v0.19.2
+  github.com/golang/protobuf v1.5.2
+  github.com/tendermint/tm-db v0.6.6
 )
 ```
 
@@ -283,7 +283,7 @@ However, our investigation about the tree stuff ends here, because this is where
 - [Binance Chain Bridge Exploitation Writeup - Part 1](https://blog.verichains.io/p/binance-bridge-exploitation-preliminary)
 - [Binance Chain Bridge Exploitation Writeup - Part 2](https://blog.verichains.io/p/binance-chain-bridge-exploitation)
 1. abstract
-	1. shit
+  1. shit
 2. The second way you could dig at this challenge is by exploiting the `rand.Intn(n)` function from `math/rand` library. Remember, the server creates random numbers in $[0, 2023)$ and you can try to guess them in order to gain/or lose money. 
 
 
@@ -316,6 +316,10 @@ A **pseudo-random number generator**, or **PRNG**, like this would generate all 
 As some players have pointed out, it is possible to recover the `seed` of Go's PRNG, because:
 
 ![An old rock in the desert](/images/posts/casino2/player-discussion-seed.png)
+<BlogImg 
+  src={"/images/posts/casino2/player-discussion-seed.png"}
+  alt={"fuck you!"}
+/>
 
 This means we just need to brute-force every value from $0$ to $2^{32} - 1 = 4294967295$, for which, in today's computer standards, can be done within an hour or so in a low-end laptop, 20 minutes if running multiple cores. For every `seed`, we set seed by `rand.Seed(seed)` then call `rand.Intn(2023)` a few times and compare the outputs with the server's `n`(s), which can be obtained for free by keep betting $0$ coins. When we've found and verified the `seed`, we just need to keep betting with our `balance` with `n = rand.Intn(2023)` to get the flag.
 
@@ -377,13 +381,13 @@ This implies if we have two Go programs set to the same `seed`, one outputting 1
 
 ```go
 func (r *Rand) Int31n(n int32) int32 {
-	// ...
-	max := int32((1 << 31) - 1 - (1<<31)%uint32(n))
-	v := r.Int31()
-	for v > max {
-		v = r.Int31()
-	}
-	return v % n
+  // ...
+  max := int32((1 << 31) - 1 - (1<<31)%uint32(n))
+  v := r.Int31()
+  for v > max {
+    v = r.Int31()
+  }
+  return v % n
 }
 ```
 
@@ -395,10 +399,10 @@ Oh, but there is an exception if `n` is a power of $2$. If `n` is $2^{\text{some
 // Int31n returns, as an int32, a non-negative pseudo-random number in the half-open interval [0,n).
 // It panics if n <= 0.
 func (r *Rand) Int31n(n int32) int32 {
-	// ...
-	if n&(n-1) == 0 { // n is power of two, can mask
-		return r.Int31() & (n - 1)
-	}
+  // ...
+  if n&(n-1) == 0 { // n is power of two, can mask
+    return r.Int31() & (n - 1)
+  }
     // ...
 ```
 
@@ -419,43 +423,43 @@ What's great about this formula is that we can now derive a pattern for `rand.In
 ```go
 // /usr/lib/go-1.18/src/math/rand/rng.go
 const (
-	rngLen   = 607
-	rngTap   = 273
-	rngMax   = 1 << 63
-	rngMask  = rngMax - 1
-	int32max = (1 << 31) - 1
+  rngLen   = 607
+  rngTap   = 273
+  rngMax   = 1 << 63
+  rngMask  = rngMax - 1
+  int32max = (1 << 31) - 1
 )
 
 // ...
 type rngSource struct {
-	tap  int           // index into vec
-	feed int           // index into vec
-	vec  [rngLen]int64 // current feedback register
+  tap  int           // index into vec
+  feed int           // index into vec
+  vec  [rngLen]int64 // current feedback register
 }
 
 // ...
 
 // Seed uses the provided seed value to initialize the generator to a deterministic state.
 func (rng *rngSource) Seed(seed int64) {
-	rng.tap = 0
-	rng.feed = rngLen - rngTap
+  rng.tap = 0
+  rng.feed = rngLen - rngTap
 // ...
 
 // Uint64 returns a non-negative pseudo-random 64-bit integer as an uint64.
 func (rng *rngSource) Uint64() uint64 {
-	rng.tap--
-	if rng.tap < 0 {
-		rng.tap += rngLen
-	}
+  rng.tap--
+  if rng.tap < 0 {
+    rng.tap += rngLen
+  }
 
-	rng.feed--
-	if rng.feed < 0 {
-		rng.feed += rngLen
-	}
+  rng.feed--
+  if rng.feed < 0 {
+    rng.feed += rngLen
+  }
 
-	x := rng.vec[rng.feed] + rng.vec[rng.tap]
-	rng.vec[rng.feed] = x
-	return uint64(x)
+  x := rng.vec[rng.feed] + rng.vec[rng.tap]
+  rng.vec[rng.feed] = x
+  return uint64(x)
 }
 ```
 

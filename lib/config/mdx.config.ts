@@ -44,7 +44,10 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   ol: [{replacedElement: OrderedList}],
   img: [{replacedElement: BlogImg}],
   span: [{replacedElement: MathInline, classNames: ["math-inline", "math"]}],
-  div: [{replacedElement: MathBlock, classNames: ["math-display", "math"]}]
+  div: [{replacedElement: MathBlock, classNames: ["math-display", "math"]}],
+
+  // BlogImg can be its own thing :)
+  BlogImg: [{replacedElement: BlogImg}],
 };
 
 export default MDXComponentsConfig;
