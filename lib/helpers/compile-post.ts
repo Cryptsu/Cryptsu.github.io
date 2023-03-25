@@ -1,4 +1,5 @@
 import { serialize } from "next-mdx-remote/serialize";
+import { minify } from "uglify-js";
 import { getPostData } from "./process-posts"
 
 // remark/rehype markdown plugins
@@ -61,8 +62,29 @@ export const compilePost
     }
   });
 
+  // (original idea from Jarv.is)
+  //
+  // Well, it seems like they still haven't minify the code, 
+  // so I'll have to do it myself. 
+  //
+  // This activity reduces the code size by 40%, which is
+  // why I decided to use it after my page got into
+  // 1MB in size! 
+  const compiledSourceContent
+    = minify(
+        sourceContent.compiledSource, {
+          toplevel: true,
+          parse: {
+            bare_returns: true,
+          }
+        }
+      ).code;
+
   return {
     frontMatter,
-    sourceContent
+    sourceContent: {
+      ...sourceContent,
+      compiledSource: compiledSourceContent
+    }
   }
 }
