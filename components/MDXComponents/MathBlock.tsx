@@ -21,10 +21,10 @@ const MathBlockStyles: CSS = {
   overflowX: "auto",
 
   border: 0,
-  borderTop: 4,
-  borderBottom: 4,
+  borderTop: 2,
+  borderBottom: 2,
   borderStyle: "dashed",
-  borderColor: theme.colors.grey,
+  borderColor: theme.colors.mathDivider,
 };
 
 export default MathBlock;

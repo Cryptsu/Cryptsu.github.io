@@ -109,6 +109,9 @@ export const {
       codeHighlight: "$white",
       codeNoHighlight: "$primary",
       codeInlineBackground: "$black",
+
+      //    -> Math block
+      mathDivider: hexToRgba("#454C48", 0.5),
     },
 
     fonts: {

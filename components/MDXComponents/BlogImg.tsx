@@ -40,7 +40,7 @@ const BlogImgWrapperStyles: CSS = {
   margin: 0,
   marginTop: 32,
   marginBottom: 32,
-  gap: 16,
+  gap: 8,
 };
 
 const BlogImgStyles: CSS = {
@@ -54,6 +54,15 @@ const BlogImgDescriptionStyles: CSS = {
   fontSize: theme.fontSizes.imgalt,
   fontWeight: theme.fontWeights.imgalt,
   letterSpacing: theme.letterSpacings.content,
+
+  borderWidth: 2,
+  borderStyle: "dashed",
+  borderRadius: 8,
+  padding: 8,
+  borderColor: "#00000000",
+  '&:hover': {
+    borderColor: theme.colors.grey,
+  }
 };
 
 export default BlogImg;
