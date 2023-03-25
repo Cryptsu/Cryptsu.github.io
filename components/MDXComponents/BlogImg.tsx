@@ -5,19 +5,21 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type BlogImgProps = PropsWithChildren<{
-  src: string,            // Where is the image?
-  alt?: string,           // Description for the image.
-  zoom?: string | number, // How do you want to scale the image?
+  src: string,              // Where is the image?
+  alt?: string,             // Description for the image.
+  width?: string | number,  // Scale to your desire...
+  height?: string | number, // Scale to your desire...
 }>
 
-const BlogImg = ({children, alt, zoom, ...otherProps}: BlogImgProps) => {
+const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) => {
   return (
     <Style style={BlogImgWrapperStyles}>
       <Style 
         elementName={HtmlConst.IMG}  
         style={BlogImgStyles} 
         css={{
-          transform: (zoom? "inherit": `scale(${zoom})`)
+          width,
+          height
         }} 
         {...otherProps}
       >

@@ -315,10 +315,9 @@ A **pseudo-random number generator**, or **PRNG**, like this would generate all 
 
 As some players have pointed out, it is possible to recover the `seed` of Go's PRNG, because:
 
-![An old rock in the desert](/images/posts/casino2/player-discussion-seed.png)
 <BlogImg 
   src={"/images/posts/casino2/player-discussion-seed.png"}
-  alt={"fuck you!"}
+  alt={"This is a discussion on TetCTF's page."}
 />
 
 This means we just need to brute-force every value from $0$ to $2^{32} - 1 = 4294967295$, for which, in today's computer standards, can be done within an hour or so in a low-end laptop, 20 minutes if running multiple cores. For every `seed`, we set seed by `rand.Seed(seed)` then call `rand.Intn(2023)` a few times and compare the outputs with the server's `n`(s), which can be obtained for free by keep betting $0$ coins. When we've found and verified the `seed`, we just need to keep betting with our `balance` with `n = rand.Intn(2023)` to get the flag.
@@ -335,7 +334,11 @@ r := rand.Intn(2023)
 
 Staring at a single line of code won't help a thing. So I decided to use the power of **ctrl-click-into-a-function-because-it-helps-us-going-back-to-its-definition-and-i-hope-i-could-have-a-better-name-for-this** in **VSCode** and dive into the code hierarchy and here is the progress:
 
-![](/images/posts/casino2/backtracking.png)
+<BlogImg 
+  src={"/images/posts/casino2/backtracking.png"}
+  alt={"I think it could be called backtracking?"}
+  width={"clamp(600px, 75%, 1200px)"}
+/>
 
 ---
 
