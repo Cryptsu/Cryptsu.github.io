@@ -104,11 +104,12 @@ export const {
       codeBoxMinimize: "$yellow",
       codeBoxMaximize: "$green",
       codeBoxCopy: "$secondary",
+      codeBoxBorder: "linear-gradient(90deg, $primary, $secondary)",
       codeBoxBorderInv: "$pageBackground",
       codeBoxInside: "linear-gradient($pageBackground, $pageBackground)",
       codeHighlight: "$white",
       codeNoHighlight: "$primary",
-      codeInlineBackground: "$black",
+      codeBackground: "$black",
 
       //    -> Math block
       mathDivider: hexToRgba("#454C48", 0.5),

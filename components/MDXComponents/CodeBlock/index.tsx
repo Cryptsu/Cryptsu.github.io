@@ -16,15 +16,11 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
 
   return (
     <Style className={className} style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
-      {
-        isCodeBlockHighlighted
-          ? <Style style={CodeBlockHighlightStyles}>
-              {children}
-            </Style>
-          : <Style style={CodeBlockNonStyles}>
-              {children}
-            </Style>
-      }
+      <Style style={CodeBlockWrapperStyles}>
+        <Style style={CodeBlockInnerStyles}>
+          {children}
+        </Style>
+      </Style>
     </Style>
   )
 }
@@ -36,33 +32,27 @@ const CodeBlockStyles: CSS = {
   width: "100%",
 };
 
-const CodeBlockHighlightStyles: CSS = {
+const CodeBlockWrapperStyles: CSS = {
   color: theme.colors.codeHighlight,
 
   marginLeft: 32,
   marginRight: 32,
-  padding: 16,
   borderRadius: 16,
 
-  // backgroundImage: "linear-gradient(90deg, $primary, $secondary)",
-  borderStyle: "solid",
+  // To create some kind of gradient border...
+  backgroundImage: theme.colors.codeBoxBorder,
+  backgroundPosition: "-4px -4px",
+  backgroundSize: "calc(100% + 8px) calc(100% + 8px)",
+  borderColor: theme.colors.codeBoxBorderInv,
+  borderStyle: "dashed",
   borderWidth: 4,
+};
 
-  // borderColor: theme.colors.codeBoxBorderInv,
-  // borderStyle: "dashed",
-  // borderWidth: 4,
-
-  // backgroundImage: `${theme.colors.codeBoxInside}`,
-  // backgroundPosition: "0% 0%, calc(0% + 4px) calc(0% + 4px)",
-
+const CodeBlockInnerStyles: CSS = {
+  padding: 16,
+  backgroundImage: `linear-gradient(45deg, ${theme.colors.codeBackground}, ${theme.colors.codeBackground})`,
   overflowX: "auto",
-
-};
-
-const CodeBlockNonStyles: CSS = {
-  color: theme.colors.codeNoHighlight,
-
-};
-
+  borderRadius: "inherit",
+}
 
 export default CodeBlock;
