@@ -133,6 +133,7 @@ export const {
       navlink: "$h5",
       content: "$h5",
       codeBlock: "$h5",
+      imgalt: "$content",
     },
 
     fontWeights: {
@@ -148,6 +149,7 @@ export const {
       // Others
       logo: "$h3",
       content: "$h5",
+      imgalt: "bold",
     },
 
     letterSpacings: {
