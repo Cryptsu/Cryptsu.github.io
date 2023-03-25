@@ -29,6 +29,9 @@ const UnorderedListStyles: CSS = {
   marginRight: 48,
   listStyle: 'none',
 
+  // TODO: This ListItemNo is entangled with the one at OrderedList.
+  // If this value is changed in the future, please check here.
+  counterReset: "ListItemNo",
   [HtmlConst.LI]: {
     marginBottom: 8,
     [`${HtmlConst.LI}:before`]: {

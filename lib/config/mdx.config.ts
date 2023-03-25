@@ -10,8 +10,8 @@ import Blockquote from '@/components/MDXComponents/Blockquote';
 import ParsedLink from '@/components/MDXComponents/ParsedLink';
 import CodeInline from '@/components/MDXComponents/CodeInline';
 import CodeBlock from '@/components/MDXComponents/CodeBlock';
-import UnorderedList from '@/components/MDXComponents/UnorderedList';
-import OrderedList from '@/components/MDXComponents/OrderedList';
+import UnorderedList from '@/components/MDXComponents/Lists/UnorderedList';
+import OrderedList from '@/components/MDXComponents/Lists/OrderedList';
 import BlogImg from '@/components/MDXComponents/BlogImg';
 import MathInline from '@/components/MDXComponents/MathInline';
 import MathBlock from '@/components/MDXComponents/MathBlock';
@@ -23,6 +23,11 @@ export type MDXComponentsConfigType = {
   }[]
 };
 
+// TODO: Some of the configs here
+// depends on how next-mdx-remote
+// and their plugins generate code,
+// so some class name might not
+// be true in the future.
 const MDXComponentsConfig: MDXComponentsConfigType = {
   h1: [{replacedElement: H1}],
   h2: [{replacedElement: H2}],
