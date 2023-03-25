@@ -11,7 +11,7 @@ type ListItemProps = PropsWithChildren<{
 const ListItem = ({children, ...otherProps}: ListItemProps) => {
   return (
     <Style style={ListItemWrapperStyles} elementName={HtmlConst.LI} {...otherProps}>
-      <Style elementName={HtmlConst.SPAN}>
+      <Style elementName={HtmlConst.SPAN} style={ListItemStyles}>
         {children}
       </Style>
     </Style>
@@ -25,5 +25,11 @@ const ListItemWrapperStyles: CSS = {
   marginBottom: 8,
   marginTop: 8,
 };
+
+const ListItemStyles: CSS = {
+  [`> :first-child`]: {
+    marginTop: 0,
+  },
+}
 
 export default ListItem;

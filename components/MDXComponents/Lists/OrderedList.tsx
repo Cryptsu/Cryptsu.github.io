@@ -32,7 +32,6 @@ const OrderedListStyles: CSS = {
   // TODO: This ListItemNo is entangled with the one at UnorderedList.
   // If this value is changed in the future, please check here.
   counterReset: "ListItemNo",
-
   [HtmlConst.LI]: {
     counterIncrement: "ListItemNo",
   },
@@ -41,10 +40,6 @@ const OrderedListStyles: CSS = {
     content: 'counters(ListItemNo, ".")"."',
     color: theme.colors.listHeading,
     fontWeight: theme.fontWeights.listHeading
-  },
-
-  [`:not(${HtmlConst.LI}):first-of-type`]: {
-    marginTop: 0,
   },
 };
 

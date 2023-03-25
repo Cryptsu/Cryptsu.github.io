@@ -43,10 +43,6 @@ const UnorderedListStyles: CSS = {
     color: theme.colors.listHeading,
     fontWeight: theme.fontWeights.listHeading,
   },
-
-  [`:not(${HtmlConst.LI}):first-of-type`]: {
-    marginTop: 0,
-  },
 };
 
 export default UnorderedList;
