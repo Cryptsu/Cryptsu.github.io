@@ -87,4 +87,9 @@ export const compilePost
       compiledSource: compiledSourceContent
     }
   }
+
+  // return {
+  //   frontMatter,
+  //   sourceContent
+  // }
 }
