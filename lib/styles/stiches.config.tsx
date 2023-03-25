@@ -116,6 +116,7 @@ export const {
       //    -> Copy
       copyBtnBorder: "$secondary",
       copyIcon: "$white",
+      copiedIcon: "$green",
       copyBtnHoverBackground: "$secondary",
 
       //   -> Math block

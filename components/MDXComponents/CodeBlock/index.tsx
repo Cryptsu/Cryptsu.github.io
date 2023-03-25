@@ -1,4 +1,5 @@
 import Style from "@/components/Style";
+import CopyButton from "./CopyButton";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
@@ -18,9 +19,15 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
     <Style className={className} style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
       <Style style={CodeBlockWrapperStyles}>
         <Style style={CodeBlockInnerStyles}>
-          <Style style={CodeBlockInnerInnerStyles}>
-          {children}
+          
+          <Style style={CodeBlockHeaderStyles}>
+            <CopyButton content={children}/>
           </Style>
+
+          <Style style={CodeBlockContentStyles}>
+            {children}
+          </Style>
+
         </Style>
       </Style>
     </Style>
@@ -31,7 +38,7 @@ const CodeBlockStyles: CSS = {
   fontFamily: theme.fonts.code,
   fontSize: theme.fontSizes.codeBlock,
   letterSpacing: theme.letterSpacings.codeBlock,
-  width: "100%",
+  maxWidth: "100%",
 };
 
 const CodeBlockWrapperStyles: CSS = {
@@ -51,12 +58,24 @@ const CodeBlockWrapperStyles: CSS = {
 };
 
 const CodeBlockInnerStyles: CSS = {
+  display: "flex",
+  flexDirection: "column",
+  gap: 8,
+
   padding: 16,
   backgroundImage: `linear-gradient(0deg, ${theme.colors.codeBackground}, ${theme.colors.codeBackground})`,
   borderRadius: 12,
+
+  maxHeight: 240,
 }
 
-const CodeBlockInnerInnerStyles: CSS = {
+const CodeBlockHeaderStyles: CSS = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "right",
+}
+
+const CodeBlockContentStyles: CSS = {
   overflowX: "auto",
 }
 
