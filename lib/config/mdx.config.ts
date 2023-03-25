@@ -12,6 +12,7 @@ import CodeInline from '@/components/MDXComponents/CodeInline';
 import CodeBlock from '@/components/MDXComponents/CodeBlock';
 import UnorderedList from '@/components/MDXComponents/Lists/UnorderedList';
 import OrderedList from '@/components/MDXComponents/Lists/OrderedList';
+import ListItem from '@/components/MDXComponents/Lists/ListItem';
 import BlogImg from '@/components/MDXComponents/BlogImg';
 import MathInline from '@/components/MDXComponents/MathInline';
 import MathBlock from '@/components/MDXComponents/MathBlock';
@@ -50,6 +51,7 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   img: [{replacedElement: BlogImg}],
   span: [{replacedElement: MathInline, classNames: ["math-inline", "math"]}],
   div: [{replacedElement: MathBlock, classNames: ["math-display", "math"]}],
+  li: [{replacedElement: ListItem}],
 
   // BlogImg can be its own thing :)
   BlogImg: [{replacedElement: BlogImg}],

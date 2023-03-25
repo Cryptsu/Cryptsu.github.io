@@ -44,7 +44,7 @@ const CodeBlockHighlightStyles: CSS = {
   padding: 16,
   borderRadius: 16,
 
-  backgroundImage: "linear-gradient(90deg, $primary, $secondary)",
+  // backgroundImage: "linear-gradient(90deg, $primary, $secondary)",
   borderStyle: "solid",
   borderWidth: 4,
 

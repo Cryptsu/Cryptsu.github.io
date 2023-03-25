@@ -24,7 +24,7 @@ const UnorderedListStyles: CSS = {
   color: theme.colors.contentText,
   letterSpacing: theme.letterSpacings.content,
   
-  margin: 8,
+  margin: 0,
   marginLeft: 48,
   marginRight: 48,
   listStyle: 'none',
@@ -33,24 +33,20 @@ const UnorderedListStyles: CSS = {
   // If this value is changed in the future, please check here.
   counterReset: "ListItemNo",
   [HtmlConst.LI]: {
-    marginBottom: 8,
     [`${HtmlConst.LI}:before`]: {
       content: "◦",
-    },
+  },
   },
 
   [`${HtmlConst.LI}:before`]: {
-    position: "absolute",
-    left: -24,
-    marginRight: 8, 
     content: "•",
-    borderRadius: "100%",
     color: theme.colors.listHeading,
-    width: 16,
-    textAlign: "center",
-    display: "inline-block",
-    fontWeight: "bold",
-  }
+    fontWeight: theme.fontWeights.listHeading,
+  },
+
+  [`:not(${HtmlConst.LI}):first-of-type`]: {
+    marginTop: 0,
+  },
 };
 
 export default UnorderedList;

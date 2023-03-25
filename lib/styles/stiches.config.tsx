@@ -153,6 +153,7 @@ export const {
       logo: "$h3",
       content: "$h5",
       imgalt: "bold",
+      listHeading: "bold",
     },
 
     letterSpacings: {

@@ -24,7 +24,7 @@ const OrderedListStyles: CSS = {
   color: theme.colors.contentText,
   letterSpacing: theme.letterSpacings.content,
 
-  margin: 8,
+  margin: 0,
   marginLeft: 48,
   marginRight: 48,
   listStyle: 'none',
@@ -35,20 +35,17 @@ const OrderedListStyles: CSS = {
 
   [HtmlConst.LI]: {
     counterIncrement: "ListItemNo",
-    marginBottom: 8,
   },
 
   [`${HtmlConst.LI}:before`]: {    
-    position: "absolute",
-    left: -24,
-    paddingRight: 8,
-    content: 'counter(ListItemNo)"."',
-    borderRadius: "100%",
+    content: 'counters(ListItemNo, ".")"."',
     color: theme.colors.listHeading,
-    textAlign: "center",
-    display: "inline-block",
-    fontWeight: "bold",
-  }
+    fontWeight: theme.fontWeights.listHeading
+  },
+
+  [`:not(${HtmlConst.LI}):first-of-type`]: {
+    marginTop: 0,
+  },
 };
 
 export default OrderedList;
