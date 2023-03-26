@@ -134,7 +134,6 @@ const CodeBlockContentStyles: CSS = {
   letterSpacing: theme.letterSpacings.codeBlock,
   color: theme.colors.codeHighlight,
 
-  scrollbarWidth: "thin",
   overflowX: "auto",
 }
 
