@@ -135,6 +135,9 @@ const CodeBlockContentStyles: CSS = {
   color: theme.colors.codeHighlight,
 
   overflowX: "auto",
+  // In Firefox, the scrollbar will cover content -.-
+  // So there need a padding on the bottom... (sigh)
+  paddingBottom: 8,   
 }
 
 export default CodeBlock;
