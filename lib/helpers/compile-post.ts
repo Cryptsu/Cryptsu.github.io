@@ -70,26 +70,29 @@ export const compilePost
   // This activity reduces the code size by 40%, which is
   // why I decided to use it after my page got into
   // 1MB in size! 
-  // const compiledSourceContent
-  //   = minify(
-  //       sourceContent.compiledSource, {
-  //         toplevel: true,
-  //         parse: {
-  //           bare_returns: true,
-  //         }
-  //       }
-  //     ).code;
-
-  // return {
-  //   frontMatter,
-  //   sourceContent: {
-  //     ...sourceContent,
-  //     compiledSource: compiledSourceContent
-  //   }
-  // }
+  //
+  // But it creates 3x build time...
+  //
+  const compiledSourceContent
+    = minify(
+        sourceContent.compiledSource, {
+          toplevel: true,
+          parse: {
+            bare_returns: true,
+          }
+        }
+      ).code;
 
   return {
     frontMatter,
-    sourceContent
+    sourceContent: {
+      ...sourceContent,
+      compiledSource: compiledSourceContent
+    }
   }
+
+  // return {
+  //   frontMatter,
+  //   sourceContent
+  // }
 }
