@@ -148,6 +148,7 @@ export const {
       navlink: "$h5",
       content: "$h5",
       codeBlock: "$h5",
+      codeLang: "$h5",
       imgalt: "$content",
     },
 
@@ -184,6 +185,7 @@ export const {
       navlink: "$h5",
       content: "$h5",
       codeBlock: "$h5",
+      codeLang: "$h5",
     },
 
     lineHeights: {

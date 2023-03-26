@@ -52,8 +52,6 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
 
 const CodeBlockStyles: CSS = {
   fontFamily: theme.fonts.code,
-  fontSize: theme.fontSizes.codeBlock,
-  letterSpacing: theme.letterSpacings.codeBlock,
   maxWidth: "100%",
 };
 
@@ -112,9 +110,13 @@ const CodeLangAreaGroupStyles: CSS = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",
+  alignItems: "center",
 
+  fontSize: theme.fontSizes.codeLang,
+  letterSpacing: theme.letterSpacings.codeLang,
   color: theme.colors.codeLang,
   fontWeight: theme.fontWeights.codeLang,
+  textTransform: "capitalize",
 }
 
 const CodeCopyButtonGroupStyles: CSS = {
@@ -123,11 +125,16 @@ const CodeCopyButtonGroupStyles: CSS = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "right",
+  alignItems: "center",
 }
 
 
 const CodeBlockContentStyles: CSS = {
+  fontSize: theme.fontSizes.codeBlock,
+  letterSpacing: theme.letterSpacings.codeBlock,
   color: theme.colors.codeHighlight,
+
+  scrollbarWidth: "thin",
   overflowX: "auto",
 }
 
