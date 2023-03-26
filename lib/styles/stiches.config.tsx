@@ -114,6 +114,8 @@ export const {
       codeNoHighlight: "$primary",
       codeInnerBackground: "$black",
       codeBlockBackground: `linear-gradient(0deg, #181918, #181918)`,
+      codeLang: hexToRgba("#DCFFEE", 0.75),
+
       //    -> Copy
       copyBtnBorder: "$secondary",
       copyIcon: "$white",
@@ -164,6 +166,7 @@ export const {
       content: "$h5",
       imgalt: "bold",
       listHeading: "bold",
+      codeLang: "bold",
     },
 
     letterSpacings: {

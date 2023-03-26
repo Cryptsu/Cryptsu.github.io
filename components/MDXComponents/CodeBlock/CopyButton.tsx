@@ -9,12 +9,13 @@ import type { MouseEventHandler, ComponentPropsWithoutRef, ReactNode } from "rea
 import type { CSS } from "@stitches/react";
 
 type CopyButtonProps = ComponentPropsWithoutRef<typeof Style> & {
+  style?: CSS,
   content: string | ReactNode,
   refreshTime?: number,
 }
 
 // Source code copied from Jarv.is's code.
-const CopyButton = ({content, refreshTime = 2000, ...otherProps}: CopyButtonProps) => {
+const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyButtonProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopyFn: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -46,6 +47,7 @@ const CopyButton = ({content, refreshTime = 2000, ...otherProps}: CopyButtonProp
 
   return (
     <Style 
+      css={style}
       as={Button} 
       style={CopyButtonStyles} 
       onClick={handleCopyFn}
