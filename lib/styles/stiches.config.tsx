@@ -112,7 +112,8 @@ export const {
       codeBoxInside: "linear-gradient($pageBackground, $pageBackground)",
       codeHighlight: "$white",
       codeNoHighlight: "$primary",
-      codeBackground: "$black",
+      codeInnerBackground: "$black",
+      codeBlockBackground: `linear-gradient(0deg, #181918, #181918)`,
       //    -> Copy
       copyBtnBorder: "$secondary",
       copyIcon: "$white",

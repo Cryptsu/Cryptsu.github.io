@@ -21,7 +21,7 @@ const CodeInlineStyles: CSS = {
   color: theme.colors.codeNoHighlight,
   paddingLeft: 8,
   paddingRight: 8,
-  backgroundColor: theme.colors.codeBackground,
+  backgroundColor: theme.colors.codeInnerBackground,
   borderRadius: 8,
   textTransform: "none",
 };

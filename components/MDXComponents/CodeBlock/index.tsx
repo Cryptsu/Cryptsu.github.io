@@ -1,7 +1,7 @@
 import Style from "@/components/Style";
 import CopyButton from "./CopyButton";
 import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
+import { HtmlConst, AssetsConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -43,13 +43,15 @@ const CodeBlockStyles: CSS = {
 
 const CodeBlockWrapperStyles: CSS = {
   color: theme.colors.codeHighlight,
-
+  
+  marginTop: 16,
+  marginBottom: 16,
   marginLeft: 32,
   marginRight: 32,
   borderRadius: 16,
 
   // To create some kind of gradient border...
-  backgroundImage: theme.colors.codeBoxBorder,
+  backgroundImage: `${theme.colors.codeBoxBorder}`,
   backgroundPosition: "-4px -4px",
   backgroundSize: "calc(100% + 8px) calc(100% + 8px)",
   borderColor: theme.colors.codeBoxBorderInv,
@@ -63,7 +65,7 @@ const CodeBlockInnerStyles: CSS = {
   gap: 8,
 
   padding: 16,
-  backgroundImage: `linear-gradient(0deg, ${theme.colors.codeBackground}, ${theme.colors.codeBackground})`,
+  backgroundImage: `url("${AssetsConst.GRAIN_PNG}"), ${theme.colors.codeBlockBackground}`,
   borderRadius: 12,
 
   maxHeight: 240,
@@ -73,6 +75,9 @@ const CodeBlockHeaderStyles: CSS = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "right",
+
+  paddingLeft: 16,
+  paddingRight: 16,
 }
 
 const CodeBlockContentStyles: CSS = {
