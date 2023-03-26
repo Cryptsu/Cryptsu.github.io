@@ -168,10 +168,10 @@ const CodeBlockLineStyles: CSS = {
   textAlign: "center",
   paddingRight: 8,
 
-  height: "max-content",
+  height: "max-content", // Needs this so that border height is 100% to overflowed content
   border: 0,
   borderRight: 4,
-  borderStyle: "solid",
+  borderStyle: "double",
   borderColor: theme.colors.codeLineDivider,
 }
 
