@@ -1,3 +1,4 @@
+import React from "react";
 import Style from "@/components/Style";
 import CopyButton from "./CopyButton";
 import IFhoneButtonRed from "./IFhoneButtons/IFhoneButtonRed";
@@ -13,17 +14,30 @@ type CodeBlockProps = PropsWithChildren<{
 }>
 
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
+  // Parse language name
   const classNames = className?.split(' ');
   const languageClass = ( // TODO: this language detection mechanism may break in the future!
     classNames?.find(className => /language-*/.test(className))
   );
   const languageName = languageClass ? languageClass.slice("language-".length) : "";
 
+  // Get number of lines for display.
+  const noLines = React.Children.count(children);
+  const lineNoElements = []
+  for (let lineNo = 1; lineNo <= noLines; ++lineNo) {
+    lineNoElements.push(
+      <>
+        {lineNo}
+        <br/>
+      </>
+    )
+  }
+
   return (
     <Style className={className} style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
       <Style style={CodeBlockWrapperStyles}>
         <Style style={CodeBlockInnerStyles}>
-          
+          {/* Header Group */}
           <Style style={CodeBlockHeaderStyles}>
             <Style style={CodeIFhoneButtonGroupStyles}>
               <IFhoneButtonRed/>
@@ -40,8 +54,14 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
             </Style>
           </Style>
 
-          <Style style={CodeBlockContentStyles}>
-            {children}
+          {/* Content Group */}
+          <Style style={CodeBlockContentWrapperStyles}>
+            <Style style={CodeBlockLineStyles}>
+              {lineNoElements}
+            </Style>
+            <Style style={CodeBlockContentStyles}>
+              {children}
+            </Style>
           </Style>
 
         </Style>
@@ -128,16 +148,42 @@ const CodeCopyButtonGroupStyles: CSS = {
   alignItems: "center",
 }
 
-
-const CodeBlockContentStyles: CSS = {
+const CodeBlockContentWrapperStyles: CSS = {
   fontSize: theme.fontSizes.codeBlock,
   letterSpacing: theme.letterSpacings.codeBlock,
   color: theme.colors.codeHighlight,
 
-  overflowX: "auto",
+  overflow: "auto",
   // In Firefox, the scrollbar will cover content -.-
   // So there need a padding on the bottom... (sigh)
   paddingBottom: 8,   
+
+  display: "flex",
+  flexDirection: "row",
+  gap: 8,
+}
+
+const CodeBlockLineStyles: CSS = {
+  fontWeight: theme.fontWeights.codeLine,
+  textAlign: "center",
+  paddingRight: 8,
+
+  height: "max-content",
+  border: 0,
+  borderRight: 4,
+  borderStyle: "solid",
+  borderColor: theme.colors.codeLineDivider,
+}
+
+const CodeBlockContentStyles: CSS = {
+  marginLeft: 10,
+
+  ////////////////////// CODE HIGHLIGHTING //////////////////////
+  // TODO: This part in the future might be changed
+  // due to the fact that the class names corresponding to code
+  // elements of rehype-prism might change.
+  '.token': {
+  },
 }
 
 export default CodeBlock;

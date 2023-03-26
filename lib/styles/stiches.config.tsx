@@ -115,6 +115,7 @@ export const {
       codeInnerBackground: "$black",
       codeBlockBackground: `linear-gradient(0deg, #181918, #181918)`,
       codeLang: hexToRgba("#DCFFEE", 0.75),
+      codeLineDivider: hexToRgba("#DCFFEE", 0.5),
 
       //    -> Copy
       copyBtnBorder: "$secondary",
@@ -168,6 +169,7 @@ export const {
       imgalt: "bold",
       listHeading: "bold",
       codeLang: "bold",
+      codeLine: "bold",
     },
 
     letterSpacings: {
@@ -202,7 +204,7 @@ export const {
     },
 
     transitions: {
-      movUnderline: "background-size 0.2s ease-in-out"
+      movUnderline: "background-size 0.4s ease-in-out"
     },
 
     zIndices: {
