@@ -29,38 +29,38 @@ const CodeBlockContentStyles: CSS = {
   // due to the fact that the class names corresponding to code
   // elements of rehype-prism might change.
   // https://github.com/PrismJS/prism-themes/blob/master/template/prism-theme-template.css
-  // ".token": {
-  //   "&.comment, &.prolog, &.cdata": {
-  //     color: theme.colors.codeComment,
-  //   },
-  //   "&.delimiter, &.boolean, &.keyword, &.selector, &.important, &.doctype, &.atrule, &.url": {
-  //     color: theme.colors.codeKeyword,
-  //   },
-  //   "&.tag, &.builtin, &.regex": {
-  //     color: theme.colors.codeNamespace,
-  //   },
-  //   "&.property, &.constant, &.variable, &.attr-value, &.class-name, &.string, &.char": {
-  //     color: theme.colors.codeVariable,
-  //   },
-  //   "&.literal-property, &.attr-name": {
-  //     color: theme.colors.codeAttribute,
-  //   },
-  //   "&.function": {
-  //     color: theme.colors.codeLiteral,
-  //   },
-  //   "&.tag .punctuation, &.attr-value .punctuation": {
-  //     color: theme.colors.codePunctuation,
-  //   },
-  //   "&.inserted": {
-  //     color: theme.colors.codeAddition,
-  //   },
-  //   "&.deleted": {
-  //     color: theme.colors.codeDeletion,
-  //   },
-  //   "&.url": { textDecoration: "underline" },
-  //   "&.bold": { fontWeight: "bold" },
-  //   "&.italic": { fontStyle: "italic" },
-  // },
+  ".token": {
+    "&.comment, &.prolog, &.cdata": {
+      color: theme.colors.codeComment,
+    },
+    "&.delimiter, &.boolean, &.keyword, &.selector, &.important, &.doctype, &.atrule, &.url": {
+      color: theme.colors.codeKeyword,
+    },
+    "&.tag, &.builtin, &.regex": {
+      color: theme.colors.codeNamespace,
+    },
+    "&.property, &.constant, &.variable, &.attr-value, &.class-name, &.string, &.char": {
+      color: theme.colors.codeVariable,
+    },
+    "&.literal-property, &.attr-name": {
+      color: theme.colors.codeAttribute,
+    },
+    "&.function": {
+      color: theme.colors.codeLiteral,
+    },
+    "&.tag .punctuation, &.attr-value .punctuation": {
+      color: theme.colors.codePunctuation,
+    },
+    "&.inserted": {
+      color: theme.colors.codeAddition,
+    },
+    "&.deleted": {
+      color: theme.colors.codeDeletion,
+    },
+    "&.url": { textDecoration: "underline" },
+    "&.bold": { fontWeight: "bold" },
+    "&.italic": { fontStyle: "italic" },
+  },
 }
 
 export default CodeBlockContent;

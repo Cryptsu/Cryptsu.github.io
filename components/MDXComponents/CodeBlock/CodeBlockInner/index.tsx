@@ -26,6 +26,7 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
 }
 
 const CodeBlockInnerStyles: CSS = {
+
   // In Firefox, the scrollbar will cover content -.-
   // So there need a padding on the bottom... (sigh)
   paddingBottom: 8,   

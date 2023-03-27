@@ -308,6 +308,10 @@ export const globalStyles = globalCss({
   '*': { 
     margin: 0,
     padding: 0,
+
+    // Fix error of font displaying incorrectly
+    // on IPhones.
+    WebkitTextSizeAdjust: "none",
   },
 
   // Easier to customize link.
