@@ -115,7 +115,19 @@ export const {
       codeInnerBackground: "$black",
       codeBlockBackground: `linear-gradient(0deg, #181918, #181918)`,
       codeLang: hexToRgba("#DCFFEE", 0.75),
-      codeLineDivider: hexToRgba("#DCFFEE", 0.5),
+      codeLineNumber: hexToRgba("#DCFFEE", 0.5),
+      codeLineNumberDivider: hexToRgba("#DCFFEE", 0.5),
+
+      //      -> Code text area
+      codeComment: "#656e77",
+      codeKeyword: "#029cb9",
+      codeAttribute: "#70a800",
+      codeNamespace: "#f92672",
+      codeLiteral: "#ae81ff",
+      codePunctuation: "#111111",
+      codeVariable: "#d88200",
+      codeAddition: "#44a248",
+      codeDeletion: "#ff1b1b",
 
       //    -> Copy
       copyBtnBorder: "$secondary",
@@ -169,7 +181,7 @@ export const {
       imgalt: "bold",
       listHeading: "bold",
       codeLang: "bold",
-      codeLine: "bold",
+      codeLineNumber: "bold",
     },
 
     letterSpacings: {
@@ -201,6 +213,7 @@ export const {
       h6: "150%",
 
       content: "$h5",
+      code: "$h5",
     },
 
     transitions: {

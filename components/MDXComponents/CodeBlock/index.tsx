@@ -1,9 +1,6 @@
-import React from "react";
 import Style from "@/components/Style";
-import CopyButton from "./CopyButton";
-import IFhoneButtonRed from "./IFhoneButtons/IFhoneButtonRed";
-import IFhoneButtonYellow from "./IFhoneButtons/IFhoneButtonYellow";
-import IFhoneButtonGreen from "./IFhoneButtons/IFhoneButtonGreen";
+import CodeBlockHeader from "./CodeBlockHeader";
+import CodeBlockInner from "./CodeBlockInner";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst, AssetsConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
@@ -14,56 +11,16 @@ type CodeBlockProps = PropsWithChildren<{
 }>
 
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
-  // Parse language name
-  const classNames = className?.split(' ');
-  const languageClass = ( // TODO: this language detection mechanism may break in the future!
-    classNames?.find(className => /language-*/.test(className))
-  );
-  const languageName = languageClass ? languageClass.slice("language-".length) : "";
-
-  // Get number of lines for display.
-  const noLines = React.Children.count(children);
-  const lineNoElements = []
-  for (let lineNo = 1; lineNo <= noLines; ++lineNo) {
-    lineNoElements.push(
-      <>
-        {lineNo}
-        <br/>
-      </>
-    )
-  }
-
   return (
-    <Style className={className} style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
+    <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
       <Style style={CodeBlockWrapperStyles}>
-        <Style style={CodeBlockInnerStyles}>
-          {/* Header Group */}
-          <Style style={CodeBlockHeaderStyles}>
-            <Style style={CodeIFhoneButtonGroupStyles}>
-              <IFhoneButtonRed/>
-              <IFhoneButtonYellow/>
-              <IFhoneButtonGreen/>
-            </Style>
-            
-            <Style style={CodeLangAreaGroupStyles}>
-              {languageName}
-            </Style>
-
-            <Style style={CodeCopyButtonGroupStyles}>
-              <CopyButton content={children}/>
-            </Style>
-          </Style>
-
-          {/* Content Group */}
-          <Style style={CodeBlockContentWrapperStyles}>
-            <Style style={CodeBlockLineStyles}>
-              {lineNoElements}
-            </Style>
-            <Style style={CodeBlockContentStyles}>
-              {children}
-            </Style>
-          </Style>
-
+        <Style style={CodeBlockLayoutStyles}>
+          {/* --------------------------------- Header Group --------------------------------- */}
+          <CodeBlockHeader content={children} className={className} />
+          {/* --------------------------------- Content Group --------------------------------- */}
+          <CodeBlockInner>
+            {children}
+          </CodeBlockInner>
         </Style>
       </Style>
     </Style>
@@ -91,7 +48,7 @@ const CodeBlockWrapperStyles: CSS = {
   borderWidth: 4,
 };
 
-const CodeBlockInnerStyles: CSS = {
+const CodeBlockLayoutStyles: CSS = {
   display: "flex",
   flexDirection: "column",
   padding: 16,
@@ -102,88 +59,7 @@ const CodeBlockInnerStyles: CSS = {
   borderRadius: 12,
 
   // Limit the height for code view...
-  maxHeight: 240,
-}
-
-const CodeBlockHeaderStyles: CSS = {
-  display: "grid",
-  gridTemplateAreas: "'codeblock-ifhone-btn codeblock-lang-area codeblock-copy-btn'",
-  gridTemplateColumns: "1fr 1fr 1fr",
-
-  paddingLeft: 16,
-  paddingRight: 16,
-}
-
-const CodeIFhoneButtonGroupStyles: CSS = {
-  gridArea: "codeblock-ifhone-btn",
-
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "left",
-  alignItems: "center",
-  gap: 8,
-}
-
-const CodeLangAreaGroupStyles: CSS = {
-  gridArea: "codeblock-lang-area",
-
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
-
-  fontSize: theme.fontSizes.codeLang,
-  letterSpacing: theme.letterSpacings.codeLang,
-  color: theme.colors.codeLang,
-  fontWeight: theme.fontWeights.codeLang,
-  textTransform: "capitalize",
-}
-
-const CodeCopyButtonGroupStyles: CSS = {
-  gridArea: "codeblock-copy-btn",
-
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "right",
-  alignItems: "center",
-}
-
-const CodeBlockContentWrapperStyles: CSS = {
-  fontSize: theme.fontSizes.codeBlock,
-  letterSpacing: theme.letterSpacings.codeBlock,
-  color: theme.colors.codeHighlight,
-
-  overflow: "auto",
-  // In Firefox, the scrollbar will cover content -.-
-  // So there need a padding on the bottom... (sigh)
-  paddingBottom: 8,   
-
-  display: "flex",
-  flexDirection: "row",
-  gap: 8,
-}
-
-const CodeBlockLineStyles: CSS = {
-  fontWeight: theme.fontWeights.codeLine,
-  textAlign: "center",
-  paddingRight: 8,
-
-  height: "max-content", // Needs this so that border height is 100% to overflowed content
-  border: 0,
-  borderRight: 4,
-  borderStyle: "double",
-  borderColor: theme.colors.codeLineDivider,
-}
-
-const CodeBlockContentStyles: CSS = {
-  marginLeft: 10,
-
-  ////////////////////// CODE HIGHLIGHTING //////////////////////
-  // TODO: This part in the future might be changed
-  // due to the fact that the class names corresponding to code
-  // elements of rehype-prism might change.
-  '.token': {
-  },
+  // maxHeight: 240,
 }
 
 export default CodeBlock;

@@ -1,0 +1,48 @@
+---
+title: 'Casino 2 - Attack on Go rand'
+date: 'March 5, 2023'
+description: 'A write up.'
+coverImage: '/images/posts/img3.jpg'
+---
+
+```go
+package mail
+
+import (
+  "bytes"
+  "fmt"
+  "log"
+  "net/smtp"
+
+  "github.com/drone/drone/pkg/database"
+  "github.com/drone/drone/pkg/template"
+)
+
+// A Message represents an email message. Addresses may be of any
+// form permitted by RFC 822.
+type Message struct {
+  Sender   string
+  ReplyTo  string // may be empty
+
+  To       string
+  Subject  string
+  Body     string
+}
+
+// Sends a activation email to the User
+func SendActivation(to string, data interface{}) error {
+  msg := Message{}
+  msg.Subject = "[drone.io] Account Activation"
+  msg.To = to
+
+  var buf bytes.Buffer
+  err := template.ExecuteTemplate(&buf, "activation.html", &data)
+  if err != nil {
+    log.Print(err)
+    return err
+  }
+  msg.Body = buf.String()
+
+  return Send(&msg)
+}
+```
