@@ -26,6 +26,13 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
 }
 
 const CodeBlockInnerStyles: CSS = {
+  // Code line number and content
+  // must have exact font styles
+  // since they have to be matched to
+  // be aligned correctly.
+  fontSize: `${theme.fontSizes.code} !important`,
+  letterSpacing: theme.letterSpacings.code,
+  lineHeight: theme.lineHeights.code,
 
   // In Firefox, the scrollbar will cover content -.-
   // So there need a padding on the bottom... (sigh)
