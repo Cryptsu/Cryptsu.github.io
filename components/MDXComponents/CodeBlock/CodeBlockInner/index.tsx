@@ -26,7 +26,7 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
 }
 
 const CodeBlockInnerStyles: CSS = {
-  fontSize: theme.fontSizes.codeBlock,
+  fontSize: `${theme.fontSizes.codeBlock} !important`,
   letterSpacing: theme.letterSpacings.codeBlock,
   lineHeight: theme.lineHeights.code,
 
