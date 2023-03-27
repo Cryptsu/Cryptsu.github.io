@@ -17,6 +17,9 @@ const CodeBlockContent = ({children, ...otherProps}: CodeBlockContentProps) => {
 }
 
 const CodeBlockContentStyles: CSS = {
+  fontSize: `${theme.fontSizes.code} !important`,
+  letterSpacing: theme.letterSpacings.code,
+  lineHeight: theme.lineHeights.code,
   color: theme.colors.codeHighlight,
   marginLeft: 4,
 

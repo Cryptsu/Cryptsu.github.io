@@ -160,7 +160,7 @@ export const {
       logo: "$h3",
       navlink: "$h5",
       content: "$h5",
-      codeBlock: "$h5",
+      code: "$h5",
       codeLang: "$h5",
       imgalt: "$content",
     },
@@ -198,7 +198,7 @@ export const {
       logo: "$h3",
       navlink: "$h5",
       content: "$h5",
-      codeBlock: "$h5",
+      code: "$h5",
       codeLang: "$h5",
     },
 

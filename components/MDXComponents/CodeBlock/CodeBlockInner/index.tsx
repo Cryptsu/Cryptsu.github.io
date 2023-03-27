@@ -26,14 +26,10 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
 }
 
 const CodeBlockInnerStyles: CSS = {
-  fontSize: `${theme.fontSizes.codeBlock} !important`,
-  letterSpacing: theme.letterSpacings.codeBlock,
-  lineHeight: theme.lineHeights.code,
-
-  overflow: "auto",
   // In Firefox, the scrollbar will cover content -.-
   // So there need a padding on the bottom... (sigh)
   paddingBottom: 8,   
+  overflow: "auto",
 
   display: "flex",
   flexDirection: "row",
