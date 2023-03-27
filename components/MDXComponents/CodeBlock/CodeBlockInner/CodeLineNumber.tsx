@@ -26,13 +26,14 @@ const CodeLineNumber = ({noLines}: CodeLineNumberProps) => {
 }
 
 const CodeLineNumberStyles: CSS = {
-  userSelect: "none",
   fontSize: `${theme.fontSizes.code} !important`,
   letterSpacing: theme.letterSpacings.code,
   lineHeight: theme.lineHeights.code,
   fontWeight: theme.fontWeights.codeLineNumber,
   color: theme.colors.codeLineNumber,
   textAlign: "center",
+  
+  userSelect: "none",
   paddingRight: 8,
 
   height: "max-content", // Needs this so that border height is 100% to overflowed content
