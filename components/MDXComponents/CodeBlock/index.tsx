@@ -55,7 +55,14 @@ const CodeBlockLayoutStyles: CSS = {
   gap: 8,
 
   // This would create the effect of having opacity to the background
+  // Stops phones from keeping selecting background image instead of content.
+  // while making children elements selectable.
   backgroundImage: `url("${AssetsConst.GRAIN_PNG}"), ${theme.colors.codeBlockBackground}`,
+  pointerEvents: "none",  
+  '*': {
+    pointerEvents: "auto"
+  },
+
   borderRadius: 12,
 
   // Limit the height for code view...

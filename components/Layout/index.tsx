@@ -26,7 +26,13 @@ const LayoutStyles: CSS = {
   // Background with something sprinkle in.
   backgroundColor: theme.colors.pageBackground,
   backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
-  pointerEvents: "none",  // Stops phones from keeping selecting background image instead of content.
+
+  // Stops phones from keeping selecting background image instead of content.
+  // while making children elements selectable.
+  pointerEvents: "none",  
+  '*': {
+    pointerEvents: "auto"
+  }
 }
 
 export default Layout;
