@@ -34,11 +34,6 @@ const CodeBlockInnerStyles: CSS = {
   letterSpacing: theme.letterSpacings.code,
   lineHeight: theme.lineHeights.code,
 
-  // In Firefox, the scrollbar will cover content -.-
-  // So there need a padding on the bottom... (sigh)
-  paddingBottom: 8,   
-  overflow: "auto",
-
   display: "flex",
   flexDirection: "row",
   gap: 8,

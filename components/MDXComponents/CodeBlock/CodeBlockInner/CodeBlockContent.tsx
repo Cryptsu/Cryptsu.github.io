@@ -17,7 +17,17 @@ const CodeBlockContent = ({children, ...otherProps}: CodeBlockContentProps) => {
 }
 
 const CodeBlockContentStyles: CSS = {
+  // In Firefox, the scrollbar will cover content -.-
+  // So there need a padding on the bottom... (sigh)
+  // And set scroll-bar width to thin :) 
+  overflow: "auto",
+  paddingBottom: 8,
+  scrollbarWidth: "thin", // This attribute only applies on Firefox.
+
+  // Not styled code text
   color: theme.colors.codeHighlight,
+
+  // Add a bit of padding
   marginLeft: 4,
 
   ////////////////////// CODE HIGHLIGHTING //////////////////////
@@ -25,6 +35,7 @@ const CodeBlockContentStyles: CSS = {
   // due to the fact that the class names corresponding to code
   // elements of rehype-prism might change.
   // https://github.com/PrismJS/prism-themes/blob/master/template/prism-theme-template.css
+  // https://prismjs.com/tokens.html
   ".token": {
     "&.comment, &.prolog, &.cdata": {
       color: theme.colors.codeComment,
