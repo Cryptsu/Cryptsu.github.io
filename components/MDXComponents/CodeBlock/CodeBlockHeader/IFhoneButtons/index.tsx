@@ -4,16 +4,18 @@ import IFhoneButtonRed from "./IFhoneButtonRed";
 import IFhoneButtonYellow from "./IFhoneButtonYellow";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
+import type { CodeBlockLayoutFnsType, CodeBlockLayoutStatesType } from "@/types/codeblock";
 
 type IFhoneButtonsProps = PropsWithChildren<{
-
+  layoutFns: CodeBlockLayoutFnsType,
+  layoutStates: CodeBlockLayoutStatesType,
 }>
 
-const IFhoneButtons = ({children, ...otherProps}: IFhoneButtonsProps) => {
+const IFhoneButtons = ({children, layoutFns, layoutStates, ...otherProps}: IFhoneButtonsProps) => {
   return (
     <Style style={IFhoneButtonsStyles} {...otherProps}>
       <IFhoneButtonRed/>
-      <IFhoneButtonYellow/>
+      <IFhoneButtonYellow onClick={layoutFns.ToggleShowCodeBlockFn}/>
       <IFhoneButtonGreen/>
     </Style>
   )

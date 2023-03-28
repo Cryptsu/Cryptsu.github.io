@@ -5,7 +5,7 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type IFhoneButtonYellowProps = PropsWithChildren<{
-
+  onClick?: () => void
 }>
 
 const IFhoneButtonYellow = ({children, ...otherProps}: IFhoneButtonYellowProps) => {

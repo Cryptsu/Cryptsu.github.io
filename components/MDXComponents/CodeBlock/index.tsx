@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Style from "@/components/Style";
 import CodeBlockHeader from "./CodeBlockHeader";
 import CodeBlockInner from "./CodeBlockInner";
@@ -11,15 +12,39 @@ type CodeBlockProps = PropsWithChildren<{
 }>
 
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
+  const [showInner, setShowInner] = useState<boolean>(true);
+
+  const ToggleShowCodeBlockFn = () => {
+    setShowInner(showInner ? false : true);
+  }
+
   return (
     <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
       <Style style={CodeBlockLayoutStyles}>
         {/* --------------------------------- Header Group --------------------------------- */}
-        <CodeBlockHeader content={children} className={className} />
+        <CodeBlockHeader 
+          content={children} 
+          className={className} 
+          layoutFns={{
+            ToggleShowCodeBlockFn
+          }}
+          layoutStates={{
+            showInner
+          }}
+        />
+
         {/* --------------------------------- Content Group --------------------------------- */}
-        <CodeBlockInner>
-          {children}
-        </CodeBlockInner>
+        {
+          showInner
+            ? <CodeBlockInner>
+                {children}
+              </CodeBlockInner>
+            : <>
+
+            
+              </>
+        } 
+
       </Style>
     </Style>
   )
