@@ -49,20 +49,23 @@ const CodeBlockContentStyles: CSS = {
     "&.tag, &.builtin, &.regex": {
       color: theme.colors.codeNamespace,
     },
-    "&.property, &.constant, &.variable, &.attr-value, &.class-name, &.string, &.char": {
+    "&.property, &.variable, &.attr-value, &.class-name, &.string, &.char": {
       color: theme.colors.codeVariable,
     },
     "&.literal-property, &.attr-name": {
       color: theme.colors.codeAttribute,
     },
     "&.function": {
-      color: theme.colors.codeLiteral,
+      color: theme.colors.codeFunction,
     },
     "&.tag .punctuation, &.attr-value .punctuation": {
       color: theme.colors.codePunctuation,
     },
     '&.operator': {
       color: theme.colors.codeOperator,
+    },
+    '&.boolean, &.number, &.constant': {
+      color: theme.colors.codeLiteral,
     },
     "&.inserted": {
       color: theme.colors.codeAddition,

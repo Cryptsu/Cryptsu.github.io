@@ -121,12 +121,13 @@ export const {
       codeKeyword: "#F23F3C",
       codeAttribute: "#70a800",
       codeNamespace: "#d77d00",
-      codeLiteral: "#88d169",
+      codeFunction: "#88d169",
       codePunctuation: "#d77d00",
       codeOperator: "#00c2ff",
       codeVariable: "#1CC674",
       codeAddition: "#44a248",
       codeDeletion: "#ff1b1b",
+      codeLiteral: "#fbe281",
 
       //    -> Copy
       copyBtnBorder: "$secondary",
