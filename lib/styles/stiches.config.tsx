@@ -52,6 +52,9 @@ export const {
       white: "#DCFFEE",
       
       // Purpose
+      //   -> Table of Content (toc)
+      toc: "$white",
+
       //   -> Button
       buttonHoverBackground: "$grey",
 
@@ -145,6 +148,7 @@ export const {
       navlink: "$content",
       code: "$content",
       logo: "$content",
+      toc: "$content",
     },
 
     fontSizes: {
@@ -164,6 +168,7 @@ export const {
       code: "$h5",
       codeLang: "$h5",
       imgalt: "$content",
+      toc: "$h6",
     },
 
     fontWeights: {
@@ -183,6 +188,7 @@ export const {
       listHeading: "bold",
       codeLang: "bold",
       codeLineNumber: "bold",
+      toc: "$h6",
     },
 
     letterSpacings: {
@@ -201,6 +207,7 @@ export const {
       content: "$h5",
       code: "$h5",
       codeLang: "$h5",
+      toc: "$h6",
     },
 
     lineHeights: {

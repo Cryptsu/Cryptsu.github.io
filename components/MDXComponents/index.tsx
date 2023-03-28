@@ -1,8 +1,8 @@
+import React from "react";
 import Style from "@/components/Style";
 import MDXComponentsConfig from "@/lib/config/mdx.config";
 import type { MDXComponentsConfigType } from "@/lib/config/mdx.config";
 import type { MDXRemoteProps } from "next-mdx-remote";
-import React from "react";
 
 const CompileComponentsConfig 
   = (MDXComponentsConfig: MDXComponentsConfigType)
