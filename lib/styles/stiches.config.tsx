@@ -28,8 +28,8 @@ export const {
     colors: {
       // Main colors - the threedom.
       primary: "#1CC674",
-      secondary: "#008AFF",
-      tertiary: "#F23F3C",
+      secondary: "#0090ff",
+      tertiary: "#fd4e47",
 
       // Mix of them
       quaternary: "#0FABB3", // 1 + 2
@@ -119,13 +119,14 @@ export const {
       codeLineNumberDivider: hexToRgba("#DCFFEE", 0.5),
 
       //      -> Code text area
-      codeComment: "#656e77",
-      codeKeyword: "#029cb9",
+      codeComment: "#8F8F8F",
+      codeKeyword: "#F23F3C",
       codeAttribute: "#70a800",
-      codeNamespace: "#f92672",
-      codeLiteral: "#ae81ff",
-      codePunctuation: "#111111",
-      codeVariable: "#d88200",
+      codeNamespace: "#d77d00",
+      codeLiteral: "#88d169",
+      codePunctuation: "#d77d00",
+      codeOperator: "#00c2ff",
+      codeVariable: "#1CC674",
       codeAddition: "#44a248",
       codeDeletion: "#ff1b1b",
 
