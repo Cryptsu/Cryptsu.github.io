@@ -21,38 +21,19 @@ type CodeBlockProps = PropsWithChildren<{
 
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
   const [showInner, setShowInner] = useState<boolean>(true);
-
   const ToggleShowCodeBlockFn = () => {
     setShowInner(showInner ? false : true);
   }
+  const layoutFns = {ToggleShowCodeBlockFn};
+  const layoutStates = {showInner}
 
   return (
     <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
       <Style style={CodeBlockLayoutStyles}>
-        {/* --------------------------------- Header Group --------------------------------- */}
-        <CodeBlockHeader 
-          content={children} 
-          className={className} 
-          layoutFns={{
-            ToggleShowCodeBlockFn
-          }}
-          layoutStates={{
-            showInner
-          }}
-        />
-
-        {/* --------------------------------- Content Group --------------------------------- */}
-        {
-          showInner
-            ? <CodeBlockInner>
-                {children}
-              </CodeBlockInner>
-            : <>
-
-            
-              </>
-        } 
-
+        <CodeBlockHeader content={children} className={className} layoutFns={layoutFns} layoutStates={layoutStates}/>
+        <CodeBlockInner layoutFns={layoutFns} layoutStates={layoutStates}>
+          {children}
+        </CodeBlockInner>
       </Style>
     </Style>
   )

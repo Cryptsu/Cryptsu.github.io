@@ -14,8 +14,8 @@ type IFhoneButtonsProps = PropsWithChildren<{
 const IFhoneButtons = ({children, layoutFns, layoutStates, ...otherProps}: IFhoneButtonsProps) => {
   return (
     <Style style={IFhoneButtonsStyles} {...otherProps}>
-      <IFhoneButtonRed/>
-      <IFhoneButtonYellow onClick={layoutFns.ToggleShowCodeBlockFn}/>
+      <IFhoneButtonRed onClick={layoutFns.ToggleShowCodeBlockFn}/>
+      <IFhoneButtonYellow/>
       <IFhoneButtonGreen/>
     </Style>
   )

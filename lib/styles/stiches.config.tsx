@@ -115,6 +115,7 @@ export const {
       codeLang: hexToRgba("#DCFFEE", 0.75),
       codeLineNumber: hexToRgba("#DCFFEE", 0.5),
       codeLineNumberDivider: hexToRgba("#DCFFEE", 0.5),
+      codeBoxHidden: hexToRgba("#DCFFEE", 0.5),
 
       //      -> Code text area
       codeComment: "#8F8F8F",
