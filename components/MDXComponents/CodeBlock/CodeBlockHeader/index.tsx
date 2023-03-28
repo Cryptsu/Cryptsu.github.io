@@ -6,7 +6,7 @@ import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren, ReactNode } from "react";
 import type { CSS } from "@stitches/react";
-import type { CodeBlockLayoutFnsType, CodeBlockLayoutStatesType } from "@/types/codeblock";
+import type { CodeBlockLayoutFnsType, CodeBlockLayoutStatesType } from "../";
 
 type CodeBlockHeaderProps = PropsWithChildren<{
   className?: string,

@@ -1,7 +1,5 @@
 import Style from "@/components/Style";
 import CopyButton from "./CopyButton";
-import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren, ReactNode } from "react";
 import type { CSS } from "@stitches/react";
 

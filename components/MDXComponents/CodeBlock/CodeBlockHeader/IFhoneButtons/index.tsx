@@ -4,7 +4,7 @@ import IFhoneButtonRed from "./IFhoneButtonRed";
 import IFhoneButtonYellow from "./IFhoneButtonYellow";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
-import type { CodeBlockLayoutFnsType, CodeBlockLayoutStatesType } from "@/types/codeblock";
+import type { CodeBlockLayoutFnsType, CodeBlockLayoutStatesType } from "../..";
 
 type IFhoneButtonsProps = PropsWithChildren<{
   layoutFns: CodeBlockLayoutFnsType,

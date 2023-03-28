@@ -7,6 +7,14 @@ import { HtmlConst, AssetsConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
+export type CodeBlockLayoutFnsType = {
+  ToggleShowCodeBlockFn: () => void,
+}
+
+export type CodeBlockLayoutStatesType = {
+  showInner: boolean,
+}
+
 type CodeBlockProps = PropsWithChildren<{
   className?: string
 }>
