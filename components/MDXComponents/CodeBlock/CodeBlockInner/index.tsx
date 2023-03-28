@@ -20,10 +20,10 @@ const CodeBlockInner = ({children, layoutFns, layoutStates, ...otherProps}: Code
   return (
     <Style>
       <Style
-        css = {{
+        style={CodeBlockInnerStyles} 
+        css={{
           display: layoutStates.showInner ? "" : "none"
         }}
-        style={CodeBlockInnerStyles} 
         {...otherProps}
       >
         <CodeLineNumber noLines={noLines}/>

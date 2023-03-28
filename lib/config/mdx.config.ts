@@ -16,6 +16,7 @@ import ListItem from '@/components/MDXComponents/Lists/ListItem';
 import BlogImg from '@/components/MDXComponents/BlogImg';
 import MathInline from '@/components/MDXComponents/MathInline';
 import MathBlock from '@/components/MDXComponents/MathBlock';
+import Table from '@/components/MDXComponents/Table';
 
 export type MDXComponentsConfigType = {
   [componentName: string]: {
@@ -52,6 +53,7 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   span: [{replacedElement: MathInline, classNames: ["math-inline", "math"]}],
   div: [{replacedElement: MathBlock, classNames: ["math-display", "math"]}],
   li: [{replacedElement: ListItem}],
+  table: [{replacedElement: Table}],
 
   // BlogImg can be its own thing :)
   BlogImg: [{replacedElement: BlogImg}],
