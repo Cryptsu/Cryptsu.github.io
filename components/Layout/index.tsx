@@ -21,6 +21,7 @@ const Layout = ({ children }: LayoutProps) => {
 
 const LayoutStyles: CSS = {
   // Spans the whole window
+  position: "relative",
   minHeight: "100vh",
 
   // Background with something sprinkle in.

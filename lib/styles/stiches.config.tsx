@@ -107,8 +107,6 @@ export const {
       codeBoxMinimize: "$yellow",
       codeBoxMaximize: "$green",
       codeBoxCopy: "$secondary",
-      codeBoxBorder: "linear-gradient(90deg, $primary, $secondary)",
-      codeBoxBorderInv: "$pageBackground",
       codeBoxInside: "linear-gradient($pageBackground, $pageBackground)",
       codeHighlight: "$white",
       codeNoHighlight: "$primary",

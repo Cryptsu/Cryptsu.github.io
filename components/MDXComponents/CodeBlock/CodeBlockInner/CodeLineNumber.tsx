@@ -28,6 +28,7 @@ const CodeLineNumber = ({noLines}: CodeLineNumberProps) => {
 const CodeLineNumberStyles: CSS = {
   // Customize color for code line.
   color: theme.colors.codeLineNumber,
+  fontWeight: theme.fontWeights.codeLineNumber,
   textAlign: "center",
 
   userSelect: "none",
