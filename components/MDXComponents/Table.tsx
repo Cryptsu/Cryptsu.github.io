@@ -23,17 +23,19 @@ const TableWrapperStyles: CSS = {
   fontSize: theme.fontSizes.content,
   fontFamily: theme.fonts.content,
   letterSpacing: theme.letterSpacings.content,
+  wordBreak: "break-all",
+  overflowWrap: "break-word",
   
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: "100%",
 
   marginTop: 32,
   marginBottom: 32,
 }
 
 const TableStyles: CSS = {
+  maxWidth: "100%",
   marginLeft: 16,
   marginRight: 16,
   borderCollapse: "collapse",
