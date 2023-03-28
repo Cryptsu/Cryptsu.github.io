@@ -47,6 +47,7 @@ const BlockquoteStyles: CSS = {
   backgroundColor: theme.colors.quoteBackground,
   borderColor: theme.colors.quoteLegend,
   borderRadius: 24,
+  boxShadow: theme.shadows.quoteBlockShadow
 };
 
 const BlockquoteInnerStyles: CSS = {

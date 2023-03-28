@@ -226,6 +226,8 @@ export const {
     shadows: {
       codeCopyBtnNormal: "0 4px #265D8B",
       codeCopyBtnClick: "0 1px #265D8B",
+      codeBlockShadow: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
+      quoteBlockShadow: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
     },
 
     borderWidths: {
