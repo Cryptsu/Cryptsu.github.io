@@ -6,16 +6,13 @@ import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren, ReactNode } from "react";
 import type { CSS } from "@stitches/react";
-import type { CodeBlockLayoutFnsType, CodeBlockLayoutStatesType } from "../";
 
 type CodeBlockHeaderProps = PropsWithChildren<{
   className?: string,
   content: string | ReactNode,
-  layoutFns: CodeBlockLayoutFnsType,
-  layoutStates: CodeBlockLayoutStatesType,
 }>
 
-const CodeBlockHeader = ({content, className, layoutFns, layoutStates, ...otherProps}: CodeBlockHeaderProps) => {
+const CodeBlockHeader = ({content, className, ...otherProps}: CodeBlockHeaderProps) => {
   // Parse language name
   const classNames = className?.split(' ');
   const languageClass = ( // TODO: this language detection mechanism may break in the future!
@@ -25,7 +22,7 @@ const CodeBlockHeader = ({content, className, layoutFns, layoutStates, ...otherP
 
   return (
     <Style style={CodeBlockHeaderStyles} {...otherProps}>
-      <Style as={IFhoneButtons} style={CodeIFhoneButtonGroupStyles} layoutFns={layoutFns} layoutStates={layoutStates}/>
+      <Style as={IFhoneButtons} style={CodeIFhoneButtonGroupStyles}/>
       <Style as={CodeLangArea} style={CodeLangAreaGroupStyles} languageName={languageName}/>
       <Style as={CodeActionButtons} style={CodeActionButtonGroupStyles} content={content}/>
     </Style>

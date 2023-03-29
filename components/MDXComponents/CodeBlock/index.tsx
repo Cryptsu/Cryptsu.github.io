@@ -1,41 +1,39 @@
 import { useState } from "react";
+import { CodeBlockContext } from "@/contexts/CodeBlockContext";
 import Style from "@/components/Style";
 import CodeBlockHeader from "./CodeBlockHeader";
 import CodeBlockInner from "./CodeBlockInner";
 import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst, AssetsConst } from "@/lib/consts";
+import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
-
-export type CodeBlockLayoutFnsType = {
-  ToggleShowCodeBlockFn: () => void,
-}
-
-export type CodeBlockLayoutStatesType = {
-  showInner: boolean,
-}
 
 type CodeBlockProps = PropsWithChildren<{
   className?: string
 }>
 
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
-  const [showInner, setShowInner] = useState<boolean>(true);
-  const ToggleShowCodeBlockFn = () => {
-    setShowInner(showInner ? false : true);
+  const [showInner, setShowInner] = useState<number>(1);
+  const ToggleContentFn = () => {
+    setShowInner(showInner ? 0 : 1);
   }
-  const layoutFns = {ToggleShowCodeBlockFn};
-  const layoutStates = {showInner}
 
   return (
-    <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
-      <Style style={CodeBlockLayoutStyles}>
-        <CodeBlockHeader content={children} className={className} layoutFns={layoutFns} layoutStates={layoutStates}/>
-        <CodeBlockInner layoutFns={layoutFns} layoutStates={layoutStates}>
-          {children}
-        </CodeBlockInner>
+    <CodeBlockContext.Provider
+      value={{
+        showInner,
+        ToggleContentFn,
+      }}
+    >
+      <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
+        <Style style={CodeBlockLayoutStyles}>
+          <CodeBlockHeader content={children} className={className}/>
+          <CodeBlockInner>
+            {children}
+          </CodeBlockInner>
+        </Style>
       </Style>
-    </Style>
+    </CodeBlockContext.Provider>
   )
 }
 

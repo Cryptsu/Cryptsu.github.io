@@ -44,7 +44,7 @@ const Post = ({frontMatter, sourceContent}: InferGetStaticPropsType<typeof getSt
 const PostLayoutStyles: CSS = {
   display: "grid",
   gridTemplateAreas: "'post-left post-content post-right'",
-  gridTemplateColumns: "384px calc(100% - 384px*2) 384px",
+  gridTemplateColumns: "calc(50% - 336px) 672px calc(50% - 336px)",
 };
 
 const PostLeftGroupStyles: CSS = {

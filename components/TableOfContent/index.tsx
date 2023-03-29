@@ -30,8 +30,8 @@ const TableOfContentStyles: CSS = {
   position: "sticky",
   top: 80,
 
-  marginLeft: 24,
-  marginRight: 24,
+  marginLeft: 40,
+  marginRight: 40,
   paddingLeft: 32,
   paddingRight: 32,
   paddingTop: 16,
