@@ -1,10 +1,12 @@
 import { NextNode } from '@/types/next.d';
-import H1 from '@/components/MDXComponents/Headings/H1';
-import H2 from '@/components/MDXComponents/Headings/H2';
-import H3 from '@/components/MDXComponents/Headings/H3';
-import H4 from '@/components/MDXComponents/Headings/H4';
-import H5 from '@/components/MDXComponents/Headings/H5';
-import H6 from '@/components/MDXComponents/Headings/H6';
+import {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+} from "@/components/MDXComponents/Headings";
 import Paragraph from '@/components/MDXComponents/Paragraph';
 import Blockquote from '@/components/MDXComponents/Blockquote';
 import ParsedLink from '@/components/MDXComponents/ParsedLink';
