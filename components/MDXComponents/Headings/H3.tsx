@@ -1,14 +1,22 @@
-import Style from "@/components/Style"
+import useContent from "@/hooks/useContent";
+import useOnce from "@/hooks/useOnce";
+import innerText from "react-innertext";
+import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type H3Props = PropsWithChildren<{
-
+  id?: string,
 }>
 
-const H3 = ({children, ...otherProps}: H3Props) => {
+const H3 = ({children, id="", ...otherProps}: H3Props) => {
+  const { addHeadingID } = useContent();
+  useOnce(() => {
+    addHeadingID(innerText(children), id, 3);
+  }, []);
+
   return (
     <Style style={H3Styles} elementName={HtmlConst.H3} {...otherProps}>
       {children}
