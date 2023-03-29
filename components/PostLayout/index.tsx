@@ -33,12 +33,11 @@ const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostL
       if (findIndex === -1) {
         switch (action.name)
         {
-          case "set":
+          case "append":
             return [
               ...currentHeadingInfos, 
               action.data
             ]
-          case "updateVisibility":
           default:
             return currentHeadingInfos;
         }
@@ -48,7 +47,7 @@ const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostL
       {
         case "updateVisibility":
           currentHeadingInfos[findIndex] = action.data;
-        case "set":
+        case "append":
         default:
           return currentHeadingInfos;
       }

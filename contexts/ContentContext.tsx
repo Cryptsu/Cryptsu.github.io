@@ -9,7 +9,7 @@ export type HeadingInfoType = {
 }
 
 export type UpdateHeadingInfoReducerActionType = {
-  name: "set" | "updateVisibility",
+  name: "append" | "updateVisibility",
   data: HeadingInfoType
 }
 

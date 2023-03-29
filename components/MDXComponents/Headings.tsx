@@ -19,7 +19,7 @@ const Heading = ({children, level=1, id="", ...otherProps}: HeadingProps) => {
   useOnce(() => {
     UpdateHeadingInfoReducer(
       {
-        name: "set",
+        name: "append",
         data: {
           headingContent: children, 
           headingID: id, 
