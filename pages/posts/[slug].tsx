@@ -17,10 +17,8 @@ const Post = ({frontMatter, sourceContent}: InferGetStaticPropsType<typeof getSt
   return (
     <>
       <PostLayout
-        data={{
-          frontMatter,
-          sourceContent
-        }}
+        frontMatter={frontMatter}
+        sourceContent={sourceContent}
       />
     </>
   )

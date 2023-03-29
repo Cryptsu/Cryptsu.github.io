@@ -13,13 +13,15 @@ import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { MDXRemoteProps } from "next-mdx-remote";
 import type { CSS } from "@stitches/react";
-import type { PostWithSourceType } from "@/types/post.d";
+import type { PostFrontMatterType } from "@/types/post.d";
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 type PostLayoutProps = PropsWithChildren<{
-  data: PostWithSourceType,
+  frontMatter: PostFrontMatterType,
+  sourceContent: MDXRemoteSerializeResult<Record<string, unknown>>,
 }>
 
-const PostLayout = ({children, data, ...otherProps}: PostLayoutProps) => {
+const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostLayoutProps) => {
   const [ headingIDs, setHeadingIDs ] = useState<{
                                           headingContent: string,
                                           headingID: string,
@@ -59,7 +61,7 @@ const PostLayout = ({children, data, ...otherProps}: PostLayoutProps) => {
           </TableOfContent>
         </Style>
         <Style style={PostContentGroupStyles}>
-          <MDXRemote {...data.sourceContent} components={mdxComponents as MDXRemoteProps["components"]}/>
+          <MDXRemote {...sourceContent} components={mdxComponents as MDXRemoteProps["components"]}/>
         </Style>
         <Style style={PostRightGroupStyles}></Style>
       </Style>
