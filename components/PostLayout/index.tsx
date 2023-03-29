@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { MDXRemote } from "next-mdx-remote";
 import { ContentContext } from "@/contexts/ContentContext";
 
@@ -11,10 +11,10 @@ import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 
 import type { PropsWithChildren } from "react";
-import type { MDXRemoteProps } from "next-mdx-remote";
+import type { MDXRemoteProps, MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { CSS } from "@stitches/react";
 import type { PostFrontMatterType } from "@/types/post.d";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import type { HeadingInfoType } from "@/contexts/ContentContext"
 
 type PostLayoutProps = PropsWithChildren<{
   frontMatter: PostFrontMatterType,
@@ -22,43 +22,27 @@ type PostLayoutProps = PropsWithChildren<{
 }>
 
 const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostLayoutProps) => {
-  const [ headingIDs, setHeadingIDs ] = useState<{
-                                          headingContent: string,
-                                          headingID: string,
-                                          level: number,
-                                        }[]>([]);
-  const [ headingID, setHeadingID ] = useState<{
-                                        headingContent: string,
-                                        headingID: string,
-                                        level: number,
-                                      }>();
+  const [ headingInfos, AddHeadingInfoReducer ] = useReducer(
+    (currentHeadingInfos: HeadingInfoType[], newHeadingInfo: HeadingInfoType) => {
+      for (let headingInfo of currentHeadingInfos)
+        if (headingInfo.headingID === newHeadingInfo.headingID && headingInfo.level === newHeadingInfo.level)
+          return currentHeadingInfos;
 
-  const addHeadingID = (content: string, id: string, level: number) => {
-    // setHeadingID({
-    //   headingContent: content,
-    //   headingID: id,
-    //   level: level,
-    // })
-
-    console.log('added', {
-      headingContent: content,
-      headingID: id,
-      level: level,
-    })
-  }
+      console.log("is this function being called?")
+      return [...currentHeadingInfos, newHeadingInfo];
+    }
+  , []);
 
   return (
     <ContentContext.Provider
       value={{
-        headingIDs,
-        addHeadingID,
+        headingInfos,
+        AddHeadingInfoReducer
       }}
     >
       <Style style={PostLayoutStyles}>
         <Style style={PostLeftGroupStyles}>
-          <TableOfContent>
-            Some data here?
-          </TableOfContent>
+          <TableOfContent/>
         </Style>
         <Style style={PostContentGroupStyles}>
           <MDXRemote {...sourceContent} components={mdxComponents as MDXRemoteProps["components"]}/>

@@ -12,13 +12,17 @@ type H5Props = PropsWithChildren<{
 }>
 
 const H5 = ({children, id="", ...otherProps}: H5Props) => {
-  const { addHeadingID } = useContent();
+  const { AddHeadingInfoReducer } = useContent();
   useOnce(() => {
-    addHeadingID(innerText(children), id, 5);
+    AddHeadingInfoReducer({
+      headingContent: children, 
+      headingID: id, 
+      level: 5
+    });
   }, []);
 
   return (
-    <Style style={H5Styles} elementName={HtmlConst.H5} {...otherProps}>
+    <Style style={H5Styles} id={id} elementName={HtmlConst.H5} {...otherProps}>
       {children}
     </Style>
   )

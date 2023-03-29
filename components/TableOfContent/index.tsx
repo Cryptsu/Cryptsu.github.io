@@ -1,3 +1,4 @@
+import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
@@ -9,9 +10,24 @@ type TableOfContentProps = PropsWithChildren<{
 }>
 
 const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
+  const { headingInfos } = useContent();
   return (
     <Style style={TableOfContentStyles} {...otherProps}>
-      {children}
+      {
+        headingInfos.map((headingInfo, index) => 
+          <Style key={index}>
+            <Style 
+              elementName={HtmlConst.A}
+              css={{ 
+                paddingLeft: `calc(16px * ${headingInfo.level - 1})`
+              }} 
+              href={`#${headingInfo.headingID}`}
+            >
+              {headingInfo.headingContent}
+            </Style>
+          </Style>
+        )
+      }
     </Style>
   )
 }

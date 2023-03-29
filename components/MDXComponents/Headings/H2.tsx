@@ -12,13 +12,17 @@ type H2Props = PropsWithChildren<{
 }>
 
 const H2 = ({children, id="", ...otherProps}: H2Props) => {
-  const { addHeadingID } = useContent();
+  const { AddHeadingInfoReducer } = useContent();
   useOnce(() => {
-    addHeadingID(innerText(children), id, 2);
+    AddHeadingInfoReducer({
+      headingContent: children, 
+      headingID: id, 
+      level: 2
+    });
   }, []);
 
   return (
-    <Style style={H2Styles} elementName={HtmlConst.H2} {...otherProps}>
+    <Style style={H2Styles} id={id} elementName={HtmlConst.H2} {...otherProps}>
       {children}
     </Style>
   )

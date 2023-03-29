@@ -12,13 +12,17 @@ type H4Props = PropsWithChildren<{
 }>
 
 const H4 = ({children, id="", ...otherProps}: H4Props) => {
-  const { addHeadingID } = useContent();
+  const { AddHeadingInfoReducer } = useContent();
   useOnce(() => {
-    addHeadingID(innerText(children), id, 4);
+    AddHeadingInfoReducer({
+      headingContent: children, 
+      headingID: id, 
+      level: 4
+    });
   }, []);
 
   return (
-    <Style style={H4Styles} elementName={HtmlConst.H4} {...otherProps}>
+    <Style style={H4Styles} id={id} elementName={HtmlConst.H4} {...otherProps}>
       {children}
     </Style>
   )

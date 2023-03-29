@@ -12,13 +12,17 @@ type H6Props = PropsWithChildren<{
 }>
 
 const H6 = ({children, id="", ...otherProps}: H6Props) => {
-  const { addHeadingID } = useContent();
+  const { AddHeadingInfoReducer } = useContent();
   useOnce(() => {
-    addHeadingID(innerText(children), id, 6);
+    AddHeadingInfoReducer({
+      headingContent: children, 
+      headingID: id, 
+      level: 6
+    });
   }, []);
 
   return (
-    <Style style={H6Styles} elementName={HtmlConst.H6} {...otherProps}>
+    <Style style={H6Styles} id={id} elementName={HtmlConst.H6} {...otherProps}>
       {children}
     </Style>
   )

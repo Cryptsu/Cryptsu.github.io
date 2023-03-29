@@ -12,13 +12,17 @@ type H3Props = PropsWithChildren<{
 }>
 
 const H3 = ({children, id="", ...otherProps}: H3Props) => {
-  const { addHeadingID } = useContent();
+  const { AddHeadingInfoReducer } = useContent();
   useOnce(() => {
-    addHeadingID(innerText(children), id, 3);
+    AddHeadingInfoReducer({
+      headingContent: children, 
+      headingID: id, 
+      level: 3
+    });
   }, []);
 
   return (
-    <Style style={H3Styles} elementName={HtmlConst.H3} {...otherProps}>
+    <Style style={H3Styles} id={id} elementName={HtmlConst.H3} {...otherProps}>
       {children}
     </Style>
   )
