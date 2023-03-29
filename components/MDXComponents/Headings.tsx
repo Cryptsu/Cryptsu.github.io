@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useContent from "@/hooks/useContent";
 import useOnce from "@/hooks/useOnce";
 import Style from "@/components/Style";
@@ -13,19 +13,47 @@ type HeadingProps = PropsWithChildren<{
 }>
 
 const Heading = ({children, level=1, id="", ...otherProps}: HeadingProps) => {
-  const ref = useRef(null);
-  const { AddHeadingInfoReducer } = useContent();
+  const headingRef = useRef<HTMLElement>(null);
+  const { UpdateHeadingInfoReducer } = useContent();
+
   useOnce(() => {
-    AddHeadingInfoReducer({
-      headingContent: children, 
-      headingID: id, 
-      headingRef: ref,
-      level: level,
-    });
+    UpdateHeadingInfoReducer(
+      {
+        name: "set",
+        data: {
+          headingContent: children, 
+          headingID: id, 
+          cmpViewPort: -1,
+          level: level,
+        }
+      }
+    );
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      UpdateHeadingInfoReducer(
+        {
+          name: "updateVisibility",
+          data: {
+            headingContent: children, 
+            headingID: id, 
+            cmpViewPort: (
+              entry.isIntersecting
+                ? 0
+                : entry.boundingClientRect.y < 0 ? 1 : -1
+            ),
+            level: level,
+          }
+        }
+      );
+    });
+    observer.observe(headingRef?.current!);
+    return () => observer.disconnect();
+  });
+
   return (
-    <Style ref={ref} style={HeadingStyles[level]} elementName={`h${level}`} id={id} {...otherProps}>
+    <Style ref={headingRef} style={HeadingStyles[level]} elementName={`h${level}`} id={id} {...otherProps}>
       {children}
     </Style>
   )

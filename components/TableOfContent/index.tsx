@@ -2,7 +2,7 @@ import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
-import type { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import type { CSS } from "@stitches/react";
 
 type TableOfContentProps = PropsWithChildren<{

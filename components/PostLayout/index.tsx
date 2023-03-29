@@ -14,7 +14,7 @@ import type { PropsWithChildren } from "react";
 import type { MDXRemoteProps, MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { CSS } from "@stitches/react";
 import type { PostFrontMatterType } from "@/types/post.d";
-import type { HeadingInfoType } from "@/contexts/ContentContext"
+import type { HeadingInfoType, UpdateHeadingInfoReducerActionType } from "@/contexts/ContentContext"
 
 type PostLayoutProps = PropsWithChildren<{
   frontMatter: PostFrontMatterType,
@@ -22,20 +22,52 @@ type PostLayoutProps = PropsWithChildren<{
 }>
 
 const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostLayoutProps) => {
-  const [ headingInfos, AddHeadingInfoReducer ] = useReducer(
-    (currentHeadingInfos: HeadingInfoType[], newHeadingInfo: HeadingInfoType) => {
-      for (let headingInfo of currentHeadingInfos)
-        if (headingInfo.headingID === newHeadingInfo.headingID && headingInfo.level === newHeadingInfo.level)
+  const [ headingInfos, UpdateHeadingInfoReducer ] = useReducer(
+    (currentHeadingInfos: HeadingInfoType[], action: UpdateHeadingInfoReducerActionType) => {
+      const findIndex = currentHeadingInfos.findIndex(
+        (currentHeadingInfo) => 
+          currentHeadingInfo.headingID === action.data.headingID &&
+          currentHeadingInfo.level === action.data.level
+      );
+
+      if (findIndex === -1) {
+        switch (action.name)
+        {
+          case "set":
+            return [
+              ...currentHeadingInfos, 
+              action.data
+            ]
+          case "updateVisibility":
+          default:
+            return currentHeadingInfos;
+        }
+      }
+
+      switch (action.name)
+      {
+        case "updateVisibility":
+          currentHeadingInfos[findIndex] = action.data;
+        case "set":
+        default:
           return currentHeadingInfos;
-      return [...currentHeadingInfos, newHeadingInfo];
+      }
     }
   , []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      console.log(headingInfos[1]?.cmpViewPort);
+    }
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  })
 
   return (
     <ContentContext.Provider
       value={{
         headingInfos,
-        AddHeadingInfoReducer
+        UpdateHeadingInfoReducer
       }}
     >
       <Style style={PostLayoutStyles}>
