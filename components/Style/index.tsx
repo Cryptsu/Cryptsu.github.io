@@ -25,7 +25,7 @@ type StyleProps = PropsWithChildren<{
   [x: string]: any,
 }>;
 
-const StyleWithoutRef = ({
+const StyleWithRef = ({
     style={}, 
     children, 
     elementName=HtmlConst.DIV, 
@@ -45,6 +45,6 @@ const StyleWithoutRef = ({
   )
 }
 
-const Style = React.forwardRef<HTMLElement, StyleProps>(StyleWithoutRef);
+const Style = React.forwardRef<HTMLElement, StyleProps>(StyleWithRef);
 
 export default Style;
