@@ -55,14 +55,6 @@ const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostL
     }
   , []);
 
-  useEffect(() => {
-    const onScroll = () => {
-      console.log(headingInfos[1]?.cmpViewPort);
-    }
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  })
-
   return (
     <ContentContext.Provider
       value={{
