@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import useContent from "@/hooks/useContent";
 import useOnce from "@/hooks/useOnce";
 import Style from "@/components/Style";
@@ -12,17 +13,19 @@ type HeadingProps = PropsWithChildren<{
 }>
 
 const Heading = ({children, level=1, id="", ...otherProps}: HeadingProps) => {
+  const ref = useRef(null);
   const { AddHeadingInfoReducer } = useContent();
   useOnce(() => {
     AddHeadingInfoReducer({
       headingContent: children, 
       headingID: id, 
-      level: level
+      headingRef: ref,
+      level: level,
     });
   }, []);
 
   return (
-    <Style style={HeadingStyles[level]} elementName={`h${level}`} id={id} {...otherProps}>
+    <Style ref={ref} style={HeadingStyles[level]} elementName={`h${level}`} id={id} {...otherProps}>
       {children}
     </Style>
   )

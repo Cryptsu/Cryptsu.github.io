@@ -27,8 +27,6 @@ const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostL
       for (let headingInfo of currentHeadingInfos)
         if (headingInfo.headingID === newHeadingInfo.headingID && headingInfo.level === newHeadingInfo.level)
           return currentHeadingInfos;
-
-      console.log("is this function being called?")
       return [...currentHeadingInfos, newHeadingInfo];
     }
   , []);

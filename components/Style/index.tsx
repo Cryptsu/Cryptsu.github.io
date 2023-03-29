@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ForwardedRef } from "react";
 import { styled } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { CSS } from "@stitches/react";
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, RefObject } from "react";
 import type { NextNode } from "@/types/next.d";
 
 // TODO: This is where if somehow, in the future,
@@ -25,15 +25,26 @@ type StyleProps = PropsWithChildren<{
   [x: string]: any,
 }>;
 
-export default function Style({style={}, children, elementName=HtmlConst.DIV, ...otherProps}: StyleProps)
-{
+const StyleWithoutRef = ({
+    style={}, 
+    children, 
+    elementName=HtmlConst.DIV, 
+    ...otherProps
+  }: StyleProps, 
+  
+  ref: ForwardedRef<HTMLElement>
+) => {
   // Somehow, wrap an element like this will cause 
   // serverside rendering to include all CSS styles
   // of the generated class during page load in <head/>.
   let CSSWrapper = styled(elementName, style);
   return (
-    <CSSWrapper {...otherProps}>
+    <CSSWrapper ref={ref} {...otherProps}>
       {children}
     </CSSWrapper>
   )
 }
+
+const Style = React.forwardRef<HTMLElement, StyleProps>(StyleWithoutRef);
+
+export default Style;
