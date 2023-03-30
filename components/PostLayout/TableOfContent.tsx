@@ -42,8 +42,9 @@ const TableOfContentStyles: CSS = {
   borderStyle: "solid",
 
   position: "sticky",
-  top: 80,
+  top: "10vh",
   maxHeight: "calc(70vh)",
+  maxWidth: "400px",
   overflow: "auto",
 
   marginLeft: 64,
