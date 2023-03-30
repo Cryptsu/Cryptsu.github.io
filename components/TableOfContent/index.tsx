@@ -6,42 +6,22 @@ import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
-type TableOfContentProps = PropsWithChildren<{
-
-}>
+type TableOfContentProps = PropsWithChildren<{}>
 
 const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   const { headingInfos } = useContent();
-  const [ currentItemIndex, setCurrentItemIndex ] = useState(-1);
-  useEffect(() => {
-    for (let index = headingInfos.length - 1; index >= 0; --index) {
-      if (headingInfos[index].cmpViewPort <= 0) {
-        setCurrentItemIndex(index);
-        break;
-      }
-    }
-  }, [headingInfos]);
 
   return (
     <Style style={TableOfContentStyles} {...otherProps}>
       {
         headingInfos.map((headingInfo, index) => 
           <Style key={index}>
-            <Style 
-              elementName={HtmlConst.A}
+            <Style elementName={HtmlConst.A} href={`#${headingInfo.headingID}`}
               css={{ 
                 paddingLeft: `calc(16px * ${headingInfo.level - 1})`
               }} 
-              href={`#${headingInfo.headingID}`}
             >
               {headingInfo.headingContent}
-              <>
-                {
-                  index === currentItemIndex
-                  ? " <- here"
-                  : ""
-                }
-              </>
             </Style>
           </Style>
         )
@@ -64,8 +44,8 @@ const TableOfContentStyles: CSS = {
   position: "sticky",
   top: 80,
 
-  marginLeft: 40,
-  marginRight: 40,
+  marginLeft: 64,
+  marginRight: 64,
   paddingLeft: 32,
   paddingRight: 32,
   paddingTop: 16,

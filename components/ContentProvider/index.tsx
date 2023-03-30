@@ -1,22 +1,13 @@
-import { useEffect, useReducer } from "react";
-import { MDXRemote } from "next-mdx-remote";
+import { useReducer, useState } from "react";
 import { ContentContext } from "@/contexts/ContentContext";
-
-// All MDX components
-import Style from "@/components/Style";
-import TableOfContent from "@/components/TableOfContent";
-import mdxComponents from "@/components/MDXComponents";
-
-import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
 
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 import type { HeadingInfoType, UpdateHeadingInfoReducerActionType } from "@/contexts/ContentContext"
 
-type ContentProviderProps = PropsWithChildren<{}>
+type ContentProviderProps = PropsWithChildren<{}>;
 
-const fn = (currentHeadingInfos: HeadingInfoType[], action: UpdateHeadingInfoReducerActionType) => {
+const UpdateHeadingInfoReducerFn = (currentHeadingInfos: HeadingInfoType[], action: UpdateHeadingInfoReducerActionType) => {
   const findIndex = currentHeadingInfos.findIndex(
     (currentHeadingInfo) => 
       currentHeadingInfo.headingID === action.data.headingID &&
@@ -39,10 +30,7 @@ const fn = (currentHeadingInfos: HeadingInfoType[], action: UpdateHeadingInfoRed
   switch (action.name)
   {
     case "updateVisibility":
-      if (currentHeadingInfos[findIndex].cmpViewPort !== action.data.cmpViewPort) {
-        currentHeadingInfos[findIndex] = action.data;
-        currentHeadingInfos = [...currentHeadingInfos]
-      }
+      currentHeadingInfos[findIndex] = action.data;
     case "append":
     default:
       return currentHeadingInfos;
@@ -50,8 +38,7 @@ const fn = (currentHeadingInfos: HeadingInfoType[], action: UpdateHeadingInfoRed
 }
 
 const ContentProvider = ({children, ...otherProps}: ContentProviderProps) => {
-  const [ headingInfos, UpdateHeadingInfoReducer ] = useReducer(fn, []);
-
+  const [ headingInfos, UpdateHeadingInfoReducer ] = useReducer(UpdateHeadingInfoReducerFn, []);
   return (
     <ContentContext.Provider
       value={{

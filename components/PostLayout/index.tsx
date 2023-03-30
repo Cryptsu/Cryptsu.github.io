@@ -1,15 +1,13 @@
-import { MDXRemote } from "next-mdx-remote";
-
 // All MDX components
+import ContentProvider from "@/components/ContentProvider";
 import Style from "@/components/Style";
 import TableOfContent from "@/components/TableOfContent";
-import mdxComponents from "@/components/MDXComponents";
+import PostContent from "./PostContent";
 
 import type { PropsWithChildren } from "react";
 import type { MDXRemoteProps, MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { CSS } from "@stitches/react";
 import type { PostFrontMatterType } from "@/types/post.d";
-import ContentProvider from "../ContentProvider";
 
 type PostLayoutProps = PropsWithChildren<{
   frontMatter: PostFrontMatterType,
@@ -24,7 +22,7 @@ const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostL
           <TableOfContent/>
         </Style>
         <Style style={PostContentGroupStyles}>
-          <MDXRemote {...sourceContent} components={mdxComponents as MDXRemoteProps["components"]}/>
+          <PostContent sourceContent={sourceContent}/>
         </Style>
         <Style style={PostRightGroupStyles}></Style>
       </Style>
