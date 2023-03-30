@@ -54,6 +54,7 @@ export const {
       // Purpose
       //   -> Table of Content (toc)
       toc: "$white",
+      tocDivider: "$grey",
 
       //   -> Button
       buttonHoverBackground: "$grey",
@@ -169,6 +170,7 @@ export const {
       codeLang: "$h5",
       imgalt: "$content",
       toc: "$h6",
+      tocHeader: "$h5",
     },
 
     fontWeights: {
@@ -188,6 +190,7 @@ export const {
       listHeading: "bold",
       codeLang: "bold",
       codeLineNumber: "bold",
+      tocHeader: "bold",
       toc: "$h6",
     },
 
