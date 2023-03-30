@@ -3,9 +3,10 @@ import ContentProvider from "@/components/ContentProvider";
 import Style from "@/components/Style";
 import TableOfContent from "./TableOfContent";
 import PostContent from "./PostContent";
+import PostHeader from "./PostHeader";
 
-import { PropsWithChildren, useEffect } from "react";
-import type { MDXRemoteProps, MDXRemoteSerializeResult } from "next-mdx-remote";
+import type { PropsWithChildren } from "react";
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { CSS } from "@stitches/react";
 import type { PostFrontMatterType } from "@/types/post.d";
 
@@ -17,6 +18,7 @@ type PostLayoutProps = PropsWithChildren<{
 const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostLayoutProps) => {
   return (
     <ContentProvider>
+      <PostHeader frontMatter={frontMatter}/>
       <Style style={PostLayoutStyles}>
         <Style style={PostLeftGroupStyles}>
         </Style>
