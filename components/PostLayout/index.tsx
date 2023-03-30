@@ -5,6 +5,8 @@ import TableOfContent from "./TableOfContent";
 import PostContent from "./PostContent";
 import PostHeader from "./PostHeader";
 
+import { theme } from "@/lib/styles/stiches.config";
+
 import type { PropsWithChildren } from "react";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { CSS } from "@stitches/react";
@@ -45,6 +47,14 @@ const PostLeftGroupStyles: CSS = {
 
 const PostContentGroupStyles: CSS = {
   gridArea: 'post-content',
+
+  // Global rules
+  color: theme.colors.content,
+  fontFamily: theme.fonts.content,
+  fontSize: theme.fontSizes.content,
+  fontWeight: theme.fontWeights.content,
+  lineHeight: theme.lineHeights.content,
+  letterSpacing: theme.letterSpacings.content,
 };
 
 const PostRightGroupStyles: CSS = {

@@ -74,9 +74,6 @@ const HeadingTargetStyles: CSS = {
 
 const HeadingCommonStyles: CSS = {
   position: "relative",
-
-  fontFamily: theme.fonts.content,
-  color: theme.colors.contentText,
   textTransform: "uppercase",
 }
 

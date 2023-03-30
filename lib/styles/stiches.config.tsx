@@ -76,7 +76,7 @@ export const {
       pageBackground: "$blackest",
 
       //   -> Content
-      contentText: "$white",
+      content: "$white",
       
       //   -> Intro
       hashtagActive: "$primary",
@@ -146,7 +146,6 @@ export const {
 
     fonts: {
       content: `${JetBrainsMono.style.fontFamily}, monospace`,
-      navlink: "$content",
       code: "$content",
       logo: "$content",
       toc: "$content",
@@ -164,7 +163,6 @@ export const {
 
       // Others
       logo: "$h3",
-      navlink: "$h5",
       content: "$h5",
       code: "$h5",
       codeLang: "$h5",
@@ -206,7 +204,6 @@ export const {
 
       // Others
       logo: "$h3",
-      navlink: "$h5",
       content: "$h5",
       code: "$h5",
       codeLang: "$h5",

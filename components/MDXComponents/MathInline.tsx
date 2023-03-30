@@ -17,7 +17,6 @@ const MathInline = ({children, ...otherProps}: MathInlineProps) => {
 }
 
 const MathInlineStyles: CSS = {
-  color: theme.colors.contentText,
   overflowX: "auto",
 };
 

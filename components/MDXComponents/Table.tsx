@@ -19,10 +19,6 @@ const Table = ({children, ...otherProps}: TableProps) => {
 }
 
 const TableWrapperStyles: CSS = {
-  color: theme.colors.contentText,
-  fontSize: theme.fontSizes.content,
-  fontFamily: theme.fonts.content,
-  letterSpacing: theme.letterSpacings.content,
   wordBreak: "break-all",
   overflowWrap: "break-word",
   

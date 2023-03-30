@@ -57,11 +57,8 @@ const BlogImgStyles: CSS = {
 };
 
 const BlogImgDescriptionStyles: CSS = {
-  color: theme.colors.contentText,
-  fontFamily: theme.fonts.content,
   fontSize: theme.fontSizes.imgalt,
   fontWeight: theme.fontWeights.imgalt,
-  letterSpacing: theme.letterSpacings.content,
 
   borderWidth: 2,
   borderStyle: "dashed",

@@ -17,14 +17,6 @@ const Paragraph = ({children, ...otherProps}: ParagraphProps) => {
 }
 
 const ParagraphStyles: CSS = {
-  // Font customizing
-  fontFamily: theme.fonts.content,
-  fontSize: theme.fontSizes.content,
-  fontWeight: theme.fontWeights.content,
-  letterSpacing: theme.letterSpacings.content,
-  lineHeight: theme.lineHeights.content,
-  color: theme.colors.contentText,
-
   // Create margin
   marginTop: 12,
   marginBottom: 12,

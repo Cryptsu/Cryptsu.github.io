@@ -25,9 +25,6 @@ const ButtonStyles: CSS = {
   justifyContent: "center",
   userSelect: "none",
 
-  fontFamily: theme.fonts.content,
-  color: theme.colors.contentText,
-  
   borderRadius: 8,
   borderStyle: "solid",
   '&:hover': {

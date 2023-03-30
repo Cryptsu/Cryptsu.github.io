@@ -19,11 +19,6 @@ const OrderedList = ({children, ...otherProps}: OrderedListProps) => {
 const OrderedListStyles: CSS = {
   position: "relative",
 
-  fontFamily: theme.fonts.content,
-  fontSize: theme.fontSizes.content,
-  color: theme.colors.contentText,
-  letterSpacing: theme.letterSpacings.content,
-
   margin: 0,
   marginLeft: 48,
   marginRight: 48,

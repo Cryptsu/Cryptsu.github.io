@@ -17,7 +17,6 @@ const MathBlock = ({children, ...otherProps}: MathBlockProps) => {
 }
 
 const MathBlockStyles: CSS = {
-  color: theme.colors.contentText,
   overflowX: "auto",
 
   border: 0,

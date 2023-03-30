@@ -19,6 +19,7 @@ const CodeInline = ({children, ...otherProps}: CodeInlineProps) => {
 const CodeInlineStyles: CSS = {
   fontFamily: theme.fonts.code,
   color: theme.colors.codeNoHighlight,
+  
   paddingLeft: 8,
   paddingRight: 8,
   backgroundColor: theme.colors.codeInnerBackground,
