@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react"
 import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
-import { PropsWithChildren, useEffect } from "react";
+import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type TableOfContentProps = PropsWithChildren<{
@@ -11,6 +12,16 @@ type TableOfContentProps = PropsWithChildren<{
 
 const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   const { headingInfos } = useContent();
+  const [ currentItemIndex, setCurrentItemIndex ] = useState(-1);
+  useEffect(() => {
+    for (let index = headingInfos.length - 1; index >= 0; --index) {
+      if (headingInfos[index].cmpViewPort <= 0) {
+        setCurrentItemIndex(index);
+        break;
+      }
+    }
+  }, [headingInfos]);
+
   return (
     <Style style={TableOfContentStyles} {...otherProps}>
       {
@@ -24,6 +35,13 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
               href={`#${headingInfo.headingID}`}
             >
               {headingInfo.headingContent}
+              <>
+                {
+                  index === currentItemIndex
+                  ? " <- here"
+                  : ""
+                }
+              </>
             </Style>
           </Style>
         )

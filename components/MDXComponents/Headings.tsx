@@ -32,6 +32,7 @@ const Heading = ({children, level=1, id="", ...otherProps}: HeadingProps) => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
+      console.log("changing", id)
       UpdateHeadingInfoReducer(
         {
           name: "updateVisibility",

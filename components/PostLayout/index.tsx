@@ -1,20 +1,15 @@
-import { useEffect, useReducer } from "react";
 import { MDXRemote } from "next-mdx-remote";
-import { ContentContext } from "@/contexts/ContentContext";
 
 // All MDX components
 import Style from "@/components/Style";
 import TableOfContent from "@/components/TableOfContent";
 import mdxComponents from "@/components/MDXComponents";
 
-import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
-
 import type { PropsWithChildren } from "react";
 import type { MDXRemoteProps, MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { CSS } from "@stitches/react";
 import type { PostFrontMatterType } from "@/types/post.d";
-import type { HeadingInfoType, UpdateHeadingInfoReducerActionType } from "@/contexts/ContentContext"
+import ContentProvider from "../ContentProvider";
 
 type PostLayoutProps = PropsWithChildren<{
   frontMatter: PostFrontMatterType,
@@ -22,45 +17,8 @@ type PostLayoutProps = PropsWithChildren<{
 }>
 
 const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostLayoutProps) => {
-  const [ headingInfos, UpdateHeadingInfoReducer ] = useReducer(
-    (currentHeadingInfos: HeadingInfoType[], action: UpdateHeadingInfoReducerActionType) => {
-      const findIndex = currentHeadingInfos.findIndex(
-        (currentHeadingInfo) => 
-          currentHeadingInfo.headingID === action.data.headingID &&
-          currentHeadingInfo.level === action.data.level
-      );
-
-      if (findIndex === -1) {
-        switch (action.name)
-        {
-          case "append":
-            return [
-              ...currentHeadingInfos, 
-              action.data
-            ]
-          default:
-            return currentHeadingInfos;
-        }
-      }
-
-      switch (action.name)
-      {
-        case "updateVisibility":
-          currentHeadingInfos[findIndex] = action.data;
-        case "append":
-        default:
-          return currentHeadingInfos;
-      }
-    }
-  , []);
-
   return (
-    <ContentContext.Provider
-      value={{
-        headingInfos,
-        UpdateHeadingInfoReducer
-      }}
-    >
+    <ContentProvider>
       <Style style={PostLayoutStyles}>
         <Style style={PostLeftGroupStyles}>
           <TableOfContent/>
@@ -70,7 +28,7 @@ const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostL
         </Style>
         <Style style={PostRightGroupStyles}></Style>
       </Style>
-    </ContentContext.Provider>
+    </ContentProvider>
   )
 }
 
