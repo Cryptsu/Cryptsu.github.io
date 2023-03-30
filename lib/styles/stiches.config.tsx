@@ -322,6 +322,9 @@ export const globalStyles = globalCss({
     // Fix error of font displaying incorrectly
     // on IPhones.
     // textSizeAdjust: "100%",
+
+    // Scroll should be smooth :)
+    scrollBehavior: "smooth",
   },
 
   // Easier to customize link.
