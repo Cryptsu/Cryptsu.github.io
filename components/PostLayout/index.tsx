@@ -39,6 +39,7 @@ const PostLayoutStyles: CSS = {
   display: "grid",
   gridTemplateAreas: "'post-left post-content post-right'",
   gridTemplateColumns: "1fr 792px 2.5fr",
+  marginBottom: 24,
 };
 
 const PostLeftGroupStyles: CSS = {

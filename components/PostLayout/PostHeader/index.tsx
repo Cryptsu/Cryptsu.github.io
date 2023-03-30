@@ -19,7 +19,7 @@ const PostHeader = ({children, frontMatter, ...otherProps}: PostHeaderProps) => 
         {frontMatter.title}
       </PostTitle>
       <PostMetadatas frontMatter={frontMatter}/>
-      <PostTags tags={frontMatter.tags}/>
+      {/* <PostTags tags={frontMatter.tags}/> */}
     </Style>
   )
 }

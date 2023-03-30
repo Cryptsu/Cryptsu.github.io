@@ -1,5 +1,6 @@
 import Style from "@/components/Style";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import useTheme from "@/hooks/useTheme";
 import { ThemeClassMap, theme } from "@/lib/styles/stiches.config";
 import { AssetsConst } from "@/lib/consts";
@@ -8,16 +9,17 @@ import type { CSS } from "@stitches/react";
 
 type LayoutProps = PropsWithChildren<{}>;
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, ...otherProps }: LayoutProps) => {
   const { activeTheme } = useTheme();
 
   return (
     <div className={ThemeClassMap[activeTheme]}>
-      <Style style={LayoutStyles}>
-        <Style style={LayoutHeaderStyles}>
-          <Header/>
+      <Style style={LayoutStyles} {...otherProps}>
+        <Style as={Header} style={LayoutHeaderStyles}/>
+        <Style>
+          {children}
         </Style>
-        {children}
+        <Footer/>
       </Style>
     </div>
   )
@@ -27,6 +29,9 @@ const LayoutStyles: CSS = {
   // Spans the whole window
   position: "relative",
   minHeight: "100vh",
+
+  display: "grid",
+  gridTemplateRows: "auto 1fr auto",
 
   // Background with something sprinkle in.
   backgroundColor: theme.colors.pageBackground,

@@ -58,6 +58,9 @@ export const {
       hashtagInactive: "#44966E",
       metadata: hexToRgba("#DCFFEE", 0.5),
       metadataIcon: "$tertiary",
+
+      //   -> Footer
+      footerText: '#778980',
       
       //   -> Table of Content (toc)
       toc: "$white",
@@ -149,6 +152,7 @@ export const {
 
     fonts: {
       title: `${JetBrainsMono.style.fontFamily}, monospace`,
+      footer: `${JetBrainsMono.style.fontFamily}, monospace`,
       content: `${JetBrainsMono.style.fontFamily}, monospace`,
       code: `${JetBrainsMono.style.fontFamily}, monospace`,
       logo: `${JetBrainsMono.style.fontFamily}, monospace`,
@@ -169,6 +173,7 @@ export const {
       // Others
       title: "$h0",
       metadata: "$h5",
+      footer: "$h5",
       hashTag: "$h5",
       logo: "$h3",
       content: "$h5",
@@ -191,6 +196,7 @@ export const {
 
       // Others
       title: "$h0",
+      footer: "bold",
       logo: "$h3",
       hashTag: "bold",
       content: "$h5",
@@ -215,6 +221,7 @@ export const {
       // Others
       title: "$h0",
       metadata: "$h5",
+      footer: "$h5",
       hashTag: "$h5",
       logo: "$h3",
       content: "$h5",
