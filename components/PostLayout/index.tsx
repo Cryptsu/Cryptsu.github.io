@@ -1,7 +1,7 @@
 // All MDX components
 import ContentProvider from "@/components/ContentProvider";
 import Style from "@/components/Style";
-import TableOfContent from "@/components/TableOfContent";
+import TableOfContent from "./TableOfContent";
 import PostContent from "./PostContent";
 
 import type { PropsWithChildren } from "react";
@@ -19,12 +19,13 @@ const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostL
     <ContentProvider>
       <Style style={PostLayoutStyles}>
         <Style style={PostLeftGroupStyles}>
-          <TableOfContent/>
         </Style>
         <Style style={PostContentGroupStyles}>
           <PostContent sourceContent={sourceContent}/>
         </Style>
-        <Style style={PostRightGroupStyles}></Style>
+        <Style style={PostRightGroupStyles}>
+          <TableOfContent/>
+        </Style>
       </Style>
     </ContentProvider>
   )
@@ -33,7 +34,7 @@ const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostL
 const PostLayoutStyles: CSS = {
   display: "grid",
   gridTemplateAreas: "'post-left post-content post-right'",
-  gridTemplateColumns: "calc(50% - 336px) 672px calc(50% - 336px)",
+  gridTemplateColumns: "1fr 792px 2.5fr",
 };
 
 const PostLeftGroupStyles: CSS = {

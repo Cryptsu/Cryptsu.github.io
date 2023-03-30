@@ -17,6 +17,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
         headingInfos.map((headingInfo, index) => 
           <Style key={index}>
             <Style elementName={HtmlConst.A} href={`#${headingInfo.headingID}`}
+              style={TOCLinkStyles}
               css={{ 
                 paddingLeft: `calc(16px * ${headingInfo.level - 1})`
               }} 
@@ -35,7 +36,6 @@ const TableOfContentStyles: CSS = {
   fontSize: theme.fontSizes.toc,
   fontWeight: theme.fontWeights.toc,
   letterSpacing: theme.letterSpacings.toc,
-  color: theme.colors.toc,
 
   borderWidth: 2,
   borderColor: theme.colors.tableBorder,
@@ -43,6 +43,8 @@ const TableOfContentStyles: CSS = {
 
   position: "sticky",
   top: 80,
+  maxHeight: "calc(70vh)",
+  overflow: "auto",
 
   marginLeft: 64,
   marginRight: 64,
@@ -51,5 +53,12 @@ const TableOfContentStyles: CSS = {
   paddingTop: 16,
   paddingBottom: 16,
 };
+
+const TOCLinkStyles: CSS = {
+  color: theme.colors.toc,
+  '&:visisted': {
+    color: theme.colors.toc,
+  },
+}
 
 export default TableOfContent;
