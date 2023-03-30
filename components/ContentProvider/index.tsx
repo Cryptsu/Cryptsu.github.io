@@ -1,8 +1,6 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import { ContentContext } from "@/contexts/ContentContext";
-
 import type { PropsWithChildren } from "react";
-import type { CSS } from "@stitches/react";
 import type { HeadingInfoType, UpdateHeadingInfoReducerActionType } from "@/contexts/ContentContext"
 
 type ContentProviderProps = PropsWithChildren<{}>;
@@ -50,9 +48,5 @@ const ContentProvider = ({children, ...otherProps}: ContentProviderProps) => {
     </ContentContext.Provider>
   )
 }
-
-const ContentProviderStyles: CSS = {
-
-};
 
 export default ContentProvider;
