@@ -146,9 +146,10 @@ export const {
 
     fonts: {
       content: `${JetBrainsMono.style.fontFamily}, monospace`,
-      code: "$content",
-      logo: "$content",
-      toc: "$content",
+      code: `${JetBrainsMono.style.fontFamily}, monospace`,
+      logo: `${JetBrainsMono.style.fontFamily}, monospace`,
+      toc: `${JetBrainsMono.style.fontFamily}, monospace`,
+      navlink: `${JetBrainsMono.style.fontFamily}, monospace`,
     },
 
     fontSizes: {
@@ -208,6 +209,7 @@ export const {
       code: "$h5",
       codeLang: "$h5",
       toc: "$h6",
+      navlink: "$h5",
     },
 
     lineHeights: {
