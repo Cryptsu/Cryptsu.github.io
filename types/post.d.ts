@@ -6,6 +6,8 @@ export type PostFrontMatterType = {
   slug: string;
   description?: string;
   coverImage?: string;
+  minsRead: number;
+  noWords: number;
   tags?: string[];
 };
 

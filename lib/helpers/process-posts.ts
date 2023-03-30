@@ -4,6 +4,7 @@ import fs from "fs/promises";
 import matter from "gray-matter";
 import pMap from "p-map";
 import pMemoize from "p-memoize";
+import readingTime from "reading-time";
 import { AppConfig } from "@/lib/config";
 import type { PostFrontMatterType } from "@/types/post";
 
@@ -47,11 +48,12 @@ export const getPostData
   return {
     frontMatter: {
       ...(data as Partial<PostFrontMatterType>),
-      title: (data.title === undefined ?               "" : data.title),
-      date:  (data.date  === undefined ? "[unknown-date]" : data.date),
+      date: (data.date === undefined ? "[unknown-date]" : data.date),
+      title: (data.title === undefined ? "" : data.title),
+      minsRead: Math.round(readingTime(rawContent).minutes),
+      noWords: readingTime(rawContent).words,
       slug
     },
-
     content
   }
 }

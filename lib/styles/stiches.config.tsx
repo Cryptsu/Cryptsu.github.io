@@ -52,6 +52,13 @@ export const {
       white: "#DCFFEE",
       
       // Purpose
+      //   -> Title metadata
+      title: "$white",
+      hashtagActive: "$primary",
+      hashtagInactive: "#44966E",
+      metadata: hexToRgba("#DCFFEE", 0.5),
+      metadataIcon: "$tertiary",
+      
       //   -> Table of Content (toc)
       toc: "$white",
       tocDivider: "$grey",
@@ -68,6 +75,7 @@ export const {
       //   -> Header
       logoText: "$primary",
       blurBackground: hexToRgba("#101010", 0.5),
+      divider: hexToRgba("#BCDACB", 0.25),
         //       -> navLink
         navLink: "$primary",
         navLinkLineHover: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
@@ -77,11 +85,6 @@ export const {
 
       //   -> Content
       content: "$white",
-      
-      //   -> Intro
-      hashtagActive: "$primary",
-      hashtagInactive: "#44966E",
-      divider: hexToRgba("#BCDACB", 0.25),
 
       //   -> Table
       tableBorder: "$grey",
@@ -145,6 +148,7 @@ export const {
     },
 
     fonts: {
+      title: `${JetBrainsMono.style.fontFamily}, monospace`,
       content: `${JetBrainsMono.style.fontFamily}, monospace`,
       code: `${JetBrainsMono.style.fontFamily}, monospace`,
       logo: `${JetBrainsMono.style.fontFamily}, monospace`,
@@ -163,6 +167,9 @@ export const {
       h6: "12.5px",
 
       // Others
+      title: "$h0",
+      metadata: "$h5",
+      hashTag: "$h5",
       logo: "$h3",
       content: "$h5",
       code: "$h5",
@@ -183,7 +190,9 @@ export const {
       h6: "normal",
 
       // Others
+      title: "$h0",
       logo: "$h3",
+      hashTag: "bold",
       content: "$h5",
       imgalt: "bold",
       listHeading: "bold",
@@ -204,6 +213,9 @@ export const {
       h6: "-0.04em",
 
       // Others
+      title: "$h0",
+      metadata: "$h5",
+      hashTag: "$h5",
       logo: "$h3",
       content: "$h5",
       code: "$h5",
