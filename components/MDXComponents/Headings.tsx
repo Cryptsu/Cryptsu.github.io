@@ -53,7 +53,8 @@ const Heading = ({children, level=1, id="", ...otherProps}: HeadingProps) => {
   });
 
   return (
-    <Style ref={headingRef} style={HeadingStyles[level]} elementName={`h${level}`} id={id} {...otherProps}>
+    <Style ref={headingRef} style={HeadingCommonStyles} css={HeadingStyles[level]} elementName={`h${level}`} {...otherProps}>
+      <Style style={HeadingTargetStyles} id={id}/>
       {children}
     </Style>
   )
@@ -66,16 +67,26 @@ export const H4 = (props: PropsWithChildren<{}>) => <Heading level={4} {...props
 export const H5 = (props: PropsWithChildren<{}>) => <Heading level={5} {...props}/>
 export const H6 = (props: PropsWithChildren<{}>) => <Heading level={6} {...props}/>
 
+const HeadingTargetStyles: CSS = {
+  position: "absolute",
+  top: -90,
+}
+
+const HeadingCommonStyles: CSS = {
+  position: "relative",
+
+  fontFamily: theme.fonts.content,
+  color: theme.colors.contentText,
+  textTransform: "uppercase",
+}
+
 const HeadingStyles: {[level: number]: CSS} = {
   1: {
     // Font customizing
-    fontFamily: `${theme.fonts.content} !important`,
-    fontSize: `${theme.fontSizes.h1} !important`,
-    fontWeight: `${theme.fontWeights.h1} !important`,
-    letterSpacing: `${theme.letterSpacings.h1} !important`,
+    fontSize: theme.fontSizes.h1,
+    fontWeight: theme.fontWeights.h1,
+    letterSpacing: theme.letterSpacings.h1,
     lineHeight: theme.lineHeights.h1,
-    color: theme.colors.contentText,
-    textTransform: "uppercase",
 
     // Create a padding to divider
     paddingBottom: 8,
@@ -95,13 +106,10 @@ const HeadingStyles: {[level: number]: CSS} = {
 
   2: {
     // Font customizing
-    fontFamily: theme.fonts.content,
     fontSize: theme.fontSizes.h2,
     fontWeight: theme.fontWeights.h2,
     letterSpacing: theme.letterSpacings.h2,
     lineHeight: theme.lineHeights.h2,
-    color: theme.colors.contentText,
-    textTransform: "uppercase",
 
     // Create margin
     marginTop: 16,
@@ -110,43 +118,34 @@ const HeadingStyles: {[level: number]: CSS} = {
 
   3: {
     // Font customizing
-    fontFamily: theme.fonts.content,
     fontSize: theme.fontSizes.h3,
     fontWeight: theme.fontWeights.h3,
     letterSpacing: theme.letterSpacings.h3,
     lineHeight: theme.lineHeights.h3,
-    color: theme.colors.contentText,
-    textTransform: "uppercase",
 
     // Create margin
-    marginTop: 12,
-    marginBottom: 12,
+    marginTop: 16,
+    marginBottom: 16,
   },
 
   4: {
     // Font customizing
-    fontFamily: theme.fonts.content,
     fontSize: theme.fontSizes.h4,
     fontWeight: theme.fontWeights.h4,
     letterSpacing: theme.letterSpacings.h4,
     lineHeight: theme.lineHeights.h4,
-    color: theme.colors.contentText,
-    textTransform: "uppercase",
 
     // Create margin
-    marginTop: 12,
-    marginBottom: 12,
+    marginTop: 16,
+    marginBottom: 16,
   },
 
   5: {
     // Font customizing
-    fontFamily: theme.fonts.content,
     fontSize: theme.fontSizes.h5,
     fontWeight: theme.fontWeights.h5,
     letterSpacing: theme.letterSpacings.h5,
     lineHeight: theme.lineHeights.h5,
-    color: theme.colors.contentText,
-    textTransform: "uppercase",
 
     // Create margin
     marginTop: 8,
@@ -155,13 +154,10 @@ const HeadingStyles: {[level: number]: CSS} = {
 
   6: {
     // Font customizing
-    fontFamily: theme.fonts.content,
     fontSize: theme.fontSizes.h6,
     fontWeight: theme.fontWeights.h6,
     letterSpacing: theme.letterSpacings.h6,
     lineHeight: theme.lineHeights.h6,
-    color: theme.colors.contentText,
-    textTransform: "uppercase",
 
     // Create margin
     marginTop: 8,

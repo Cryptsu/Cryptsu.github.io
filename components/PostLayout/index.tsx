@@ -4,7 +4,7 @@ import Style from "@/components/Style";
 import TableOfContent from "./TableOfContent";
 import PostContent from "./PostContent";
 
-import type { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import type { MDXRemoteProps, MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { CSS } from "@stitches/react";
 import type { PostFrontMatterType } from "@/types/post.d";

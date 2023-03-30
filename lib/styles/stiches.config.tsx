@@ -232,7 +232,7 @@ export const {
     },
 
     zIndices: {
-
+      header: 99999,
     },
 
     shadows: {

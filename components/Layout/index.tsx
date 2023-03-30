@@ -1,4 +1,5 @@
 import Style from "@/components/Style";
+import Header from "@/components/Header";
 import useTheme from "@/hooks/useTheme";
 import { ThemeClassMap, theme } from "@/lib/styles/stiches.config";
 import { AssetsConst } from "@/lib/consts";
@@ -13,6 +14,9 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className={ThemeClassMap[activeTheme]}>
       <Style style={LayoutStyles}>
+        <Style style={LayoutHeaderStyles}>
+          <Header/>
+        </Style>
         {children}
       </Style>
     </div>
@@ -34,6 +38,12 @@ const LayoutStyles: CSS = {
   '*': {
     pointerEvents: "auto"
   }
+}
+
+const LayoutHeaderStyles: CSS = {
+  position: "sticky",
+  top: 0,
+  zIndex: theme.zIndices.header,
 }
 
 export default Layout;
