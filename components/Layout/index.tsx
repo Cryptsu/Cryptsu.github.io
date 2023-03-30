@@ -15,7 +15,9 @@ const Layout = ({ children, ...otherProps }: LayoutProps) => {
   return (
     <div className={ThemeClassMap[activeTheme]}>
       <Style style={LayoutStyles} {...otherProps}>
-        <Style as={Header} style={LayoutHeaderStyles}/>
+        <Style style={LayoutHeaderStyles}>
+          <Header/>
+        </Style>
         <Style>
           {children}
         </Style>
