@@ -45,7 +45,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   //  Observe it and return a value relative to viewport.
   ////////////////////////////////////////////////////////////////
   const { headingInfos } = useContent();
-  const onContentScroll = (e) => {
+  const onContentScroll = () => {
     for (let index = 0; index < headingInfos.length; ++index) {
       let headingRect = headingInfos[index].headingRef.current?.getBoundingClientRect();
       let headingPosition = 2; 
