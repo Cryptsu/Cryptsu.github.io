@@ -71,7 +71,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
     UpdateIntersectionsArray(newIntersectValues);
   }
 
-  // Track scrolling across website.
+  // Track scrolling on the website.
   useEffect(() => { 
     window.addEventListener('scroll', onContentScroll);
     return (
@@ -79,36 +79,56 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
     )
   })
 
+  ////////////////////////////////////////////////////////////////
+  //  This part anchors the table of content from scrolling 
+  //  back to the top when component re-render.
+  ////////////////////////////////////////////////////////////////
+  const scrollRef = useRef<HTMLElement>(null);
+  const scrollXYs = useMemo(() => {
+    if (intersections && scrollRef.current)
+      return [
+        scrollRef.current.scrollLeft,
+        scrollRef.current.scrollTop,
+      ]
+    return [0, 0];
+  }, [intersections]);
+
+  useLayoutEffect(() => {
+    scrollRef.current?.scrollTo(scrollXYs[0], scrollXYs[1]);
+  }, [intersections, scrollXYs])
+    
   return (
-    <Style style={TableOfContentStyles} {...otherProps}>
+    <Style ref={scrollRef} style={TableOfContentStyles} {...otherProps}>
       <Style style={TOCHeaderStyles}>
         {TxtConst.TXT_TOC}
       </Style>
-      {
-        headingInfos.map((headingInfo, index) => 
-          <Style key={index} 
-            style={TOCLinksWrapperStyles}
-            css={{
-              marginLeft: `calc(16px * ${headingInfo.level - 1})`,
-              borderWidth: intersections[index] == 0 ? 4 : 0,
-              fontWeight: intersections[index] == 0 ? theme.fontWeights.tocHighlighted : theme.fontWeights.toc,
-              borderTop: 0,
-              borderBottom: 0,
-              borderRight: 0,
-            }}
-          >
-            <Style 
-              elementName={HtmlConst.A} 
-              href={`#${headingInfo.headingID}`} 
-              style={TOCLinksStyles}
+      <Style style={TOCLinksWrapperStyles}>
+        {
+          headingInfos.map((headingInfo, index) => 
+            <Style key={index} 
+              style={TOCLinkWrapperStyles}
+              css={{
+                marginLeft: `calc(16px * ${headingInfo.level - 1})`,
+                borderWidth: intersections[index] == 0 ? 4 : 0,
+                fontWeight: intersections[index] == 0 ? theme.fontWeights.tocHighlighted : theme.fontWeights.toc,
+                borderTop: 0,
+                borderBottom: 0,
+                borderRight: 0,
+              }}
             >
-              <Style>
-                {headingInfo.headingContent}
+              <Style 
+                elementName={HtmlConst.A} 
+                href={`#${headingInfo.headingID}`} 
+                style={TOCLinksStyles}
+              >
+                <Style>
+                  {headingInfo.headingContent}
+                </Style>
               </Style>
             </Style>
-          </Style>
-        )
-      }
+          )
+        }
+      </Style>
     </Style>
   )
 }
@@ -123,12 +143,14 @@ const TableOfContentStyles: CSS = {
   borderWidth: 2,
   borderColor: theme.colors.tableBorder,
   borderStyle: "solid",
+  scrollBehavior: "auto",
 
   position: "sticky",
   top: "10vh",
   maxHeight: "calc(70vh)",
   maxWidth: "400px",
-  overflow: "auto",
+  display: "flex",
+  flexDirection: "column",
 
   marginLeft: 64,
   marginRight: 64,
@@ -145,14 +167,18 @@ const TOCHeaderStyles: CSS = {
 
   border: 0,
   margin: 0,
-  borderBottom: 4,
+  borderBottom: 2,
   marginBottom: 16,
-  paddingBottom: 4,
-  borderStyle: "solid",
+  paddingBottom: 8,
+  borderStyle: "dashed",
   borderColor: theme.colors.tocDivider,
 }
 
 const TOCLinksWrapperStyles: CSS = {
+  overflow: "auto",
+}
+
+const TOCLinkWrapperStyles: CSS = {
   display: "flex",
   borderStyle: "solid",
   borderColor: theme.colors.toc,
@@ -161,6 +187,7 @@ const TOCLinksWrapperStyles: CSS = {
 const TOCLinksStyles: CSS = {
   padding: 0,
   paddingLeft: 8,
+  paddingRight: 8,
   color: theme.colors.toc,
   '&:visisted': {
     color: theme.colors.toc,
