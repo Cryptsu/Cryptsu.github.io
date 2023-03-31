@@ -1,22 +1,17 @@
 import React, { useContext } from "react";
 import { CodeBlockContext } from "@/contexts/CodeBlockContext";
 import Style from "@/components/Style";
-import CodeLineNumber from "./CodeLineNumber";
 import CodeBlockContent from "./CodeBlockContent";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
-type CodeBlockInnerProps = PropsWithChildren<{
-
-}>
+type CodeBlockInnerProps = PropsWithChildren<{}>
 
 const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
   // Get number of lines for display.
-  const noLines = React.Children.count(children);
   const { showInner } = useContext(CodeBlockContext);
-
   return (
     <Style>
       <Style
@@ -26,7 +21,6 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
         }}
         {...otherProps}
       >
-        <CodeLineNumber noLines={noLines}/>
         <CodeBlockContent>
           {children}
         </CodeBlockContent>
