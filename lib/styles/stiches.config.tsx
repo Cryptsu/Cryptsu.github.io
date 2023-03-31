@@ -207,6 +207,7 @@ export const {
       codeLineNumber: "bold",
       tocHeader: "bold",
       toc: "$h6",
+      tocHighlighted: "bold",
     },
 
     letterSpacings: {

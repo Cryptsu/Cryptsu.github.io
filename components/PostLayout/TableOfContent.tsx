@@ -22,8 +22,6 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
       content: number[], 
       action: { type: "add" | "modify", intersectValue: number, index: number }
     ) => {
-            if (action.type === 'add')
-              return [...content, action.intersectValue]
             content[action.index] = action.intersectValue;
             return [...content];
          }
@@ -40,7 +38,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
       UpdateIntersectionsArray({
         type: "add",
         intersectValue: 0,
-        index: -1,
+        index: index,
       });
 
       const observer = new IntersectionObserver(([entry]) => {
@@ -71,7 +69,26 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   //  to note which value is there right now.
   ////////////////////////////////////////////////////////////////
   useEffect(() => {
-    console.log(intersections)
+    // if (intersections.findIndex(intersection => intersection === 0) === -1) {
+    //   if (intersections[intersections.length - 1] === -1) {
+    //     UpdateIntersectionsArray({
+    //       type: "modify",
+    //       intersectValue: 0,
+    //       index: intersections.length - 1,
+    //     })
+    //     return;
+    //   }
+
+    //   let oneIndex = intersections.findIndex(intersection => intersection === 1);
+    //   if (oneIndex <= 0)
+    //     return;
+
+    //   UpdateIntersectionsArray({
+    //     type: "modify",
+    //     intersectValue: 0,
+    //     index: oneIndex - 1,
+    //   })
+    // }
   }, [intersections])
 
   return (
@@ -81,14 +98,19 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
       </Style>
       {
         headingInfos.map((headingInfo, index) => 
-          <Style key={index}>
-            <Style elementName={HtmlConst.A} href={`#${headingInfo.headingID}`}
-              style={TOCLinksStyles}
-              css={{ 
-                paddingLeft: `calc(16px * ${headingInfo.level - 1})`
-              }} 
-            >
-              {headingInfo.headingContent} {` ${intersections[index]}`}
+          <Style key={index} 
+            style={TOCLinksWrapperStyles}
+            css={{
+              marginLeft: `calc(16px * ${headingInfo.level - 1})`,
+              borderWidth: intersections[index] == 0 ? 4 : 0,
+              fontWeight: intersections[index] == 0 ? theme.fontWeights.tocHighlighted : theme.fontWeights.toc,
+              borderTop: 0,
+              borderBottom: 0,
+              borderRight: 0,
+            }}
+          >
+            <Style elementName={HtmlConst.A} href={`#${headingInfo.headingID}`} style={TOCLinksStyles}>
+              {headingInfo.headingContent}
             </Style>
           </Style>
         )
@@ -136,7 +158,14 @@ const TOCHeaderStyles: CSS = {
   borderColor: theme.colors.tocDivider,
 }
 
+const TOCLinksWrapperStyles: CSS = {
+  borderStyle: "solid",
+  borderColor: theme.colors.toc,
+}
+
 const TOCLinksStyles: CSS = {
+  padding: 0,
+  paddingLeft: 8,
   color: theme.colors.toc,
   '&:visisted': {
     color: theme.colors.toc,
