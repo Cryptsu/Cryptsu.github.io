@@ -152,6 +152,7 @@ const TOCHeaderStyles: CSS = {
 }
 
 const TOCLinksWrapperStyles: CSS = {
+  display: "flex",
   borderStyle: "solid",
   borderColor: theme.colors.toc,
 }
