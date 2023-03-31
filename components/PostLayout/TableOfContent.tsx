@@ -118,7 +118,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
             <Style 
               elementName={HtmlConst.A} 
               href={`#${headingInfo.headingID}`} 
-              style={TOCLinksStyles}
+              style={TOCLinkStyles}
             >
               <Style>
                 {headingInfo.headingContent}
@@ -179,7 +179,7 @@ const TOCLinkWrapperStyles: CSS = {
   borderColor: theme.colors.toc,
 }
 
-const TOCLinksStyles: CSS = {
+const TOCLinkStyles: CSS = {
   padding: 0,
   paddingLeft: 8,
   paddingRight: 8,
