@@ -102,33 +102,31 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
       <Style style={TOCHeaderStyles}>
         {TxtConst.TXT_TOC}
       </Style>
-      <Style style={TOCLinksWrapperStyles}>
-        {
-          headingInfos.map((headingInfo, index) => 
-            <Style key={index} 
-              style={TOCLinkWrapperStyles}
-              css={{
-                marginLeft: `calc(16px * ${headingInfo.level - 1})`,
-                borderWidth: intersections[index] == 0 ? 4 : 0,
-                fontWeight: intersections[index] == 0 ? theme.fontWeights.tocHighlighted : theme.fontWeights.toc,
-                borderTop: 0,
-                borderBottom: 0,
-                borderRight: 0,
-              }}
+      {
+        headingInfos.map((headingInfo, index) => 
+          <Style key={index} 
+            style={TOCLinkWrapperStyles}
+            css={{
+              marginLeft: `calc(16px * ${headingInfo.level - 1})`,
+              borderWidth: intersections[index] == 0 ? 4 : 0,
+              fontWeight: intersections[index] == 0 ? theme.fontWeights.tocHighlighted : theme.fontWeights.toc,
+              borderTop: 0,
+              borderBottom: 0,
+              borderRight: 0,
+            }}
+          >
+            <Style 
+              elementName={HtmlConst.A} 
+              href={`#${headingInfo.headingID}`} 
+              style={TOCLinksStyles}
             >
-              <Style 
-                elementName={HtmlConst.A} 
-                href={`#${headingInfo.headingID}`} 
-                style={TOCLinksStyles}
-              >
-                <Style>
-                  {headingInfo.headingContent}
-                </Style>
+              <Style>
+                {headingInfo.headingContent}
               </Style>
             </Style>
-          )
-        }
-      </Style>
+          </Style>
+        )
+      }
     </Style>
   )
 }
@@ -144,6 +142,7 @@ const TableOfContentStyles: CSS = {
   borderColor: theme.colors.tableBorder,
   borderStyle: "solid",
   scrollBehavior: "auto",
+  overflow: "auto",
 
   position: "sticky",
   top: "10vh",
@@ -172,10 +171,6 @@ const TOCHeaderStyles: CSS = {
   paddingBottom: 8,
   borderStyle: "dashed",
   borderColor: theme.colors.tocDivider,
-}
-
-const TOCLinksWrapperStyles: CSS = {
-  overflow: "auto",
 }
 
 const TOCLinkWrapperStyles: CSS = {
