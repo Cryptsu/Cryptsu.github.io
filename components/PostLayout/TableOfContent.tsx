@@ -171,6 +171,16 @@ const TOCHeaderStyles: CSS = {
   paddingBottom: 8,
   borderStyle: "dashed",
   borderColor: theme.colors.tocDivider,
+
+  '&:before': {
+    content: "'< '",
+    color: theme.colors.tocDivider,
+  },
+
+  '&:after': {
+    content: "' />'",
+    color: theme.colors.tocDivider,
+  }
 }
 
 const TOCLinkWrapperStyles: CSS = {
