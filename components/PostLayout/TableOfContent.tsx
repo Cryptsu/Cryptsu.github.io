@@ -1,4 +1,4 @@
-import { useEffect, useRef, useReducer, useState } from "react"
+import { useEffect, useRef, useReducer, useState, useMemo, useLayoutEffect } from "react"
 import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
@@ -21,22 +21,25 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   ////////////////////////////////////////////////////////////////
   const [ intersections, UpdateIntersectionsArray ] = useReducer(
     (
-      content: number[], 
-      action: { type: "modify", intersectValue: number, index: number }
+      oldIntersectValues: number[], 
+      newIntersectValues: number[],
     ) => {
             // Make sure something is always highlighted 
             // (except for the very first section with no header.)
-            if (action.index >= 1 && action.intersectValue === 1 && content[action.index - 1] === -1)
-              content[action.index - 1] = 0;
+            for (let index = 0; index < newIntersectValues.length; ++index) {
+              if (index < newIntersectValues.length - 1) {
+                if (newIntersectValues[index] == -1 && newIntersectValues[index + 1] == 1) {
+                  newIntersectValues[index] = 0;
+                  break;
+                }
+              } 
+              else if (newIntersectValues[index] == -1) {
+                newIntersectValues[index] = 0;
+                break;
+              }
+            }
 
-            // This also does the same but with the last element :)
-            if (action.index === content.length - 1 && action.intersectValue === -1)
-              content[action.index] = 0;
-            else 
-              content[action.index] = action.intersectValue;
-
-            // Return the modified array so that they can detect change :)
-            return [...content];
+            return newIntersectValues;
          }
   , []);
 
@@ -46,28 +49,26 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   ////////////////////////////////////////////////////////////////
   const { headingInfos } = useContent();
   const onContentScroll = () => {
+    let newIntersectValues: number[] = [];
     for (let index = 0; index < headingInfos.length; ++index) {
       let headingRect = headingInfos[index].headingRef.current?.getBoundingClientRect();
       let headingPosition = 2; 
       if (headingRect) {
-        if (headingRect.top < 0) 
+        if (headingRect.top < 90) 
           headingPosition = -1;
         else if (headingRect.bottom > (window.innerHeight || document.documentElement.clientHeight))
           headingPosition = 1;
         else
           headingPosition = 0;
       }  
-        
-      // Not always the reducer will set 
-      // the headingPosition value correctly.
-      // It is intentional when you look at
-      // the code :)
-      UpdateIntersectionsArray({
-        type: "modify",
-        intersectValue: headingPosition,
-        index: index
-      })
+      newIntersectValues.push(headingPosition);
     }
+
+    // Not always the reducer will set 
+    // the headingPosition value correctly.
+    // It is intentional when you look at
+    // the code :)
+    UpdateIntersectionsArray(newIntersectValues);
   }
 
   // Track scrolling across website.
