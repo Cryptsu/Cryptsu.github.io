@@ -11,10 +11,7 @@ export default function Document() {
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
       </Head>
       {/* TODO: This is a quick fix for page flickering. Very bad looking. */}
-      <body 
-        className={ThemeClassMap[ThemeConst.THEME_DEFAULT]} 
-        style={{backgroundColor: theme.colors.pageBackground.computedValue}}
-      > 
+      <body className={ThemeClassMap[ThemeConst.THEME_DEFAULT]}> 
         <Main />
         <NextScript />
       </body>

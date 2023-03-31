@@ -23,34 +23,12 @@ const Heading = ({children, level=1, id="", ...otherProps}: HeadingProps) => {
         data: {
           headingContent: children, 
           headingID: id, 
-          cmpViewPort: -1,
+          headingRef: headingRef,
           level: level,
         }
       }
     );
   }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      UpdateHeadingInfoReducer(
-        {
-          name: "updateVisibility",
-          data: {
-            headingContent: children, 
-            headingID: id, 
-            cmpViewPort: (
-              entry.isIntersecting
-                ? 0
-                : entry.boundingClientRect.y < 0 ? 1 : -1
-            ),
-            level: level,
-          }
-        }
-      );
-    });
-    observer.observe(headingRef?.current!);
-    return () => observer.disconnect();
-  });
 
   return (
     <Style ref={headingRef} style={HeadingCommonStyles} css={HeadingStyles[level]} elementName={`h${level}`} {...otherProps}>

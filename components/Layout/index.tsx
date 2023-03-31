@@ -1,7 +1,6 @@
 import Style from "@/components/Style";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import useTheme from "@/hooks/useTheme";
 import { ThemeClassMap, theme } from "@/lib/styles/stiches.config";
 import { AssetsConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
@@ -10,20 +9,16 @@ import type { CSS } from "@stitches/react";
 type LayoutProps = PropsWithChildren<{}>;
 
 const Layout = ({ children, ...otherProps }: LayoutProps) => {
-  const { activeTheme } = useTheme();
-
   return (
-    <div className={ThemeClassMap[activeTheme]}>
-      <Style style={LayoutStyles} {...otherProps}>
-        <Style style={LayoutHeaderStyles}>
-          <Header/>
-        </Style>
-        <Style>
-          {children}
-        </Style>
-        <Footer/>
+    <Style style={LayoutStyles} {...otherProps}>
+      <Style style={LayoutHeaderStyles}>
+        <Header/>
       </Style>
-    </div>
+      <Style>
+        {children}
+      </Style>
+      <Footer/>
+    </Style>
   )
 }
 
@@ -34,10 +29,6 @@ const LayoutStyles: CSS = {
 
   display: "grid",
   gridTemplateRows: "auto 1fr auto",
-
-  // Background with something sprinkle in.
-  backgroundColor: theme.colors.pageBackground,
-  backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
 
   // Stops phones from keeping selecting background image instead of content.
   // while making children elements selectable.

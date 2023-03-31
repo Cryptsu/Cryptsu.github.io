@@ -1,4 +1,5 @@
 import { createStitches } from "@stitches/react";
+import { AssetsConst } from "@/lib/consts";
 import type * as Stitches from "@stitches/react";
 
 // Helpers
@@ -359,5 +360,10 @@ export const globalStyles = globalCss({
     '&:active': {
       textDecoration: "none"
     }
+  },
+
+  'body': {
+    backgroundColor: "$pageBackground",
+    backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
   }
 });

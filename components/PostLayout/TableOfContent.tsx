@@ -5,11 +5,17 @@ import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
+import useIsInViewport from "@/hooks/useIsInViewPort";
 
 type TableOfContentProps = PropsWithChildren<{}>
 
 const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   const { headingInfos } = useContent();
+  const headingCmpViews = headingInfos.map(
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    headingInfo => useIsInViewport(headingInfo.headingRef)
+  )
+  console.log(headingCmpViews)
 
   return (
     <Style style={TableOfContentStyles} {...otherProps}>
