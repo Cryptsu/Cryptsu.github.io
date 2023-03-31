@@ -78,19 +78,6 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
     )
   })
 
-  // When intersection array changes,
-  // always remember to focus on the 
-  // currently focused element :)
-  const [currentIndex, setCurrentIndex] = useState(-1);
-  useEffect(() => {
-    setCurrentIndex(intersections.findIndex(intersection => intersection === 0))
-  }, [intersections]);
-
-  const focusRef = useRef<HTMLElement>(null);
-  useEffect(() => {
-    // focusRef.current?.scrollIntoView();
-  }, [currentIndex])
-
   return (
     <Style style={TableOfContentStyles} {...otherProps}>
       <Style style={TOCHeaderStyles}>
@@ -108,14 +95,15 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
               borderBottom: 0,
               borderRight: 0,
             }}
-            ref={index === currentIndex ? focusRef : null}
           >
             <Style 
               elementName={HtmlConst.A} 
               href={`#${headingInfo.headingID}`} 
               style={TOCLinksStyles}
             >
-              {headingInfo.headingContent}
+              <Style>
+                {headingInfo.headingContent}
+              </Style>
             </Style>
           </Style>
         )
