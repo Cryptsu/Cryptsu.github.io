@@ -139,7 +139,7 @@ const TableOfContentStyles: CSS = {
   top: "10vh",
   maxHeight: "calc(70vh)",
   maxWidth: "400px",
-  overflow: "hidden",
+  overflow: "auto",
 
   marginLeft: 64,
   marginRight: 64,
