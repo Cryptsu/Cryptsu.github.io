@@ -1,38 +1,25 @@
 import { useReducer } from "react";
 import { ContentContext } from "@/contexts/ContentContext";
 import type { PropsWithChildren } from "react";
-import type { HeadingInfoType, UpdateHeadingInfoReducerActionType } from "@/contexts/ContentContext"
+import type { HeadingInfoType} from "@/contexts/ContentContext"
 
 type ContentProviderProps = PropsWithChildren<{}>;
 
-const UpdateHeadingInfoReducerFn = (currentHeadingInfos: HeadingInfoType[], action: UpdateHeadingInfoReducerActionType) => {
+const UpdateHeadingInfoReducerFn = (currentHeadingInfos: HeadingInfoType[], newHeadingInfo: HeadingInfoType) => {
   const findIndex = currentHeadingInfos.findIndex(
     (currentHeadingInfo) => 
-      currentHeadingInfo.headingID === action.data.headingID &&
-      currentHeadingInfo.level === action.data.level
+      currentHeadingInfo.headingID === newHeadingInfo.headingID &&
+      currentHeadingInfo.level === newHeadingInfo.level
   );
 
   if (findIndex === -1) {
-    switch (action.name)
-    {
-      case "append":
-        return [
-          ...currentHeadingInfos, 
-          action.data
-        ]
-      default:
-        return currentHeadingInfos;
-    }
+    return [
+      ...currentHeadingInfos, 
+      newHeadingInfo
+    ]
   }
 
-  switch (action.name)
-  {
-    case "updateVisibility":
-      currentHeadingInfos[findIndex] = action.data;
-    case "append":
-    default:
-      return currentHeadingInfos;
-  }
+  return currentHeadingInfos;
 }
 
 const ContentProvider = ({children, ...otherProps}: ContentProviderProps) => {

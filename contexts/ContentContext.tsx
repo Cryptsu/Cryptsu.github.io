@@ -8,19 +8,14 @@ export type HeadingInfoType = {
   level: number,
 }
 
-export type UpdateHeadingInfoReducerActionType = {
-  name: "append" | "updateVisibility",
-  data: HeadingInfoType
-}
-
 type ContentContextType = (
   Context<{
     headingInfos: HeadingInfoType[];
-    UpdateHeadingInfoReducer: Dispatch<UpdateHeadingInfoReducerActionType>;
+    UpdateHeadingInfoReducer: Dispatch<HeadingInfoType>;
   }>
 )
 
 export const ContentContext: ContentContextType = createContext({
   headingInfos: [] as HeadingInfoType[],
-  UpdateHeadingInfoReducer: (action: UpdateHeadingInfoReducerActionType) => {}
+  UpdateHeadingInfoReducer: (newHeadingInfo: HeadingInfoType) => {}
 })

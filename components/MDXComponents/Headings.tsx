@@ -17,17 +17,12 @@ const Heading = ({children, level=1, id="", ...otherProps}: HeadingProps) => {
   const { UpdateHeadingInfoReducer } = useContent();
 
   useOnce(() => {
-    UpdateHeadingInfoReducer(
-      {
-        name: "append",
-        data: {
-          headingContent: children, 
-          headingID: id, 
-          headingRef: headingRef,
-          level: level,
-        }
-      }
-    );
+    UpdateHeadingInfoReducer({
+      headingContent: children, 
+      headingID: id, 
+      headingRef: headingRef,
+      level: level,
+    });
   }, []);
 
   return (

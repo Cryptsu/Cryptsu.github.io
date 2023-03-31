@@ -1,21 +1,78 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useReducer } from "react"
 import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
-import useIsInViewport from "@/hooks/useIsInViewPort";
 
 type TableOfContentProps = PropsWithChildren<{}>
 
 const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
+  ////////////////////////////////////////////////////////////////
+  //
+  //  This array contains values of -1, 0, or 1.
+  //    -1 means that Y(headings[index]) < Y(viewport)
+  //     0 means that headings[index] in viewport.
+  //     1 means that Y(headings[index]) > Y(viewport)
+  //
+  ////////////////////////////////////////////////////////////////
+  const [ intersections, UpdateIntersectionsArray ] = useReducer(
+    (
+      content: number[], 
+      action: { type: "add" | "modify", intersectValue: number, index: number }
+    ) => {
+            if (action.type === 'add')
+              return [...content, action.intersectValue]
+            content[action.index] = action.intersectValue;
+            return [...content];
+         }
+  , []);
+
+  ////////////////////////////////////////////////////////////////
+  //  This part uses the collected refs from the headings.
+  //  Observe it and return a value relative to viewport.
+  ////////////////////////////////////////////////////////////////
   const { headingInfos } = useContent();
-  const headingCmpViews = headingInfos.map(
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    headingInfo => useIsInViewport(headingInfo.headingRef)
-  )
-  console.log(headingCmpViews)
+  useEffect(() => {
+    let observers: IntersectionObserver[] = [];
+    for (let index = 0; index < headingInfos.length; ++index) {
+      UpdateIntersectionsArray({
+        type: "add",
+        intersectValue: 0,
+        index: -1,
+      });
+
+      const observer = new IntersectionObserver(([entry]) => {
+        UpdateIntersectionsArray({
+          type: "modify",
+          intersectValue: (
+            entry.isIntersecting 
+              ? 0 
+              : entry.boundingClientRect.y < 0 
+                  ? -1 
+                  : 1
+          ),
+          index: index,
+        });
+      });
+      observer.observe(headingInfos[index].headingRef.current!);
+      observers.push(observer);
+    }
+
+    return () => {
+      for (let observer of observers)
+        observer.disconnect();
+    };
+  }, [headingInfos]);
+
+  ////////////////////////////////////////////////////////////////
+  //  This part uses changed intersections value
+  //  to note which value is there right now.
+  ////////////////////////////////////////////////////////////////
+  useEffect(() => {
+    console.log(intersections)
+  }, [intersections])
 
   return (
     <Style style={TableOfContentStyles} {...otherProps}>
@@ -31,7 +88,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
                 paddingLeft: `calc(16px * ${headingInfo.level - 1})`
               }} 
             >
-              {headingInfo.headingContent}
+              {headingInfo.headingContent} {` ${intersections[index]}`}
             </Style>
           </Style>
         )
