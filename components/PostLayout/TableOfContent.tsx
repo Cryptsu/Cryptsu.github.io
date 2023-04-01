@@ -54,7 +54,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
       let headingRect = headingInfos[index].headingRef.current?.getBoundingClientRect();
       let headingPosition = 2; 
       if (headingRect) {
-        if (headingRect.top < 90) 
+        if (headingRect.top < 68) 
           headingPosition = -1;
         else if (headingRect.bottom > (window.innerHeight || document.documentElement.clientHeight))
           headingPosition = 1;
@@ -107,12 +107,9 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
           <Style key={index} 
             style={TOCLinkWrapperStyles}
             css={{
-              marginLeft: `calc(16px * ${headingInfo.level - 1})`,
-              borderWidth: intersections[index] == 0 ? 4 : 0,
+              marginLeft: `calc(2rem * ${headingInfo.level - 1})`,
+              borderWidth: `0px 0px 0px ${intersections[index] == 0 ? 4 : 0}px`,
               fontWeight: intersections[index] == 0 ? theme.fontWeights.tocHighlighted : theme.fontWeights.toc,
-              borderTop: 0,
-              borderBottom: 0,
-              borderRight: 0,
             }}
           >
             <Style 
