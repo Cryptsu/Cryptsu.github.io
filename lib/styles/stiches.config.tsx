@@ -64,7 +64,8 @@ export const {
       footerText: '#778980',
       
       //   -> Table of Content (toc)
-      toc: "$white",
+      toc: "#bfddce",
+      tocActive: "#FDFDFD",
       tocDivider: "$grey",
 
       //   -> Button

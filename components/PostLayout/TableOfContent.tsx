@@ -108,9 +108,10 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
             style={TOCLinkWrapperStyles}
             css={{
               marginTop: headingInfo.level === 1 ? 4 : 0,
-              marginLeft: `calc(2rem * ${headingInfo.level - 1})`,
+              marginLeft: `calc(1.5rem * ${headingInfo.level - 1})`,
               borderWidth: `0px 0px 0px ${intersections[index] == 0 ? 4 : 0}px`,
               fontWeight: intersections[index] == 0 ? theme.fontWeights.tocHighlighted : theme.fontWeights.toc,
+              color: intersections[index] == 0 ? theme.colors.tocActive : theme.colors.toc,
             }}
           >
             <Style 
@@ -205,10 +206,12 @@ const TOCLinkStyles: CSS = {
   padding: 0,
   paddingLeft: 8,
   paddingRight: 8,
-  color: theme.colors.toc,
   '&:visisted': {
     color: theme.colors.toc,
   },
+  '&:hover': {
+    color: theme.colors.tocActive
+  }
 }
 
 export default TableOfContent;
