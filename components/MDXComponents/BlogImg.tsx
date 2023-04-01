@@ -1,6 +1,6 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
+import { AssetsConst, HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -13,7 +13,18 @@ type BlogImgProps = PropsWithChildren<{
 
 const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) => {
   const renderImg = () => {
-    return <Style elementName={HtmlConst.IMG} style={BlogImgStyles} alt={alt} css={{width, height}} {...otherProps}>
+    return <Style 
+              elementName={HtmlConst.IMG} 
+              style={BlogImgStyles} 
+              alt={alt} 
+              css={{width, height}} 
+              onError={
+                (event: Event) => {
+                  (event.target as HTMLImageElement).src = AssetsConst.EMPTY_SVG
+                }
+              }
+              {...otherProps}
+            >
               {children}
            </Style>
   }

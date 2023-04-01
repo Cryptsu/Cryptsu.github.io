@@ -2,6 +2,7 @@ import Style from "@/components/Style";
 import PostTitle from "./PostTitle";
 import PostMetadatas from "./PostMetadatas";
 import PostTags from "./PostTags";
+import PostCover from "./PostCover";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
@@ -15,6 +16,7 @@ type PostHeaderProps = PropsWithChildren<{
 const PostHeader = ({children, frontMatter, ...otherProps}: PostHeaderProps) => {
   return (
     <Style style={PostHeaderStyles} {...otherProps}>
+      <PostCover coverImageURL={frontMatter.coverImage}/>
       <PostTitle>
         {frontMatter.title}
       </PostTitle>

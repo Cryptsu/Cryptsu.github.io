@@ -86,6 +86,7 @@ export const {
 
       //   -> Layout
       pageBackground: "$blackest",
+      pageBackgroundButUsesGradient: "linear-gradient(90deg, $pageBackground 0%, $pageBackground 100%)",
 
       //   -> Content
       content: "$white",
