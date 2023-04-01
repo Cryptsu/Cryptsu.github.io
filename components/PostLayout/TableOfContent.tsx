@@ -2,7 +2,7 @@ import { useEffect, useRef, useReducer, useState, useMemo, useLayoutEffect } fro
 import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst, TxtConst } from "@/lib/consts";
+import { MiscConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren,  RefObject } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -54,9 +54,9 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
       let headingRect = headingInfos[index].headingRef.current?.getBoundingClientRect();
       let headingPosition = 2; 
       if (headingRect) {
-        if (headingRect.top < 0) 
+        if (headingRect.top < -1) 
           headingPosition = -1;
-        else if (headingRect.bottom > (window.innerHeight || document.documentElement.clientHeight))
+        else if (headingRect.bottom > (window.innerHeight || document.documentElement.clientHeight) - MiscConst.HEADER_SIZE)
           headingPosition = 1;
         else
           headingPosition = 0;

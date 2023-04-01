@@ -3,7 +3,7 @@ import useContent from "@/hooks/useContent";
 import useOnce from "@/hooks/useOnce";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
+import { MiscConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -42,7 +42,7 @@ export const H6 = (props: PropsWithChildren<{}>) => <Heading level={6} {...props
 
 const HeadingTargetStyles: CSS = {
   position: "absolute",
-  top: -90,
+  top: -MiscConst.HEADER_SIZE,
 }
 
 const HeadingCommonStyles: CSS = {
