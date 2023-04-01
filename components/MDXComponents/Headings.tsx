@@ -57,18 +57,7 @@ const HeadingStyles: {[level: number]: CSS} = {
     fontWeight: theme.fontWeights.h1,
     letterSpacing: theme.letterSpacings.h1,
     lineHeight: theme.lineHeights.h1,
-
-    // Create a padding to divider
-    paddingBottom: 8,
-
-    // Create the divider
-    borderBottom: 4,
-    borderTop: 0,
-    borderLeft: 0,
-    borderRight: 0,
-    borderStyle: "dashed",
-    borderColor: theme.colors.divider,
-
+    
     // Create margin
     marginTop: 16,
     marginBottom: 16,

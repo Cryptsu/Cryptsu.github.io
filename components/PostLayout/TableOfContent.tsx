@@ -141,6 +141,8 @@ const TableOfContentStyles: CSS = {
   scrollBehavior: "auto",
   overflow: "auto",
 
+  userSelect: "none",
+
   position: "sticky",
   top: "10vh",
   maxHeight: "calc(70vh)",
