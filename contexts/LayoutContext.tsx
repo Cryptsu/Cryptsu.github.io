@@ -3,10 +3,16 @@ import type { Context } from "react";
 
 type LayoutContextType = (
   Context<{
+    currentTheme: string,
+    currentLocale: string,
     setTheme: (theme: string) => void;
+    setLocale: (locale: string) => void;
   }>
 )
 
 export const LayoutContext: LayoutContextType = createContext({
-  setTheme: (_) => {}
+  currentTheme: "",
+  currentLocale: "",
+  setTheme: (_) => {},
+  setLocale: (_) => {},
 })
