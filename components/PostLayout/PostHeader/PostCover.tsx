@@ -9,22 +9,27 @@ type PostCoverProps = PropsWithChildren<{
 }>
 
 const PostCover = ({children, coverImageURL, ...otherProps}: PostCoverProps) => {
-  // TODO: Investigate why this image fails
+  // What the hell... If I put a component inside a function
+  // then when Next.js compiles, it will register onError !?
+  const renderImg = () => {
+    return <Style 
+            style={PostCoverStyles} 
+            elementName={HtmlConst.IMG} 
+            src={coverImageURL ? coverImageURL : AssetsConst.NO_SVG} 
+            onError={
+              (event: Event) => {
+                (event.target as HTMLImageElement).src = AssetsConst.EMPTY_SVG
+              }
+            }
+            {...otherProps}
+           >
+            {children}
+           </Style>
+  }
+
   return (
     <Style style={PostCoverWrapperStyles}>
-      <Style 
-        style={PostCoverStyles} 
-        elementName={HtmlConst.IMG} 
-        src={coverImageURL} 
-        onError={
-          (event: Event) => {
-            (event.target as HTMLImageElement).src = AssetsConst.EMPTY_SVG
-          }
-        }
-        {...otherProps}
-      >
-        {children}
-      </Style>
+      {renderImg()}
     </Style>
   )
 }
@@ -49,7 +54,6 @@ const PostCoverStyles: CSS = {
   backgroundColor: theme.colors.pageBackground,
   borderRadius: 16,
   width: "100%", 
-  maxHeight: "100%",
 };
 
 export default PostCover;

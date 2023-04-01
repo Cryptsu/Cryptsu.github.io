@@ -12,7 +12,8 @@ type BlogImgProps = PropsWithChildren<{
 }>
 
 const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) => {
-  // TODO: Investigate why this image fails
+  // What the hell... If I put a component inside a function  
+  // then when Next.js compiles, it will register onError !?
   const renderImg = () => {
     return <Style 
               elementName={HtmlConst.IMG} 
