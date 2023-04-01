@@ -6,6 +6,7 @@ import pMap from "p-map";
 import pMemoize from "p-memoize";
 import readingTime from "reading-time";
 import { AppConfig } from "@/lib/config";
+import { formatDate } from "@/lib/helpers/format-date";
 import type { PostFrontMatterType } from "@/types/post";
 
 export const getPostSlugs 
@@ -48,7 +49,7 @@ export const getPostData
   return {
     frontMatter: {
       ...(data as Partial<PostFrontMatterType>),
-      date: (data.date === undefined ? "[unknown-date]" : data.date),
+      date: formatDate(data.date),
       title: (data.title === undefined ? "" : data.title),
       minsRead: Math.round(readingTime(rawContent).minutes),
       noWords: readingTime(rawContent).words,
