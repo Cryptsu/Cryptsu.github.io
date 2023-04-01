@@ -231,7 +231,7 @@ export const {
       content: "$h5",
       code: "$h5",
       codeLang: "$h5",
-      toc: "$h6",
+      toc: "-0.05em",
       navlink: "$h5",
     },
 
