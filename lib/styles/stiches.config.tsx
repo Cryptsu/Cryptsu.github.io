@@ -51,8 +51,12 @@ export const {
       blackest: "#101010",
       grey: "#454C48",
       white: "#DCFFEE",
+
+      // Main page
+      //   -> Author section
+      authorBackground: hexToRgba("#202220", 0.5),
       
-      // Purpose
+      // Post page
       //   -> Title metadata
       title: "$white",
       hashtagActive: "$primary",
@@ -185,6 +189,8 @@ export const {
       imgalt: "$content",
       toc: "$h6",
       tocHeader: "$h5",
+      authorBoxName: "$h4",
+      authorBoxDesc: "$h5",
     },
 
     fontWeights: {
@@ -210,6 +216,8 @@ export const {
       tocHeader: "bold",
       toc: "$h6",
       tocHighlighted: "bold",
+      authorBoxName: "$h4",
+      authorBoxDesc: "$h5",
     },
 
     letterSpacings: {
@@ -233,6 +241,8 @@ export const {
       codeLang: "$h5",
       toc: "-0.05em",
       navlink: "$h5",
+      authorBoxName: "$h4",
+      authorBoxDesc: "$h5",
     },
 
     lineHeights: {

@@ -45,8 +45,8 @@ const LayoutProvider = ({ children }: LayoutProviderProps) => {
 
         setTheme: 
           (theme: string) => { 
-            // Set to local storage.
             setLocalStorage(StorageConst.KEY_THEME, theme);
+            setCurrentTheme(theme);
             
             // TODO: This hack works to prevent flickering
             // during page scrolling, but ugly as hell. 
@@ -57,7 +57,8 @@ const LayoutProvider = ({ children }: LayoutProviderProps) => {
 
         setLocale: 
           (locale: string) => {
-            setCurrentLocale(locale)
+            setLocalStorage(StorageConst.KEY_LOCALE, locale);
+            setCurrentLocale(locale);
           }
       }}
     >
