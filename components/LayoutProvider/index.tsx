@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import useOnce from "@/hooks/useOnce";
-import { ThemeContext } from "@/contexts/ThemeContext";
+import { LayoutContext } from "@/contexts/LayoutContext";
 import { getLocalStorage, setLocalStorage } from "@/lib/helpers/storage";
 import { ThemeClassMap } from "@/lib/styles/stiches.config";
 import { ThemeConst, StorageConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 
-type ThemeProviderProps = PropsWithChildren<{}>
+type LayoutProviderProps = PropsWithChildren<{}>
 
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
+const LayoutProvider = ({ children }: LayoutProviderProps) => {
   // This component is triggered once during the page visit.
   useOnce(() => {
     let userConfigTheme = getLocalStorage(StorageConst.KEY_THEME);
@@ -23,7 +23,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
   }, []);
 
   return (
-    <ThemeContext.Provider
+    <LayoutContext.Provider
       value={{
         setTheme: 
           (theme: string) => { 
@@ -39,8 +39,8 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
       }}
     >
       {children}
-    </ThemeContext.Provider> 
+    </LayoutContext.Provider> 
   )
 }
 
-export default ThemeProvider;
+export default LayoutProvider;

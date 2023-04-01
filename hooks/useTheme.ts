@@ -1,15 +1,15 @@
 import { useContext } from "react";
-import { ThemeContext } from "@/contexts/ThemeContext";
+import { LayoutContext } from "@/contexts/LayoutContext";
 
 /////////////////////////////////////////////////////
 //  This code is copied from jarv.is
 /////////////////////////////////////////////////////
 
 const useTheme = () => {
-  const context = useContext(ThemeContext);
+  const context = useContext(LayoutContext);
 
   if (!context) {
-    throw new Error("useTheme must be used inside of a ThemeProvider.")
+    throw new Error("useTheme must be used inside of a LayoutProvider.")
   }
 
   return context;

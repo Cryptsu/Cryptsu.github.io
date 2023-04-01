@@ -1,12 +1,12 @@
 import { createContext } from "react";
 import type { Context } from "react";
 
-type ThemeContextType = (
+type LayoutContextType = (
   Context<{
     setTheme: (theme: string) => void;
   }>
 )
 
-export const ThemeContext: ThemeContextType = createContext({
+export const LayoutContext: LayoutContextType = createContext({
   setTheme: (_) => {}
 })
