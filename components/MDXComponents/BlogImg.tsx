@@ -12,6 +12,7 @@ type BlogImgProps = PropsWithChildren<{
 }>
 
 const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) => {
+  // TODO: Investigate why this image fails
   const renderImg = () => {
     return <Style 
               elementName={HtmlConst.IMG} 

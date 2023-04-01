@@ -9,6 +9,7 @@ type PostCoverProps = PropsWithChildren<{
 }>
 
 const PostCover = ({children, coverImageURL, ...otherProps}: PostCoverProps) => {
+  // TODO: Investigate why this image fails
   return (
     <Style style={PostCoverWrapperStyles}>
       <Style 
