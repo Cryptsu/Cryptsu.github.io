@@ -36,7 +36,6 @@ const PostCoverWrapperStyles: CSS = {
   justifyContent: "center",
   margin: 0,
   marginTop: 16,
-  marginBottom: 16,
   gap: 8,
 
   backgroundImage: theme.colors.gradient,
