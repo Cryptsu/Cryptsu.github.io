@@ -12,30 +12,23 @@ type BlogImgProps = PropsWithChildren<{
 }>
 
 const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) => {
+  const renderImg = () => {
+    return <Style elementName={HtmlConst.IMG} style={BlogImgStyles} alt={alt} css={{width, height}} {...otherProps}>
+              {children}
+           </Style>
+  }
+
+  const renderAlt = () => {
+    if (alt)
+      return <Style style={BlogImgDescriptionStyles}>
+               {alt}
+             </Style>
+  }
+
   return (
     <Style style={BlogImgWrapperStyles}>
-      <Style 
-        elementName={HtmlConst.IMG}  
-        style={BlogImgStyles} 
-        css={{
-          width,
-          height
-        }} 
-        alt={alt}
-        {...otherProps}
-      >
-        {children}
-      </Style>
-
-      {
-        alt 
-          ? <Style style={BlogImgDescriptionStyles}>
-              {alt}
-            </Style>
-          : <>
-            </>
-      }
-      
+      {renderImg()}
+      {renderAlt()}
     </Style>
   )
 }
