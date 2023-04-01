@@ -67,7 +67,7 @@ export const getAllPosts
       const slugs = await getPostSlugs();
       const datas = await pMap(slugs, async (slug) => (await getPostData(slug)).frontMatter);
       
-      // TODO: Date is not correct!
+      // Now it is correct :)
       datas.sort((post1, post2) => (post1.date > post2.date ? -1:1));
       return datas;
     }

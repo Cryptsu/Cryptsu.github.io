@@ -34,6 +34,9 @@ const IsomorphicDayJs = (locale: string, date?: dayjs.ConfigType): dayjs.Dayjs =
 // hydration errors by returning an instance of dayjs with these defaults set.
 // date defaults to now, format defaults to ISO 8601 (e.g. 2022-04-07T21:53:33-04:00)
 export const formatDate = (date?: dayjs.ConfigType, formatStr?: string): string => {
+  // Return this date-string format is so cool!
+  // If we compare strings in this format,
+  // it would be as if we're comparing in time.
   return IsomorphicDayJs(LocaleConst.LOCALE_EN, date).format(formatStr);
 };
 
