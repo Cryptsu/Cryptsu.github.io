@@ -1,4 +1,5 @@
 import Style from "@/components/Style";
+import BlinkingText from "@/components/BlinkingText";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import { AppConfig } from "@/lib/config";
@@ -19,7 +20,7 @@ const AuthorBox = ({children, ...otherProps}: AuthorBoxProps) => {
         {AppConfig.AUTHOR_NAME}
       </Style>
       <Style style={AuthorBoxDescStyles}>
-        {AppConfig.AUTHOR_DESC}
+        <BlinkingText text={AppConfig.AUTHOR_DESC}/>
       </Style>
     </Style>
   )
