@@ -1,4 +1,5 @@
 import Style from "@/components/Style";
+import Time from "@/components/Time";
 import { CalendarIcon, NoteIcon, ClockIcon } from "@/components/Icons";
 import { theme } from "@/lib/styles/stiches.config";
 import { TxtConst } from "@/lib/consts";
@@ -21,7 +22,7 @@ const PostMetadatas = ({children, frontMatter, ...otherProps}: PostMetadatasProp
             height: 16
           }}
         />
-        {frontMatter.date}
+        <Time dateStr={frontMatter.date}/>
       </Style>
       <Style style={PostMetadataStyles}>
         <NoteIcon

@@ -33,11 +33,11 @@ const IsomorphicDayJs = (locale: string, date?: dayjs.ConfigType): dayjs.Dayjs =
 // simple wrapper around dayjs.format() to normalize timezone across the site, both server and client side, to prevent
 // hydration errors by returning an instance of dayjs with these defaults set.
 // date defaults to now, format defaults to ISO 8601 (e.g. 2022-04-07T21:53:33-04:00)
-export const formatDate = (date?: dayjs.ConfigType, formatStr?: string): string => {
+export const formatDate = (date?: dayjs.ConfigType, locale: string = LocaleConst.LOCALE_EN, formatStr?: string): string => {
   // Return this date-string format is so cool!
   // If we compare strings in this format,
   // it would be as if we're comparing in time.
-  return IsomorphicDayJs(LocaleConst.LOCALE_EN, date).format(formatStr);
+  return IsomorphicDayJs(locale, date).format(formatStr);
 };
 
 // returns the human-friendly difference between now and given date (e.g. "5 minutes", "9 months", etc.)
