@@ -26,8 +26,8 @@ const Heading = ({children, level=1, id="", ...otherProps}: HeadingProps) => {
   }, []);
 
   return (
-    <Style ref={headingRef} style={HeadingCommonStyles} css={HeadingStyles[level]} elementName={`h${level}`} {...otherProps}>
-      <Style style={HeadingTargetStyles} id={id}/>
+    <Style style={HeadingCommonStyles} css={HeadingStyles[level]} elementName={`h${level}`} {...otherProps}>
+      <Style style={HeadingTargetStyles} ref={headingRef} id={id}/>
       {children}
     </Style>
   )

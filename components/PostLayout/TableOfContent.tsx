@@ -54,7 +54,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
       let headingRect = headingInfos[index].headingRef.current?.getBoundingClientRect();
       let headingPosition = 2; 
       if (headingRect) {
-        if (headingRect.top < 68) 
+        if (headingRect.top < 0) 
           headingPosition = -1;
         else if (headingRect.bottom > (window.innerHeight || document.documentElement.clientHeight))
           headingPosition = 1;
@@ -113,8 +113,20 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
             }}
           >
             <Style 
-              elementName={HtmlConst.A} 
-              href={`#${headingInfo.headingID}`} 
+              onClick={
+                () => {
+                  // Has to do this instead of 
+                  // using href because appearantly, 
+                  // Chrome is unable to scroll
+                  // at two places simutaneously...
+                  let headingRect = headingInfo.headingRef.current?.getBoundingClientRect();
+                  if (headingRect)
+                    window.scrollTo({ 
+                      top: window.scrollY + headingRect.y, 
+                      behavior: "smooth" 
+                    })
+                }
+              }
               style={TOCLinkStyles}
             >
               <Style>
