@@ -1,15 +1,17 @@
 import Style from "@/components/Style";
+import CustomLink from "@/components/CustomLink";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst, AssetsConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
+// yes, this might be a copy from @/components/PostLayout/PostHeader/PostCover.tsx
 type PostCoverProps = PropsWithChildren<{
   coverImageURL?: string;
+  link: string;
 }>
 
-// yes, this might be a copy from @/components/HomeLayout/HomePost/PostCover.tsx
-const PostCover = ({children, coverImageURL, ...otherProps}: PostCoverProps) => {
+const PostCover = ({children, coverImageURL, link, ...otherProps}: PostCoverProps) => {
   // What the hell... If I put a component inside a function
   // then when Next.js compiles, it will register onError !?
   const renderImg = () => {
@@ -29,10 +31,19 @@ const PostCover = ({children, coverImageURL, ...otherProps}: PostCoverProps) => 
   }
 
   return (
-    <Style style={PostCoverWrapperStyles}>
-      {renderImg()}
+    <Style style={PostCoverWrapperWrapperStyles} >
+      <Style as={CustomLink} style={PostCoverWrapperStyles} href={link}>
+        {renderImg()}
+      </Style>
     </Style>
   )
+}
+
+const PostCoverWrapperWrapperStyles: CSS = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  paddingBottom: 8,
 }
 
 const PostCoverWrapperStyles: CSS = {

@@ -14,7 +14,7 @@ type TimeProps = PropsWithChildren<{
 const Time = ({children, dateStr, format="D MMMM, YYYY", ...otherProps}: TimeProps) => {
   const { currentLocale } = useLayout();
   return (
-    <Style style={TimeStyles} {...otherProps}>
+    <Style style={TimeStyles} elementName={HtmlConst.TIME} {...otherProps}>
       {formatDate(dateStr, currentLocale, format)}
     </Style>
   )

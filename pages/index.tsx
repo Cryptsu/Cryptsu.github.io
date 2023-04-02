@@ -1,9 +1,27 @@
-import HomeLayout from "@/components/HomeLayout"
+import { getAllPosts } from "@/lib/helpers/process-posts";
+import HomeLayout from "@/components/HomeLayout";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import type { PostFrontMatterType } from "@/types/post";
 
-export default function Home() {
+const Home = ({posts}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <HomeLayout/>
+      <HomeLayout posts={posts}/>
     </>
   )
 }
+
+///////////////////////////////////////////////////////////////////
+// Path registrations
+///////////////////////////////////////////////////////////////////
+
+export const getStaticProps: GetStaticProps<{posts: PostFrontMatterType[]}> = async () => {
+  const posts = await getAllPosts();
+  return {
+    props: {
+      posts
+    }
+  }
+}
+
+export default Home;

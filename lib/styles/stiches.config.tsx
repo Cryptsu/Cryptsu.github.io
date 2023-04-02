@@ -58,6 +58,10 @@ export const {
       authorBoxName: "$tertiary",
       authorBoxDesc: "$white",
       authorBoxBlinking: "$secondary",
+
+      //   -> Posts section
+      posts: "$white",
+      postDesc: "#6C877A",
       
       // Post page
       //   -> Title metadata
@@ -168,6 +172,7 @@ export const {
       logo: `${JetBrainsMono.style.fontFamily}, monospace`,
       toc: `${JetBrainsMono.style.fontFamily}, monospace`,
       navlink: `${JetBrainsMono.style.fontFamily}, monospace`,
+      posts: `${JetBrainsMono.style.fontFamily}, monospace`,
     },
 
     fontSizes: {
@@ -194,6 +199,9 @@ export const {
       tocHeader: "$h5",
       authorBoxName: "$h4",
       authorBoxDesc: "$h5",
+      postTitle: "$h3",
+      postDesc: "$h5",
+      postMeta: "$h6",
     },
 
     fontWeights: {
@@ -221,6 +229,8 @@ export const {
       tocHighlighted: "bold",
       authorBoxName: "$h4",
       authorBoxDesc: "$h5",
+      postTitle: "bold",
+      postMeta: "bold",
     },
 
     letterSpacings: {
@@ -246,6 +256,9 @@ export const {
       navlink: "$h5",
       authorBoxName: "$h4",
       authorBoxDesc: "$h5",
+      postTitle: "$h3",
+      postDesc: "$h5",
+      postMeta: "$h6",
     },
 
     lineHeights: {
