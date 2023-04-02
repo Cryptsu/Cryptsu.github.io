@@ -78,6 +78,7 @@ const AuthorBoxDescStyles: CSS = {
 
   fontSize: theme.fontSizes.authorBoxDesc,
   letterSpacing: theme.letterSpacings.authorBoxDesc,
+  lineHeight: theme.lineHeights.authorBoxDesc,
 }
 
 export default AuthorBox;

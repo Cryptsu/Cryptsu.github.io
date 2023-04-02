@@ -257,6 +257,7 @@ export const {
 
       content: "$h5",
       code: "$h5",
+      authorBoxDesc: "$h5",
     },
 
     transitions: {
