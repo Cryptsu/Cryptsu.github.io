@@ -27,7 +27,7 @@ const PostTitleStyles: CSS = {
   padding: 0,
   textDecoration: "underline",
   '&:hover': {
-    backgroundColor: "",
+    backgroundColor: "transparent",
   },
 }
 
