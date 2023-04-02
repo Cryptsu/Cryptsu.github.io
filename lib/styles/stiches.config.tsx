@@ -55,6 +55,9 @@ export const {
       // Main page
       //   -> Author section
       authorBackground: hexToRgba("#202220", 0.5),
+      authorBoxName: "$tertiary",
+      authorBoxDesc: "$white",
+      authorBoxBlinking: "$secondary",
       
       // Post page
       //   -> Title metadata

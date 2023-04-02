@@ -13,14 +13,12 @@ type AuthorBoxProps = PropsWithChildren<{
 const AuthorBox = ({children, ...otherProps}: AuthorBoxProps) => {
   return (
     <Style style={AuthorBoxStyles} {...otherProps}>
-      <Style src={AppConfig.AUTHOR_LOGO} as={HtmlConst.IMG} style={AuthorBoxLogoStyles}>
-
-      </Style>
+      <Style src={AppConfig.AUTHOR_LOGO} as={HtmlConst.IMG} style={AuthorBoxLogoStyles}/>
       <Style style={AuthorBoxNameStyles}>
         {AppConfig.AUTHOR_NAME}
       </Style>
       <Style style={AuthorBoxDescStyles}>
-        <BlinkingText text={AppConfig.AUTHOR_DESC}/>
+        <BlinkingText text={AppConfig.AUTHOR_DESC} blinkColor={`${theme.colors.authorBoxBlinking}`} />
       </Style>
     </Style>
   )
@@ -45,7 +43,6 @@ const AuthorBoxStyles: CSS = {
   rowGap: 8,
 
   fontFamily: theme.fonts.content,
-  color: theme.colors.content,
 };
 
 const AuthorBoxLogoStyles: CSS = {
@@ -66,6 +63,7 @@ const AuthorBoxNameStyles: CSS = {
   fontWeight: theme.fontWeights.authorBoxName,
   letterSpacing: theme.letterSpacings.authorBoxName,
   textDecoration: "underline",
+  color: theme.colors.authorBoxName,
 }
 
 const AuthorBoxDescStyles: CSS = {
@@ -79,6 +77,7 @@ const AuthorBoxDescStyles: CSS = {
   fontSize: theme.fontSizes.authorBoxDesc,
   letterSpacing: theme.letterSpacings.authorBoxDesc,
   lineHeight: theme.lineHeights.authorBoxDesc,
+  color: theme.colors.authorBoxDesc,
 }
 
 export default AuthorBox;

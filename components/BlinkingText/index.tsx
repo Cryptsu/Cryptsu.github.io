@@ -6,10 +6,11 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type BlinkingTextProps = PropsWithChildren<{
-  text: string
+  text: string,
+  blinkColor?: string,
 }>
 
-const BlinkingText = ({children, text, ...otherProps}: BlinkingTextProps) => {
+const BlinkingText = ({children, text, blinkColor, ...otherProps}: BlinkingTextProps) => {
   const [ currentText, setCurrentText ] = useState<string>("");
   const [ currentIndex, setCurrentIndex ] = useState<number>(0);
   const [ updateFlipFlop, setUpdateFlipFlop ] = useState<boolean>(false);
@@ -38,9 +39,9 @@ const BlinkingText = ({children, text, ...otherProps}: BlinkingTextProps) => {
   /* eslint-disable react-hooks/exhaustive-deps */}, [currentIndex]);
 
   return (
-    <Style>
+    <Style {...otherProps}>
       {currentText}
-      <Style style={BlinkingCharStyles} elementName={HtmlConst.SPAN}>
+      <Style style={BlinkingCharStyles} css={{color: blinkColor}} elementName={HtmlConst.SPAN}>
         {TxtConst.TXT_BLINK_CHAR}
       </Style>
     </Style>
