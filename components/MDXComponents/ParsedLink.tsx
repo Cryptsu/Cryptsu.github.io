@@ -17,15 +17,15 @@ const ParsedLink = ({children, ...otherProps}: ParsedLinkProps) => {
 }
 
 const ParsedLinkStyles: CSS = {
-  color: theme.colors.linkText,
+  color: theme.colors.tertiary,
   paddingBottom: 4,
 
   '&:visited': {
-    color: theme.colors.clickedLinkText,
+    color: theme.colors.color23,
   },
   movUnderline: `${theme.colors.linkTextUnderlineHover} 2px 0px 0px`,
   '&:active': {
-    color: theme.colors.activeLinkText,
+    color: theme.colors.secondary,
     movUnderlineColor: theme.colors.activeLinkTextUnderlineHover,
   },
 };

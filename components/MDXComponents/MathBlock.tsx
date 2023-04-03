@@ -23,7 +23,7 @@ const MathBlockStyles: CSS = {
   borderTop: 2,
   borderBottom: 2,
   borderStyle: "dashed",
-  borderColor: theme.colors.mathDivider,
+  borderColor: theme.colors.divider50,
 };
 
 export default MathBlock;

@@ -37,7 +37,7 @@ const PostTagsStyles: CSS = {
 const PostTagStyles: CSS = {
   color: theme.colors.hashtagInactive,
   '&:hover': {
-    color: theme.colors.hashtagActive,
+    color: theme.colors.primary,
   },
 
   fontSize: theme.fontSizes.h5,

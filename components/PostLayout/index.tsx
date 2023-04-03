@@ -50,7 +50,7 @@ const PostContentGroupStyles: CSS = {
   gridArea: 'post-content',
 
   // Global rules
-  color: theme.colors.content,
+  color: theme.colors.textGeneral,
   fontFamily: theme.fonts.content,
   fontSize: theme.fontSizes.h5,
   fontWeight: theme.fontWeights.h5,

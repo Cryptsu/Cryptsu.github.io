@@ -18,7 +18,7 @@ const AuthorBox = ({children, ...otherProps}: AuthorBoxProps) => {
         {AppConfig.AUTHOR_NAME}
       </Style>
       <Style style={AuthorBoxDescStyles}>
-        <BlinkingText text={AppConfig.AUTHOR_DESC} blinkColor={`${theme.colors.authorBoxBlinking}`} />
+        <BlinkingText text={AppConfig.AUTHOR_DESC} blinkColor={`${theme.colors.secondary}`} />
       </Style>
     </Style>
   )
@@ -64,7 +64,7 @@ const AuthorBoxNameStyles: CSS = {
   fontWeight: theme.fontWeights.h4,
   letterSpacing: theme.letterSpacings.h4,
   textDecoration: "underline",
-  color: theme.colors.authorBoxName,
+  color: theme.colors.tertiary,
 }
 
 const AuthorBoxDescStyles: CSS = {
@@ -78,7 +78,7 @@ const AuthorBoxDescStyles: CSS = {
   fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
   lineHeight: theme.lineHeights.h5,
-  color: theme.colors.authorBoxDesc,
+  color: theme.colors.textGeneral,
 }
 
 export default AuthorBox;

@@ -192,16 +192,16 @@ const TOCHeaderStyles: CSS = {
   marginBottom: 16,
   paddingBottom: 8,
   borderStyle: "dashed",
-  borderColor: theme.colors.tocDivider,
+  borderColor: theme.colors.divider,
 
   '&:before': {
     content: "'< '",
-    color: theme.colors.tocDivider,
+    color: theme.colors.divider,
   },
 
   '&:after': {
     content: "' />'",
-    color: theme.colors.tocDivider,
+    color: theme.colors.divider,
   }
 }
 

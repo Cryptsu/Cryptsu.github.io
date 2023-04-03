@@ -29,7 +29,7 @@ const NavLinkStyles: CSS = {
   // Font customize
   fontFamily: theme.fonts.global,
   letterSpacing: theme.letterSpacings.h5,
-  color: theme.colors.navLink,
+  color: theme.colors.primary,
 
   // Set moving underline
   movUnderline: `${theme.colors.navLinkLineHover} 2px 12px 6px`,

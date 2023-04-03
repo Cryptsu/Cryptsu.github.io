@@ -25,7 +25,7 @@ const CodeBlockContentStyles: CSS = {
   scrollbarWidth: "thin", // This attribute only applies on Firefox.
 
   // Not styled code text
-  color: theme.colors.codeHighlight,
+  color: theme.colors.codeGeneral,
 
   // Add a bit of padding
   marginLeft: 4,

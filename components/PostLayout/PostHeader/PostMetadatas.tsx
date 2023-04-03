@@ -17,7 +17,7 @@ const PostMetadatas = ({children, frontMatter, ...otherProps}: PostMetadatasProp
       <Style style={PostMetadataStyles}>
         <CalendarIcon
           style={{
-            fill: theme.colors.metadataIcon,
+            fill: theme.colors.tertiary,
             width: 16,
             height: 16
           }}
@@ -27,7 +27,7 @@ const PostMetadatas = ({children, frontMatter, ...otherProps}: PostMetadatasProp
       <Style style={PostMetadataStyles}>
         <NoteIcon
           style={{
-            fill: theme.colors.metadataIcon,
+            fill: theme.colors.tertiary,
             width: 16,
             height: 16
           }}
@@ -37,7 +37,7 @@ const PostMetadatas = ({children, frontMatter, ...otherProps}: PostMetadatasProp
       <Style style={PostMetadataStyles}>
         <ClockIcon
           style={{
-            fill: theme.colors.metadataIcon,
+            fill: theme.colors.tertiary,
             width: 16,
             height: 16
           }}

@@ -24,12 +24,12 @@ const HomePageNumberStyles: CSS = {
   fontFamily: theme.fonts.global,
   '&:before': {
     content: '<-',
-    color: theme.colors.postsNumberLeft,
+    color: theme.colors.prev,
     fontWeight: theme.fontWeights.bold,
   },
   '&:after': {
     content: '->',
-    color: theme.colors.postsNumberRight,
+    color: theme.colors.next,
     fontWeight: theme.fontWeights.bold,
   }
 };

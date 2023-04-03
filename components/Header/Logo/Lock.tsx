@@ -7,7 +7,7 @@ const Lock = () => {
     <LockLockedIcon 
       viewBox="1 0 6 6" 
       style={{
-        fill: theme.colors.logoText,
+        fill: theme.colors.primary,
         width: 24,
         height: 28
       }}

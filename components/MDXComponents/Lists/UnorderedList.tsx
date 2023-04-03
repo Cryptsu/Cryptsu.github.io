@@ -35,7 +35,7 @@ const UnorderedListStyles: CSS = {
 
   [`& ${HtmlConst.LI}:before`]: {
     content: "•",
-    color: theme.colors.listHeading,
+    color: theme.colors.primary,
     fontWeight: theme.fontWeights.bold,
   },
 };

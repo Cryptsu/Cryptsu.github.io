@@ -56,7 +56,7 @@ const PostHashTagStyles: CSS = {
   color: theme.colors.hashtagInactive,
   userSelect: "none",
   '&:hover': {
-    color: theme.colors.hashtagActive,
+    color: theme.colors.primary,
     textDecoration: "underline",
   }
 }

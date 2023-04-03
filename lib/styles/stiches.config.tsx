@@ -33,49 +33,53 @@ export const {
       tertiary: "#fd4e47",
 
       // Mix of them
-      quaternary: "#0FABB3", // 1 + 2
-      quinary: "#FBE281",    // 1 + 3
-      senary: "#79659E",     // 2 + 3
+      color12: "#0FABB3", // 1 + 2
+      color13: "#FBE281", // 1 + 3
+      color23: "#79659E", // 2 + 3
 
       // Gradient
       gradient: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
 
       // Colors in theme
       red: "$tertiary",
-      yellow: "$quinary",
+      yellow: "$color13",
       green: "$primary",
       blue: "$secondary",
-      cyan: "$quaternary",
-      purple: "$senary",
+      cyan: "$color12",
+      purple: "$color23",
       black: "#202220",
       blackest: "#101010",
       grey: "#454C48",
       white: "#DCFFEE",
 
+      // Utils
+      //=> text
+      textGeneral: "$white",
+
+      //=> divider
+      divider: hexToRgba("#BCDACB", 0.25),
+      divider50: hexToRgba("#454C48", 0.5),
+
+      //=> prev-next
+      prev: "$tertiary",
+      next: "$secondary",
+      prevBtnShade: "#B03836",
+      nextBtnShade: "#265D8B",
+
       // Main page
       //   -> Author section
       authorBackground: hexToRgba("#202220", 0.5),
-      authorBoxName: "$tertiary",
-      authorBoxDesc: "$white",
-      authorBoxBlinking: "$secondary",
 
       //   -> Posts section
       posts: "#bfddce",
       postsHover: "#fdfdfd",
       postsHeaderTag: "$grey",
       postDesc: "#6C877A",
-      postDivider: "$tertiary",
-      postsNumber: "$content",
-      postsNumberLeft: "$tertiary",
-      postsNumberRight: "$secondary",
       
       // Post page
       //   -> Title metadata
-      title: "$white",
-      hashtagActive: "$primary",
       hashtagInactive: "#44966E",
       metadata: hexToRgba("#DCFFEE", 0.5),
-      metadataIcon: "$tertiary",
 
       //   -> Footer
       footerText: '#778980',
@@ -84,7 +88,6 @@ export const {
       toc: "#bfddce",
       tocHeader: "#d7423d",
       tocActive: "#FDFDFD",
-      tocDivider: "$grey",
       tocBorder: "#bfddce",
 
       //   -> Button
@@ -93,32 +96,17 @@ export const {
       //   -> CustomLink
       customLinkBackground: hexToRgba("#454C48", 0.5),
 
-      //   -> List
-      listHeading: "$primary",
-      
       //   -> Header
-      logoText: "$primary",
       blurBackground: hexToRgba("#101010", 0.5),
-      divider: hexToRgba("#BCDACB", 0.25),
-        //       -> navLink
-        navLink: "$primary",
-        navLinkLineHover: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
+      navLinkLineHover: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
 
       //   -> Layout
       pageBackground: "$blackest",
-      pageBackgroundButUsesGradient: "linear-gradient(90deg, $pageBackground 0%, $pageBackground 100%)",
-
-      //   -> Content
-      content: "$white",
 
       //   -> Table
       tableBorder: "$grey",
-      tableText: "$white",
 
       //   -> Link
-      linkText: "$tertiary",
-      clickedLinkText: "$senary",
-      activeLinkText: "$secondary",
       linkTextUnderlineHover: "linear-gradient(90deg, $tertiary 0%, $tertiary 100%)",
       clickedLinkTextUnderlineHover: "linear-gradient(90deg, $secondary 0%, $secondary 100%)",
       activeLinkTextUnderlineHover: "linear-gradient(90deg, $secondary 0%, $secondary 100%)",
@@ -129,24 +117,15 @@ export const {
       quoteText: hexToRgba("#DCFFEE", 0.75),
 
       //   -> Navigation buttons
-      prevButtonTop: "$tertiary",
       prevButtonShade: "#B03836",
-      nextButtonTop: "$secondary",
       nextButtonInactive: "#265D8B",
 
       //   -> Code area
-      codeBoxClose: "$red",
-      codeBoxMinimize: "$yellow",
-      codeBoxMaximize: "$green",
-      codeBoxCopy: "$secondary",
       codeBoxInside: "linear-gradient($pageBackground, $pageBackground)",
-      codeHighlight: "$white",
-      codeNoHighlight: "$primary",
+      codeGeneral: "$white",
       codeInnerBackground: "$black",
       codeBlockBackground: `linear-gradient(0deg, #181918, #181918)`,
       codeLang: hexToRgba("#DCFFEE", 0.75),
-      codeLineNumber: hexToRgba("#DCFFEE", 0.5),
-      codeLineNumberDivider: hexToRgba("#DCFFEE", 0.5),
       codeBoxHidden: hexToRgba("#DCFFEE", 0.5),
 
       //      -> Code text area
@@ -163,13 +142,8 @@ export const {
       codeLiteral: "#fbe281",
 
       //    -> Copy
-      copyBtnBorder: "$secondary",
       copyIcon: "$white",
       copiedIcon: "$green",
-      copyBtnHoverBackground: "$secondary",
-
-      //   -> Math block
-      mathDivider: hexToRgba("#454C48", 0.5),
     },
 
     fonts: {

@@ -33,7 +33,7 @@ const OrderedListStyles: CSS = {
 
   [`& ${HtmlConst.LI}:before`]: {    
     content: 'counters(ListItemNo, ".")"."',
-    color: theme.colors.listHeading,
+    color: theme.colors.primary,
     fontWeight: theme.fontWeights.bold
   },
 };
