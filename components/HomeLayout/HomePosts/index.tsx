@@ -4,6 +4,7 @@ import PostTitle from "./PostTitle";
 import PostDescription from "./PostDescription";
 import PostOtherMetadata from "./PostOtherMetadata";
 import { theme } from "@/lib/styles/stiches.config";
+import { TxtConst } from "@/lib/consts";
 import { AppConfig } from "@/lib/config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -16,6 +17,9 @@ type HomePostsProps = PropsWithChildren<{
 const HomePosts = ({children, posts, ...otherProps}: HomePostsProps) => {
   return (
     <>
+      <Style style={HomePostsHeaderStyles}>
+        {TxtConst.TXT_POSTS}
+      </Style>
       {
         posts.map((post, index) => 
           <Style key={index} style={HomePostStyles} {...otherProps}>
@@ -28,6 +32,26 @@ const HomePosts = ({children, posts, ...otherProps}: HomePostsProps) => {
       }
     </>
   )
+}
+
+const HomePostsHeaderStyles: CSS = {
+  fontFamily: theme.fonts.posts,
+  fontSize: theme.fontSizes.postsHeader,
+  fontWeight: theme.fontWeights.postsHeader,
+  letterSpacing: theme.letterSpacings.postsHeader,
+  color: theme.colors.posts,
+
+  paddingBottom: 8,
+  paddingLeft: 16,
+
+  '&:before': {
+    content: "< ",
+    color: theme.colors.postsHeaderTag,
+  },
+  '&:after': {
+    content: " />",
+    color: theme.colors.postsHeaderTag,
+  }
 }
 
 const HomePostStyles: CSS = {

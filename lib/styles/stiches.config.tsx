@@ -61,6 +61,7 @@ export const {
 
       //   -> Posts section
       posts: "$white",
+      postsHeaderTag: "$grey",
       postDesc: "#6C877A",
       postDivider: "$tertiary",
       
@@ -204,6 +205,7 @@ export const {
       postTitle: "$h3",
       postDesc: "$h5",
       postMeta: "$h6",
+      postsHeader: "$h2",
     },
 
     fontWeights: {
@@ -233,6 +235,7 @@ export const {
       authorBoxDesc: "$h5",
       postTitle: "bold",
       postMeta: "bold",
+      postsHeader: "$h3",
     },
 
     letterSpacings: {
@@ -261,6 +264,7 @@ export const {
       postTitle: "$h3",
       postDesc: "$h5",
       postMeta: "$h6",
+      postsHeader: "$h3",
     },
 
     lineHeights: {
@@ -287,6 +291,8 @@ export const {
     },
 
     shadows: {
+      homeAuthor: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
+      homePostCoverNormal: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
       homePostCoverHover: "6px 6px #454C48",
       homePostCoverClick: "1px 1px #454C48",
       codeCopyBtnNormal: "0 4px #265D8B",

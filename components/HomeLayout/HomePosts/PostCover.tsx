@@ -68,6 +68,7 @@ const PostCoverWrapperStyles: CSS = {
 
 const PostCoverStyles: CSS = {
   backgroundColor: theme.colors.pageBackground,
+  boxShadow: theme.shadows.homePostCoverNormal,
   borderRadius: 16,
 
   width: "100%",
