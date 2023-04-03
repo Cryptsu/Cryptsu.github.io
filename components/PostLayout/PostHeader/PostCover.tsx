@@ -36,18 +36,15 @@ const PostCover = ({children, coverImageURL, ...otherProps}: PostCoverProps) => 
 }
 
 const PostCoverWrapperStyles: CSS = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
   margin: 0,
   marginTop: 16,
   gap: 8,
-
+  
   backgroundImage: theme.colors.gradient,
   borderRadius: 16,
-  width: "75%", 
   
+  display: "flex",
+  width: "75%", 
   padding: 4,
 };
 
