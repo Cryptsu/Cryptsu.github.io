@@ -35,9 +35,9 @@ const PostOtherMetadata = ({children, post, ...otherProps}: PostOtherMetadataPro
 const PostOtherMetadataStyles: CSS = {
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
-  fontSize: theme.fontSizes.postMeta,
-  fontWeight: theme.fontWeights.postMeta,
-  letterSpacing: theme.letterSpacings.postMeta,
+  fontSize: theme.fontSizes.h6,
+  fontWeight: theme.fontWeights.bold,
+  letterSpacing: theme.letterSpacings.h6,
 }
 
 const PostTimeReadStyles: CSS = {

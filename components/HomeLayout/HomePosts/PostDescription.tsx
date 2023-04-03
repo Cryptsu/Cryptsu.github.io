@@ -18,8 +18,8 @@ const PostDescription = ({children, description, ...otherProps}: PostDescription
 
 const PostDescriptionStyles: CSS = {
   color: theme.colors.postDesc,
-  fontSize: theme.fontSizes.postDesc,
-  letterSpacing: theme.letterSpacings.postDesc,
+  fontSize: theme.fontSizes.h5,
+  letterSpacing: theme.letterSpacings.h5,
 }
 
 export default PostDescription;

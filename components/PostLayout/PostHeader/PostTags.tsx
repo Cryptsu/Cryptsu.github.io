@@ -40,9 +40,9 @@ const PostTagStyles: CSS = {
     color: theme.colors.hashtagActive,
   },
 
-  fontSize: theme.fontSizes.hashTag,
-  fontWeight: theme.fontWeights.hashTag,
-  letterSpacing: theme.letterSpacings.hashTag,
+  fontSize: theme.fontSizes.h5,
+  fontWeight: theme.fontWeights.bold,
+  letterSpacing: theme.letterSpacings.h5,
   textDecoration: "underline",
 };
 

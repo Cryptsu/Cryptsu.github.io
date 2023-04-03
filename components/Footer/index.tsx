@@ -21,11 +21,11 @@ const FooterStyles: CSS = {
   paddingBottom: 24,
   textAlign: "center",
 
-  fontFamily: theme.fonts.footer,
-  fontSize: theme.fontSizes.footer,
-  fontWeight: theme.fontWeights.footer,
-  letterSpacing: theme.letterSpacings.footer,
   color: theme.colors.footerText,
+  fontFamily: theme.fonts.global,
+  fontSize: theme.fontSizes.h5,
+  fontWeight: theme.fontWeights.bold,
+  letterSpacing: theme.letterSpacings.h5,
 
   border: 0,
   borderTop: 4,

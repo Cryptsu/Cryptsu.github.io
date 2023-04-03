@@ -110,8 +110,16 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
               marginTop: headingInfo.level === 1 ? 4 : 0,
               marginLeft: `calc(1.5rem * ${headingInfo.level - 1})`,
               borderWidth: `0px 0px 0px ${intersections[index] == 0 ? 4 : 0}px`,
-              fontWeight: intersections[index] == 0 ? theme.fontWeights.tocHighlighted : theme.fontWeights.toc,
-              color: intersections[index] == 0 ? theme.colors.tocActive : theme.colors.toc,
+              fontWeight: (
+                intersections[index] == 0 
+                  ? theme.fontWeights.bold 
+                  : theme.fontWeights.normal
+              ),
+              color: (
+                intersections[index] == 0 
+                  ? theme.colors.tocActive 
+                  : theme.colors.toc
+              ),
             }}
           >
             <Style 
@@ -143,10 +151,10 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
 }
 
 const TableOfContentStyles: CSS = {
-  fontFamily: theme.fonts.toc,
-  fontWeight: theme.fontWeights.toc,
-  fontSize: theme.fontSizes.toc,
-  letterSpacing: theme.letterSpacings.toc,
+  fontFamily: theme.fonts.global,
+  fontWeight: theme.fontWeights.h6,
+  fontSize: theme.fontSizes.h6,
+  letterSpacing: theme.letterSpacings.h4,
   color: theme.colors.toc,
 
   borderWidth: 4,
@@ -174,8 +182,8 @@ const TableOfContentStyles: CSS = {
 
 const TOCHeaderStyles: CSS = {
   color: theme.colors.tocHeader,
-  fontSize: theme.fontSizes.tocHeader,
-  fontWeight: theme.fontWeights.tocHeader,
+  fontSize: theme.fontSizes.h5,
+  fontWeight: theme.fontWeights.bold,
   textAlign: "center",
 
   border: 0,

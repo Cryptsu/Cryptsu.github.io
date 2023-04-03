@@ -18,9 +18,9 @@ const PostTitle = ({children, ...otherProps}: PostTitleProps) => {
 
 const PostTitleStyles: CSS = {
   color: theme.colors.title,
-  fontSize: theme.fontSizes.title,
-  fontWeight: theme.fontWeights.title,
-  letterSpacing: theme.letterSpacings.title,
+  fontSize: theme.fontSizes.h0,
+  fontWeight: theme.fontWeights.h0,
+  letterSpacing: theme.letterSpacings.h0,
   textDecoration: "underline",
   textAlign: "center",
 }

@@ -35,15 +35,14 @@ const HomePosts = ({children, posts, ...otherProps}: HomePostsProps) => {
 }
 
 const HomePostsHeaderStyles: CSS = {
-  fontFamily: theme.fonts.posts,
-  fontSize: theme.fontSizes.postsHeader,
-  fontWeight: theme.fontWeights.postsHeader,
-  letterSpacing: theme.letterSpacings.postsHeader,
+  fontFamily: theme.fonts.global,
+  fontSize: theme.fontSizes.h2,
+  fontWeight: theme.fontWeights.h2,
+  letterSpacing: theme.letterSpacings.h2,
   color: theme.colors.posts,
 
   paddingBottom: 8,
   paddingLeft: 16,
-
   '&:before': {
     content: "< ",
     color: theme.colors.postsHeaderTag,
@@ -64,7 +63,7 @@ const HomePostStyles: CSS = {
   flexDirection: "column",
   gap: 4,
 
-  fontFamily: theme.fonts.posts,
+  fontFamily: theme.fonts.global,
   border: 0,
   borderTop: 2,
   borderStyle: "dashed",

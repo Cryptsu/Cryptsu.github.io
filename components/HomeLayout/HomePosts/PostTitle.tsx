@@ -20,9 +20,9 @@ const PostTitle = ({children, title, link, ...otherProps}: PostTitleProps) => {
 
 const PostTitleStyles: CSS = {
   color: theme.colors.posts,
-  fontSize: theme.fontSizes.postTitle,
-  fontWeight: theme.fontWeights.postTitle,
-  letterSpacing: theme.letterSpacings.postTitle,
+  fontSize: theme.fontSizes.h3,
+  fontWeight: theme.fontWeights.bold,
+  letterSpacing: theme.letterSpacings.h3,
 
   padding: 0,
   '&:link': {

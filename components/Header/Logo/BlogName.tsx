@@ -13,10 +13,10 @@ const BlogName = () => {
 
 const BlogNameStyles: CSS = {
   color: theme.colors.logoText,
-  fontSize: theme.fontSizes.logo,
-  fontWeight: theme.fontWeights.logo,
-  fontFamily: theme.fonts.logo,
-  letterSpacing: theme.letterSpacings.logo,
+  fontFamily: theme.fonts.global,
+  fontSize: theme.fontSizes.h3,
+  fontWeight: theme.fontWeights.h3,
+  letterSpacing: theme.letterSpacings.h3,
   textDecoration: "underline",
   textAlign: "center", // WTF code that keeps TypeScript compiler's mouth shut
 }

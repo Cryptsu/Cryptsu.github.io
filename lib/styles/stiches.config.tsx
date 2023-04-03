@@ -173,18 +173,12 @@ export const {
     },
 
     fonts: {
-      title: `${JetBrainsMono.style.fontFamily}, monospace`,
-      footer: `${JetBrainsMono.style.fontFamily}, monospace`,
+      global: `${JetBrainsMono.style.fontFamily}, monospace`,
       content: `${JetBrainsMono.style.fontFamily}, monospace`,
       code: `${JetBrainsMono.style.fontFamily}, monospace`,
-      logo: `${JetBrainsMono.style.fontFamily}, monospace`,
-      toc: `${JetBrainsMono.style.fontFamily}, monospace`,
-      navlink: `${JetBrainsMono.style.fontFamily}, monospace`,
-      posts: `${JetBrainsMono.style.fontFamily}, monospace`,
     },
 
     fontSizes: {
-      // Headings
       h0: "55px",
       h1: "43px",
       h2: "33.5px",
@@ -192,29 +186,9 @@ export const {
       h4: "20px",
       h5: "16px",
       h6: "12.5px",
-
-      // Others
-      title: "$h0",
-      metadata: "$h5",
-      footer: "$h5",
-      hashTag: "$h5",
-      logo: "$h3",
-      content: "$h5",
-      code: "$h5",
-      codeLang: "$h5",
-      imgalt: "$content",
-      toc: "$h6",
-      tocHeader: "$h5",
-      authorBoxName: "$h4",
-      authorBoxDesc: "$h5",
-      postTitle: "$h3",
-      postDesc: "$h5",
-      postMeta: "$h6",
-      postsHeader: "$h2",
     },
 
     fontWeights: {
-      // Headings
       h0: 800,
       h1: 800,
       h2: 800,
@@ -223,29 +197,12 @@ export const {
       h5: "normal",
       h6: "normal",
 
-      // Others
-      title: "$h0",
-      footer: "bold",
-      logo: "$h3",
-      hashTag: "bold",
-      content: "$h5",
-      imgalt: "bold",
-      listHeading: "bold",
-      codeLang: "bold",
-      codeLineNumber: "bold",
-      tocHeader: "bold",
-      toc: "$h6",
-      tocHighlighted: "bold",
-      authorBoxName: "$h4",
-      authorBoxDesc: "$h5",
-      postTitle: "bold",
-      postMeta: "bold",
-      postsHeader: "$h3",
-      postsNumberHigh: "bold",
+      normal: "normal",
+      bold: "bold",
+      extrabold: 800,
     },
 
     letterSpacings: {
-      // Headings
       h0: "-0.05em",
       h1: "-0.05em",
       h2: "-0.05em",
@@ -253,28 +210,9 @@ export const {
       h4: "-0.05em",
       h5: "-0.04em",
       h6: "-0.04em",
-
-      // Others
-      title: "$h0",
-      metadata: "$h5",
-      footer: "$h5",
-      hashTag: "$h5",
-      logo: "$h3",
-      content: "$h5",
-      code: "$h5",
-      codeLang: "$h5",
-      toc: "-0.05em",
-      navlink: "$h5",
-      authorBoxName: "$h4",
-      authorBoxDesc: "$h5",
-      postTitle: "$h3",
-      postDesc: "$h5",
-      postMeta: "$h6",
-      postsHeader: "$h3",
     },
 
     lineHeights: {
-      // Headings
       h0: "normal",
       h1: "normal",
       h2: "normal",
@@ -282,10 +220,6 @@ export const {
       h4: "normal",
       h5: "150%",
       h6: "150%",
-
-      content: "$h5",
-      code: "$h5",
-      authorBoxDesc: "$h5",
     },
 
     transitions: {

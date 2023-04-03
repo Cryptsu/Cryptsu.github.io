@@ -60,9 +60,9 @@ const AuthorBoxNameStyles: CSS = {
   justifyContent: "center",
   alignItems: "end",
 
-  fontSize: theme.fontSizes.authorBoxName,
-  fontWeight: theme.fontWeights.authorBoxName,
-  letterSpacing: theme.letterSpacings.authorBoxName,
+  fontSize: theme.fontSizes.h4,
+  fontWeight: theme.fontWeights.h4,
+  letterSpacing: theme.letterSpacings.h4,
   textDecoration: "underline",
   color: theme.colors.authorBoxName,
 }
@@ -75,9 +75,9 @@ const AuthorBoxDescStyles: CSS = {
   alignItems: "top",
   textAlign: "center",
 
-  fontSize: theme.fontSizes.authorBoxDesc,
-  letterSpacing: theme.letterSpacings.authorBoxDesc,
-  lineHeight: theme.lineHeights.authorBoxDesc,
+  fontSize: theme.fontSizes.h5,
+  letterSpacing: theme.letterSpacings.h5,
+  lineHeight: theme.lineHeights.h5,
   color: theme.colors.authorBoxDesc,
 }
 

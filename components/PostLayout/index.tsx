@@ -52,10 +52,10 @@ const PostContentGroupStyles: CSS = {
   // Global rules
   color: theme.colors.content,
   fontFamily: theme.fonts.content,
-  fontSize: theme.fontSizes.content,
-  fontWeight: theme.fontWeights.content,
-  lineHeight: theme.lineHeights.content,
-  letterSpacing: theme.letterSpacings.content,
+  fontSize: theme.fontSizes.h5,
+  fontWeight: theme.fontWeights.h5,
+  lineHeight: theme.lineHeights.h5,
+  letterSpacing: theme.letterSpacings.h5,
 };
 
 const PostRightGroupStyles: CSS = {

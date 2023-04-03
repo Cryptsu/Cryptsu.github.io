@@ -56,8 +56,8 @@ const PostMetadatasStyles: CSS = {
   gap: 16,
 
   color: theme.colors.metadata,
-  fontSize: theme.fontSizes.metadata,
-  letterSpacing: theme.letterSpacings.metadata,
+  fontSize: theme.fontSizes.h5,
+  letterSpacing: theme.letterSpacings.h5,
 }
 
 const PostMetadataStyles: CSS = {

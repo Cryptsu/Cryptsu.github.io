@@ -21,16 +21,16 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
 }
 
 const HomePageNumberStyles: CSS = {
-  fontFamily: theme.fonts.posts,
+  fontFamily: theme.fonts.global,
   '&:before': {
     content: '<-',
     color: theme.colors.postsNumberLeft,
-    fontWeight: theme.fontWeights.postsNumberHigh,
+    fontWeight: theme.fontWeights.bold,
   },
   '&:after': {
     content: '->',
     color: theme.colors.postsNumberRight,
-    fontWeight: theme.fontWeights.postsNumberHigh,
+    fontWeight: theme.fontWeights.bold,
   }
 };
 

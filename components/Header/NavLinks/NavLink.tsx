@@ -27,8 +27,8 @@ const NavLink = ({children, href, ...otherProps}: NavLinkProps) => {
 
 const NavLinkStyles: CSS = {
   // Font customize
-  fontFamily: theme.fonts.navlink,
-  letterSpacing: theme.letterSpacings.navlink,
+  fontFamily: theme.fonts.global,
+  letterSpacing: theme.letterSpacings.h5,
   color: theme.colors.navLink,
 
   // Set moving underline

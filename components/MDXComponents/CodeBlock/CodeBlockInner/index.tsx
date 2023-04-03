@@ -34,9 +34,9 @@ const CodeBlockInnerStyles: CSS = {
   // must have exact font styles
   // since they have to be matched to
   // be aligned correctly.
-  fontSize: `${theme.fontSizes.code} !important`,
-  letterSpacing: theme.letterSpacings.code,
-  lineHeight: theme.lineHeights.code,
+  fontSize: `${theme.fontSizes.h5} !important`,
+  letterSpacing: theme.letterSpacings.h5,
+  lineHeight: theme.lineHeights.h5,
 
   display: "flex",
   flexDirection: "row",

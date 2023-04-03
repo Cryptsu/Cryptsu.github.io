@@ -21,11 +21,11 @@ const CodeLangAreaStyles: CSS = {
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
-
-  fontSize: theme.fontSizes.codeLang,
-  letterSpacing: theme.letterSpacings.codeLang,
+  
   color: theme.colors.codeLang,
-  fontWeight: theme.fontWeights.codeLang,
+  fontSize: theme.fontSizes.h5,
+  letterSpacing: theme.letterSpacings.h5,
+  fontWeight: theme.fontWeights.bold,
   textTransform: "capitalize",
 };
 
