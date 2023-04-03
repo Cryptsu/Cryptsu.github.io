@@ -43,22 +43,18 @@ const PostCoverWrapperWrapperStyles: CSS = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+
+  paddingTop: 8,
   paddingBottom: 8,
 }
 
 const PostCoverWrapperStyles: CSS = {
   display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  margin: 0,
-  marginTop: 16,
-  gap: 8,
+  width: "75%",
+  padding: 4,
 
   backgroundImage: theme.colors.gradient,
   borderRadius: 16,
-  width: "75%",
-  padding: 4,
 
   '&:hover': {
     transform: "translateX(-6px) translateY(-6px)",

@@ -31,23 +31,19 @@ const HomePosts = ({children, posts, ...otherProps}: HomePostsProps) => {
 }
 
 const HomePostStyles: CSS = {
-  padding: 0,
   paddingLeft: 24,
   paddingRight: 24,
   paddingBottom: 24,
-  paddingTop: 24,
+  paddingTop: 8,
 
   display: "flex",
   flexDirection: "column",
 
   fontFamily: theme.fonts.posts,
-  border: "dashed",
-  borderColor: theme.colors.postDivider,
-  borderTop: 0,
-  borderLeft: 0,
-  borderRight: 0,
-
-  width: "100%",
+  border: 0,
+  borderTop: 2,
+  borderStyle: "dashed",
+  borderColor: theme.colors.divider,
 };
 
 export default HomePosts;

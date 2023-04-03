@@ -25,10 +25,11 @@ const PostTitleStyles: CSS = {
   letterSpacing: theme.letterSpacings.postTitle,
 
   padding: 0,
-  textDecoration: "underline",
+  '&:link': {
+    textDecoration: "underline",
+  },
   '&:hover': {
     backgroundColor: "transparent",
-    textDecoration: "underline",
   },
 }
 

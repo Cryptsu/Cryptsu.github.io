@@ -18,9 +18,10 @@ const HomeIntro = ({children, ...otherProps}: HomeIntroProps) => {
 }
 
 const HomeIntroStyles: CSS = {
-  paddingLeft: 160,
-  paddingRight: 160,
+  paddingLeft: 120,
+  paddingRight: 120,
   paddingTop: 40,
+  paddingBottom: 40,
 }
 
 export default HomeIntro;
