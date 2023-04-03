@@ -168,7 +168,7 @@ const TableOfContentStyles: CSS = {
   marginRight: 64,
   paddingLeft: 32,
   paddingRight: 32,
-  paddingTop: 8,
+  paddingTop: 12,
   paddingBottom: 16,
 };
 
