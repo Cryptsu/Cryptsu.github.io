@@ -50,6 +50,8 @@ const PostCoverWrapperWrapperStyles: CSS = {
 
 const PostCoverWrapperStyles: CSS = {
   display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   width: "75%",
   padding: 4,
 
@@ -70,7 +72,7 @@ const PostCoverStyles: CSS = {
   backgroundColor: theme.colors.pageBackground,
   borderRadius: 16,
 
-  width: "100%",
+  width: "calc(100% - 24px)",
   height: 200,
   objectFit: "cover",
 };

@@ -29,6 +29,7 @@ const HomeLayoutWrapperStyles: CSS = {
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
+  paddingBottom: 24,
 };
 
 const HomeLayoutStyles: CSS = {
