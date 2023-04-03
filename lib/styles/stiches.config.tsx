@@ -65,6 +65,9 @@ export const {
       postsHeaderTag: "$grey",
       postDesc: "#6C877A",
       postDivider: "$tertiary",
+      postsNumber: "$content",
+      postsNumberLeft: "$tertiary",
+      postsNumberRight: "$secondary",
       
       // Post page
       //   -> Title metadata
@@ -238,6 +241,7 @@ export const {
       postTitle: "bold",
       postMeta: "bold",
       postsHeader: "$h3",
+      postsNumberHigh: "bold",
     },
 
     letterSpacings: {

@@ -1,6 +1,8 @@
+import { useState } from "react";
 import Style from "@/components/Style";
 import HomeIntro from "./HomeIntro";
 import HomePosts from "./HomePosts";
+import HomePageNumber from "./HomePageNumber";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
@@ -12,13 +14,21 @@ type HomeLayoutProps = PropsWithChildren<{
 }>
 
 const HomeLayout = ({children, posts, ...otherProps}: HomeLayoutProps) => {
+  const [ currentPage, setCurrentPage ] = useState<number>(0);
   return (
     <Style style={HomeLayoutWrapperStyles} {...otherProps}>
-      <Style style={HomeLayoutStyles}>
+      <Style style={HomeLayoutGroupStyles}>
         <HomeIntro/>
       </Style>
-      <Style style={HomePostsStyles}>
+      <Style style={HomePostsGroupStyles}>
         <HomePosts posts={posts}/>
+      </Style>
+      <Style style={HomePageNumberGroupStyles}>
+        <HomePageNumber 
+          currentPage={currentPage} 
+          setCurrentPage={setCurrentPage} 
+          noPosts={posts.length}
+        />
       </Style>
     </Style>
   )
@@ -32,11 +42,15 @@ const HomeLayoutWrapperStyles: CSS = {
   paddingBottom: 24,
 };
 
-const HomeLayoutStyles: CSS = {
+const HomeLayoutGroupStyles: CSS = {
   width: 832,
 }
 
-const HomePostsStyles: CSS = {
+const HomePostsGroupStyles: CSS = {
+  width: 832,
+}
+
+const HomePageNumberGroupStyles: CSS = {
   width: 832,
 }
 
