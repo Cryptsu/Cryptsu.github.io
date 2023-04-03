@@ -7,6 +7,6 @@ export const TXT_TOC = "Table Of Content";
 export const TXT_WORDS = "words";
 export const TXT_MIN_READ = 'mins';
 export const TXT_FOOTER = "::: Made with ❤️ by Mistsu :::"
-export const TXT_AUTHOR_DESC = "Hi everyone :) I'm a newbie crypto player who loves to share knowledge through writeups.";
+export const TXT_AUTHOR_DESC = "Hi everyone :)\nI'm a newbie crypto player who loves to share knowledge through writeups.";
 export const TXT_BLINK_CHAR = "▌";
 export const TXT_NO_DESCRIPTION = "(no description is given)"

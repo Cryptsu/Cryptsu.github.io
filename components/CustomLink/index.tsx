@@ -44,6 +44,7 @@ const CustomLinkStyles: CSS = {
   },
   
   '&:active': {
+    opacity: "70%",
     transform: "translateY(4px)"
   }
 };

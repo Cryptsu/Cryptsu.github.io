@@ -59,6 +59,15 @@ const PostCoverWrapperStyles: CSS = {
   borderRadius: 16,
   width: "75%",
   padding: 4,
+
+  '&:hover': {
+    transform: "translateX(-6px) translateY(-6px)",
+    boxShadow: theme.shadows.homePostCoverHover,
+  },
+  '&:active': {
+    transform: "translateX(-1px) translateY(-1px)",
+    boxShadow: theme.shadows.homePostCoverClick,
+  }
 };
 
 const PostCoverStyles: CSS = {

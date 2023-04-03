@@ -39,13 +39,17 @@ const BlinkingText = ({children, text, blinkColor, ...otherProps}: BlinkingTextP
   /* eslint-disable react-hooks/exhaustive-deps */}, [currentIndex]);
 
   return (
-    <Style {...otherProps}>
+    <Style style={BlinkingTextStyles} {...otherProps}>
       {currentText}
       <Style style={BlinkingCharStyles} css={{color: blinkColor}} elementName={HtmlConst.SPAN}>
         {TxtConst.TXT_BLINK_CHAR}
       </Style>
     </Style>
   )
+}
+
+const BlinkingTextStyles: CSS = {
+  whiteSpace: "pre-line"
 }
 
 const BlinkingCharStyles: CSS = {

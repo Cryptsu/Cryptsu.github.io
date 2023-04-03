@@ -173,6 +173,7 @@ const TableOfContentStyles: CSS = {
 };
 
 const TOCHeaderStyles: CSS = {
+  color: theme.colors.tocHeader,
   fontSize: theme.fontSizes.tocHeader,
   fontWeight: theme.fontWeights.tocHeader,
   textAlign: "center",

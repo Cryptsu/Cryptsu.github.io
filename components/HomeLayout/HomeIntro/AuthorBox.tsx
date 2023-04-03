@@ -27,19 +27,17 @@ const AuthorBox = ({children, ...otherProps}: AuthorBoxProps) => {
 const AuthorBoxStyles: CSS = {
   border: 4,
   borderRadius: 16,
-  borderStyle: "dashed",
-  borderColor: theme.colors.divider,
 
-  paddingLeft: 40,
-  paddingRight: 40,
-  paddingTop: 16,
-  paddingBottom: 16,
+  paddingLeft: 48,
+  paddingRight: 48,
+  paddingTop: 40,
+  paddingBottom: 40,
 
   backgroundColor: theme.colors.authorBackground,
 
   display: "grid",
   gridTemplateAreas: '"intro-author-logo intro-author-name" "intro-author-logo intro-author-desc"',
-  columnGap: 32,
+  columnGap: 16,
   rowGap: 8,
 
   fontFamily: theme.fonts.content,
