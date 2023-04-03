@@ -149,8 +149,8 @@ const TableOfContentStyles: CSS = {
   letterSpacing: theme.letterSpacings.toc,
   color: theme.colors.toc,
 
-  borderWidth: 2,
-  borderColor: theme.colors.tableBorder,
+  borderWidth: 4,
+  borderColor: theme.colors.tocBorder,
   borderStyle: "solid",
   scrollBehavior: "auto",
   overflow: "auto",
@@ -159,7 +159,7 @@ const TableOfContentStyles: CSS = {
 
   position: "sticky",
   top: "10vh",
-  maxHeight: "calc(70vh)",
+  maxHeight: "calc(80vh)",
   maxWidth: "400px",
   display: "flex",
   flexDirection: "column",
@@ -168,7 +168,7 @@ const TableOfContentStyles: CSS = {
   marginRight: 64,
   paddingLeft: 32,
   paddingRight: 32,
-  paddingTop: 16,
+  paddingTop: 8,
   paddingBottom: 16,
 };
 

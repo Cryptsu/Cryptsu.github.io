@@ -82,6 +82,7 @@ export const {
       tocHeader: "#d7423d",
       tocActive: "#FDFDFD",
       tocDivider: "$grey",
+      tocBorder: "#bfddce",
 
       //   -> Button
       buttonHoverBackground: "$grey",
