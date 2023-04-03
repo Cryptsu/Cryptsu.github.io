@@ -38,6 +38,7 @@ const HomePostStyles: CSS = {
 
   display: "flex",
   flexDirection: "column",
+  gap: 4,
 
   fontFamily: theme.fonts.posts,
   border: 0,
