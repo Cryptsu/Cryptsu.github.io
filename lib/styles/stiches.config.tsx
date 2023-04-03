@@ -60,7 +60,8 @@ export const {
       authorBoxBlinking: "$secondary",
 
       //   -> Posts section
-      posts: "$white",
+      posts: "#bfddce",
+      postsHover: "#fdfdfd",
       postsHeaderTag: "$grey",
       postDesc: "#6C877A",
       postDivider: "$tertiary",

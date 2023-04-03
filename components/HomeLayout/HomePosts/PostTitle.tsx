@@ -29,6 +29,7 @@ const PostTitleStyles: CSS = {
     textDecoration: "underline",
   },
   '&:hover': {
+    color: theme.colors.postsHover,
     backgroundColor: "transparent",
   },
 }
