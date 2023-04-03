@@ -15,7 +15,7 @@ const PostOtherMetadata = ({children, post, ...otherProps}: PostOtherMetadataPro
     <Style style={PostOtherMetadataStyles} {...otherProps}>
       {/* date | <time-read> */}
       <Style style={PostTimeReadStyles}>
-        <Time dateStr={post.date}/> | {post.minsRead} {TxtConst.TXT_MIN_READ}
+        <Time dateStr={post.date}/> &nbsp;|&nbsp;{post.minsRead} {TxtConst.TXT_MIN_READ}
       </Style>
 
       {/* #hashtag-a #hashtag-b ... */}
@@ -54,8 +54,10 @@ const PostHashtagsStyles: CSS = {
 
 const PostHashTagStyles: CSS = {
   color: theme.colors.hashtagInactive,
+  userSelect: "none",
   '&:hover': {
     color: theme.colors.hashtagActive,
+    textDecoration: "underline",
   }
 }
 

@@ -62,6 +62,7 @@ export const {
       //   -> Posts section
       posts: "$white",
       postDesc: "#6C877A",
+      postDivider: "$tertiary",
       
       // Post page
       //   -> Title metadata

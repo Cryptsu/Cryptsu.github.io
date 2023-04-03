@@ -35,11 +35,19 @@ const HomePostStyles: CSS = {
   paddingLeft: 24,
   paddingRight: 24,
   paddingBottom: 24,
+  paddingTop: 24,
 
   display: "flex",
   flexDirection: "column",
 
   fontFamily: theme.fonts.posts,
+  border: "dashed",
+  borderColor: theme.colors.postDivider,
+  borderTop: 0,
+  borderLeft: 0,
+  borderRight: 0,
+
+  width: "100%",
 };
 
 export default HomePosts;

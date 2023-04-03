@@ -57,15 +57,17 @@ const PostCoverWrapperStyles: CSS = {
 
   backgroundImage: theme.colors.gradient,
   borderRadius: 16,
-  width: "75%", 
-  
+  width: "75%",
   padding: 4,
 };
 
 const PostCoverStyles: CSS = {
   backgroundColor: theme.colors.pageBackground,
   borderRadius: 16,
-  width: "100%", 
+
+  width: "100%",
+  height: 200,
+  objectFit: "cover",
 };
 
 export default PostCover;

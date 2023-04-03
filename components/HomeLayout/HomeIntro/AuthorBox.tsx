@@ -30,8 +30,8 @@ const AuthorBoxStyles: CSS = {
   borderStyle: "dashed",
   borderColor: theme.colors.divider,
 
-  paddingLeft: 80,
-  paddingRight: 80,
+  paddingLeft: 40,
+  paddingRight: 40,
   paddingTop: 16,
   paddingBottom: 16,
 
@@ -39,7 +39,7 @@ const AuthorBoxStyles: CSS = {
 
   display: "grid",
   gridTemplateAreas: '"intro-author-logo intro-author-name" "intro-author-logo intro-author-desc"',
-  columnGap: 8,
+  columnGap: 32,
   rowGap: 8,
 
   fontFamily: theme.fonts.content,
