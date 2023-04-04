@@ -31,14 +31,22 @@ export const {
       primary: "#1CC674",
       secondary: "#0090ff",
       tertiary: "#fd4e47",
+      gPrimary: "linear-gradient($primary, $primary)",
+      gSecondary: "linear-gradient($secondary, $secondary)",
+      gTertiary: "linear-gradient($tertiary, $tertiary)",
 
       // Mix of them
       color12: "#0FABB3", // 1 + 2
       color13: "#FBE281", // 1 + 3
       color23: "#79659E", // 2 + 3
 
+      // Inactive versions of them.
+      primaryInactive: "#44966E",
+      secondaryInactive: "#265D8B",
+      tertiaryInactive: "#B03836",
+
       // Gradient
-      gradient: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
+      gradient12: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
 
       // Colors in theme
       red: "$tertiary",
@@ -51,43 +59,41 @@ export const {
       blackest: "#101010",
       grey: "#454C48",
       white: "#DCFFEE",
+      veryWhite: "#fdfdfd",
 
       // Utils
       //=> text
+      textActive: "$veryWhite",
       textGeneral: "$white",
+      textLess: "#bfddce",
+      textLesser: "#778980",
+      textLeast: "#454C48",
 
       //=> divider
-      divider: hexToRgba("#BCDACB", 0.25),
+      divider25: hexToRgba("#BCDACB", 0.25),
       divider50: hexToRgba("#454C48", 0.5),
+
+      //=> border (general)
+      borderGeneral: "$grey",
 
       //=> prev-next
       prev: "$tertiary",
       next: "$secondary",
-      prevBtnShade: "#B03836",
-      nextBtnShade: "#265D8B",
+      prevShade: "$tertiaryInactive",
+      nextShade: "$secondaryInactive",
 
-      // Main page
+      //=> status
+      success: "$green",
+      error: "$red",
+      warning: "$yellow",
+
+      // ========================== Main page ==============================
       //   -> Author section
       authorBackground: hexToRgba("#202220", 0.5),
 
-      //   -> Posts section
-      posts: "#bfddce",
-      postsHover: "#fdfdfd",
-      postsHeaderTag: "$grey",
-      postDesc: "#6C877A",
-      
-      // Post page
-      //   -> Title metadata
-      hashtagInactive: "#44966E",
-      metadata: hexToRgba("#DCFFEE", 0.5),
-
-      //   -> Footer
-      footerText: '#778980',
-      
+      // ========================== Post page ==============================
       //   -> Table of Content (toc)
-      toc: "#bfddce",
       tocHeader: "#d7423d",
-      tocActive: "#FDFDFD",
       tocBorder: "#bfddce",
 
       //   -> Button
@@ -97,36 +103,18 @@ export const {
       customLinkBackground: hexToRgba("#454C48", 0.5),
 
       //   -> Header
-      blurBackground: hexToRgba("#101010", 0.5),
-      navLinkLineHover: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
+      headerBlur: hexToRgba("#101010", 0.5),
 
       //   -> Layout
       pageBackground: "$blackest",
 
-      //   -> Table
-      tableBorder: "$grey",
-
-      //   -> Link
-      linkTextUnderlineHover: "linear-gradient(90deg, $tertiary 0%, $tertiary 100%)",
-      clickedLinkTextUnderlineHover: "linear-gradient(90deg, $secondary 0%, $secondary 100%)",
-      activeLinkTextUnderlineHover: "linear-gradient(90deg, $secondary 0%, $secondary 100%)",
-
       //   -> Quoteblock
       quoteLegend: "$black",
       quoteBackground: hexToRgba("#A8EFCD", 0.02),
-      quoteText: hexToRgba("#DCFFEE", 0.75),
-
-      //   -> Navigation buttons
-      prevButtonShade: "#B03836",
-      nextButtonInactive: "#265D8B",
 
       //   -> Code area
-      codeBoxInside: "linear-gradient($pageBackground, $pageBackground)",
-      codeGeneral: "$white",
       codeInnerBackground: "$black",
       codeBlockBackground: `linear-gradient(0deg, #181918, #181918)`,
-      codeLang: hexToRgba("#DCFFEE", 0.75),
-      codeBoxHidden: hexToRgba("#DCFFEE", 0.5),
 
       //      -> Code text area
       codeComment: "#8F8F8F",
@@ -141,9 +129,8 @@ export const {
       codeDeletion: "#ff1b1b",
       codeLiteral: "#fbe281",
 
-      //    -> Copy
+      //      -> Copy
       copyIcon: "$white",
-      copiedIcon: "$green",
     },
 
     fonts: {
@@ -261,7 +248,7 @@ export const {
 
     movUnderlineColor: (color: string) => ({
       backgroundImage: color,
-    })
+    }),
   }
 })
 

@@ -19,7 +19,7 @@ const PostTitle = ({children, title, link, ...otherProps}: PostTitleProps) => {
 }
 
 const PostTitleStyles: CSS = {
-  color: theme.colors.posts,
+  color: theme.colors.textLess,
   fontSize: theme.fontSizes.h3,
   fontWeight: theme.fontWeights.bold,
   letterSpacing: theme.letterSpacings.h3,
@@ -29,7 +29,7 @@ const PostTitleStyles: CSS = {
     textDecoration: "underline",
   },
   '&:hover': {
-    color: theme.colors.postsHover,
+    color: theme.colors.textActive,
     backgroundColor: "transparent",
   },
 }

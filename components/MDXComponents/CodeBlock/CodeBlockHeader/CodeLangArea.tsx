@@ -22,7 +22,7 @@ const CodeLangAreaStyles: CSS = {
   justifyContent: "center",
   alignItems: "center",
   
-  color: theme.colors.codeLang,
+  color: theme.colors.textLess,
   fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
   fontWeight: theme.fontWeights.bold,

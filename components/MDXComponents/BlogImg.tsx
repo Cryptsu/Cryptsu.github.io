@@ -70,9 +70,9 @@ const BlogImgDescriptionStyles: CSS = {
   borderStyle: "dashed",
   borderRadius: 8,
   padding: 8,
-  borderColor: "#00000000",
+  borderColor: "#00000000", // For zero opacity :3
   '&:hover': {
-    borderColor: theme.colors.grey,
+    borderColor: theme.colors.borderGeneral,
   }
 };
 

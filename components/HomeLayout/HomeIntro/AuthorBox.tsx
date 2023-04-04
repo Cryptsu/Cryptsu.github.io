@@ -28,7 +28,7 @@ const AuthorBoxStyles: CSS = {
   border: 2,
   borderRadius: 16,
   borderStyle: "dashed",
-  borderColor: theme.colors.divider,
+  borderColor: theme.colors.divider25,
 
   paddingLeft: 80,
   paddingRight: 80,

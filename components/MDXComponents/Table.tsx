@@ -37,7 +37,7 @@ const TableStyles: CSS = {
   borderCollapse: "collapse",
   [`${HtmlConst.TH}, ${HtmlConst.TD}`]: {
     border: "4px solid",
-    borderColor: theme.colors.tableBorder,
+    borderColor: theme.colors.borderGeneral,
     padding: 8,
   }
 };

@@ -39,17 +39,17 @@ const HomePostsHeaderStyles: CSS = {
   fontSize: theme.fontSizes.h2,
   fontWeight: theme.fontWeights.h2,
   letterSpacing: theme.letterSpacings.h2,
-  color: theme.colors.posts,
+  color: theme.colors.textLess,
 
   paddingBottom: 8,
   paddingLeft: 16,
   '&:before': {
     content: "< ",
-    color: theme.colors.postsHeaderTag,
+    color: theme.colors.textLeast,
   },
   '&:after': {
     content: " />",
-    color: theme.colors.postsHeaderTag,
+    color: theme.colors.textLeast,
   }
 }
 
@@ -67,7 +67,7 @@ const HomePostStyles: CSS = {
   border: 0,
   borderTop: 2,
   borderStyle: "dashed",
-  borderColor: theme.colors.divider,
+  borderColor: theme.colors.divider25,
 };
 
 export default HomePosts;

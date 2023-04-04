@@ -55,7 +55,7 @@ const PostMetadatasStyles: CSS = {
   alignItems: "center",
   gap: 16,
 
-  color: theme.colors.metadata,
+  color: theme.colors.textLesser,
   fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
 }

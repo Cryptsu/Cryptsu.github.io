@@ -32,7 +32,7 @@ const NavLinkStyles: CSS = {
   color: theme.colors.primary,
 
   // Set moving underline
-  movUnderline: `${theme.colors.navLinkLineHover} 2px 12px 6px`,
+  movUnderline: `${theme.colors.gradient12} 2px 12px 6px`,
 };
 
 export default NavLink;

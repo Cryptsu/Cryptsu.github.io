@@ -21,7 +21,7 @@ const FooterStyles: CSS = {
   paddingBottom: 24,
   textAlign: "center",
 
-  color: theme.colors.footerText,
+  color: theme.colors.textLesser,
   fontFamily: theme.fonts.global,
   fontSize: theme.fontSizes.h5,
   fontWeight: theme.fontWeights.bold,
@@ -30,7 +30,7 @@ const FooterStyles: CSS = {
   border: 0,
   borderTop: 4,
   borderStyle: "dashed",
-  borderColor: theme.colors.divider,
+  borderColor: theme.colors.divider25,
 };
 
 export default Footer;

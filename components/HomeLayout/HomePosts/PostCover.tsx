@@ -53,7 +53,7 @@ const PostCoverWrapperStyles: CSS = {
   width: "75%",
   padding: 4,
 
-  backgroundImage: theme.colors.gradient,
+  backgroundImage: theme.colors.gradient12,
   borderRadius: 16,
 
   '&:hover': {

@@ -23,10 +23,10 @@ const ParsedLinkStyles: CSS = {
   '&:visited': {
     color: theme.colors.color23,
   },
-  movUnderline: `${theme.colors.linkTextUnderlineHover} 2px 0px 0px`,
+  movUnderline: `${theme.colors.gTertiary} 2px 0px 0px`,
   '&:active': {
     color: theme.colors.secondary,
-    movUnderlineColor: theme.colors.activeLinkTextUnderlineHover,
+    movUnderlineColor: theme.colors.gSecondary,
   },
 };
 

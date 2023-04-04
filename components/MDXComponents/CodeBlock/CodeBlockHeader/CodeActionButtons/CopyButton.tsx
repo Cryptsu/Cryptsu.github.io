@@ -87,7 +87,7 @@ const CopyIconStyles: CSS = {
 }
 
 const CopiedIconStyles: CSS = {
-  fill: theme.colors.copiedIcon,
+  fill: theme.colors.success,
   width: 12,
   height: 12,
 }

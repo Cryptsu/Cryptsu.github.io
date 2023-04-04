@@ -40,7 +40,7 @@ const PostCoverWrapperStyles: CSS = {
   marginTop: 16,
   gap: 8,
   
-  backgroundImage: theme.colors.gradient,
+  backgroundImage: theme.colors.gradient12,
   borderRadius: 16,
   
   display: "flex",

@@ -36,11 +36,11 @@ const HeaderStyles: CSS = {
   borderLeft: 0,
   borderRight: 0,
   borderStyle: "dashed",
-  borderColor: theme.colors.divider,
+  borderColor: theme.colors.divider25,
 
   // Blur background
   backdropFilter: "blur(4px)",
-  backgroundColor: theme.colors.blurBackground,
+  backgroundColor: theme.colors.headerBlur,
 }
 
 const NavLinkGroupStyles: CSS = {

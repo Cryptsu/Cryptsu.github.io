@@ -117,8 +117,8 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
               ),
               color: (
                 intersections[index] == 0 
-                  ? theme.colors.tocActive 
-                  : theme.colors.toc
+                  ? theme.colors.textActive 
+                  : theme.colors.textLess
               ),
             }}
           >
@@ -155,7 +155,7 @@ const TableOfContentStyles: CSS = {
   fontWeight: theme.fontWeights.h6,
   fontSize: theme.fontSizes.h6,
   letterSpacing: theme.letterSpacings.h4,
-  color: theme.colors.toc,
+  color: theme.colors.textLess,
 
   borderWidth: 4,
   borderColor: theme.colors.tocBorder,
@@ -192,23 +192,23 @@ const TOCHeaderStyles: CSS = {
   marginBottom: 16,
   paddingBottom: 8,
   borderStyle: "dashed",
-  borderColor: theme.colors.divider,
+  borderColor: theme.colors.divider25,
 
   '&:before': {
     content: "'< '",
-    color: theme.colors.divider,
+    color: theme.colors.divider25,
   },
 
   '&:after': {
     content: "' />'",
-    color: theme.colors.divider,
+    color: theme.colors.divider25,
   }
 }
 
 const TOCLinkWrapperStyles: CSS = {
   display: "flex",
   borderStyle: "solid",
-  borderColor: theme.colors.toc,
+  borderColor: theme.colors.textLess,
 }
 
 const TOCLinkStyles: CSS = {
@@ -216,10 +216,10 @@ const TOCLinkStyles: CSS = {
   paddingLeft: 8,
   paddingRight: 8,
   '&:visisted': {
-    color: theme.colors.toc,
+    color: theme.colors.textLess,
   },
   '&:hover': {
-    color: theme.colors.tocActive
+    color: theme.colors.textActive
   }
 }
 

@@ -43,7 +43,7 @@ const PostOtherMetadataStyles: CSS = {
 const PostTimeReadStyles: CSS = {
   display: "flex",
   justifyContent: "left",
-  color: theme.colors.posts,
+  color: theme.colors.textLess,
 }
 
 const PostHashtagsStyles: CSS = {
@@ -53,7 +53,7 @@ const PostHashtagsStyles: CSS = {
 }
 
 const PostHashTagStyles: CSS = {
-  color: theme.colors.hashtagInactive,
+  color: theme.colors.primaryInactive,
   userSelect: "none",
   '&:hover': {
     color: theme.colors.primary,
