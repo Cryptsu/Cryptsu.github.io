@@ -20,6 +20,21 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
       </Style>
     )
 
+  const setPageNumber = (pageNumber: number) => {
+    if (pageNumber >= 0 && pageNumber < noPages)
+      setCurrentPage(pageNumber)
+  }
+
+  const addPageNumber = () => {
+    if (currentPage < noPages - 1)
+      setCurrentPage(currentPage + 1)
+  }
+
+  const decPageNumber = () => {
+    if (currentPage > 0)
+      setCurrentPage(currentPage - 1)
+  }
+
   let pageNums: (number | '...')[] = [];
   if (currentPage - 1 > 0)
     pageNums.push(0)
@@ -34,15 +49,49 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
 
   return (
     <Style style={HomePageNumberStyles} {...otherProps}>
+      <Style
+        style={HomePageNumberNavLeftStyles}
+        elementName={HtmlConst.SPAN} 
+        onClick={
+          () => {
+            decPageNumber();
+          }
+        }
+      >
+        {"<-"}
+      </Style>
       {
         pageNums.map(
           (pageNum) => (
-            <Style key={pageNum} style={HomePageNumberItemStyles} elementName={HtmlConst.SPAN} onClick={() => {console.log('clicked')}}>
+            <Style 
+              key={pageNum} 
+              css={pageNum === currentPage ? HomePageNumberItemSelectedStyles: HomePageNumberItemNormalStyles}
+              style={HomePageNumberItemStyles} 
+              elementName={HtmlConst.SPAN} 
+              onClick={
+                () => {
+                  if (typeof pageNum === 'number')
+                    setPageNumber(pageNum) 
+                }
+              }
+            >
               {pageNum}
             </Style>
           )
         )
       }
+
+      <Style
+        style={HomePageNumberNavRightStyles}
+        elementName={HtmlConst.SPAN} 
+        onClick={
+          () => {
+            addPageNumber();
+          }
+        }
+      >
+        {"->"}
+      </Style>
     </Style>
   )
 }
@@ -51,22 +100,43 @@ const HomePageNumberStyles: CSS = {
   fontFamily: theme.fonts.global,
   userSelect: "none",
   display: "flex",
+  alignItems: "end",
+  justifyContent: "center",
   gap: 8,
-
-  '&:before': {
-    content: '<-',
-    color: theme.colors.prev,
-    fontWeight: theme.fontWeights.bold,
-  },
-  '&:after': {
-    content: '->',
-    color: theme.colors.next,
-    fontWeight: theme.fontWeights.bold,
-  }
 };
 
+const HomePageNumberItemSelectedStyles: CSS = {
+  fontSize: theme.fontSizes.h4,
+  fontWeight: theme.fontWeights.bold,
+  letterSpacing: theme.letterSpacings.h4,
+}
+
+const HomePageNumberItemNormalStyles: CSS = {
+  fontSize: theme.fontSizes.h5,
+  letterSpacing: theme.letterSpacings.h5,
+}
+
 const HomePageNumberItemStyles: CSS = {
-  
+  color: theme.colors.textLess,
+  '&:hover': {
+    color: theme.colors.textActive,
+  }
+}
+
+const HomePageNumberNavLeftStyles: CSS = {
+  color: theme.colors.prev,
+  '&:hover': {
+    color: theme.colors.prevActive,
+  },
+  fontWeight: theme.fontWeights.bold,
+}
+
+const HomePageNumberNavRightStyles: CSS = {
+  color: theme.colors.next,
+  '&:hover': {
+    color: theme.colors.nextActive,
+  },
+  fontWeight: theme.fontWeights.bold,
 }
 
 export default HomePageNumber;

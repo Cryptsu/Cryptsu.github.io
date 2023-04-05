@@ -44,6 +44,9 @@ export const {
       primaryInactive: "#44966E",
       secondaryInactive: "#265D8B",
       tertiaryInactive: "#B03836",
+      primaryActive: "#87ffc2",
+      secondaryActive: "#75B6EE",
+      tertiaryActive: "#F6ABA9",
 
       // Gradient
       gradient12: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
@@ -81,6 +84,8 @@ export const {
       next: "$secondary",
       prevShade: "$tertiaryInactive",
       nextShade: "$secondaryInactive",
+      prevActive: "$tertiaryActive",
+      nextActive: "$secondaryActive",
 
       //=> status
       success: "$green",
