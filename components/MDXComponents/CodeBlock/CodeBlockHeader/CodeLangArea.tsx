@@ -21,6 +21,7 @@ const CodeLangAreaStyles: CSS = {
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
+  userSelect: "none",
   
   color: theme.colors.textLess,
   fontSize: theme.fontSizes.h5,

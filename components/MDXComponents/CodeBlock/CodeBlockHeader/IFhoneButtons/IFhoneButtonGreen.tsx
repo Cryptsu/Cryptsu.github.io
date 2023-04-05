@@ -20,7 +20,10 @@ const IFhoneButtonGreenStyles: CSS = {
   width: 12,
   height: 12,
   borderRadius: "100%",
-  backgroundColor: theme.colors.green,
+  backgroundColor: theme.colors.green,  
+  '&:hover': {
+    cursor: "pointer",
+  }
 };
 
 export default IFhoneButtonGreen;

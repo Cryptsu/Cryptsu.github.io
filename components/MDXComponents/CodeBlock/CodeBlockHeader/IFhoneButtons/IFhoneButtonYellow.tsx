@@ -20,7 +20,10 @@ const IFhoneButtonYellowStyles: CSS = {
   width: 12,
   height: 12,
   borderRadius: "100%",
-  backgroundColor: theme.colors.yellow,
+  backgroundColor: theme.colors.yellow,  
+  '&:hover': {
+    cursor: "pointer",
+  }
 };
 
 export default IFhoneButtonYellow;

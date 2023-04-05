@@ -29,6 +29,7 @@ const ButtonStyles: CSS = {
   borderStyle: "solid",
   '&:hover': {
     backgroundColor: theme.colors.buttonHoverBackground,
+    cursor: "pointer",
   },
   '&:active': {
     transform: "translateY(4px)",

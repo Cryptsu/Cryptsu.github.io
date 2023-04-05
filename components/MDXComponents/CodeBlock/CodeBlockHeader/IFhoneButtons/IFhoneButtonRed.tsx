@@ -21,6 +21,9 @@ const IFhoneButtonRedStyles: CSS = {
   height: 12,
   borderRadius: "100%",
   backgroundColor: theme.colors.red,
+  '&:hover': {
+    cursor: "pointer",
+  }
 };
 
 export default IFhoneButtonRed;

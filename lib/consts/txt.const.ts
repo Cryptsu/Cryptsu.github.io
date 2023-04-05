@@ -11,3 +11,4 @@ export const TXT_AUTHOR_DESC = "Hi everyone :) I'm a newbie crypto player who lo
 export const TXT_BLINK_CHAR = "▌";
 export const TXT_NO_DESCRIPTION = "(no description is given)"
 export const TXT_POSTS = "Posts";
+export const TXT_Y_U_HACK_PAGE_NUMBER = "Why the hell you hack the page number :v"
