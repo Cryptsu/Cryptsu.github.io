@@ -103,6 +103,8 @@ const HomePageNumberStyles: CSS = {
   alignItems: "end",
   justifyContent: "center",
   gap: 8,
+  paddingTop: 8,
+  paddingBottom: 8,
 };
 
 const HomePageNumberItemSelectedStyles: CSS = {
