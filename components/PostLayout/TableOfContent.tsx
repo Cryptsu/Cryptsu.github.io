@@ -220,6 +220,9 @@ const TOCLinkStyles: CSS = {
   },
   '&:hover': {
     color: theme.colors.textActive
+  },
+  '&:active': {
+    transform: "translateY(4px)"
   }
 }
 

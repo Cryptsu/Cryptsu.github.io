@@ -50,7 +50,7 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
   return (
     <Style style={HomePageNumberStyles} {...otherProps}>
       <Style
-        style={HomePageNumberNavLeftStyles}
+        style={currentPage > 0 ? HomePageNumberNavLeftStyles : HomePageNumberNavLeftInactiveStyles}
         elementName={HtmlConst.SPAN} 
         onClick={
           () => {
@@ -82,7 +82,7 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
       }
 
       <Style
-        style={HomePageNumberNavRightStyles}
+        style={currentPage < noPages - 1 ? HomePageNumberNavRightStyles : HomePageNumberNavRightInactiveStyles}
         elementName={HtmlConst.SPAN} 
         onClick={
           () => {
@@ -114,6 +114,9 @@ const HomePageNumberItemSelectedStyles: CSS = {
 const HomePageNumberItemNormalStyles: CSS = {
   fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
+  '&:active': {
+    transform: "translateY(4px)"
+  }
 }
 
 const HomePageNumberItemStyles: CSS = {
@@ -125,17 +128,33 @@ const HomePageNumberItemStyles: CSS = {
 
 const HomePageNumberNavLeftStyles: CSS = {
   color: theme.colors.prev,
+  fontWeight: theme.fontWeights.bold,
   '&:hover': {
     color: theme.colors.prevActive,
   },
+  '&:active': {
+    transform: "translateY(4px)"
+  }
+}
+
+const HomePageNumberNavLeftInactiveStyles: CSS = {
+  color: theme.colors.prevShade,
   fontWeight: theme.fontWeights.bold,
 }
 
 const HomePageNumberNavRightStyles: CSS = {
   color: theme.colors.next,
+  fontWeight: theme.fontWeights.bold,
   '&:hover': {
     color: theme.colors.nextActive,
   },
+  '&:active': {
+    transform: "translateY(4px)"
+  }
+}
+
+const HomePageNumberNavRightInactiveStyles: CSS = {
+  color: theme.colors.nextShade,
   fontWeight: theme.fontWeights.bold,
 }
 
