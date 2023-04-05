@@ -41,9 +41,12 @@ export const {
       color23: "#79659E", // 2 + 3
 
       // Inactive versions of them.
-      primaryInactive: "#44966E",
-      secondaryInactive: "#265D8B",
-      tertiaryInactive: "#B03836",
+      primaryInactive: "#112D1F",
+      secondaryInactive: "#44525F",
+      tertiaryInactive: "#73403F",
+      primaryShadow: "#44966E",
+      secondaryShadow: "#265D8B",
+      tertiaryShadow: "#B03836",
       primaryActive: "#87ffc2",
       secondaryActive: "#75B6EE",
       tertiaryActive: "#F6ABA9",
@@ -82,8 +85,10 @@ export const {
       //=> prev-next
       prev: "$tertiary",
       next: "$secondary",
-      prevShade: "$tertiaryInactive",
-      nextShade: "$secondaryInactive",
+      prevInactive: "$tertiaryInactive",
+      nextInactive: "$secondaryInactive",
+      prevShadow: "$tertiaryShadow",
+      nextShadow: "$secondaryShadow",
       prevActive: "$tertiaryActive",
       nextActive: "$secondaryActive",
 

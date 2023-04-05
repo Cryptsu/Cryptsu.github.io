@@ -140,7 +140,7 @@ const HomePageNumberNavLeftStyles: CSS = {
 }
 
 const HomePageNumberNavLeftInactiveStyles: CSS = {
-  color: theme.colors.prevShade,
+  color: theme.colors.prevInactive,
   fontWeight: theme.fontWeights.bold,
 }
 
@@ -156,7 +156,7 @@ const HomePageNumberNavRightStyles: CSS = {
 }
 
 const HomePageNumberNavRightInactiveStyles: CSS = {
-  color: theme.colors.nextShade,
+  color: theme.colors.nextInactive,
   fontWeight: theme.fontWeights.bold,
 }
 
