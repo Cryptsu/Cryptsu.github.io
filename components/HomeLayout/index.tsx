@@ -4,6 +4,7 @@ import HomeIntro from "./HomeIntro";
 import HomePosts from "./HomePosts";
 import HomePageNumber from "./HomePageNumber";
 import { theme } from "@/lib/styles/stiches.config";
+import { AppConfig } from "@/lib/config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -21,7 +22,12 @@ const HomeLayout = ({children, posts, ...otherProps}: HomeLayoutProps) => {
         <HomeIntro/>
       </Style>
       <Style style={HomePostsGroupStyles}>
-        <HomePosts posts={posts}/>
+        <HomePosts posts={
+          posts.slice(
+            AppConfig.HOME_POSTS_PER_PAGE * currentPage, 
+            AppConfig.HOME_POSTS_PER_PAGE * (currentPage+1)
+          )
+        }/>
       </Style>
       <Style style={HomePageNumberGroupStyles}>
         <HomePageNumber 
