@@ -137,9 +137,8 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
                     })
                 }
               }
-              style={TOCLinkStyles}
             >
-              <Style>
+              <Style style={TOCLinkStyles}>
                 {headingInfo.headingContent}
               </Style>
             </Style>
@@ -158,7 +157,7 @@ const TableOfContentStyles: CSS = {
   color: theme.colors.textLess,
 
   borderWidth: 4,
-  borderColor: theme.colors.tocBorder,
+  borderColor: theme.colors.borderGeneral,
   borderStyle: "solid",
   scrollBehavior: "auto",
   overflow: "auto",
@@ -222,7 +221,8 @@ const TOCLinkStyles: CSS = {
     color: theme.colors.textActive
   },
   '&:active': {
-    transform: "translateY(4px)"
+    transform: "translateY(4px)",
+    color: theme.colors.textActive
   }
 }
 

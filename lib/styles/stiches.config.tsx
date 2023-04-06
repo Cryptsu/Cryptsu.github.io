@@ -104,7 +104,6 @@ export const {
       // ========================== Post page ==============================
       //   -> Table of Content (toc)
       tocHeader: "#d7423d",
-      tocBorder: "#bfddce",
 
       //   -> Button
       buttonHoverBackground: "$grey",
