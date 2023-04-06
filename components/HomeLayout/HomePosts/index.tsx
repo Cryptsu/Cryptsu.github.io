@@ -37,9 +37,9 @@ const HomePosts = ({children, posts, ...otherProps}: HomePostsProps) => {
 const HomePostsHeaderStyles: CSS = {
   fontFamily: theme.fonts.global,
   fontSize: theme.fontSizes.h2,
-  fontWeight: theme.fontWeights.h2,
+  fontWeight: theme.fontWeights.normal,
   letterSpacing: theme.letterSpacings.h2,
-  color: theme.colors.textLess,
+  color: theme.colors.textGeneral,
 
   paddingBottom: 8,
   paddingLeft: 16,

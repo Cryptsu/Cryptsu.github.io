@@ -74,6 +74,7 @@ const PostNavigationButtonPrevStyles: CSS = {
 };
 
 const PostNavigationButtonPrevInactiveStyles: CSS = {
+  color: theme.colors.textLesser,
   fontWeight: theme.fontWeights.bold,
   borderColor: theme.colors.prevInactive,
   backgroundColor: theme.colors.prevInactive,
@@ -99,6 +100,7 @@ const PostNavigationButtonNextStyles: CSS = {
 };
 
 const PostNavigationButtonNextInactiveStyles: CSS = {
+  color: theme.colors.textLesser,
   fontWeight: theme.fontWeights.bold,
   borderColor: theme.colors.nextInactive,
   backgroundColor: theme.colors.nextInactive,

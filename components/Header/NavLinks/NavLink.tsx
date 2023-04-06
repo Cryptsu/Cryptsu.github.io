@@ -6,18 +6,19 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type NavLinkProps = PropsWithChildren <{
-  // Need to aquire link
+  // Need to acquire link
   href: string,
+  isCurrent: boolean,
 
   // Other props
   [x: string]: any,
 }>
 
-const NavLink = ({children, href, ...otherProps}: NavLinkProps) => {
+const NavLink = ({children, href, isCurrent, ...otherProps}: NavLinkProps) => {
   return (
     <CustomLink 
       href={href} 
-      style={NavLinkStyles} 
+      style={isCurrent ? NavLinkCurrentStyles : NavLinkStyles} 
       {...otherProps}
     >
       {children}
@@ -34,5 +35,18 @@ const NavLinkStyles: CSS = {
   // Set moving underline
   movUnderline: `${theme.colors.gradient12} 2px 12px 6px`,
 };
+
+const NavLinkCurrentStyles: CSS = {
+  // Font customize
+  fontFamily: theme.fonts.global,
+  fontWeight: theme.fontWeights.bold,
+  fontSize: theme.fontSizes.h4,
+  letterSpacing: theme.letterSpacings.h5,
+  color: theme.colors.primary,
+
+  // Set moving underline
+  movUnderline: `${theme.colors.gradient12} 2px 12px 6px`,
+};
+
 
 export default NavLink;
