@@ -30,15 +30,15 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
         </Style>
         <Style style={PostContentGroupStyles}>
           <PostContent sourceContent={sourceContent}/>
+          <Style style={PostNavigationGroupStyles}>
+            <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+          </Style>
         </Style>
         <Style style={PostRightGroupStyles}>
           <TableOfContent/>
         </Style>
       </Style>
 
-      <Style style={PostNavigationGroupStyles}>
-        <PostNavigation nextPost={nextPost} prevPost={prevPost} />
-      </Style>
     </ContentProvider>
   )
 }
