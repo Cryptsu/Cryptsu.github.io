@@ -14,11 +14,12 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   ////////////////////////////////////////////////////////////////
   //
   //  This array contains values of -1, 0, or 1.
+  //     0 means that headings[index] in viewport ( or is the parent of headings[index] )
   //    -1 means that Y(headings[index]) < Y(viewport)
-  //     0 means that headings[index] in viewport.
   //     1 means that Y(headings[index]) > Y(viewport)
   //
   ////////////////////////////////////////////////////////////////
+  const { headingInfos } = useContent();
   const [ intersections, UpdateIntersectionsArray ] = useReducer(
     (
       oldIntersectValues: number[], 
@@ -39,6 +40,24 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
               }
             }
 
+            // Now when the 0 values is known, also set 0 to
+            // the parents of it.
+            let indexHasZero = newIntersectValues.findIndex(intersectValue => intersectValue === 0);
+            if (indexHasZero !== -1) {
+              let currentLevel = headingInfos[indexHasZero].level;
+              let currentIndex = indexHasZero - 1;
+              while (currentIndex >= 0 && currentLevel >= 1) {
+                while (currentIndex >= 0) {
+                  if (headingInfos[currentIndex].level < currentLevel) {
+                    newIntersectValues[currentIndex] = 0;
+                    currentLevel = headingInfos[currentIndex].level;
+                    break;
+                  }
+                  currentIndex--;
+                }
+              }
+            }
+
             return newIntersectValues;
          }
   , []);
@@ -47,7 +66,6 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   //  This part uses the collected refs from the headings.
   //  Observe it and return a value relative to viewport.
   ////////////////////////////////////////////////////////////////
-  const { headingInfos } = useContent();
   const onContentScroll = () => {
     let newIntersectValues: number[] = [];
     for (let index = 0; index < headingInfos.length; ++index) {
@@ -96,7 +114,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   useLayoutEffect(() => {
     scrollRef.current?.scrollTo(scrollXYs[0], scrollXYs[1]);
   }, [intersections, scrollXYs])
-    
+
   return (
     <Style ref={scrollRef} style={TableOfContentStyles} {...otherProps}>
       <Style style={TOCHeaderStyles}>
