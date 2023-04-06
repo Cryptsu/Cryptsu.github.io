@@ -36,7 +36,7 @@ const AuthorBoxStyles: CSS = {
   paddingBottom: 16,
 
   backgroundColor: theme.colors.authorBackground,
-  boxShadow: theme.shadows.homeAuthor,
+  boxShadow: theme.shadows.depthShadow,
 
   display: "grid",
   gridTemplateAreas: '"intro-author-logo intro-author-name" "intro-author-logo intro-author-desc"',

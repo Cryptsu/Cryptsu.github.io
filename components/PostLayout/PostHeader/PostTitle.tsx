@@ -23,6 +23,7 @@ const PostTitleStyles: CSS = {
   letterSpacing: theme.letterSpacings.h0,
   textDecoration: "underline",
   textAlign: "center",
+  width: "75%", 
 }
 
 export default PostTitle;

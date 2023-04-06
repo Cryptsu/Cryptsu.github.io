@@ -201,14 +201,15 @@ export const {
     },
 
     shadows: {
-      homeAuthor: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
-      homePostCoverNormal: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
+      depthShadow: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
       homePostCoverHover: "6px 6px #454C48",
       homePostCoverClick: "1px 1px #454C48",
       codeCopyBtnNormal: "0 4px #265D8B",
       codeCopyBtnClick: "0 1px #265D8B",
-      codeBlockShadow: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
-      quoteBlockShadow: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
+      prevBtn: "0 6px #B03836",
+      prevBtnClick: "0 2px #B03836",
+      nextBtn: "0 6px #265D8B",
+      nextBtnClick: "0 2px #265D8B",
     },
 
     borderWidths: {

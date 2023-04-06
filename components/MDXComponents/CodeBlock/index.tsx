@@ -58,7 +58,7 @@ const CodeBlockLayoutStyles: CSS = {
   // Stops phones from keeping selecting background image instead of content.
   // while making children elements selectable.
   backgroundImage: `${theme.colors.codeBlockBackground}`,
-  boxShadow: theme.shadows.codeBlockShadow,
+  boxShadow: theme.shadows.depthShadow,
   pointerEvents: "none",  
   '*': {
     pointerEvents: "auto"

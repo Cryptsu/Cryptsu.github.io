@@ -4,6 +4,7 @@ import Style from "@/components/Style";
 import TableOfContent from "./TableOfContent";
 import PostContent from "./PostContent";
 import PostHeader from "./PostHeader";
+import PostNavigation from "./PostNavigation";
 
 import { theme } from "@/lib/styles/stiches.config";
 
@@ -15,12 +16,15 @@ import type { PostFrontMatterType } from "@/types/post.d";
 type PostLayoutProps = PropsWithChildren<{
   frontMatter: PostFrontMatterType,
   sourceContent: MDXRemoteSerializeResult<Record<string, unknown>>,
+  prevPost: PostFrontMatterType | null,
+  nextPost: PostFrontMatterType | null,
 }>
 
-const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostLayoutProps) => {
+const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, ...otherProps}: PostLayoutProps) => {
   return (
     <ContentProvider>
       <PostHeader frontMatter={frontMatter}/>
+
       <Style style={PostLayoutStyles}>
         <Style style={PostLeftGroupStyles}>
         </Style>
@@ -30,6 +34,10 @@ const PostLayout = ({children, frontMatter, sourceContent, ...otherProps}: PostL
         <Style style={PostRightGroupStyles}>
           <TableOfContent/>
         </Style>
+      </Style>
+
+      <Style style={PostNavigationGroupStyles}>
+        <PostNavigation nextPost={nextPost} prevPost={prevPost} />
       </Style>
     </ContentProvider>
   )
@@ -61,5 +69,14 @@ const PostContentGroupStyles: CSS = {
 const PostRightGroupStyles: CSS = {
   gridArea: 'post-right'
 };
+
+const PostNavigationGroupStyles: CSS = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
+  paddingTop: 24,
+  paddingBottom: 24,
+}
 
 export default PostLayout;

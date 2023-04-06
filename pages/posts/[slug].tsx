@@ -1,5 +1,5 @@
 import { compilePost } from "@/lib/helpers/compile-post";
-import { getPostSlugs } from "@/lib/helpers/process-posts";
+import { getAllPosts, getPostSlugs } from "@/lib/helpers/process-posts";
 
 import PostLayout from "@/components/PostLayout";
 
@@ -13,12 +13,19 @@ import "katex/dist/katex.min.css"
 // Main element
 ///////////////////////////////////////////////////////////////////
 
-const Post = ({frontMatter, sourceContent}: InferGetStaticPropsType<typeof getStaticProps>) => {
+export type PostProps = PostWithSourceType & {
+  prevPost: PostFrontMatterType | null,
+  nextPost: PostFrontMatterType | null,
+}
+
+const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <PostLayout
         frontMatter={frontMatter}
         sourceContent={sourceContent}
+        prevPost={prevPost}
+        nextPost={nextPost}
       />
     </>
   )
@@ -28,12 +35,17 @@ const Post = ({frontMatter, sourceContent}: InferGetStaticPropsType<typeof getSt
 // Path registrations
 ///////////////////////////////////////////////////////////////////
 
-export const getStaticProps: GetStaticProps<PostWithSourceType, Pick<PostFrontMatterType, "slug">> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<PostProps, Pick<PostFrontMatterType, "slug">> = async ({ params }) => {
   if (!params?.slug) {
     return {
       notFound: true,
     }
   }
+
+  // NOTE: It is assumed that all posts is sorted
+  // by time.
+  const allPosts = await getAllPosts();
+  const slugIndex = allPosts.findIndex(post => post.slug === params.slug);
   
   const {
     frontMatter,
@@ -44,6 +56,8 @@ export const getStaticProps: GetStaticProps<PostWithSourceType, Pick<PostFrontMa
     props: {
       frontMatter,
       sourceContent,
+      prevPost: slugIndex > 0                   ? allPosts[slugIndex - 1] : null,
+      nextPost: slugIndex < allPosts.length - 1 ? allPosts[slugIndex + 1] : null,
     },
   }
 }
