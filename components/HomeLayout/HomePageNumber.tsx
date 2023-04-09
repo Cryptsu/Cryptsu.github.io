@@ -118,6 +118,13 @@ const HomePageNumberItemNormalStyles: CSS = {
   letterSpacing: theme.letterSpacings.h4,
   '&:active': {
     transform: "translateY(4px)"
+  },
+
+  border: 4,
+  borderStyle: "dashed",
+  borderColor: "#00000000",
+  '&:hover': {
+    borderColor: theme.colors.borderGeneral,
   }
 }
 
@@ -135,9 +142,17 @@ const HomePageNumberNavLeftStyles: CSS = {
   letterSpacing: theme.letterSpacings.h3,
   color: theme.colors.prev,
   fontWeight: theme.fontWeights.bold,
+
+  paddingLeft: 8,
+  paddingRight: 8,
+  border: 4,
+  borderStyle: "dashed",
+  borderColor: "#00000000",
   '&:hover': {
     color: theme.colors.prevActive,
+    borderColor: theme.colors.borderGeneral,
   },
+
   '&:active': {
     transform: "translateY(4px)"
   }
@@ -148,6 +163,8 @@ const HomePageNumberNavLeftInactiveStyles: CSS = {
   letterSpacing: theme.letterSpacings.h3,
   color: theme.colors.prevInactive,
   fontWeight: theme.fontWeights.bold,
+  paddingLeft: 8,
+  paddingRight: 8,
 }
 
 const HomePageNumberNavRightStyles: CSS = {
@@ -155,9 +172,17 @@ const HomePageNumberNavRightStyles: CSS = {
   letterSpacing: theme.letterSpacings.h3,
   color: theme.colors.next,
   fontWeight: theme.fontWeights.bold,
+
+  paddingLeft: 8,
+  paddingRight: 8,
+  border: 4,
+  borderStyle: "dashed",
+  borderColor: "#00000000",
   '&:hover': {
     color: theme.colors.nextActive,
+    borderColor: theme.colors.borderGeneral,
   },
+
   '&:active': {
     transform: "translateY(4px)"
   }
@@ -168,6 +193,8 @@ const HomePageNumberNavRightInactiveStyles: CSS = {
   letterSpacing: theme.letterSpacings.h3,
   color: theme.colors.nextInactive,
   fontWeight: theme.fontWeights.bold,
+  paddingLeft: 8,
+  paddingRight: 8,
 }
 
 export default HomePageNumber;
