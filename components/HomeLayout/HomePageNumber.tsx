@@ -122,6 +122,8 @@ const HomePageNumberItemNormalStyles: CSS = {
 }
 
 const HomePageNumberItemStyles: CSS = {
+  paddingLeft: 8,
+  paddingRight: 8,
   color: theme.colors.textLess,
   '&:hover': {
     color: theme.colors.textActive,
@@ -129,6 +131,8 @@ const HomePageNumberItemStyles: CSS = {
 }
 
 const HomePageNumberNavLeftStyles: CSS = {
+  fontSize: theme.fontSizes.h3,
+  letterSpacing: theme.letterSpacings.h3,
   color: theme.colors.prev,
   fontWeight: theme.fontWeights.bold,
   '&:hover': {
@@ -140,11 +144,15 @@ const HomePageNumberNavLeftStyles: CSS = {
 }
 
 const HomePageNumberNavLeftInactiveStyles: CSS = {
+  fontSize: theme.fontSizes.h3,
+  letterSpacing: theme.letterSpacings.h3,
   color: theme.colors.prevInactive,
   fontWeight: theme.fontWeights.bold,
 }
 
 const HomePageNumberNavRightStyles: CSS = {
+  fontSize: theme.fontSizes.h3,
+  letterSpacing: theme.letterSpacings.h3,
   color: theme.colors.next,
   fontWeight: theme.fontWeights.bold,
   '&:hover': {
@@ -156,6 +164,8 @@ const HomePageNumberNavRightStyles: CSS = {
 }
 
 const HomePageNumberNavRightInactiveStyles: CSS = {
+  fontSize: theme.fontSizes.h3,
+  letterSpacing: theme.letterSpacings.h3,
   color: theme.colors.nextInactive,
   fontWeight: theme.fontWeights.bold,
 }
