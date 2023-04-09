@@ -102,20 +102,20 @@ const HomePageNumberStyles: CSS = {
   display: "flex",
   alignItems: "end",
   justifyContent: "center",
-  gap: 8,
+  gap: 16,
   paddingTop: 8,
   paddingBottom: 8,
 };
 
 const HomePageNumberItemSelectedStyles: CSS = {
-  fontSize: theme.fontSizes.h4,
+  fontSize: theme.fontSizes.h3,
   fontWeight: theme.fontWeights.bold,
-  letterSpacing: theme.letterSpacings.h4,
+  letterSpacing: theme.letterSpacings.h3,
 }
 
 const HomePageNumberItemNormalStyles: CSS = {
-  fontSize: theme.fontSizes.h5,
-  letterSpacing: theme.letterSpacings.h5,
+  fontSize: theme.fontSizes.h4,
+  letterSpacing: theme.letterSpacings.h4,
   '&:active': {
     transform: "translateY(4px)"
   }

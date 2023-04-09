@@ -155,7 +155,7 @@ export const {
       h3: "26px",
       h4: "20px",
       h5: "16px",
-      h6: "12.5px",
+      h6: "14px",
     },
 
     fontWeights: {
