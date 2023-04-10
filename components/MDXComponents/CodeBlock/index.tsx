@@ -46,7 +46,6 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
 
 const CodeBlockStyles: CSS = {
   fontFamily: theme.fonts.code,
-  maxWidth: "100%",
 };
 
 const CodeBlockLayoutStyles: CSS = {

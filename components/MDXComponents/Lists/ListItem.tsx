@@ -27,7 +27,7 @@ const ListItemWrapperStyles: CSS = {
 };
 
 const ListItemStyles: CSS = {
-  width: "100%",
+  maxWidth: "100%",
   [`&> :first-child`]: {
     marginTop: 0,
   },

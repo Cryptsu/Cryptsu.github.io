@@ -19,8 +19,8 @@ const Table = ({children, ...otherProps}: TableProps) => {
 }
 
 const TableWrapperStyles: CSS = {
-  wordBreak: "break-all",
-  overflowWrap: "break-word",
+  lineBreak: "loose",
+  overflow: "auto",
   
   display: "flex",
   alignItems: "center",

@@ -76,12 +76,16 @@ const PostNavigationButtonGroupStyles: CSS = {
   paddingTop: 16,
   paddingBottom: 16,
 
-  display: "grid",
+  display: "flex",
+  flexDirection: "row",
   alignItems: "center",
   gap: 40,
-  gridTemplateColumns: "1fr 1fr",
+  '&>*': {
+    width: "100%",
+  },
+
   '@medium': {
-    gridTemplateColumns: "auto",
+    flexDirection: "column",
     gap: 16,
   },
 };
