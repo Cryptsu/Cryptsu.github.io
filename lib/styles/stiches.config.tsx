@@ -102,9 +102,6 @@ export const {
       authorBackground: hexToRgba("#202220", 0.5),
 
       // ========================== Post page ==============================
-      //   -> Table of Content (toc)
-      tocHeader: "#d7423d",
-
       //   -> Button
       buttonHoverBackground: "$grey",
 
