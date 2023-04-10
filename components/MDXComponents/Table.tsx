@@ -19,13 +19,12 @@ const Table = ({children, ...otherProps}: TableProps) => {
 }
 
 const TableWrapperStyles: CSS = {
-  lineBreak: "loose",
   overflow: "auto",
   
-  display: "flex",
+  display: "grid",
   alignItems: "center",
-  justifyContent: "center",
 
+  margin: "auto",
   marginTop: 32,
   marginBottom: 32,
 }

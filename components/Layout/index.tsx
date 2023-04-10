@@ -11,9 +11,9 @@ type LayoutProps = PropsWithChildren<{}>;
 const Layout = ({ children, ...otherProps }: LayoutProps) => {
   return (
     <Style style={LayoutStyles} {...otherProps}>
-      {/* <Style style={LayoutHeaderStyles}>
+      <Style style={LayoutHeaderStyles}>
         <Header/>
-      </Style> */}
+      </Style>
       <Style>
         {children}
       </Style>
