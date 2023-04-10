@@ -12,12 +12,12 @@ type IFhoneButtonsProps = PropsWithChildren<{
 }>
 
 const IFhoneButtons = ({children, ...otherProps}: IFhoneButtonsProps) => {
-  const { ToggleContentFn } = useContext(CodeBlockContext);
+  const { ToggleContentFn, ToggleWrapFn } = useContext(CodeBlockContext);
 
   return (
     <Style style={IFhoneButtonsStyles} {...otherProps}>
       <IFhoneButtonRed onClick={ToggleContentFn}/>
-      <IFhoneButtonYellow/>
+      <IFhoneButtonYellow onClick={ToggleWrapFn}/>
       <IFhoneButtonGreen/>
     </Style>
   )

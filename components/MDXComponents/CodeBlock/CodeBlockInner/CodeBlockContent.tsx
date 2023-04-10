@@ -5,12 +5,20 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type CodeBlockContentProps = PropsWithChildren<{
-
+  wrapCode: boolean;
 }>
 
-const CodeBlockContent = ({children, ...otherProps}: CodeBlockContentProps) => {
+const CodeBlockContent = ({children, wrapCode, ...otherProps}: CodeBlockContentProps) => {
   return (
-    <Style style={CodeBlockContentStyles} {...otherProps}>
+    <Style 
+      style={CodeBlockContentStyles} 
+      css={
+        wrapCode
+          ? { whiteSpace: "pre-wrap", lineBreak: "anywhere" }
+          : { overflow: "auto" }
+      }
+      {...otherProps}
+    >
       {children}
     </Style>
   )
@@ -20,8 +28,6 @@ const CodeBlockContentStyles: CSS = {
   // In Firefox, the scrollbar will cover content -.-
   // So there need a padding on the bottom... (sigh)
   // And set scroll-bar width to thin :) 
-  whiteSpace: "pre-wrap",
-  lineBreak: "anywhere",
   paddingBottom: 8,
   scrollbarWidth: "thin", // This attribute only applies on Firefox.
 

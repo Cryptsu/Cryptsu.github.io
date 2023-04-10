@@ -27,6 +27,10 @@ const CodeLangAreaStyles: CSS = {
   fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
   fontWeight: theme.fontWeights.bold,
+  '@small': {
+    fontSize: theme.fontSizes.h6,
+    letterSpacing: theme.letterSpacings.h6,
+  },
   textTransform: "capitalize",
 };
 

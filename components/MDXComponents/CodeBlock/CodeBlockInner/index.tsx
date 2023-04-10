@@ -11,7 +11,7 @@ type CodeBlockInnerProps = PropsWithChildren<{}>
 
 const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
   // Get number of lines for display.
-  const { showInner } = useContext(CodeBlockContext);
+  const { showInner, wrapCode } = useContext(CodeBlockContext);
   return (
     <Style>
       <Style
@@ -21,7 +21,7 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
         }}
         {...otherProps}
       >
-        <CodeBlockContent>
+        <CodeBlockContent wrapCode={wrapCode}>
           {children}
         </CodeBlockContent>
       </Style>
@@ -34,9 +34,14 @@ const CodeBlockInnerStyles: CSS = {
   // must have exact font styles
   // since they have to be matched to
   // be aligned correctly.
-  fontSize: `${theme.fontSizes.h5} !important`,
+  fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
   lineHeight: theme.lineHeights.h5,
+  '@small': {
+    fontSize: theme.fontSizes.h6,
+    letterSpacing: theme.letterSpacings.h6,
+    lineHeight: theme.lineHeights.h6,
+  },
 
   display: "flex",
   flexDirection: "row",

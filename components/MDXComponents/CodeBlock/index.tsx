@@ -14,15 +14,22 @@ type CodeBlockProps = PropsWithChildren<{
 
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
   const [showInner, setShowInner] = useState<number>(1);
+  const [wrapCode, setWrapCode] = useState<boolean>(false);
   const ToggleContentFn = () => {
     setShowInner(showInner ? 0 : 1);
+  }
+  const ToggleWrapFn = () => {
+    setWrapCode(!wrapCode);
   }
 
   return (
     <CodeBlockContext.Provider
       value={{
         showInner,
+        wrapCode,
+
         ToggleContentFn,
+        ToggleWrapFn,
       }}
     >
       <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>

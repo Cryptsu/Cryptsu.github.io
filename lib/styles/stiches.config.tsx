@@ -302,7 +302,7 @@ export const globalStyles = globalCss({
 
     // Fix error of font displaying incorrectly
     // on IPhones.
-    textSizeAdjust: "none",
+    // textSizeAdjust: "90%",
   },
 
   // Easier to customize link.
