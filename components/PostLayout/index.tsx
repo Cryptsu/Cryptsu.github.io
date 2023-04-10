@@ -55,7 +55,7 @@ const PostLayoutStyles: CSS = {
     gridTemplateColumns: "1fr calc(100vw - 32px) 1fr",
     paddingLeft: 16,
     paddingRight: 16,
-  }
+  },
 };
 
 const PostLeftGroupStyles: CSS = {

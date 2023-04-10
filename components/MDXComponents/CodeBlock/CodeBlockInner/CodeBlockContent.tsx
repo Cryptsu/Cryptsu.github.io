@@ -20,7 +20,7 @@ const CodeBlockContentStyles: CSS = {
   // In Firefox, the scrollbar will cover content -.-
   // So there need a padding on the bottom... (sigh)
   // And set scroll-bar width to thin :) 
-  overflow: "auto",
+  whiteSpace: "pre-wrap",
   paddingBottom: 8,
   scrollbarWidth: "thin", // This attribute only applies on Firefox.
 

@@ -50,10 +50,15 @@ const PostMetadatas = ({children, frontMatter, ...otherProps}: PostMetadatasProp
 
 const PostMetadatasStyles: CSS = {
   display: "flex",
-  flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
+  
   gap: 16,
+  flexDirection: "row",
+  '@small': {
+    gap: 4,
+    flexDirection: "column",
+  },
 
   color: theme.colors.textLesser,
   fontSize: theme.fontSizes.h5,

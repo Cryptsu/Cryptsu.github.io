@@ -19,10 +19,14 @@ const OrderedList = ({children, ...otherProps}: OrderedListProps) => {
 const OrderedListStyles: CSS = {
   position: "relative",
 
+  listStyle: 'none',
   margin: 0,
   marginLeft: 48,
   marginRight: 48,
-  listStyle: 'none',
+  '@small': {
+    marginLeft: 16,
+    marginRight: 16,
+  },
 
   // TODO: This ListItemNo is entangled with the one at UnorderedList.
   // If this value is changed in the future, please check here.

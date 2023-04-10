@@ -48,6 +48,10 @@ const CodeBlockLayoutStyles: CSS = {
   marginLeft: 32,
   marginRight: 32,
   borderRadius: 16,
+  '@medium': {
+    marginLeft: 0,
+    marginRight: 0,
+  },
 
   display: "flex",
   flexDirection: "column",
