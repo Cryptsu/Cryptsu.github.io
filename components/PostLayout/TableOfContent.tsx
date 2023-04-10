@@ -131,7 +131,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
           <Style key={index} 
             style={TOCLinkWrapperStyles}
             css={{
-              marginBottom: headingInfo.level === 1 ? 4 : 0,
+              marginTop: headingInfo.level === 1 && index !== 0 ? 4 : 0,
               marginLeft: `calc(24px * ${headingInfo.level - 1})`,
               borderWidth: `0px 0px 0px ${intersections[index] == 0 ? 4 : 0}px`,
               fontWeight: (
