@@ -18,8 +18,8 @@ const HomeIntro = ({children, ...otherProps}: HomeIntroProps) => {
 }
 
 const HomeIntroStyles: CSS = {
-  paddingLeft: 48,
-  paddingRight: 48,
+  paddingLeft: 120,
+  paddingRight: 120,
   paddingTop: 40,
   paddingBottom: 40,
 }

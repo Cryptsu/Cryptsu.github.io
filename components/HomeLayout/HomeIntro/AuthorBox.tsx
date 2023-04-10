@@ -13,7 +13,9 @@ type AuthorBoxProps = PropsWithChildren<{
 const AuthorBox = ({children, ...otherProps}: AuthorBoxProps) => {
   return (
     <Style style={AuthorBoxStyles} {...otherProps}>
-      <Style src={AppConfig.AUTHOR_LOGO} as={HtmlConst.IMG} style={AuthorBoxLogoStyles}/>
+      <Style style={AuthorBoxLogoStyles}>
+        <Style style={AuthorBoxLogoImgStyles} src={AppConfig.AUTHOR_LOGO} as={HtmlConst.IMG}/>
+      </Style>
       <Style style={AuthorBoxNameStyles}>
         {AppConfig.AUTHOR_NAME}
       </Style>
@@ -40,17 +42,26 @@ const AuthorBoxStyles: CSS = {
 
   display: "grid",
   gridTemplateAreas: '"intro-author-logo intro-author-name" "intro-author-logo intro-author-desc"',
+  '@large': {
+    gridTemplateAreas: '"intro-author-logo" "intro-author-name" "intro-author-desc"'
+  },
   columnGap: 32,
   rowGap: 4,
 
   fontFamily: theme.fonts.content,
 };
 
-const AuthorBoxLogoStyles: CSS = {
-  gridArea: "intro-author-logo",
+const AuthorBoxLogoImgStyles: CSS = {
   borderRadius: "100%",
   width: 180,
   height: 180,
+}
+
+const AuthorBoxLogoStyles: CSS = {
+  gridArea: "intro-author-logo",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 }
 
 const AuthorBoxNameStyles: CSS = {

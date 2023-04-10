@@ -24,7 +24,9 @@ const CodeInlineStyles: CSS = {
   paddingRight: 8,
   backgroundColor: theme.colors.codeInnerBackground,
   borderRadius: 8,
+
   textTransform: "none",
+  wordBreak: "break-word",
 };
 
 export default CodeInline;

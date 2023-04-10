@@ -46,12 +46,23 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
 const PostLayoutStyles: CSS = {
   display: "grid",
   gridTemplateAreas: "'post-left post-content post-right'",
-  gridTemplateColumns: "1fr 792px 2.5fr",
+  gridTemplateColumns: "1fr 768px 2.5fr",
   marginBottom: 24,
+  '@larger': {
+    gridTemplateColumns: "1fr 768px 1fr",
+  },
+  '@medium': {
+    gridTemplateColumns: "1fr calc(100vw - 32px) 1fr",
+    paddingLeft: 16,
+    paddingRight: 16,
+  }
 };
 
 const PostLeftGroupStyles: CSS = {
   gridArea: 'post-left',
+  '@larger': {
+    display: "none",
+  }
 };
 
 const PostContentGroupStyles: CSS = {
@@ -67,7 +78,10 @@ const PostContentGroupStyles: CSS = {
 };
 
 const PostRightGroupStyles: CSS = {
-  gridArea: 'post-right'
+  gridArea: 'post-right',
+  '@larger': {
+    display: "none",
+  }
 };
 
 const PostNavigationGroupStyles: CSS = {

@@ -228,9 +228,11 @@ export const {
 
   media: {
     // This is where table of content is not displayed anymore,
-    lessbig: "(max-width: 1365px)", 
+    larger: "(max-width: 1365px)", 
+    // This is where the middle part of homepage begin to change :)
+    large: "(max-width: 1000px)",
     // most responsive styles will go here:
-    medium: "(max-width: 768px)",
+    medium: "(max-width: 792px)",
     // used rarely only for SUPER narrow windows:
     small: "(max-width: 380px)",
   },

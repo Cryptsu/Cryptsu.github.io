@@ -189,8 +189,8 @@ const TableOfContentStyles: CSS = {
   userSelect: "none",
 
   position: "sticky",
-  top: MiscConst.HEADER_SIZE + 1,
-  maxHeight: `calc((100vh - ${MiscConst.HEADER_SIZE + 1}px) * 0.9)`,
+  top: MiscConst.HEADER_SIZE + 32,
+  maxHeight: `calc((100vh - ${MiscConst.HEADER_SIZE + 32}px) * 0.9)`,
   maxWidth: "400px",
   display: "flex",
   flexDirection: "column",

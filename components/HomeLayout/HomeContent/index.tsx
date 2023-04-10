@@ -84,11 +84,17 @@ const HomeContent = ({children, posts, ...otherProps}: HomeContentProps) => {
 }
 
 const HomePostsGroupStyles: CSS = {
-  width: 832,
+  width: 892,
+  '@large': {
+    width: "calc(100% - 108px)"
+  }
 }
 
 const HomePageNumberGroupStyles: CSS = {
-  width: 832,
+  width: 892,
+  '@large': {
+    width: "calc(100% - 108px)"
+  }
 }
 
 export default HomeContent;

@@ -31,7 +31,10 @@ const HomeLayoutWrapperStyles: CSS = {
 };
 
 const HomeLayoutGroupStyles: CSS = {
-  width: 832,
+  width: 892,
+  '@large': {
+    width: "calc(100% - 108px)"
+  }
 }
 
 export default HomeLayout;
