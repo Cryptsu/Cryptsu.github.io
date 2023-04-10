@@ -189,8 +189,8 @@ const TableOfContentStyles: CSS = {
   userSelect: "none",
 
   position: "sticky",
-  top: "10vh",
-  maxHeight: "calc(80vh)",
+  top: MiscConst.HEADER_SIZE + 1,
+  maxHeight: `calc((100vh - ${MiscConst.HEADER_SIZE + 1}px) * 0.9)`,
   maxWidth: "400px",
   display: "flex",
   flexDirection: "column",
@@ -199,8 +199,10 @@ const TableOfContentStyles: CSS = {
   marginRight: "15%",
   paddingLeft: 32,
   paddingRight: 32,
-  paddingTop: 12,
-  paddingBottom: 16,
+
+  '&>:last-child': {
+    marginBottom: 16,
+  }
 };
 
 const TOCHeaderStyles: CSS = {
@@ -213,6 +215,7 @@ const TOCHeaderStyles: CSS = {
   margin: 0,
   borderBottom: 2,
   marginBottom: 16,
+  marginTop: 16,
   paddingBottom: 8,
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,
@@ -225,7 +228,7 @@ const TOCHeaderStyles: CSS = {
   '&:after': {
     content: "' />'",
     color: theme.colors.divider25,
-  }
+  },
 }
 
 const TOCLinkWrapperStyles: CSS = {
