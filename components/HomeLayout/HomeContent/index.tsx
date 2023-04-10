@@ -48,6 +48,8 @@ const HomeContent = ({children, posts, ...otherProps}: HomeContentProps) => {
 
     // X, Y is set to be the counted from the bottom of page
     // instead of top.
+    // Modify array value then set to avoid creating
+    // a new array pointer, which triggers re-render.
     scrollXYs[0] = scrollWidth - scrollLeft;
     scrollXYs[1] = scrollHeight - scrollTop;
     setScrollXYs(scrollXYs);
