@@ -229,6 +229,15 @@ export const {
     }
   },
 
+  media: {
+    // This is where table of content is not displayed anymore,
+    lessbig: "(max-width: 1365px)", 
+    // most responsive styles will go here:
+    medium: "(max-width: 768px)",
+    // used rarely only for SUPER narrow windows:
+    small: "(max-width: 380px)",
+  },
+
   utils: {
     movUnderline: (attrsStr: string) => {
       // This code is created from Jarv.is's idea
