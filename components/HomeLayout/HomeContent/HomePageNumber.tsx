@@ -100,7 +100,7 @@ const HomePageNumberStyles: CSS = {
   fontFamily: theme.fonts.global,
   userSelect: "none",
   display: "flex",
-  alignItems: "end",
+  alignItems: "center",
   justifyContent: "center",
   gap: 16,
   paddingTop: 8,

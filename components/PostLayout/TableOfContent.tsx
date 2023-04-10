@@ -58,7 +58,13 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
               }
             }
 
-            return newIntersectValues;
+            // This allows component to re-render only when
+            // new values are updated.
+            return (
+              JSON.stringify(oldIntersectValues) === JSON.stringify(newIntersectValues)
+                ? oldIntersectValues
+                : newIntersectValues
+            )
          }
   , []);
 
