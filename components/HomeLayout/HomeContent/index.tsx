@@ -19,7 +19,6 @@ const HomeContent = ({children, posts, ...otherProps}: HomeContentProps) => {
   const [ scrollXYs, setScrollXYs ] = useState<number[]>([0, 0]);
 
   useLayoutEffect(() => {
-    console.log(currentPage)
     if (currentPage !== null) {
       let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
       let scrollWidth  = document.documentElement.scrollWidth  || document.body.scrollWidth;
