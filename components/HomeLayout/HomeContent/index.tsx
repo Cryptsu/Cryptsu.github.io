@@ -15,23 +15,26 @@ type HomeContentProps = PropsWithChildren<{
 }>
 
 const HomeContent = ({children, posts, ...otherProps}: HomeContentProps) => {
-  const [ currentPage, setCurrentPage ] = useState<number>(0);
+  const [ currentPage, setCurrentPage ] = useState<number | null>(null);
   const [ scrollXYs, setScrollXYs ] = useState<number[]>([0, 0]);
 
   useLayoutEffect(() => {
-    let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-    let scrollWidth  = document.documentElement.scrollWidth  || document.body.scrollWidth;
-    document.documentElement.scrollTo({
-      left: scrollWidth - scrollXYs[0], 
-      top: scrollHeight - scrollXYs[1],
-      behavior: "auto",
-    })
-
-    // document.body.scrollTo({
-    //   left: scrollWidth - scrollXYs[0], 
-    //   top: scrollHeight - scrollXYs[1],
-    //   behavior: "auto",
-    // })
+    console.log(currentPage)
+    if (currentPage !== null) {
+      let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+      let scrollWidth  = document.documentElement.scrollWidth  || document.body.scrollWidth;
+      document.documentElement.scrollTo({
+        left: scrollWidth - scrollXYs[0], 
+        top: scrollHeight - scrollXYs[1],
+        behavior: "auto",
+      })
+  
+      document.body.scrollTo({
+        left: scrollWidth - scrollXYs[0], 
+        top: scrollHeight - scrollXYs[1],
+        behavior: "auto",
+      })
+    }
   /* eslint-disable react-hooks/exhaustive-deps */}, [currentPage]);
 
   // Track scrolling on the website.
@@ -60,14 +63,14 @@ const HomeContent = ({children, posts, ...otherProps}: HomeContentProps) => {
       <Style style={HomePostsGroupStyles}>
         <HomePosts posts={
           posts.slice(
-            AppConfig.HOME_POSTS_PER_PAGE * currentPage, 
-            AppConfig.HOME_POSTS_PER_PAGE * (currentPage+1)
+            AppConfig.HOME_POSTS_PER_PAGE * (currentPage === null ? 0 : currentPage), 
+            AppConfig.HOME_POSTS_PER_PAGE * (currentPage === null ? 1 : currentPage+1),
           )
         }/>
       </Style>
       <Style style={HomePageNumberGroupStyles}>
         <HomePageNumber 
-          currentPage={currentPage} 
+          currentPage={currentPage === null ? 0 : currentPage} 
           setCurrentPage={setCurrentPage} 
           noPosts={posts.length}
         />
