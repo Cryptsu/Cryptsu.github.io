@@ -21,6 +21,7 @@ const CodeBlockContentStyles: CSS = {
   // So there need a padding on the bottom... (sigh)
   // And set scroll-bar width to thin :) 
   whiteSpace: "pre-wrap",
+  lineBreak: "anywhere",
   paddingBottom: 8,
   scrollbarWidth: "thin", // This attribute only applies on Firefox.
 

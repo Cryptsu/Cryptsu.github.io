@@ -48,7 +48,7 @@ const CodeBlockLayoutStyles: CSS = {
   marginLeft: 32,
   marginRight: 32,
   borderRadius: 16,
-  '@medium': {
+  '@large': {
     marginLeft: 0,
     marginRight: 0,
   },
