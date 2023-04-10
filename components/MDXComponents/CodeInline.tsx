@@ -26,7 +26,6 @@ const CodeInlineStyles: CSS = {
   borderRadius: 8,
 
   textTransform: "none",
-  wordBreak: "break-word",
 };
 
 export default CodeInline;
