@@ -48,6 +48,7 @@ const HeadingTargetStyles: CSS = {
 const HeadingCommonStyles: CSS = {
   position: "relative",
   textTransform: "uppercase",
+  wordBreak: "break-word",
 }
 
 const HeadingStyles: {[level: number]: CSS} = {

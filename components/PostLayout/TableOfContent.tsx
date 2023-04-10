@@ -179,6 +179,7 @@ const TableOfContentStyles: CSS = {
   fontSize: theme.fontSizes.h6,
   letterSpacing: theme.letterSpacings.h4,
   color: theme.colors.textLess,
+  wordBreak: "break-word",
 
   borderWidth: 4,
   borderColor: theme.colors.borderGeneral,

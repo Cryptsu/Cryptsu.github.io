@@ -20,6 +20,7 @@ const ParagraphStyles: CSS = {
   // Create margin
   marginTop: 12,
   marginBottom: 12,
+  wordBreak: "break-word",
 };
 
 export default Paragraph;
