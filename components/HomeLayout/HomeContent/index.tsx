@@ -22,12 +22,15 @@ const HomeContent = ({children, posts, ...otherProps}: HomeContentProps) => {
     if (currentPage !== null) {
       let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
       let scrollWidth  = document.documentElement.scrollWidth  || document.body.scrollWidth;
+
+      // For non-Chrome solutions
       document.documentElement.scrollTo({
         left: scrollWidth - scrollXYs[0], 
         top: scrollHeight - scrollXYs[1],
         behavior: "auto",
       })
-  
+
+      // For Chrome solutions
       document.body.scrollTo({
         left: scrollWidth - scrollXYs[0], 
         top: scrollHeight - scrollXYs[1],
