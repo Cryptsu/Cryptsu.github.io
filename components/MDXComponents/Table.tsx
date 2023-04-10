@@ -30,7 +30,6 @@ const TableWrapperStyles: CSS = {
 }
 
 const TableStyles: CSS = {
-  maxWidth: "100%",
   marginLeft: 16,
   marginRight: 16,
   borderCollapse: "collapse",
