@@ -80,13 +80,16 @@ const PostNavigationButtonGroupStyles: CSS = {
   flexDirection: "row",
   alignItems: "center",
   gap: 40,
-  '&>*': {
+  '& > *': {
     width: "100%",
   },
 
   '@medium': {
     flexDirection: "column",
     gap: 16,
+    '& > *': {
+      width: "min(100%, 328px)",
+    },
   },
 };
 
