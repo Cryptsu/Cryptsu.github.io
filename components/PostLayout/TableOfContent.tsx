@@ -1,4 +1,5 @@
 import { useEffect, useRef, useReducer, useState, useMemo, useLayoutEffect } from "react"
+import useOnce from "@/hooks/useOnce";
 import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
@@ -72,7 +73,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   //  This part uses the collected refs from the headings.
   //  Observe it and return a value relative to viewport.
   ////////////////////////////////////////////////////////////////
-  const onContentScroll = () => {
+  const onUpdateTableOfContent = () => {
     let newIntersectValues: number[] = [];
     for (let index = 0; index < headingInfos.length; ++index) {
       let headingRect = headingInfos[index].headingRef.current?.getBoundingClientRect();
@@ -97,9 +98,13 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
 
   // Track scrolling on the website.
   useEffect(() => { 
-    window.addEventListener('scroll', onContentScroll);
+    // Update during first load :)
+    if (intersections.length === 0 && headingInfos.length !== 0)
+      onUpdateTableOfContent();
+
+    window.addEventListener('scroll', onUpdateTableOfContent);
     return (
-      () => window.removeEventListener('scroll', onContentScroll)
+      () => window.removeEventListener('scroll', onUpdateTableOfContent)
     )
   })
 
