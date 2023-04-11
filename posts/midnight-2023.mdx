@@ -4,8 +4,75 @@ date: 'April 12, 2023'
 description: 'Writeup about a Crypto challenge :)'
 ---
 
-# Look, at me?
-# Look, at me?
-# Look, at me?
-# Look, at me?
-# Look, at me?
+---
+
+Lately, I haven't been playing CTFs much... So I was kinda dumb on everything. Anyways, I encouter a nice Crypto challenge on MidnightCTF
+
+---
+
+# Ikea
+
+## Challenge 
+
+```python
+p = random_prime(2**1024)
+q = random_prime(2**1024)
+a = randint(0, 2**1024)
+b = randint(0, 2**1024)
+
+def read_flag(file='flag.txt'):
+    with open(file, 'rb') as fin:
+        flag = fin.read()
+    return flag
+
+def pad_flag(flag, bits=1024):
+    pad = os.urandom(bits//8 - len(flag))
+    return int.from_bytes(flag + pad, "big")
+
+def generate_keys(p, q):
+    n = p * q
+    e = 0x10001
+    return n, e
+
+def encrypt_message(m, e, n):
+    return pow(m, e, n)
+
+flag = read_flag()
+m = pad_flag(flag)
+
+n, e = generate_keys(p, q)
+assert m < n
+
+c = encrypt_message(m, e, n)
+
+print(c)
+print(n)
+print(p + b^2 * q)
+print(a^2 * p + q)
+```
+
+## Idea
+Well, this is just classic RSA encryption. On its own, this scheme is definitely not breakable. However, the author provides some additional values $h_0, h_1$ so that somehow, we can use them to decrypt the encrypted value $c$:
+$$
+h_0 = p + qb^2 \\
+h_1 = q + pa^2
+$$
+where $a$, $b$ is some random value $\in [0, 2^{1024})$.
+
+My teammate immediately recognized *(god :cry:)* that:
+$$
+\frac{h_0h_1}{n} \text{  is a close approximation to  } {a^2b^2}
+$$
+
+For which you can reason it by doing the following calculations:
+$$ 
+\begin{aligned} 
+    & \text{ } \frac{h_0h_1}{n} \\
+ =  & \text{ } \frac{(p + qb^2)(q + pa^2)}{pq} \\
+ =  & \text{ } \frac{p + qb^2}{q} \frac{q + pa^2}{p} \\ 
+ =  & \text{ } (\frac{p}{q} + b^2)(\frac{q}{p} + a^2) \\
+ =  & \text{ } a^2b^2 + 1 + b^2\frac{q}{p} + a^2\frac{p}{q}
+\end{aligned} 
+$$
+
+Since $p$, $q$ are generated at random in the same interval, it's safe to say that their ratio $\frac{max(p, q)}{min(p, q)}$ is small (like, $8$ or something...)
