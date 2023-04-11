@@ -8,9 +8,9 @@ import type { CSS } from "@stitches/react";
 const Logo = () => {
   return (
     <CustomLink style={LogoStyles} href={LinkConst.LINK_HOME}>
-      <Lock/>
+      <Lock disappearWhenSmall={false}/>
       <BlogName/>
-      <Lock/>
+      <Lock disappearWhenSmall={true}/>
     </CustomLink>
   )
 }

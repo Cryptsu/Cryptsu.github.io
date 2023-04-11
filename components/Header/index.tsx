@@ -33,6 +33,10 @@ const HeaderStyles: CSS = {
     paddingLeft: "15%",
     paddingRight: "15%",
   },
+  '@large': {
+    paddingLeft: "5%",
+    paddingRight: "5%",
+  },
 
   // Create the divider
   borderBottom: 4,
