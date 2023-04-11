@@ -19,7 +19,7 @@ const PostOtherMetadata = ({children, post, ...otherProps}: PostOtherMetadataPro
       </Style>
 
       {/* #hashtag-a #hashtag-b ... */}
-      <Style>
+      <Style style={PostHashtagsStyles}>
         {
           post.tags?.map((tag, index) => 
             <>
@@ -45,6 +45,10 @@ const PostOtherMetadataStyles: CSS = {
 
 const PostTimeReadStyles: CSS = {
   color: theme.colors.textLess,
+}
+
+const PostHashtagsStyles: CSS = {
+  paddingLeft: 16,
 }
 
 const PostHashTagStyles: CSS = {
