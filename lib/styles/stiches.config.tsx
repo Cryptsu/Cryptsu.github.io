@@ -300,15 +300,6 @@ export const globalStyles = globalCss({
     margin: 0,
     padding: 0,
   },
-  
-  // Fix error of font displaying incorrectly
-  // on Safari (and only Safari) on IPhones.
-  // ( thanks to ChatGPT T.T )
-  // '@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) and (orientation: landscape)': {
-  //   '*': {
-  //     textSizeAdjust: "100%",
-  //   }
-  // },
 
   // Easier to customize link.
   'a': {
