@@ -19,9 +19,6 @@ const BlogNameStyles: CSS = {
   letterSpacing: theme.letterSpacings.h3,
   textDecoration: "underline",
   textAlign: "center", // WTF code that keeps TypeScript compiler's mouth shut
-  '@small': {
-    display: "none",
-  }
 }
 
 export default BlogName;

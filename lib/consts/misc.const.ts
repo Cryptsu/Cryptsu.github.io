@@ -1,1 +1,1 @@
-export const HEADER_SIZE = 68;
+export const HEADER_SIZE = 72;

@@ -8,9 +8,9 @@ import type { CSS } from "@stitches/react";
 const Logo = () => {
   return (
     <CustomLink style={LogoStyles} href={LinkConst.LINK_HOME}>
-      <Lock disappearWhenSmall={false}/>
+      <Lock/>
       <BlogName/>
-      <Lock disappearWhenSmall={true}/>
+      <Lock/>
     </CustomLink>
   )
 }
@@ -24,6 +24,10 @@ const LogoStyles: CSS = {
   paddingLeft: 16,
   paddingRight: 16,
   paddingBottom: 4,
+
+  '@small': {
+    display: "none",
+  }
 }
 
 export default Logo;
