@@ -22,6 +22,14 @@ const HomeIntroStyles: CSS = {
   paddingRight: 120,
   paddingTop: 40,
   paddingBottom: 40,
+  '@medium': {
+    paddingLeft: "min(40px, 5%)",
+    paddingRight: "min(40px, 5%)",
+  },
+  '@small': {
+    paddingLeft: 8,
+    paddingRight: 8,
+  }
 }
 
 export default HomeIntro;

@@ -36,6 +36,10 @@ const AuthorBoxStyles: CSS = {
   paddingRight: 80,
   paddingTop: 16,
   paddingBottom: 16,
+  '@medium': {
+    paddingLeft: "24px",
+    paddingRight: "24px",
+  },
 
   backgroundColor: theme.colors.authorBackground,
   boxShadow: theme.shadows.depthShadow,

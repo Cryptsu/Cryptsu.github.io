@@ -15,16 +15,19 @@ const PostOtherMetadata = ({children, post, ...otherProps}: PostOtherMetadataPro
     <Style style={PostOtherMetadataStyles} {...otherProps}>
       {/* date | <time-read> */}
       <Style style={PostTimeReadStyles}>
-        <Time dateStr={post.date}/> &nbsp;|&nbsp;{post.minsRead} {TxtConst.TXT_MIN_READ}
+        <Time dateStr={post.date}/>&nbsp;|&nbsp;{post.minsRead} {TxtConst.TXT_MIN_READ}
       </Style>
 
       {/* #hashtag-a #hashtag-b ... */}
-      <Style style={PostHashtagsStyles}>
+      <Style>
         {
           post.tags?.map((tag, index) => 
-            <Style key={index} style={PostHashTagStyles}>
-              {`#${tag}`}
-            </Style>
+            <>
+              <Style key={index} style={PostHashTagStyles} elementName={HtmlConst.SPAN}>
+                {`#${tag}`}
+              </Style>
+              &nbsp;
+            </>
           )
         }
       </Style>
@@ -33,23 +36,15 @@ const PostOtherMetadata = ({children, post, ...otherProps}: PostOtherMetadataPro
 }
 
 const PostOtherMetadataStyles: CSS = {
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
+  display: "flex",
+  justifyContent: "space-between",
   fontSize: theme.fontSizes.h6,
   fontWeight: theme.fontWeights.bold,
   letterSpacing: theme.letterSpacings.h6,
 }
 
 const PostTimeReadStyles: CSS = {
-  display: "flex",
-  justifyContent: "left",
   color: theme.colors.textLess,
-}
-
-const PostHashtagsStyles: CSS = {
-  display: "flex",
-  justifyContent: "right",
-  gap: 4,
 }
 
 const PostHashTagStyles: CSS = {

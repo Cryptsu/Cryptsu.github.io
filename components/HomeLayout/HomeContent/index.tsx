@@ -87,6 +87,9 @@ const HomePostsGroupStyles: CSS = {
   width: 892,
   '@large': {
     width: "calc(100% - 108px)"
+  },
+  '@medium': {
+    width: "calc(100% - 16px)",
   }
 }
 
@@ -94,6 +97,9 @@ const HomePageNumberGroupStyles: CSS = {
   width: 892,
   '@large': {
     width: "calc(100% - 108px)"
+  },
+  '@medium': {
+    width: "calc(100% - 16px)",
   }
 }
 
