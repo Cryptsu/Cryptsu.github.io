@@ -53,6 +53,11 @@ const PostNavigationButtonStyles: CSS = {
   fontSize: theme.fontSizes.h5,
   fontWeight: theme.fontWeights.h5,
   letterSpacing: theme.letterSpacings.h5,
+  '@small': {
+    fontSize: theme.fontSizes.h6,
+    fontWeight: theme.fontWeights.h6,
+    letterSpacing: theme.letterSpacings.h6,
+  },
 
   display: "flex",
   flexDirection: "column",
