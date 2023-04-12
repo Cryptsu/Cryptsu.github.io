@@ -18,6 +18,7 @@ const MathInline = ({children, ...otherProps}: MathInlineProps) => {
 
 const MathInlineStyles: CSS = {
   overflowX: "auto",
+  textTransform: "none",
 };
 
 export default MathInline;

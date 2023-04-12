@@ -18,7 +18,6 @@ const MathBlock = ({children, ...otherProps}: MathBlockProps) => {
 
 const MathBlockStyles: CSS = {
   overflowX: "auto",
-  letterSpacing: "normal",
 
   border: 0,
   borderTop: 2,

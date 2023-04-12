@@ -59,6 +59,10 @@ const AuthorBoxLogoImgStyles: CSS = {
   borderRadius: "100%",
   width: 180,
   height: 180,
+  '@tiny': {
+    width: 150,
+    height: 150,
+  }, 
 }
 
 const AuthorBoxLogoStyles: CSS = {
@@ -93,6 +97,11 @@ const AuthorBoxDescStyles: CSS = {
   fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
   lineHeight: theme.lineHeights.h5,
+  '@tiny': {
+    fontSize: theme.fontSizes.h6,
+    letterSpacing: theme.letterSpacings.h6,
+    lineHeight: theme.lineHeights.h6,
+  },
   color: theme.colors.textGeneral,
 }
 

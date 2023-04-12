@@ -59,6 +59,9 @@ const BlogImgWrapperStyles: CSS = {
 
 const BlogImgStyles: CSS = {
   maxWidth: "90%", 
+  '@medium': {
+    maxWidth: "100%",
+  },
   borderRadius: 16,
 };
 

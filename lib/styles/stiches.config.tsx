@@ -233,8 +233,10 @@ export const {
     large: "(max-width: 1000px)",
     // most responsive styles will go here:
     medium: "(max-width: 792px)",
-    // used rarely only for SUPER narrow windows:
-    small: "(max-width: 380px)",
+    // used for narrow windows:
+    small: "(max-width: 428px)",
+    // for someone who is still using iphone 5...
+    tiny: "(max-width: 350px)",
   },
 
   utils: {
