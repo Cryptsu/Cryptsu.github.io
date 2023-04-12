@@ -17,20 +17,6 @@ const PostOtherMetadata = ({children, post, ...otherProps}: PostOtherMetadataPro
       <Style style={PostTimeReadStyles}>
         <Time dateStr={post.date}/>&nbsp;|&nbsp;{post.minsRead} {TxtConst.TXT_MIN_READ}
       </Style>
-
-      {/* #hashtag-a #hashtag-b ... */}
-      <Style style={PostHashtagsStyles}>
-        {
-          post.tags?.map((tag, index) => 
-            <>
-              <Style key={index} style={PostHashTagStyles} elementName={HtmlConst.SPAN}>
-                {`#${tag}`}
-              </Style>
-              &nbsp;
-            </>
-          )
-        }
-      </Style>
     </Style>
   )
 }
@@ -49,14 +35,6 @@ const PostTimeReadStyles: CSS = {
 
 const PostHashtagsStyles: CSS = {
   paddingLeft: 16,
-}
-
-const PostHashTagStyles: CSS = {
-  color: theme.colors.primaryShadow,
-  '&:hover': {
-    color: theme.colors.primary,
-    textDecoration: "underline",
-  }
 }
 
 export default PostOtherMetadata;

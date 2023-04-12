@@ -8,7 +8,6 @@ export type PostFrontMatterType = {
   coverImage?: string;
   minsRead: number;
   noWords: number;
-  tags?: string[];
 };
 
 export type PostWithSourceType = {
