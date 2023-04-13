@@ -4,7 +4,7 @@ import type { Context } from "react";
 type CodeBlockContextType = (
   Context<{
     // Code block states
-    showInner: number;
+    showInner: boolean;
     wrapCode: boolean;
   
     // Layout change functions
@@ -15,7 +15,7 @@ type CodeBlockContextType = (
 
 export const CodeBlockContext: CodeBlockContextType = createContext({
   // Code block states
-  showInner: 0,
+  showInner: true as boolean,
   wrapCode: false as boolean,
 
   // Template change functions

@@ -6,6 +6,7 @@ import type { CSS } from "@stitches/react";
 
 type IFhoneButtonGreenProps = PropsWithChildren<{
   onClick?: () => void
+  title?: string,
 }>
 
 const IFhoneButtonGreen = ({children, ...otherProps}: IFhoneButtonGreenProps) => {
@@ -20,9 +21,14 @@ const IFhoneButtonGreenStyles: CSS = {
   width: 12,
   height: 12,
   borderRadius: "100%",
+  cursor: "pointer",
+  
   backgroundColor: theme.colors.green,  
   '&:hover': {
-    cursor: "pointer",
+    backgroundColor: theme.colors.brightGreen,
+  },
+  '&:active': {
+    backgroundColor: theme.colors.darkGreen,
   }
 };
 

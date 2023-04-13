@@ -66,6 +66,12 @@ export const {
       grey: "#454C48",
       white: "#DCFFEE",
       veryWhite: "#fdfdfd",
+      brightRed: "$tertiaryActive",
+      brightGreen: "$primaryActive",
+      brightYellow: "#f3fbc1",
+      darkRed: "$tertiaryInactive",
+      darkGreen: "$primaryInactive",
+      darkYellow: "#625500",
 
       // Utils
       //=> text
@@ -79,8 +85,9 @@ export const {
       divider25: hexToRgba("#BCDACB", 0.25),
       divider50: hexToRgba("#454C48", 0.5),
 
-      //=> border (general)
+      //=> general color for stuffs
       borderGeneral: "$grey",
+      iconGeneral: "$white",
 
       //=> prev-next
       prev: "$tertiary",
@@ -135,8 +142,7 @@ export const {
       codeDeletion: "#ff1b1b",
       codeLiteral: "#fbe281",
 
-      //      -> Copy
-      copyIcon: "$white",
+     
     },
 
     fonts: {

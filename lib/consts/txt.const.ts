@@ -14,3 +14,7 @@ export const TXT_POSTS = "blog-posts";
 export const TXT_Y_U_HACK_PAGE_NUMBER = "Why the hell you hack the page number :v";
 export const TXT_OTHER_POSTS = "other-posts";
 export const TXT_NULL = "null";
+export const TXT_CODE_RED_BUTTON_DESC = "Open/closes the codeblock";
+export const TXT_CODE_YELLOW_BUTTON_DESC = "Toggle code wrapping (if code has long line, you'll see effect).";
+export const TXT_CODE_GREEN_BUTTON_DESC = "This one does nothing, just for pretty. If you have any idea what functionality this one should have, please tell me :#";
+export const TXT_CODE_COPY_BUTTON_DESC = "Copy code to clipboard.";

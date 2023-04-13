@@ -13,10 +13,10 @@ type CodeBlockProps = PropsWithChildren<{
 }>
 
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
-  const [showInner, setShowInner] = useState<number>(1);
+  const [showInner, setShowInner] = useState<boolean>(true);
   const [wrapCode, setWrapCode] = useState<boolean>(false);
   const ToggleContentFn = () => {
-    setShowInner(showInner ? 0 : 1);
+    setShowInner(!showInner);
   }
   const ToggleWrapFn = () => {
     setWrapCode(!wrapCode);
