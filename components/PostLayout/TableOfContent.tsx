@@ -251,7 +251,8 @@ const TOCLinkStyles: CSS = {
     color: theme.colors.textLess,
   },
   '&:hover': {
-    color: theme.colors.textActive
+    color: theme.colors.textActive,
+    cursor: "pointer",
   },
   '&:active': {
     transform: "translateY(4px)",

@@ -321,7 +321,7 @@ export const globalStyles = globalCss({
     backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
   },
 
-  [`.${ClassConst.CLASS_SAFARI}`]: {
+  [`.${ClassConst.CLASS_IOS}, .${ClassConst.CLASS_SAFARI}`]: {
     'body': {
       // The reason I have to do this is because 
       // Safari has an auto text size adjust
