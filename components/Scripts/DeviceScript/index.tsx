@@ -4,7 +4,12 @@ import { clientScript } from "./script";
 
 const DeviceScript = () => {
   const functionString = String(clientScript);
-  const unminifiedCode = `(${functionString})("${ClassConst.CLASS_IOS_SAFARI}")`;
+  const unminifiedCode = `
+    (${functionString})(
+      "${ClassConst.CLASS_IOS}",
+      "${ClassConst.CLASS_SAFARI}",
+    )
+  `;
 
   // minify the final code, a bit hacky but this is ONLY done at build-time, so uglify-js is never bundled or sent to
   // the browser to execute. (this comment is originally from jarv.is :>)
