@@ -1,5 +1,5 @@
 // All MDX components
-import ContentProvider from "@/components/ContentProvider";
+import ContentProvider from "@/components/Providers/ContentProvider";
 import Style from "@/components/Style";
 import TableOfContent from "./TableOfContent";
 import PostContent from "./PostContent";

@@ -1,4 +1,4 @@
-import LayoutProvider from '@/components/LayoutProvider';
+import LayoutProvider from '@/components/Providers/LayoutProvider';
 import Layout from '@/components/Layout';
 import { globalStyles } from '@/lib/styles/stiches.config'
 import type { AppProps } from 'next/app'

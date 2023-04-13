@@ -1,5 +1,5 @@
 import { createStitches } from "@stitches/react";
-import { AssetsConst } from "@/lib/consts";
+import { AssetsConst, ClassConst } from "@/lib/consts";
 import type * as Stitches from "@stitches/react";
 
 // Helpers
@@ -320,4 +320,16 @@ export const globalStyles = globalCss({
     backgroundColor: "$pageBackground",
     backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
   },
+
+  [`.${ClassConst.CLASS_IOS_SAFARI}`]: {
+    'body': {
+      // The reason I have to do this is because 
+      // Safari has an auto text size adjust
+      // mechanism. When screen is rotated,
+      // this mechanism does not distribute evenly
+      // into the elements, making the page appears
+      // really unbalanced :(
+      textSizeAdjust: "100%",
+    }
+  }
 });

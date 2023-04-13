@@ -6,6 +6,7 @@ import * as LinkConst from "./link.const";
 import * as HtmlConst from "./html.const";
 import * as MiscConst from "./misc.const";
 import * as LocaleConst from "./locale.const";
+import * as ClassConst from "./class.const";
 
 export {
   ThemeConst,
@@ -16,4 +17,5 @@ export {
   HtmlConst,
   MiscConst,
   LocaleConst,
+  ClassConst
 };

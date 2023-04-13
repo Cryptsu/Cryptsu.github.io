@@ -1,0 +1,1 @@
+export const CLASS_IOS_SAFARI = "ios-safari";
