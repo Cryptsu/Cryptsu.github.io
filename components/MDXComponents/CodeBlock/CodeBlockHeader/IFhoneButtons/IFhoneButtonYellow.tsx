@@ -25,7 +25,9 @@ const IFhoneButtonYellowStyles: CSS = {
   borderRadius: "100%",
   cursor: "pointer",
   display: "flex",
-  
+  justifyContent: "center",
+  alignItems: "center",
+
   backgroundColor: theme.colors.yellow,  
   '&:hover': {
     backgroundColor: theme.colors.brightYellow,
@@ -37,8 +39,8 @@ const IFhoneButtonYellowStyles: CSS = {
 
 const IFhoneButtonIconStyles: CSS = {
   fill: theme.colors.black,
-  width: 12,
-  height: 12,
+  width: 10,
+  height: 10,
 
   transform: "scaleY(-1)",
   opacity: "0%",

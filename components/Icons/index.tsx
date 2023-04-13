@@ -11,3 +11,4 @@ export { default as ChevronUpIcon } from "@primer/octicons/build/svg/chevron-up-
 export { default as ChevronDownIcon } from "@primer/octicons/build/svg/chevron-down-12.svg";
 export { default as ReplyIcon } from "@primer/octicons/build/svg/reply-16.svg";
 export { default as ArrowBothIcon } from "@primer/octicons/build/svg/arrow-both-16.svg";
+export { default as DotIcon } from "@primer/octicons/build/svg/dot-16.svg";

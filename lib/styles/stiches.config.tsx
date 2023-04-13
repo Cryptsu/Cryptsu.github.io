@@ -325,6 +325,7 @@ export const globalStyles = globalCss({
   'body': {
     backgroundColor: "$pageBackground",
     backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
+    pointerEvents: "none",  
   },
 
   [`.${ClassConst.CLASS_IOS}, .${ClassConst.CLASS_SAFARI}`]: {

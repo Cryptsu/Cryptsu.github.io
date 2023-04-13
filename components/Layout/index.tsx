@@ -32,7 +32,6 @@ const LayoutStyles: CSS = {
 
   // Stops phones from keeping selecting background image instead of content.
   // while making children elements selectable.
-  pointerEvents: "none",  
   '*': {
     pointerEvents: "auto"
   }

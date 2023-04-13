@@ -69,10 +69,6 @@ const CodeBlockLayoutStyles: CSS = {
   // while making children elements selectable.
   backgroundImage: `${theme.colors.codeBlockBackground}`,
   boxShadow: theme.shadows.depthShadow,
-  pointerEvents: "none",  
-  '*': {
-    pointerEvents: "auto"
-  },
 
   // Limit the height for code view...
   // maxHeight: 240,
