@@ -3,11 +3,11 @@ import { clientScript } from "./script";
 
 const TextAdjustScript = () => {
   const functionString = String(clientScript);
-  const unminified = `(${functionString})()`;
+  const unminifiedCode = `(${functionString})()`;
 
   // minify the final code, a bit hacky but this is ONLY done at build-time, so uglify-js is never bundled or sent to
   // the browser to execute. (this comment is originally from jarv.is :>)
-  const minified = minify(unminified, {
+  const minified = minify(unminifiedCode, {
     toplevel: true,
     compress: {
       negate_iife: false,
@@ -23,7 +23,7 @@ const TextAdjustScript = () => {
     return (
       <script
         dangerouslySetInnerHTML={{
-          __html: `(function(){${unminified}})()`
+          __html: `(function(){${unminifiedCode}})()`
         }}
       />
     )

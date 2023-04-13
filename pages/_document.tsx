@@ -6,14 +6,14 @@ import { ThemeConst } from '@/lib/consts';
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" className={ThemeClassMap[ThemeConst.THEME_DEFAULT]}>
       <Head>
         {/* Enable Server-side rendering */}
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
         <TextAdjustScript/>
       </Head>
       {/* TODO: This is a quick fix for page flickering. Very bad looking. */}
-      <body className={ThemeClassMap[ThemeConst.THEME_DEFAULT]}> 
+      <body> 
         <Main />
         <NextScript />
       </body>

@@ -60,8 +60,8 @@ const AuthorBoxLogoImgStyles: CSS = {
   width: 180,
   height: 180,
   '@tiny': {
-    width: 150,
-    height: 150,
+    width: "80%",
+    height: "auto",
   }, 
 }
 

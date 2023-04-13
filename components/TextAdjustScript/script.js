@@ -1,6 +1,5 @@
 // @ts-check
 /* eslint-disable no-var, no-empty */
-
 export const clientScript = () => {
   // TODO: This detection mechanism might
   // change in the future.
