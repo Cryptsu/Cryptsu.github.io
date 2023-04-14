@@ -45,14 +45,14 @@ const IFhoneButtonCombine = ({children, codeBlockState, ...otherProps}: IFhoneBu
 const IFhoneButtonCombineStyles: CSS = {
   width: 48,
   height: 24,
-  borderRadius: 24,
+  borderRadius: "24px !important",
   cursor: "pointer",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   userSelect: "none",
 
-  borderColor: theme.colors.red,
+  borderColor: theme.colors.tertiary,
   boxShadow: theme.shadows.codeBlockMobileBtnNormal,
   '&:active': {
     boxShadow: theme.shadows.codeBlockMobileBtnClick,
