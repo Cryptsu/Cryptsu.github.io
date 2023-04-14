@@ -63,6 +63,10 @@ const PostMetadatasStyles: CSS = {
   color: theme.colors.textLesser,
   fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
+  '@medium': {
+    fontSize: theme.fontSizes.h6,
+    letterSpacing: theme.letterSpacings.h6,
+  }
 }
 
 const PostMetadataStyles: CSS = {

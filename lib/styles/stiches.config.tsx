@@ -209,6 +209,8 @@ export const {
       homePostCoverClick: "1px 1px #454C48",
       codeCopyBtnNormal: "0 4px #265D8B",
       codeCopyBtnClick: "0 1px #265D8B",
+      codeBlockMobileBtnNormal: "0 4px #73403F",
+      codeBlockMobileBtnClick: "0 1px #73403F",
       prevBtn: "0 6px #B03836",
       prevBtnClick: "0 2px #B03836",
       nextBtn: "0 6px #265D8B",

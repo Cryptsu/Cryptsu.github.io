@@ -54,7 +54,6 @@ const BlogImgWrapperStyles: CSS = {
   margin: 0,
   marginTop: 32,
   marginBottom: 32,
-  gap: 8,
 };
 
 const BlogImgStyles: CSS = {
@@ -66,13 +65,23 @@ const BlogImgStyles: CSS = {
 };
 
 const BlogImgDescriptionStyles: CSS = {
+  wordBreak: "break-word",
+  textAlign: "center",
   fontSize: theme.fontSizes.h5,
   fontWeight: theme.fontWeights.bold,
+  maxWidth: "90%",
+  '@medium': {
+    fontSize: theme.fontSizes.h6,
+    maxWidth: "100%",
+  },
 
   borderWidth: 2,
   borderStyle: "dashed",
   borderRadius: 8,
-  padding: 8,
+  paddingTop: 4,
+  paddingBottom: 4,
+  paddingLeft: 8,
+  paddingRight: 8,
   borderColor: "#00000000", // For zero opacity :3
   '&:hover': {
     borderColor: theme.colors.borderGeneral,

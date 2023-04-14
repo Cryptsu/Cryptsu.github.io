@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CodeBlockContext } from "@/contexts/CodeBlockContext";
+import { CodeBlockContext, CodeBlockStateEnum, CodeBlockStates } from "@/contexts/CodeBlockContext";
 import Style from "@/components/Style";
 import CodeBlockHeader from "./CodeBlockHeader";
 import CodeBlockInner from "./CodeBlockInner";
@@ -15,11 +15,33 @@ type CodeBlockProps = PropsWithChildren<{
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
   const [showInner, setShowInner] = useState<boolean>(true);
   const [wrapCode, setWrapCode] = useState<boolean>(false);
+  const [codeBlockStateIndex, setCodeBlockStateIndex] = useState<CodeBlockStateEnum>(CodeBlockStateEnum.normal);
+
   const ToggleContentFn = () => {
     setShowInner(!showInner);
   }
+
   const ToggleWrapFn = () => {
     setWrapCode(!wrapCode);
+  }
+  
+  const UpdateVisualStateFn = () => {
+    let nextCodeBlockStateIndex = (codeBlockStateIndex + 1) % CodeBlockStates.length;
+    setCodeBlockStateIndex(nextCodeBlockStateIndex);
+
+    switch (CodeBlockStates[nextCodeBlockStateIndex]) {
+      case CodeBlockStateEnum.normal:
+        setShowInner(true);
+        setWrapCode(false);
+        break;
+      case CodeBlockStateEnum.wrapCode:
+        setShowInner(true);
+        setWrapCode(true);
+        break;
+      case CodeBlockStateEnum.closeBox:
+        setShowInner(false);
+        break;
+    }
   }
 
   return (
@@ -27,9 +49,11 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
       value={{
         showInner,
         wrapCode,
+        codeBlockState: CodeBlockStates[codeBlockStateIndex],
 
         ToggleContentFn,
         ToggleWrapFn,
+        UpdateVisualStateFn,
       }}
     >
       <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
@@ -62,7 +86,7 @@ const CodeBlockLayoutStyles: CSS = {
   display: "flex",
   flexDirection: "column",
   padding: 16,
-  gap: 8,
+  gap: 16,
 
   // This would create the effect of having opacity to the background
   // Stops phones from keeping selecting background image instead of content.

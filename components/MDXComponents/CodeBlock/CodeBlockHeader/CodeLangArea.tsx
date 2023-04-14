@@ -1,16 +1,16 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
+import { ClassConst, HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
-type CodeLangAreaProps = {
+type CodeLangAreaProps = PropsWithChildren<{
   languageName?: string
-}
+}>
 
-const CodeLangArea = ({languageName=""}: CodeLangAreaProps) => {
+const CodeLangArea = ({languageName="", ...otherProps}: CodeLangAreaProps) => {
   return (
-    <Style style={CodeLangAreaStyles}>
+    <Style style={CodeLangAreaStyles} {...otherProps}>
       {languageName}
     </Style>
   )
@@ -27,10 +27,6 @@ const CodeLangAreaStyles: CSS = {
   fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
   fontWeight: theme.fontWeights.bold,
-  '@small': {
-    fontSize: theme.fontSizes.h6,
-    letterSpacing: theme.letterSpacings.h6,
-  },
   textTransform: "capitalize",
 };
 
