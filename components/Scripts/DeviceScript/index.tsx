@@ -8,6 +8,8 @@ const DeviceScript = () => {
     (${functionString})(
       "${ClassConst.CLASS_IOS}",
       "${ClassConst.CLASS_SAFARI}",
+      "${ClassConst.CLASS_MOBILE}",
+      "${ClassConst.CLASS_TABLET}",
     )
   `;
 
