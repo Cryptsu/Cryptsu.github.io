@@ -42,6 +42,7 @@ const IFhoneButtonsStyles: CSS = {
   flexDirection: "row",
   justifyContent: "left",
   alignItems: "center",
+  transform: "translateY(4px)",
   gap: 8,
   [`.${ClassConst.CLASS_MOBILE} &`]: {
     display: "none"
