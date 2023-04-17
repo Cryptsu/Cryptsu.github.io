@@ -52,7 +52,7 @@ const PostLayoutStyles: CSS = {
 const PostContentGroupStyles: CSS = {
   display: "grid",
   gridTemplateAreas: "'content-inner content-toc' 'content-nav content-toc'",
-  gridTemplateColumns: "768px 1fr",
+  gridTemplateColumns: "768px 280px",
   '@larger': {
     gridTemplateColumns: "768px 0fr",
   },
