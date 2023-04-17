@@ -198,7 +198,7 @@ const TableOfContentStyles: CSS = {
   top: MiscConst.HEADER_SIZE + 32,
   maxHeight: `calc((100vh - ${MiscConst.HEADER_SIZE + 32}px) * 0.9)`,
   width: "110%",
-  maxWidth: "400px",
+  maxWidth: "320px",
   display: "flex",
   flexDirection: "column",
 

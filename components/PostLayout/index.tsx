@@ -53,6 +53,12 @@ const PostContentGroupStyles: CSS = {
   display: "grid",
   gridTemplateAreas: "'content-inner content-toc' 'content-nav content-toc'",
   gridTemplateColumns: "768px 1fr",
+  '@larger': {
+    gridTemplateColumns: "768px 0fr",
+  },
+  '@medium': {
+    gridTemplateColumns: "calc(100vw - 32px) 0fr",
+  },
 
   // Global rules
   color: theme.colors.textGeneral,
@@ -65,11 +71,6 @@ const PostContentGroupStyles: CSS = {
 
 const PostContentInnerStyles: CSS = {
   gridArea: "content-inner",
-  '@medium': {
-    width: "calc(100vw - 32px)",
-    paddingLeft: 16,
-    paddingRight: 16,
-  },
 }
 
 const PostTOCGroupStyles: CSS = {
@@ -87,12 +88,6 @@ const PostNavigationGroupStyles: CSS = {
 
   paddingTop: 24,
   paddingBottom: 24,
-
-  '@medium': {
-    width: "calc(100vw - 32px)",
-    paddingLeft: 16,
-    paddingRight: 16,
-  },
 }
 
 export default PostLayout;
