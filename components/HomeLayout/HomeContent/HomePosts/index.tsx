@@ -42,7 +42,6 @@ const HomePostsHeaderStyles: CSS = {
   color: theme.colors.textGeneral,
 
   paddingBottom: 8,
-  paddingLeft: 16,
   '&:before': {
     content: "< ",
     color: theme.colors.textLeast,

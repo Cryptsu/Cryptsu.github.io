@@ -24,18 +24,17 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
   return (
     <ContentProvider>
       <PostHeader frontMatter={frontMatter}/>
-
       <Style style={PostLayoutStyles}>
-        <Style style={PostLeftGroupStyles}>
-        </Style>
         <Style style={PostContentGroupStyles}>
-          <PostContent sourceContent={sourceContent}/>
+          <Style style={PostContentInnerStyles}>
+            <PostContent sourceContent={sourceContent}/>
+          </Style>
+          <Style style={PostTOCGroupStyles}>
+            <TableOfContent/>
+          </Style>
           <Style style={PostNavigationGroupStyles}>
             <PostNavigation nextPost={nextPost} prevPost={prevPost} />
           </Style>
-        </Style>
-        <Style style={PostRightGroupStyles}>
-          <TableOfContent/>
         </Style>
       </Style>
 
@@ -44,29 +43,16 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
 }
 
 const PostLayoutStyles: CSS = {
-  display: "grid",
-  gridTemplateAreas: "'post-left post-content post-right'",
-  gridTemplateColumns: "1fr 768px 2.5fr",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   marginBottom: 24,
-  '@larger': {
-    gridTemplateColumns: "1fr 768px 1fr",
-  },
-  '@medium': {
-    gridTemplateColumns: "1fr calc(100vw - 32px) 1fr",
-    paddingLeft: 16,
-    paddingRight: 16,
-  },
-};
-
-const PostLeftGroupStyles: CSS = {
-  gridArea: 'post-left',
-  '@larger': {
-    display: "none",
-  }
 };
 
 const PostContentGroupStyles: CSS = {
-  gridArea: 'post-content',
+  display: "grid",
+  gridTemplateAreas: "'content-inner content-toc' 'content-nav content-toc'",
+  gridTemplateColumns: "768px 1fr",
 
   // Global rules
   color: theme.colors.textGeneral,
@@ -77,20 +63,36 @@ const PostContentGroupStyles: CSS = {
   letterSpacing: theme.letterSpacings.h5,
 };
 
-const PostRightGroupStyles: CSS = {
-  gridArea: 'post-right',
+const PostContentInnerStyles: CSS = {
+  gridArea: "content-inner",
+  '@medium': {
+    width: "calc(100vw - 32px)",
+    paddingLeft: 16,
+    paddingRight: 16,
+  },
+}
+
+const PostTOCGroupStyles: CSS = {
+  gridArea: "content-toc",
   '@larger': {
     display: "none",
   }
 };
 
 const PostNavigationGroupStyles: CSS = {
+  gridArea: "content-nav",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
 
   paddingTop: 24,
   paddingBottom: 24,
+
+  '@medium': {
+    width: "calc(100vw - 32px)",
+    paddingLeft: 16,
+    paddingRight: 16,
+  },
 }
 
 export default PostLayout;

@@ -197,11 +197,12 @@ const TableOfContentStyles: CSS = {
   position: "sticky",
   top: MiscConst.HEADER_SIZE + 32,
   maxHeight: `calc((100vh - ${MiscConst.HEADER_SIZE + 32}px) * 0.9)`,
+  width: "110%",
   maxWidth: "400px",
   display: "flex",
   flexDirection: "column",
 
-  marginLeft: "20%",
+  marginLeft: "min(20%, 96px)",
   marginRight: "15%",
   paddingLeft: 32,
   paddingRight: 32,
