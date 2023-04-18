@@ -3,7 +3,7 @@ import useOnce from "@/hooks/useOnce";
 import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { MiscConst, TxtConst } from "@/lib/consts";
+import { TxtConst } from "@/lib/consts";
 import type { PropsWithChildren,  RefObject } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -81,7 +81,7 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
       if (headingRect) {
         if (headingRect.top < -1) 
           headingPosition = -1;
-        else if (headingRect.bottom > (window.innerHeight || document.documentElement.clientHeight) - MiscConst.HEADER_SIZE)
+        else if (headingRect.bottom > (window.innerHeight || document.documentElement.clientHeight) - 72)
           headingPosition = 1;
         else
           headingPosition = 0;

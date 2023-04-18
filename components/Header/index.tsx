@@ -3,7 +3,6 @@ import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import { theme } from "@/lib/styles/stiches.config";
 import type { CSS } from "@stitches/react";
-import { MiscConst } from "@/lib/consts";
 
 const Header = () => {
   return (
@@ -26,7 +25,6 @@ const HeaderStyles: CSS = {
   gridTemplateAreas: "'navlinks logo buttons'",
   gridTemplateColumns: "1fr 1fr 1fr",
   gap: 10,
-  height: MiscConst.HEADER_SIZE,
 
   // Padding
   paddingLeft: 200,
@@ -61,6 +59,8 @@ const NavLinkGroupStyles: CSS = {
   display: "flex",
   justifyContent: "left",
   alignItems: "center",
+  paddingTop: 16,
+  paddingBottom: 16,
 }
 
 const LogoGroupStyles: CSS = {
