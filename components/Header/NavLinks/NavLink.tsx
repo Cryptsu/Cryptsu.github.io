@@ -40,7 +40,7 @@ const NavLinkCurrentStyles: CSS = {
   // Font customize
   fontFamily: theme.fonts.global,
   fontWeight: theme.fontWeights.bold,
-  fontSize: theme.fontSizes.h4,
+  fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
   color: theme.colors.primary,
 

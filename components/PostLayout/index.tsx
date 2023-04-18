@@ -7,6 +7,7 @@ import PostHeader from "./PostHeader";
 import PostNavigation from "./PostNavigation";
 
 import { theme } from "@/lib/styles/stiches.config";
+import { MiscConst } from "@/lib/consts";
 
 import type { PropsWithChildren } from "react";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -30,14 +31,21 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
             <PostContent sourceContent={sourceContent}/>
           </Style>
           <Style style={PostTOCGroupStyles}>
-            <TableOfContent/>
+            <TableOfContent
+              css={{
+                position: "sticky",
+                top: MiscConst.HEADER_SIZE + 32,
+                maxHeight: `calc((100vh - ${MiscConst.HEADER_SIZE + 32}px) * 0.9)`,
+                width: "110%",
+                maxWidth: "320px",
+              }}
+            />
           </Style>
           <Style style={PostNavigationGroupStyles}>
             <PostNavigation nextPost={nextPost} prevPost={prevPost} />
           </Style>
         </Style>
       </Style>
-
     </ContentProvider>
   )
 }

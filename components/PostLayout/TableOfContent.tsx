@@ -8,10 +8,10 @@ import type { PropsWithChildren,  RefObject } from "react";
 import type { CSS } from "@stitches/react";
 
 type TableOfContentProps = PropsWithChildren<{
-
+  css?: CSS
 }>
 
-const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
+const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => {
   ////////////////////////////////////////////////////////////////
   //
   //  This array contains values of -1, 0, or 1.
@@ -127,7 +127,7 @@ const TableOfContent = ({children, ...otherProps}: TableOfContentProps) => {
   }, [intersections, scrollXYs])
 
   return (
-    <Style ref={scrollRef} style={TableOfContentStyles} {...otherProps}>
+    <Style ref={scrollRef} style={TableOfContentStyles} css={css} {...otherProps}>
       <Style style={TOCHeaderStyles}>
         {TxtConst.TXT_TOC}
       </Style>
@@ -193,12 +193,6 @@ const TableOfContentStyles: CSS = {
   overflow: "auto",
 
   userSelect: "none",
-
-  position: "sticky",
-  top: MiscConst.HEADER_SIZE + 32,
-  maxHeight: `calc((100vh - ${MiscConst.HEADER_SIZE + 32}px) * 0.9)`,
-  width: "110%",
-  maxWidth: "320px",
   display: "flex",
   flexDirection: "column",
 
