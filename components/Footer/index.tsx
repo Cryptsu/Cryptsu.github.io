@@ -31,6 +31,10 @@ const FooterStyles: CSS = {
   borderTop: 4,
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,
+  backgroundColor: theme.colors.pageBackground,
+  backgroundImage: `url(${AssetsConst.GRAIN_PNG})`,
+
+  zIndex: theme.zIndices.footer,
 };
 
 export default Footer;

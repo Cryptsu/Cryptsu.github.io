@@ -66,13 +66,13 @@ const TableOfContentWrapper = ({children, ...otherProps}: TableOfContentWrapperP
           }}
         />
       </Style>
-      <TOCToggleBtn onClick={() => {setShowTOCMobile(!showTOCMobile)}}/>
+      <TOCToggleBtn showTOCMobile={showTOCMobile} onClick={() => {setShowTOCMobile(!showTOCMobile)}}/>
     </>
   )
 }
 
 const TableOfContentWrapperStyles: CSS = {
-  zIndex: theme.zIndices.tocMobile,
+  zIndex: theme.zIndices.tocBackground,
   '@larger': {
     display: "flex",
     justifyContent: "center",

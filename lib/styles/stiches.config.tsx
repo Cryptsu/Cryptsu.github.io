@@ -204,8 +204,10 @@ export const {
 
     zIndices: {
       header: 2,
-      tocMobile: 3,
-      tocToggleBtnMobile: 4, 
+      tocBackground: 3,
+      tocBtnNormal: 1, 
+      tocBtnClick: 3,
+      footer: 2,
     },
 
     shadows: {

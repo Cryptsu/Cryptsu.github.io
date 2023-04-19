@@ -7,14 +7,20 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type TOCToggleBtnProps = PropsWithChildren<{
+  showTOCMobile: boolean,
   onClick?: () => void,
 }>
 
-const TOCToggleBtn = ({children, ...otherProps}: TOCToggleBtnProps) => {
+const TOCToggleBtn = ({children, showTOCMobile, ...otherProps}: TOCToggleBtnProps) => {
   return (
     <Style 
       as={Button}
       style={TOCToggleBtnStyles} 
+      css={
+        showTOCMobile
+          ? { zIndex: theme.zIndices.tocBtnClick, }
+          : { zIndex: theme.zIndices.tocBtnNormal, }
+      }
       {...otherProps}
     >
       <Style 
@@ -26,7 +32,6 @@ const TOCToggleBtn = ({children, ...otherProps}: TOCToggleBtnProps) => {
 }
 
 const TOCToggleBtnStyles: CSS = {
-  zIndex: theme.zIndices.tocToggleBtnMobile,
   position: "fixed",
   bottom: "4vh",
   right: "4vw",
