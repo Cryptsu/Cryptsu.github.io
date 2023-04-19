@@ -28,8 +28,8 @@ const TOCToggleBtn = ({children, ...otherProps}: TOCToggleBtnProps) => {
 const TOCToggleBtnStyles: CSS = {
   zIndex: theme.zIndices.tocToggleMobile,
   position: "fixed",
-  bottom: "4vw",
-  right: "4vh",
+  bottom: "4vh",
+  right: "4vw",
 
   width: 36,
   height: 36,
