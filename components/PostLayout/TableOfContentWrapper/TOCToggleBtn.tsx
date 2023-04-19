@@ -1,6 +1,6 @@
 import Style from "@/components/Style";
 import Button from "@/components/Button";
-import { NoteIcon } from "@/components/Icons";
+import { ListOrderedIcon } from "@/components/Icons";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
@@ -25,7 +25,7 @@ const TOCToggleBtn = ({children, showTOCMobile, ...otherProps}: TOCToggleBtnProp
     >
       <Style 
         style={IconStyles} 
-        as={NoteIcon}
+        as={ListOrderedIcon}
       />
     </Style>
   )
