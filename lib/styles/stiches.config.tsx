@@ -118,6 +118,9 @@ export const {
       //   -> Header
       headerBlur: hexToRgba("#101010", 0.5),
 
+      //   -> TOC
+      tocBlur: hexToRgba("#101010", 0.75),
+
       //   -> Layout
       pageBackground: "$blackest",
 
@@ -200,7 +203,9 @@ export const {
     },
 
     zIndices: {
-      header: 99999,
+      header: 99997,
+      tocMobile: 99998,
+      tocToggleMobile: 99999, 
     },
 
     shadows: {
@@ -211,6 +216,8 @@ export const {
       codeCopyBtnClick: "0 1px #265D8B",
       codeBlockMobileBtnNormal: "0 4px #73403F",
       codeBlockMobileBtnClick: "0 1px #73403F",
+      tocMobileBtnNormal: "0 6px #265D8B",
+      tocMobileBtnClick: "0 2px #265D8B",
       prevBtn: "0 6px #B03836",
       prevBtnClick: "0 2px #B03836",
       nextBtn: "0 6px #265D8B",

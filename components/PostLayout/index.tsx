@@ -1,10 +1,10 @@
 // All MDX components
 import ContentProvider from "@/components/Providers/ContentProvider";
 import Style from "@/components/Style";
-import TableOfContent from "./TableOfContent";
 import PostContent from "./PostContent";
 import PostHeader from "./PostHeader";
 import PostNavigation from "./PostNavigation";
+import TableOfContentWrapper from "./TableOfContentWrapper";
 
 import { theme } from "@/lib/styles/stiches.config";
 
@@ -30,15 +30,7 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
             <PostContent sourceContent={sourceContent}/>
           </Style>
           <Style style={PostTOCGroupStyles}>
-            <TableOfContent
-              css={{
-                position: "sticky",
-                top: 96,
-                maxHeight: `calc((100vh - 96px) * 0.9)`,
-                width: "110%",
-                maxWidth: "320px",
-              }}
-            />
+            <TableOfContentWrapper/>
           </Style>
           <Style style={PostNavigationGroupStyles}>
             <PostNavigation nextPost={nextPost} prevPost={prevPost} />
@@ -61,10 +53,11 @@ const PostContentGroupStyles: CSS = {
   gridTemplateAreas: "'content-inner content-toc' 'content-nav content-toc'",
   gridTemplateColumns: "768px 280px",
   '@larger': {
-    gridTemplateColumns: "768px 0fr",
+    gridTemplateAreas: "'content-inner' 'content-nav'",
+    gridTemplateColumns: "768px",
   },
   '@medium': {
-    gridTemplateColumns: "calc(100vw - 32px) 0fr",
+    gridTemplateColumns: "calc(100vw - 32px)",
   },
 
   // Global rules
@@ -82,9 +75,6 @@ const PostContentInnerStyles: CSS = {
 
 const PostTOCGroupStyles: CSS = {
   gridArea: "content-toc",
-  '@larger': {
-    display: "none",
-  }
 };
 
 const PostNavigationGroupStyles: CSS = {

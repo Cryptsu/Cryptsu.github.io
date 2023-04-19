@@ -196,8 +196,6 @@ const TableOfContentStyles: CSS = {
   display: "flex",
   flexDirection: "column",
 
-  marginLeft: "min(20%, 96px)",
-  marginRight: "15%",
   paddingLeft: 32,
   paddingRight: 32,
 
