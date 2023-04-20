@@ -45,7 +45,7 @@ const NavLinkCurrentStyles: CSS = {
   color: theme.colors.primary,
 
   // Set moving underline
-  movUnderline: `${theme.colors.gradient12} 2px 12px 6px`,
+  staticUnderline: `${theme.colors.gPrimary} 2px 8px 4px`,
 };
 
 

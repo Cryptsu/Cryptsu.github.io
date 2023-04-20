@@ -25,7 +25,13 @@ const Layout = ({ children, ...otherProps }: LayoutProps) => {
 const LayoutStyles: CSS = {
   // Spans the whole window
   position: "relative",
-  minHeight: "100vh",
+  "@supports (min-height: 100dvh)": {
+    minHeight: "100dvh",
+  },
+
+  "@supports (not (min-height: 100dvh))": {
+    minHeight: "100vh"
+  },
 
   display: "grid",
   gridTemplateRows: "auto 1fr auto",

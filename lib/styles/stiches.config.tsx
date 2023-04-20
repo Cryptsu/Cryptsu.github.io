@@ -162,6 +162,8 @@ export const {
       h4: "20px",
       h5: "16px",
       h6: "14px",
+
+      err: "128px",
     },
 
     fontWeights: {
@@ -257,6 +259,28 @@ export const {
   },
 
   utils: {
+    staticUnderline: (attrsStr: string) => {
+      // This code is created from Jarv.is's idea
+      // of a moving line under an element :)
+      let color = "#101010";
+      let thickness = "1px";
+      let marginX = "0px";
+      let marginY = "0px";
+
+      let attrs = attrsStr.split(" ");
+      color              = (attrs[0] === undefined ? color     : attrs[0]);
+      thickness          = (attrs[1] === undefined ? thickness : attrs[1]);
+      marginX            = (attrs[2] === undefined ? marginX   : attrs[2]);
+      marginY            = (attrs[3] === undefined ? marginY   : attrs[3]);
+
+      return {
+        backgroundImage: color,
+        backgroundSize: `calc(100% - ${marginX}*2) ${thickness}`,
+        backgroundPosition: `calc(0% + ${marginX}) calc(100% - ${marginY})`,
+        backgroundRepeat: "no-repeat",
+      }
+    },
+
     movUnderline: (attrsStr: string) => {
       // This code is created from Jarv.is's idea
       // of a moving line under an element :)
