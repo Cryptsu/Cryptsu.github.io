@@ -43,16 +43,6 @@ const _404 = ({children, ...otherProps}: _404Props) => {
     let errWidth = errItem.offsetWidth;
     let errHeight = errItem.offsetHeight;
 
-    let velocityX = randPosVelocity(parentWidth);
-    let velocityY = randPosVelocity(parentHeight);
-    let positionX = (parentWidth   - (errWidth   + ERR_MARGIN_LEFT + ERR_MARGIN_RIGHT  )) / 2;
-    let positionY = (parentHeight  - (errHeight  + ERR_MARGIN_TOP  + ERR_MARGIN_BOTTOM )) / 2;
-    itemState[0] = velocityX;
-    itemState[1] = velocityY;
-    itemState[2] = positionX;
-    itemState[3] = positionY;
-    setItemState(itemState);
-
     // parentItem
     parentItem.style.minHeight = `
       calc(${errHeight + ERR_MARGIN_TOP + ERR_MARGIN_BOTTOM}px)
@@ -63,6 +53,16 @@ const _404 = ({children, ...otherProps}: _404Props) => {
 
     // We just set position when user's not waiting
     if (!isUserStay) {
+      let velocityX = randPosVelocity(parentWidth);
+      let velocityY = randPosVelocity(parentHeight);
+      let positionX = (parentWidth   - (errWidth   + ERR_MARGIN_LEFT + ERR_MARGIN_RIGHT  )) / 2;
+      let positionY = (parentHeight  - (errHeight  + ERR_MARGIN_TOP  + ERR_MARGIN_BOTTOM )) / 2;
+      itemState[0] = velocityX;
+      itemState[1] = velocityY;
+      itemState[2] = positionX;
+      itemState[3] = positionY;
+      setItemState(itemState);
+
       // Using clamp function to make sure there's no artifacts or sth...
       errItem.style.top = `
         clamp(
