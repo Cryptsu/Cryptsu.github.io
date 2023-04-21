@@ -75,7 +75,7 @@ const _404 = ({children, ...otherProps}: _404Props) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsUserStay(true);
-    }, 1000);
+    }, 20000);
     return () => clearTimeout(timeout);
   }, []);
 
