@@ -10,7 +10,6 @@ type _404Props = PropsWithChildren<{
 
 }>
 
-const ERR_MARGIN_TOPBOT = 32;
 const ERR_MARGIN_LEFT = 0;
 const ERR_MARGIN_RIGHT = 0;
 const ERR_MARGIN_TOP = 32;
@@ -32,7 +31,7 @@ const _404 = ({children, ...otherProps}: _404Props) => {
   const errItemRef = useRef<HTMLElement>(null);
   const parentRef = useRef<HTMLElement>(null);
 
-  useLayoutEffect(() => {
+  const Align404CenterFn = () => {
     // Element changing
     let parentItem = parentRef.current;
     let errItem = errItemRef.current;
@@ -54,23 +53,42 @@ const _404 = ({children, ...otherProps}: _404Props) => {
     itemState[3] = positionY;
     setItemState(itemState);
 
-    // Using clamp function to make sure there's no artifacts or sth...
-    errItem.style.top = `
-      clamp(
-        -${ERR_MARGIN_TOP}px,
-        calc(50% - ${parentHeight/2 - positionY}px),
-        calc(100% - ${errHeight + ERR_MARGIN_BOTTOM}px)
-      )
+    // parentItem
+    parentItem.style.minHeight = `
+      calc(${errHeight + ERR_MARGIN_TOP + ERR_MARGIN_BOTTOM}px)
+    `;
+    parentItem.style.minWidth = `
+      calc(${errWidth + ERR_MARGIN_LEFT + ERR_MARGIN_RIGHT}px)
     `;
 
-    errItem.style.left = `
-      clamp(
-        -${ERR_MARGIN_LEFT}px,
-        calc(50% - ${parentWidth/2 - positionX}px),
-        calc(100% - ${errWidth + ERR_MARGIN_RIGHT}px)
-      )
-    `;
-  }, [itemState]);
+    // We just set position when user's not waiting
+    if (!isUserStay) {
+      // Using clamp function to make sure there's no artifacts or sth...
+      errItem.style.top = `
+        clamp(
+          -${ERR_MARGIN_TOP}px,
+          calc(50% - ${parentHeight/2 - positionY}px),
+          calc(100% - ${errHeight + ERR_MARGIN_BOTTOM}px)
+        )
+      `;
+  
+      errItem.style.left = `
+        clamp(
+          -${ERR_MARGIN_LEFT}px,
+          calc(50% - ${parentWidth/2 - positionX}px),
+          calc(100% - ${errWidth + ERR_MARGIN_RIGHT}px)
+        )
+      `;
+    }
+  }
+
+  useLayoutEffect(() => {
+    Align404CenterFn();
+    window.addEventListener('resize', Align404CenterFn);
+    return (
+      () => window.removeEventListener('resize', Align404CenterFn)
+    )
+  });
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -88,10 +106,10 @@ const _404 = ({children, ...otherProps}: _404Props) => {
         if (!parentItem || !errItem)
           return () => clearInterval(interval);
 
-        let parentWidth = parentItem.offsetWidth;
-        let parentHeight = parentItem.offsetHeight;
         let errWidth = errItem.offsetWidth;
         let errHeight = errItem.offsetHeight;
+        let parentWidth = parentItem.offsetWidth;
+        let parentHeight = parentItem.offsetHeight;
 
         let [
           velocityX,
@@ -165,6 +183,7 @@ const _404 = ({children, ...otherProps}: _404Props) => {
 
 const _404Styles: CSS = {
   position: "relative",
+  overflowX: "scroll",
   height: "100%",
   fontFamily: theme.fonts.global,
 };
@@ -178,8 +197,8 @@ const ErrorWrapperStyles: CSS = {
 
   marginLeft: ERR_MARGIN_LEFT,
   maringRight: ERR_MARGIN_RIGHT,
-  marginTop: ERR_MARGIN_TOPBOT,
-  marginBottom: ERR_MARGIN_TOPBOT,
+  marginTop: ERR_MARGIN_TOP,
+  marginBottom: ERR_MARGIN_BOTTOM,
 
   paddingBottom: 32,
   paddingLeft: 48,
