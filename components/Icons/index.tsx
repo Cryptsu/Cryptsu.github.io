@@ -15,3 +15,8 @@ export { default as ReplyIcon } from "@primer/octicons/build/svg/reply-16.svg";
 export { default as ArrowBothIcon } from "@primer/octicons/build/svg/arrow-both-16.svg";
 export { default as DotIcon } from "@primer/octicons/build/svg/dot-16.svg";
 export { default as ListOrderedIcon } from "@primer/octicons/build/svg/list-ordered-16.svg";
+
+export { 
+  AiFillFolder as FillFolderIcon,
+  AiFillFolderOpen as FillFolderOpenIcon
+} from "react-icons/ai";

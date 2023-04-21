@@ -124,6 +124,7 @@ export const {
       //   -> Layout
       pageBackground: "$blackest",
       navLinkDropdownBackground: "$black",
+      navLinkDropdownBtnBorder: "#050505",
 
       //   -> Quoteblock
       quoteLegend: "$black",
@@ -217,6 +218,7 @@ export const {
       depthShadow: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
       homePostCoverHover: "6px 6px #454C48",
       homePostCoverClick: "1px 1px #454C48",
+      navLinkDropdown: "4px 4px #454C48",
       codeCopyBtnNormal: "0 4px #265D8B",
       codeCopyBtnClick: "0 1px #265D8B",
       codeBlockMobileBtnNormal: "0 4px #73403F",

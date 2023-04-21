@@ -1,9 +1,11 @@
-import { FolderIcon } from "@/components/Icons";
+import { FillFolderIcon, FillFolderOpenIcon } from "@/components/Icons";
 import { TxtConst, LinkConst } from "@/lib/consts";
 import type { ReactNode } from 'react';
+import type { IconType } from "react-icons/lib";
 
 export type NavLinkConfigType = {
-  icon: ReactNode,
+  icon: ReactNode | IconType,
+  openedIcon: ReactNode | IconType,
   navItems: {
     href: string,
     name: string,
@@ -11,7 +13,8 @@ export type NavLinkConfigType = {
 }
 
 const NavLinkConfig: NavLinkConfigType = {
-  icon: FolderIcon,
+  icon: FillFolderIcon,
+  openedIcon: FillFolderOpenIcon,
   navItems: [
     {
       href: LinkConst.LINK_HOME,
