@@ -58,7 +58,7 @@ const _404 = ({children, ...otherProps}: _404Props) => {
     errItem.style.top = `
       clamp(
         -${ERR_MARGIN_TOP}px,
-        ${positionY}px,
+        calc(50% - ${parentHeight/2 - positionY}px),
         calc(100% - ${errHeight + ERR_MARGIN_BOTTOM}px)
       )
     `;
@@ -66,7 +66,7 @@ const _404 = ({children, ...otherProps}: _404Props) => {
     errItem.style.left = `
       clamp(
         -${ERR_MARGIN_LEFT}px,
-        ${positionX}px,
+        calc(50% - ${parentWidth/2 - positionX}px),
         calc(100% - ${errWidth + ERR_MARGIN_RIGHT}px)
       )
     `;
@@ -79,7 +79,7 @@ const _404 = ({children, ...otherProps}: _404Props) => {
     return () => clearTimeout(timeout);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isUserStay && parentRef.current && errItemRef.current) {
       const interval = setInterval(() => {
         // Element changing
@@ -102,8 +102,8 @@ const _404 = ({children, ...otherProps}: _404Props) => {
 
         let leftX   = positionX + ERR_MARGIN_LEFT;
         let topY    = positionY + ERR_MARGIN_TOP;
-        let rightX  = positionX + errWidth  - ERR_MARGIN_RIGHT;
-        let bottomY = positionY + errHeight - ERR_MARGIN_BOTTOM;
+        let rightX  = leftX + errWidth;
+        let bottomY = topY + errHeight;
 
         // Update velocity this way to account for
         // window resizing too.
