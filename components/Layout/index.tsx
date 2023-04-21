@@ -2,8 +2,8 @@ import Style from "@/components/Style";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TinyPage from "@/components/TinyPage";
-import { ThemeClassMap, theme } from "@/lib/styles/stiches.config";
-import { TxtConst } from "@/lib/consts";
+import { theme } from "@/lib/styles/stiches.config";
+import { ClassConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -21,10 +21,19 @@ const Layout = ({ children, ...otherProps }: LayoutProps) => {
         </Style>
         <Footer/>
       </Style>
-      <Style style={AltLayoutStyles}>
-        {TxtConst.TXT_UR_BROWSER_SUCKS} {/* 8% of browsers will probably sees this (why I'm I even considering this..?) */}
+
+      {/* Putting class names so that when people f12, they wouldn't thought it was a hidden insult */}
+      {/* (although it is slightly is for people having too old of a browser...) */}
+      {/* (sorry but you do really need to get a new one though...) */}
+      {/* 8% of browsers will probably sees this text (why I'm I even considering this..?) */}
+      {/* (just for fun I guess) */}
+      {/* (i really need to get a job...) */}
+      {/* (sigh...) */}
+      <Style style={AltLayoutStyles} className={ClassConst.CLASS_TOO_OLD}>
+        {TxtConst.TXT_UR_BROWSER_SUCKS} 
       </Style>
-      <Style style={AltLayout2Styles}>
+
+      <Style style={AltLayout2Styles} className={ClassConst.CLASS_TOO_SMALL}>
         <TinyPage/>
       </Style>
     </>
