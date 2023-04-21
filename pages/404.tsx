@@ -183,7 +183,7 @@ const _404 = ({children, ...otherProps}: _404Props) => {
 
 const _404Styles: CSS = {
   position: "relative",
-  overflowX: "scroll",
+  overflowX: "auto",
   height: "100%",
   fontFamily: theme.fonts.global,
 };

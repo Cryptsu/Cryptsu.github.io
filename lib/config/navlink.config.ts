@@ -18,13 +18,13 @@ const NavLinkConfig: NavLinkConfigType = {
       name: TxtConst.TXT_NAV_HOME,
     },
     {
-      href: LinkConst.LINK_TEST,
-      name: TxtConst.TXT_NAV_TEST,
-    },
-    {
       href: LinkConst.LINK_POSTS,
       name: TxtConst.TXT_NAV_POSTS,
-    }
+    },
+    {
+      href: LinkConst.LINK_ABOUT,
+      name: TxtConst.TXT_NAV_ABOUT,
+    },
   ]
 };
 

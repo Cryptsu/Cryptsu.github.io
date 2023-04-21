@@ -7,6 +7,7 @@
 export const TXT_BLOG_NAME = "Cryptsu";
 export const TXT_NAV_HOME = "/home";
 export const TXT_NAV_TEST = "/test";
+export const TXT_NAV_ABOUT = "/about";
 export const TXT_NAV_POSTS = "/posts";
 export const TXT_CODE_IS_HIDDEN = "... hidden ...";
 export const TXT_TOC = "table-of-content";
