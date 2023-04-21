@@ -16,11 +16,8 @@ const ERR_MARGIN_RIGHT = 0;
 const ERR_MARGIN_TOP = 32;
 const ERR_MARGIN_BOTTOM = 32;
 
-const randVelocity = (parentSize: number, currentVelocity?: number) => {
-  let randValue = (Math.random() + 0.1) / 800 * parentSize;
-  if (currentVelocity && currentVelocity >= 0)
-    return -randValue;
-  return randValue;
+const randPosVelocity = (parentSize: number) => {
+  return (Math.random() + 0.1) / 800 * parentSize;
 }
 
 const _404 = ({children, ...otherProps}: _404Props) => {
@@ -47,8 +44,8 @@ const _404 = ({children, ...otherProps}: _404Props) => {
     let errWidth = errItem.offsetWidth;
     let errHeight = errItem.offsetHeight;
 
-    let velocityX = randVelocity(parentWidth);
-    let velocityY = randVelocity(parentHeight);
+    let velocityX = randPosVelocity(parentWidth);
+    let velocityY = randPosVelocity(parentHeight);
     let positionX = (parentWidth   - (errWidth   + ERR_MARGIN_LEFT + ERR_MARGIN_RIGHT  )) / 2;
     let positionY = (parentHeight  - (errHeight  + ERR_MARGIN_TOP  + ERR_MARGIN_BOTTOM )) / 2;
     itemState[0] = velocityX;
@@ -73,12 +70,12 @@ const _404 = ({children, ...otherProps}: _404Props) => {
         calc(100% - ${errWidth + ERR_MARGIN_RIGHT}px)
       )
     `;
-  });
+  }, [itemState]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsUserStay(true);
-    }, 30000);
+    }, 1000);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -107,11 +104,20 @@ const _404 = ({children, ...otherProps}: _404Props) => {
         let topY    = positionY + ERR_MARGIN_TOP;
         let rightX  = positionX + errWidth  - ERR_MARGIN_RIGHT;
         let bottomY = positionY + errHeight - ERR_MARGIN_BOTTOM;
-        if (rightX + velocityX >= parentWidth || leftX + velocityX <= 0)
-          velocityX = randVelocity(parentWidth, velocityX);
-        if (bottomY + velocityY >= parentHeight || topY + velocityY <= 0)
-          velocityY = randVelocity(parentHeight, velocityY);
 
+        // Update velocity this way to account for
+        // window resizing too.
+        if (rightX + velocityX >= parentWidth) 
+          velocityX = -randPosVelocity(parentWidth);
+        else if (leftX + velocityX <= 0)
+          velocityX = randPosVelocity(parentWidth);
+
+        if (bottomY + velocityY >= parentHeight)
+          velocityY = -randPosVelocity(parentHeight);
+        else if (topY + velocityY <= 0)
+          velocityY = randPosVelocity(parentHeight);
+
+        // Update position
         positionX += velocityX;
         positionY += velocityY;
         
