@@ -256,6 +256,8 @@ export const {
     small: "(max-width: 428px)",
     // for someone who is still using iphone 5...
     tiny: "(max-width: 350px)",
+    // hmmm... are you still using nokia or sth...?
+    pepper: "(max-width: 100px)",
   },
 
   utils: {

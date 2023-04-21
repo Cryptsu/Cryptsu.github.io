@@ -26,3 +26,4 @@ export const TXT_CODE_GREEN_BUTTON_DESC = "This one does nothing, just for prett
 export const TXT_CODE_COPY_BUTTON_DESC = "Copy code to clipboard.";
 export const TXT_404 = "404";
 export const TXT_PAGE_NOT_FOUND = "Page not found";
+export const TXT_UR_BROWSER_SUCKS = "Your browser sucks, you should consider getting a new one (one that supports display: grid)"
