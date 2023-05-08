@@ -47,6 +47,7 @@ const TOCToggleBtnStyles: CSS = {
   borderColor: theme.colors.secondary,
   boxShadow: theme.shadows.codeCopyBtnNormal,
   '&:active': {
+    backgroundColor: theme.colors.secondary,
     boxShadow: theme.shadows.codeCopyBtnClick,
   },
 

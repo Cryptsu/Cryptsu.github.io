@@ -39,8 +39,10 @@ const CustomLinkStyles: CSS = {
   borderRadius: 16,
   userSelect: "none",
 
-  '&:hover': {
-    backgroundColor: theme.colors.customLinkBackground,
+  '@media (hover: hover)': {
+    '&:hover': {
+      backgroundColor: theme.colors.customLinkBackground,
+    },
   },
   
   '&:active': {
