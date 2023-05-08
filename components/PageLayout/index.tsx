@@ -1,19 +1,19 @@
 import Style from "@/components/Style";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import TinyPage from "@/components/TinyPage";
+import Header from "./Header";
+import Footer from "./Footer";
+import TinyPage from "./TinyPage";
 import { theme } from "@/lib/styles/stiches.config";
 import { ClassConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
-type LayoutProps = PropsWithChildren<{}>;
+type PageLayoutProps = PropsWithChildren<{}>;
 
-const Layout = ({ children, ...otherProps }: LayoutProps) => {
+const PageLayout = ({ children, ...otherProps }: PageLayoutProps) => {
   return (
     <>
-      <Style style={LayoutStyles} {...otherProps}>
-        <Style style={LayoutHeaderStyles}>
+      <Style style={PageLayoutStyles} {...otherProps}>
+        <Style style={PageLayoutHeaderStyles}>
           <Header/>
         </Style>
         <Style>
@@ -29,18 +29,18 @@ const Layout = ({ children, ...otherProps }: LayoutProps) => {
       {/* (just for fun I guess) */}
       {/* (i really need to get a job...) */}
       {/* (sigh...) */}
-      <Style style={AltLayoutStyles} className={ClassConst.CLASS_TOO_OLD}>
+      <Style style={AltPageLayoutStyles} className={ClassConst.CLASS_TOO_OLD}>
         {TxtConst.TXT_UR_BROWSER_SUCKS} 
       </Style>
 
-      <Style style={AltLayout2Styles} className={ClassConst.CLASS_TOO_SMALL}>
+      <Style style={AltPageLayout2Styles} className={ClassConst.CLASS_TOO_SMALL}>
         <TinyPage/>
       </Style>
     </>
   )
 }
 
-const LayoutStyles: CSS = {
+const PageLayoutStyles: CSS = {
   // Spans the whole window
   position: "relative",
   "@supports (min-height: 100dvh)": {
@@ -69,13 +69,13 @@ const LayoutStyles: CSS = {
   }
 }
 
-const LayoutHeaderStyles: CSS = {
+const PageLayoutHeaderStyles: CSS = {
   position: "sticky",
   top: 0,
   zIndex: theme.zIndices.header,
 }
 
-const AltLayoutStyles: CSS = {
+const AltPageLayoutStyles: CSS = {
   marginLeft: 32,
   marginRight: 32,
   marginTop: 32,
@@ -91,7 +91,7 @@ const AltLayoutStyles: CSS = {
   }
 }
 
-const AltLayout2Styles: CSS = {
+const AltPageLayout2Styles: CSS = {
   display: "none",
   "@pepper": {
     "@supports (display: grid)": {
@@ -108,4 +108,4 @@ const AltLayout2Styles: CSS = {
   },
 }
 
-export default Layout;
+export default PageLayout;

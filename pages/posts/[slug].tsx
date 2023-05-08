@@ -1,7 +1,7 @@
 import { compilePost } from "@/lib/helpers/compile-post";
 import { getAllPosts, getPostSlugs } from "@/lib/helpers/process-posts";
 
-import PostLayout from "@/components/PostLayout";
+import PostLayout from "@/components/Layouts/PostLayout";
 
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import type { PostFrontMatterType, PostWithSourceType } from "@/types/post";

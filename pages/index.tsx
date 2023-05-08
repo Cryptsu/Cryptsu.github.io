@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/lib/helpers/process-posts";
-import HomeLayout from "@/components/HomeLayout";
+import HomeLayout from "@/components/Layouts/HomeLayout";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { PostFrontMatterType } from "@/types/post";
 

@@ -5,7 +5,7 @@ import { HtmlConst, AssetsConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
-// yes, this might be a copy from @/components/PostLayout/PostHeader/PostCover.tsx
+// yes, this might be a copy from @/components/Layouts/PostLayout/PostHeader/PostCover.tsx
 type PostCoverProps = PropsWithChildren<{
   coverImageURL?: string;
   link: string;
