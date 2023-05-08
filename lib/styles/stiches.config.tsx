@@ -171,7 +171,7 @@ export const {
     fontWeights: {
       h0: 800,
       h1: 800,
-      h2: 800,
+      h2: "normal",
       h3: "bold",
       h4: "bold",
       h5: "normal",
