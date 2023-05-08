@@ -45,10 +45,10 @@ const TOCToggleBtnStyles: CSS = {
 
   backgroundColor: theme.colors.pageBackground,
   borderColor: theme.colors.secondary,
-  boxShadow: theme.shadows.codeCopyBtnNormal,
+  boxShadow: theme.shadows.tocMobileBtnNormal,
   '&:active': {
     backgroundColor: theme.colors.secondary,
-    boxShadow: theme.shadows.codeCopyBtnClick,
+    boxShadow: theme.shadows.tocMobileBtnClick,
   },
 
   display: "none",

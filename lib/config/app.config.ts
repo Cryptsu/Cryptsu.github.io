@@ -9,4 +9,4 @@ export const BLOG_URL = "cryptsu.github.io";
 export const AUTHOR_NAME = "Mistsu";
 export const AUTHOR_DESC = TxtConst.TXT_AUTHOR_DESC;
 export const AUTHOR_LOGO = AssetsConst.ZIGGS_PNG;
-export const HOME_POSTS_PER_PAGE = 2;
+export const HOME_POSTS_PER_PAGE = 5;

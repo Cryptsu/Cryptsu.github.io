@@ -25,9 +25,10 @@ const ButtonStyles: CSS = {
   justifyContent: "center",
   userSelect: "none",
 
-  borderRadius: 8,
+  borderWidth: "0.125em",
+  borderRadius: "0.5em",
   borderStyle: "solid",
-  '&@media (hover: hover)': {
+  '@media (hover: hover)': {
     '&:hover': {
       backgroundColor: theme.colors.buttonHoverBackground,
       cursor: "pointer",

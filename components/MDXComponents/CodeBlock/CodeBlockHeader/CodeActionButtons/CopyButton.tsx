@@ -56,7 +56,7 @@ const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyBut
       {
         copied
           ? <CheckIcon style={CopiedIconStyles} />
-          : <ClipboardIcon style={CopyIconStyles}/>
+          : <ClipboardIcon viewBox={"0 0 7 8"} style={CopyIconStyles}/>
       }
     </Style>
   )
