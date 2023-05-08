@@ -200,25 +200,25 @@ const ErrorWrapperStyles: CSS = {
   marginTop: ERR_MARGIN_TOP,
   marginBottom: ERR_MARGIN_BOTTOM,
 
-  paddingBottom: 32,
-  paddingLeft: 48,
-  paddingRight: 48,
+  paddingBottom: "2em",
+  paddingLeft: "3em",
+  paddingRight: "3em",
   '@medium': {
-    paddingBottom: 32,
-    paddingLeft: 24,
-    paddingRight: 24,
+    paddingBottom: "2em",
+    paddingLeft: "1.5em",
+    paddingRight: "1.5em",
   },
 
   borderColor: theme.colors.borderGeneral,
   borderStyle: "dashed",
-  borderWidth: 8,
+  borderWidth: "0.5em",
   borderRadius: 32,
 
   width: "fit-content",
 }
 
 const Text404Styles: CSS = {
-  height: 136,
+  height: "1.0625em",
   fontSize: theme.fontSizes.err,
   fontWeight: theme.fontWeights.extrabold,
   letterSpacing: theme.letterSpacings.h0,
