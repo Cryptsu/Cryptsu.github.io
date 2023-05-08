@@ -20,26 +20,26 @@ const Blockquote = ({children, ...otherProps}: BlockquoteProps) => {
 
 const BlockquoteStyles: CSS = {
   // margin
-  marginTop: 12,
-  marginBottom: 12,
-  marginLeft: 8,
-  marginRight: 8,
+  marginTop: "0.75em",
+  marginBottom: "0.75em",
+  marginLeft: "0.5em",
+  marginRight: "0.5em",
 
   // Create somesort of box-like pattern
-  paddingLeft: 32,
-  paddingRight: 32,
-  paddingTop: 8,
-  paddingBottom: 8,
+  paddingLeft: "2em",
+  paddingRight: "2em",
+  paddingTop: "0.5em",
+  paddingBottom: "0.5em",
 
   // Box border
-  borderLeft: 8,
+  borderLeft: "0.5em",
   borderRight: 0,
   borderTop: 0,
   borderBottom: 0,
   borderStyle: "solid",
   backgroundColor: theme.colors.quoteBackground,
   borderColor: theme.colors.quoteLegend,
-  borderRadius: 24,
+  borderRadius: "1.5em",
   boxShadow: theme.shadows.depthShadow
 };
 
