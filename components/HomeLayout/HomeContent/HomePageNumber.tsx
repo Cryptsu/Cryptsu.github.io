@@ -166,6 +166,7 @@ const HomePageNumberNavLeftStyles: CSS = {
   fill: theme.colors.prev,
   fontWeight: theme.fontWeights.bold,
 
+  paddingLeft: "0.25em",
   paddingRight: "0.25em",
   borderWidth: "0.25em",
   borderStyle: "dashed",
@@ -187,6 +188,7 @@ const HomePageNumberNavLeftInactiveStyles: CSS = {
   height: "1.75em",
   fill: theme.colors.prevInactive,
   fontWeight: theme.fontWeights.bold,
+  paddingLeft: "0.25em",
   paddingRight: "0.25em",
 }
 
@@ -206,6 +208,7 @@ const HomePageNumberNavRightStyles: CSS = {
   fontWeight: theme.fontWeights.bold,
 
   paddingLeft: "0.25em",
+  paddingRight: "0.25em",
   borderWidth: "0.25em",
   borderStyle: "dashed",
   borderColor: "#00000000",
@@ -227,6 +230,7 @@ const HomePageNumberNavRightInactiveStyles: CSS = {
   fill: theme.colors.nextInactive,
   fontWeight: theme.fontWeights.bold,
   paddingLeft: "0.25em",
+  paddingRight: "0.25em",
 }
 
 export default HomePageNumber;
