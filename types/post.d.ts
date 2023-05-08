@@ -14,3 +14,7 @@ export type PostWithSourceType = {
   frontMatter: PostFrontMatterType,
   sourceContent: MDXRemoteSerializeResult<Record<string, unknown>>
 };
+
+export type PostsByYearType = {
+  [year: string]: PostFrontMatterType[];
+};

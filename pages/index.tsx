@@ -3,10 +3,16 @@ import HomeLayout from "@/components/Layouts/HomeLayout";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { PostFrontMatterType } from "@/types/post";
 
+///////////////////////////////////////////////////////////////////
+// Main element
+///////////////////////////////////////////////////////////////////
+
 const Home = ({posts}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <HomeLayout posts={posts}/>
+      <HomeLayout 
+        posts={posts}
+      />
     </>
   )
 }

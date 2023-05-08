@@ -6,6 +6,10 @@ import { HtmlConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
+///////////////////////////////////////////////////////////////////
+// Main element
+///////////////////////////////////////////////////////////////////
+
 type _404Props = PropsWithChildren<{
 
 }>
@@ -180,6 +184,10 @@ const _404 = ({children, ...otherProps}: _404Props) => {
     </Style>
   )
 }
+
+///////////////////////////////////////////////////////////////////
+// Layout styles
+///////////////////////////////////////////////////////////////////
 
 const _404Styles: CSS = {
   position: "relative",
