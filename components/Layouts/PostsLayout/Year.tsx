@@ -20,6 +20,13 @@ const YearStyles: CSS = {
   color: theme.colors.textLess,
   fontSize: theme.fontSizes.h2,
   fontWeight: theme.fontWeights.extrabold,
+
+  borderWidth: "0.075em",
+  borderTop: 0,
+  borderRight: 0,
+  borderLeft: 0,
+  borderStyle: "solid",
+  borderColor: theme.colors.borderGeneral,
 };
 
 export default Year;

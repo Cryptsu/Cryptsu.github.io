@@ -166,6 +166,7 @@ export const {
       h6: "14px",
 
       err: "128px",
+      date: "18px",
     },
 
     fontWeights: {

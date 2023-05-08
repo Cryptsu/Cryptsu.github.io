@@ -26,8 +26,8 @@ const PostDate = ({children, date, ...otherProps}: PostDateProps) => {
 
 const PostDateStyles: CSS = {
   color: theme.colors.textLesser,
-  fontSize: theme.fontSizes.h4,
-  paddingTop: "0.5rem",
+  fontSize: theme.fontSizes.date,
+  paddingTop: "0.7rem",
   paddingBottom: "0.25rem",
 };
 

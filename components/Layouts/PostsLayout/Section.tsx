@@ -17,13 +17,19 @@ const Section = ({children, ...otherProps}: SectionProps) => {
 }
 
 const SectionStyles: CSS = {
-  width: "min(600px, calc(100% - 1em))",
+  width: "min(600px, calc(100% - 3em))",
   margin: "1em",
   '&:first-of-type': {
     paddingTop: "2em",
+    '@medium': {
+      paddingTop: "1em",
+    }
   },
   '&:last-of-type': {
     paddingBottom: "2em",
+    '@medium': {
+      paddingTop: "1em",
+    }
   },
 
   fontFamily: theme.fonts.global,
