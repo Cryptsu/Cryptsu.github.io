@@ -15,7 +15,6 @@ type PostNavigationProps = PropsWithChildren<{
 const PostNavigation = ({children, prevPost, nextPost, ...otherProps}: PostNavigationProps) => {
   return (
     <Style style={PostNavigationWrapperStyles} {...otherProps}>
-      
       <Style style={OtherPostGroupStyles}>
         <Style style={DividerStyles} elementName={HtmlConst.SPAN}/>
         <Style style={OtherPostsTextStyles}>

@@ -23,9 +23,9 @@ const Button = ({children, style, ...otherProps}: ButtonProps) => {
 const ButtonStyles: CSS = {
   display: "flex",
   justifyContent: "center",
+  alignItems: "center",
   userSelect: "none",
 
-  borderWidth: "0.125em",
   borderRadius: "0.5em",
   borderStyle: "solid",
   '@media (hover: hover)': {

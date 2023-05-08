@@ -63,6 +63,7 @@ const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyBut
 }
 
 const CopyButtonStyles: CSS = {
+  borderWidth: "0.125em",
   borderColor: theme.colors.next,
   boxShadow: theme.shadows.codeCopyBtnNormal,
   '&:active': {

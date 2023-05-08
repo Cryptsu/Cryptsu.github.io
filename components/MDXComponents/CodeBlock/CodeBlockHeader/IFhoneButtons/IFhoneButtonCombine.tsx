@@ -52,6 +52,7 @@ const IFhoneButtonCombineStyles: CSS = {
   alignItems: "center",
   userSelect: "none",
 
+  borderWidth: "0.125em",
   borderColor: theme.colors.tertiary,
   boxShadow: theme.shadows.codeBlockMobileBtnNormal,
   '&:active': {

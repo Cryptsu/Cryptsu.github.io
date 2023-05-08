@@ -36,6 +36,7 @@ const TOCToggleBtnStyles: CSS = {
   bottom: "4vh",
   right: "4vw",
 
+  borderWidth: 4,
   width: "2.25em",
   height: "2.25em",
   cursor: "pointer",
