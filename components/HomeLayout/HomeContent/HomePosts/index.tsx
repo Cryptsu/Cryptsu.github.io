@@ -38,7 +38,7 @@ const HomePostsHeaderStyles: CSS = {
   fontFamily: theme.fonts.global,
   fontSize: theme.fontSizes.h2,
   letterSpacing: theme.letterSpacings.h2,
-  fontWeight: theme.fontWeights.extrabold,
+  fontWeight: theme.fontWeights.bold,
   color: theme.colors.textGeneral,
 
   paddingBottom: 8,

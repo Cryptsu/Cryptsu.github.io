@@ -45,7 +45,7 @@ const PostLayoutStyles: CSS = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  marginBottom: 24,
+  marginBottom: "1.5em",
 };
 
 const PostContentGroupStyles: CSS = {

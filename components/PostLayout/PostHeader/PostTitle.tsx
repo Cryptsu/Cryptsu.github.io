@@ -23,7 +23,7 @@ const PostTitleStyles: CSS = {
   letterSpacing: theme.letterSpacings.h0,
   '@medium': {
     fontSize: theme.fontSizes.h2,
-    fontWeight: theme.fontWeights.h2,
+    fontWeight: theme.fontWeights.bold,
     letterSpacing: theme.letterSpacings.h2,
   },
 
