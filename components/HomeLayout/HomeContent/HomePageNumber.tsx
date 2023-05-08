@@ -1,4 +1,5 @@
 import Style from "@/components/Style";
+import { ArrowLeftIcon, ArrowRightIcon } from "@/components/Icons";
 import { theme } from "@/lib/styles/stiches.config";
 import { AppConfig } from "@/lib/config";
 import { HtmlConst, TxtConst } from "@/lib/consts";
@@ -49,16 +50,16 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
 
   return (
     <Style style={HomePageNumberStyles} {...otherProps}>
-      <Style
-        style={currentPage > 0 ? HomePageNumberNavLeftStyles : HomePageNumberNavLeftInactiveStyles}
-        elementName={HtmlConst.SPAN} 
-        onClick={
-          () => {
-            decPageNumber();
+      <Style style={HomePageNumberNavLeftWrapperStyles}>
+        <Style
+          style={currentPage > 0 ? HomePageNumberNavLeftStyles : HomePageNumberNavLeftInactiveStyles}
+          as={ArrowLeftIcon}
+          onClick={
+            () => {
+              decPageNumber();
+            }
           }
-        }
-      >
-        {"<-"}
+        />
       </Style>
       {
         pageNums.map(
@@ -81,30 +82,40 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
         )
       }
 
-      <Style
-        style={currentPage < noPages - 1 ? HomePageNumberNavRightStyles : HomePageNumberNavRightInactiveStyles}
-        elementName={HtmlConst.SPAN} 
-        onClick={
-          () => {
-            addPageNumber();
+      <Style style={HomePageNumberNavRightWrapperStyles}>
+        <Style 
+          style={currentPage < noPages - 1 ? HomePageNumberNavRightStyles : HomePageNumberNavRightInactiveStyles}
+          as={ArrowRightIcon}
+          onClick={
+            () => {
+              addPageNumber();
+            }
           }
-        }
-      >
-        {"->"}
+        />
       </Style>
     </Style>
   )
 }
 
+// ================================ HOME PAGE NUMBERS ================================
 const HomePageNumberStyles: CSS = {
   fontFamily: theme.fonts.global,
   userSelect: "none",
+
   display: "flex",
+  flexFlow: "row",
   alignItems: "center",
-  justifyContent: "center",
-  gap: 16,
-  paddingTop: 8,
-  paddingBottom: 8,
+  '&::before, &::after': {
+    content: " ",
+    margin: "auto",
+  },
+
+  gap: "1em",
+  paddingTop: "0.5em",
+  paddingBottom: "0.5em",
+  
+  overflowX: "auto",
+  maxWidth: "100vw",
 };
 
 const HomePageNumberItemSelectedStyles: CSS = {
@@ -114,87 +125,108 @@ const HomePageNumberItemSelectedStyles: CSS = {
 }
 
 const HomePageNumberItemNormalStyles: CSS = {
-  fontSize: theme.fontSizes.h4,
-  letterSpacing: theme.letterSpacings.h4,
+  fontSize: theme.fontSizes.h5,
+  letterSpacing: theme.letterSpacings.h5,
   '&:active': {
-    transform: "translateY(4px)"
+    transform: "translateY(0.25em)",
   },
 
-  border: 4,
+  borderWidth: "0.25em",
   borderStyle: "dashed",
   borderColor: "#00000000",
-  '&:hover': {
-    borderColor: theme.colors.borderGeneral,
-  }
+  '@media (hover: hover)': {
+    '&:hover': {
+      borderColor: theme.colors.borderGeneral,
+    }
+  },
 }
 
 const HomePageNumberItemStyles: CSS = {
-  paddingLeft: 8,
-  paddingRight: 8,
+  paddingLeft: "0.25em",
+  paddingRight: "0.25em",
   color: theme.colors.textLess,
-  '&:hover': {
-    color: theme.colors.textActive,
+  '@media (hover: hover)': {
+    '&:hover': {
+      color: theme.colors.textActive,
+    }
   }
+}
+
+// ================================ HOME PAGE NAVLEFT ================================
+
+const HomePageNumberNavLeftWrapperStyles: CSS = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 }
 
 const HomePageNumberNavLeftStyles: CSS = {
-  fontSize: theme.fontSizes.h3,
-  letterSpacing: theme.letterSpacings.h3,
-  color: theme.colors.prev,
+  width: "1.5em",
+  height: "1.75em",
+  fill: theme.colors.prev,
   fontWeight: theme.fontWeights.bold,
 
-  paddingLeft: 8,
-  paddingRight: 8,
-  border: 4,
+  paddingRight: "0.25em",
+  borderWidth: "0.25em",
   borderStyle: "dashed",
   borderColor: "#00000000",
-  '&:hover': {
-    color: theme.colors.prevActive,
-    borderColor: theme.colors.borderGeneral,
+  '@media (hover: hover)': {
+    '&:hover': {
+      fill: theme.colors.prevActive,
+      borderColor: theme.colors.borderGeneral,
+    },
   },
 
   '&:active': {
     transform: "translateY(4px)"
-  }
+  },
 }
 
 const HomePageNumberNavLeftInactiveStyles: CSS = {
-  fontSize: theme.fontSizes.h3,
-  letterSpacing: theme.letterSpacings.h3,
-  color: theme.colors.prevInactive,
+  width: "1.5em",
+  height: "1.75em",
+  fill: theme.colors.prevInactive,
   fontWeight: theme.fontWeights.bold,
-  paddingLeft: 8,
-  paddingRight: 8,
+  paddingRight: "0.25em",
+}
+
+
+// ================================ HOME PAGE NAVRIGHT ================================
+
+const HomePageNumberNavRightWrapperStyles: CSS = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 }
 
 const HomePageNumberNavRightStyles: CSS = {
-  fontSize: theme.fontSizes.h3,
-  letterSpacing: theme.letterSpacings.h3,
-  color: theme.colors.next,
+  width: "1.5em",
+  height: "1.75em",
+  fill: theme.colors.next,
   fontWeight: theme.fontWeights.bold,
 
-  paddingLeft: 8,
-  paddingRight: 8,
-  border: 4,
+  paddingLeft: "0.25em",
+  borderWidth: "0.25em",
   borderStyle: "dashed",
   borderColor: "#00000000",
-  '&:hover': {
-    color: theme.colors.nextActive,
-    borderColor: theme.colors.borderGeneral,
+  '@media (hover: hover)': {
+    '&:hover': {
+      color: theme.colors.nextActive,
+      borderColor: theme.colors.borderGeneral,
+    },
   },
 
   '&:active': {
     transform: "translateY(4px)"
-  }
+  },
 }
 
 const HomePageNumberNavRightInactiveStyles: CSS = {
-  fontSize: theme.fontSizes.h3,
-  letterSpacing: theme.letterSpacings.h3,
-  color: theme.colors.nextInactive,
+  width: "1.5em",
+  height: "1.75em",
+  fill: theme.colors.nextInactive,
   fontWeight: theme.fontWeights.bold,
-  paddingLeft: 8,
-  paddingRight: 8,
+  paddingLeft: "0.25em",
 }
 
 export default HomePageNumber;

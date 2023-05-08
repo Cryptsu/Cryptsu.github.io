@@ -26,11 +26,11 @@ const PostHeaderStyles: CSS = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  gap: 8,
+  gap: "0.5em",
 
   // Padding
-  marginTop: 24,
-  marginBottom: 40,
+  marginTop: "1.5em",
+  marginBottom: "2.5em",
 
   // Font customization
   fontFamily: theme.fonts.global,

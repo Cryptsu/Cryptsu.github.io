@@ -24,11 +24,11 @@ const HeaderStyles: CSS = {
   display: "grid",
   gridTemplateAreas: "'navlinks logo buttons'",
   gridTemplateColumns: "1fr 1fr 1fr",
-  gap: 10,
+  gap: "0.625em",
 
   // Padding
-  paddingLeft: 200,
-  paddingRight: 200,
+  paddingLeft: "12.5em",
+  paddingRight: "12.5em",
   '@larger': {
     paddingLeft: "15%",
     paddingRight: "15%",
@@ -39,7 +39,7 @@ const HeaderStyles: CSS = {
   },
 
   // Create the divider
-  borderBottom: 4,
+  borderBottom: "0.25em",
   borderTop: 0,
   borderLeft: 0,
   borderRight: 0,
@@ -59,8 +59,8 @@ const NavLinkGroupStyles: CSS = {
   display: "flex",
   justifyContent: "left",
   alignItems: "center",
-  paddingTop: 16,
-  paddingBottom: 16,
+  paddingTop: "1em",
+  paddingBottom: "1em",
 }
 
 const LogoGroupStyles: CSS = {
@@ -71,8 +71,8 @@ const LogoGroupStyles: CSS = {
   display: "flex",
   justifyContent: "center",
   color: theme.colors.black,
-  paddingTop: 12,
-  paddingBottom: 12,
+  paddingTop: "0.75em",
+  paddingBottom: "0.75em",
 }
 
 const ToggleButtonsGroupStyles: CSS = {

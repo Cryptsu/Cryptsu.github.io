@@ -43,7 +43,7 @@ const OtherPostGroupStyles: CSS = {
   display: "grid",
   gridTemplateColumns: "1fr auto 1fr",
   alignItems: "center",
-  gap: 24,
+  gap: "1.5em",
 
   fontSize: theme.fontSizes.h4,
   fontWeight: theme.fontWeights.h4,
@@ -53,7 +53,7 @@ const OtherPostGroupStyles: CSS = {
 const DividerStyles: CSS = {
   height: 0,
   border: 0,
-  borderBottom: 4,
+  borderBottom: "0.25em",
   borderStyle: "solid",
   borderColor: theme.colors.divider25,
 };
@@ -71,15 +71,15 @@ const OtherPostsTextStyles: CSS = {
 }
 
 const PostNavigationButtonGroupStyles: CSS = {
-  paddingLeft: 32,
-  paddingRight: 32,
-  paddingTop: 16,
-  paddingBottom: 16,
+  paddingLeft: "2em",
+  paddingRight: "2em",
+  paddingTop: "1em",
+  paddingBottom: "1em",
 
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  gap: 40,
+  gap: "2.5em",
   '& > *': {
     width: "100%",
   },

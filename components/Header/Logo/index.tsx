@@ -18,12 +18,12 @@ const Logo = () => {
 const LogoStyles: CSS = {
   display: "flex",
   alignItems: "center",
-  gap: 24,
+  gap: "1.5em",
 
   padding: 0,
-  paddingLeft: 16,
-  paddingRight: 16,
-  paddingBottom: 4,
+  paddingLeft: "1em",
+  paddingRight: "1em",
+  paddingBottom: "0.25em",
 
   '@small': {
     display: "none",

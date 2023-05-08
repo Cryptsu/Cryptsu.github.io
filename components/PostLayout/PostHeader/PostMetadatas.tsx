@@ -18,8 +18,8 @@ const PostMetadatas = ({children, frontMatter, ...otherProps}: PostMetadatasProp
         <CalendarIcon
           style={{
             fill: theme.colors.tertiary,
-            width: 16,
-            height: 16
+            width: "1em",
+            height: "1em"
           }}
         />
         <Time dateStr={frontMatter.date}/>
@@ -28,8 +28,8 @@ const PostMetadatas = ({children, frontMatter, ...otherProps}: PostMetadatasProp
         <NoteIcon
           style={{
             fill: theme.colors.tertiary,
-            width: 16,
-            height: 16
+            width: "1em",
+            height: "1em"
           }}
         />
         {`${frontMatter.noWords} ${TxtConst.TXT_WORDS}`}
@@ -38,8 +38,8 @@ const PostMetadatas = ({children, frontMatter, ...otherProps}: PostMetadatasProp
         <ClockIcon
           style={{
             fill: theme.colors.tertiary,
-            width: 16,
-            height: 16
+            width: "1em",
+            height: "1em"
           }}
         />
         {`${frontMatter.minsRead} ${TxtConst.TXT_MIN_READ}`}
@@ -53,10 +53,10 @@ const PostMetadatasStyles: CSS = {
   justifyContent: "center",
   alignItems: "center",
   
-  gap: 16,
+  gap: "1em",
   flexDirection: "row",
   '@small': {
-    gap: 4,
+    gap: "0.25em",
     flexDirection: "column",
   },
 
@@ -74,7 +74,7 @@ const PostMetadataStyles: CSS = {
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
-  gap: 8,
+  gap: "0.5em",
 }
 
 export default PostMetadatas;

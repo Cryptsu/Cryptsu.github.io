@@ -21,17 +21,21 @@ const Table = ({children, ...otherProps}: TableProps) => {
 const TableWrapperStyles: CSS = {
   overflow: "auto",
   
-  display: "grid",
+  display: "flex",
   alignItems: "center",
+  '&::before, &::after': {
+    content: " ",
+    margin: "auto",
+  },
 
   margin: "auto",
-  marginTop: 32,
-  marginBottom: 32,
+  marginTop: "2em",
+  marginBottom: "2em",
 }
 
 const TableStyles: CSS = {
-  marginLeft: 16,
-  marginRight: 16,
+  marginLeft: "1em",
+  marginRight: "1em",
   borderCollapse: "collapse",
   [`${HtmlConst.TH}, ${HtmlConst.TD}`]: {
     border: "4px solid",

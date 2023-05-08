@@ -43,9 +43,9 @@ const IFhoneButtonCombine = ({children, codeBlockState, ...otherProps}: IFhoneBu
 }
 
 const IFhoneButtonCombineStyles: CSS = {
-  width: 28,
-  height: 24,
-  borderRadius: "24px !important",
+  width: "1.75em",
+  height: "1.5em",
+  borderRadius: "1.5em !important",
   cursor: "pointer",
   display: "flex",
   justifyContent: "center",
@@ -61,8 +61,8 @@ const IFhoneButtonCombineStyles: CSS = {
 
 const IFhoneButtonIconStyles: CSS = {
   fill: theme.colors.iconGeneral,
-  width: 16,
-  height: 16,
+  width: "1em",
+  height: "1em",
 }
 
 export default IFhoneButtonCombine;

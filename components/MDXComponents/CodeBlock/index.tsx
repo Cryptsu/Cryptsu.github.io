@@ -73,11 +73,11 @@ const CodeBlockStyles: CSS = {
 };
 
 const CodeBlockLayoutStyles: CSS = {
-  marginTop: 16,
-  marginBottom: 16,
-  marginLeft: 32,
-  marginRight: 32,
-  borderRadius: 16,
+  marginTop: "1em",
+  marginBottom: "1em",
+  marginLeft: "2em",
+  marginRight: "2em",
+  borderRadius: "1em",
   '@large': {
     marginLeft: 0,
     marginRight: 0,
@@ -85,8 +85,8 @@ const CodeBlockLayoutStyles: CSS = {
 
   display: "flex",
   flexDirection: "column",
-  padding: 16,
-  gap: 16,
+  padding: "1em",
+  gap: "1em",
 
   // This would create the effect of having opacity to the background
   // Stops phones from keeping selecting background image instead of content.

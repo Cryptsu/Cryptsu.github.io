@@ -186,7 +186,7 @@ const TableOfContentStyles: CSS = {
   color: theme.colors.textLess,
   wordBreak: "break-word",
 
-  borderWidth: 4,
+  borderWidth: "0.25em",
   borderColor: theme.colors.borderGeneral,
   borderStyle: "solid",
   scrollBehavior: "auto",
@@ -196,11 +196,11 @@ const TableOfContentStyles: CSS = {
   display: "flex",
   flexDirection: "column",
 
-  paddingLeft: 32,
-  paddingRight: 32,
+  paddingLeft: "2em",
+  paddingRight: "2em",
 
   '&>:last-child': {
-    marginBottom: 16,
+    marginBottom: "1em",
   }
 };
 
@@ -212,10 +212,10 @@ const TOCHeaderStyles: CSS = {
 
   border: 0,
   margin: 0,
-  borderBottom: 2,
-  marginBottom: 16,
-  marginTop: 16,
-  paddingBottom: 8,
+  borderBottom: "0.125em",
+  marginBottom: "1em",
+  marginTop: "1em",
+  paddingBottom: "0.5em",
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,
 
@@ -238,8 +238,8 @@ const TOCLinkWrapperStyles: CSS = {
 
 const TOCLinkStyles: CSS = {
   padding: 0,
-  paddingLeft: 8,
-  paddingRight: 8,
+  paddingLeft: "0.75em",
+  paddingRight: "0.75em",
   '&:visisted': {
     color: theme.colors.textLess,
   },
@@ -248,7 +248,7 @@ const TOCLinkStyles: CSS = {
     cursor: "pointer",
   },
   '&:active': {
-    transform: "translateY(4px)",
+    transform: "translateY(0.25em)",
     color: theme.colors.textActive
   }
 }

@@ -45,8 +45,8 @@ const PostNavigationButton = ({children, direction, postTitle, postLink, ...othe
 }
 
 const PostNavigationButtonStyles: CSS = {
-  paddingTop: 24,
-  paddingBottom: 24,
+  paddingTop: "1.5em",
+  paddingBottom: "1.5em",
   borderRadius: 16,
   borderWidth: 4,
 

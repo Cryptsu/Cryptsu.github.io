@@ -71,8 +71,8 @@ const CopyButtonStyles: CSS = {
   },
 
   // Size of button!
-  width: 24,
-  height: 24,
+  width: "1.5em",
+  height: "1.5em",
 
   // Center a div...
   display: "flex",
@@ -82,14 +82,14 @@ const CopyButtonStyles: CSS = {
 
 const CopyIconStyles: CSS = {
   fill: theme.colors.iconGeneral,
-  width: 12,
-  height: 12,
+  width: '0.75em',
+  height: '0.75em',
 }
 
 const CopiedIconStyles: CSS = {
   fill: theme.colors.success,
-  width: 12,
-  height: 12,
+  width: '0.75em',
+  height: '0.75em',
 }
 
 export default CopyButton;

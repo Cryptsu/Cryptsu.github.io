@@ -7,8 +7,8 @@ const Lock = () => {
       viewBox="1 0 6 6" 
       style={{
         fill: theme.colors.primary,
-        width: 24,
-        height: 28,
+        width: "1.5em",
+        height: "1.75em",
       }}
     />
   )

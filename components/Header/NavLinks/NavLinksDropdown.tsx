@@ -66,18 +66,18 @@ const NavLinksDropdownStyles: CSS = {
   backgroundColor: theme.colors.navLinkDropdownBackground,
 
   position: "absolute",
-  left: 16,
+  left: "1em",
   display: "flex",
   flexDirection: "column",
-  gap: 16,
+  gap: "1em",
 
-  paddingTop: 16,
-  paddingBottom: 16,
-  paddingLeft: 16,
-  paddingRight: 16,
+  paddingTop: "1em",
+  paddingBottom: "1em",
+  paddingLeft: "1em",
+  paddingRight: "1em",
 
-  borderRadius: 16,
-  borderWidth: 4,
+  borderRadius: "1em",
+  borderWidth: "0.25em",
   borderColor: theme.colors.borderGeneral,
   borderStyle: "solid",
 }
@@ -98,8 +98,8 @@ const NavLinksIconWrapperStyles: CSS = {
 const NavLinksIconStyles: CSS = {
   display: "block",
   fill: theme.colors.primary,
-  width: 24,
-  height: 24,
+  width: "1.5em",
+  height: "1.5em",
 
   fillRule: "nonzero",
   stroke: theme.colors.primary,

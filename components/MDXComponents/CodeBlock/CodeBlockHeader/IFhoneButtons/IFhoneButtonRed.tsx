@@ -20,8 +20,8 @@ const IFhoneButtonRed = ({children, showInner, ...otherProps}: IFhoneButtonRedPr
 }
 
 const IFhoneButtonRedStyles: CSS = {
-  width: 12,
-  height: 12,
+  width: "0.75em",
+  height: "0.75em",
   borderRadius: "100%",
   cursor: "pointer",
   display: "flex",
@@ -37,8 +37,8 @@ const IFhoneButtonRedStyles: CSS = {
 
 const IFhoneButtonIconStyles: CSS = {
   fill: theme.colors.black,
-  width: 12,
-  height: 12,
+  width: "0.75em",
+  height: "0.75em",
 
   opacity: "0%",
   '&:hover': {

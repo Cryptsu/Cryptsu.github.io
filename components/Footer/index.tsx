@@ -17,8 +17,8 @@ const Footer = ({children, ...otherProps}: FooterProps) => {
 }
 
 const FooterStyles: CSS = {
-  paddingTop: 24,
-  paddingBottom: 24,
+  paddingTop: "1.5em",
+  paddingBottom: "1.5em",
   textAlign: "center",
 
   color: theme.colors.textLesser,
@@ -28,7 +28,7 @@ const FooterStyles: CSS = {
   letterSpacing: theme.letterSpacings.h5,
 
   border: 0,
-  borderTop: 4,
+  borderTop: "0.25em",
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,
   backgroundColor: theme.colors.pageBackground,

@@ -27,7 +27,7 @@ const AuthorBox = ({children, ...otherProps}: AuthorBoxProps) => {
 }
 
 const AuthorBoxStyles: CSS = {
-  border: 2,
+  border: "0.125em",
   borderRadius: 16,
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,

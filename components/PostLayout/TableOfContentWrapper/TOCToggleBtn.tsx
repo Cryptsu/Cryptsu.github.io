@@ -36,8 +36,8 @@ const TOCToggleBtnStyles: CSS = {
   bottom: "4vh",
   right: "4vw",
 
-  width: 36,
-  height: 36,
+  width: "2.25em",
+  height: "2.25em",
   cursor: "pointer",
   justifyContent: "center",
   alignItems: "center",
@@ -59,8 +59,8 @@ const TOCToggleBtnStyles: CSS = {
 
 const IconStyles: CSS = {
   fill: theme.colors.iconGeneral,
-  width: 16,
-  height: 16,
+  width: "1em",
+  height: "1em",
 }
 
 export default TOCToggleBtn;

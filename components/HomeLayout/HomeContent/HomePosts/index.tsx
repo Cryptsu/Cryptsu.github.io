@@ -53,18 +53,18 @@ const HomePostsHeaderStyles: CSS = {
 }
 
 const HomePostStyles: CSS = {
-  paddingLeft: 24,
-  paddingRight: 24,
-  paddingBottom: 24,
-  paddingTop: 8,
+  paddingLeft: "1.5em",
+  paddingRight: "1.5em",
+  paddingBottom: "1.5em",
+  paddingTop: "0.5em",
 
   display: "flex",
   flexDirection: "column",
-  gap: 4,
+  gap: "0.25em",
 
   fontFamily: theme.fonts.global,
   border: 0,
-  borderTop: 2,
+  borderTop: "0.125em",
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,
 };

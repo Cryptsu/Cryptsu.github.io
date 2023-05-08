@@ -20,8 +20,8 @@ const IFhoneButtonYellow = ({children, wrapCode, ...otherProps}: IFhoneButtonYel
 }
 
 const IFhoneButtonYellowStyles: CSS = {
-  width: 12,
-  height: 12,
+  width: "0.75em",
+  height: "0.75em",
   borderRadius: "100%",
   cursor: "pointer",
   display: "flex",
@@ -39,8 +39,8 @@ const IFhoneButtonYellowStyles: CSS = {
 
 const IFhoneButtonIconStyles: CSS = {
   fill: theme.colors.black,
-  width: 10,
-  height: 10,
+  width: "0.625em",
+  height: "0.625em",
 
   transform: "scaleY(-1)",
   opacity: "0%",
