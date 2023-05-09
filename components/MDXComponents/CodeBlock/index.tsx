@@ -16,19 +16,23 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
   const [showInner, setShowInner] = useState<boolean>(true);
   const [wrapCode, setWrapCode] = useState<boolean>(false);
   const [blockHeight, setBlockHeight] = useState<number | null>(null);
+  const [isFirstTime, setIsFirstTime] = useState<boolean>(true);
   const [codeBlockStateIndex, setCodeBlockStateIndex] = useState<CodeBlockStateEnum>(CodeBlockStateEnum.normal);
 
   const ToggleContentFn = () => {
     setShowInner(!showInner);
+    setIsFirstTime(false);
   }
 
   const ToggleWrapFn = () => {
     setWrapCode(!wrapCode);
+    setIsFirstTime(false);
   }
   
   const UpdateVisualStateFn = () => {
     let nextCodeBlockStateIndex = (codeBlockStateIndex + 1) % CodeBlockStates.length;
     setCodeBlockStateIndex(nextCodeBlockStateIndex);
+    setIsFirstTime(false);
 
     switch (CodeBlockStates[nextCodeBlockStateIndex]) {
       case CodeBlockStateEnum.normal:
@@ -56,6 +60,7 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
         wrapCode,
         codeBlockState: CodeBlockStates[codeBlockStateIndex],
         blockHeight,
+        isFirstTime,
 
         ToggleContentFn,
         ToggleWrapFn,

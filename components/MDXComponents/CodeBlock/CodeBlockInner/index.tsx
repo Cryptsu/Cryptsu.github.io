@@ -12,13 +12,15 @@ type CodeBlockInnerProps = PropsWithChildren<{}>
 
 const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
   // Get number of lines for display.
+  const blockRef = useRef<HTMLElement>(null);
   const { 
     showInner, 
     wrapCode, 
     blockHeight,
+    isFirstTime,
+
     UpdateBlockHeightFn
   } = useContext(CodeBlockContext);
-  const blockRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
     let blockItem = blockRef.current;
@@ -33,7 +35,7 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
         ref={blockRef}
         style={CodeBlockInnerStyles} 
         css={
-          blockHeight !== null
+          !isFirstTime
             ? {...(
                     showInner
                       ? CodeBlockIfShowStyles
