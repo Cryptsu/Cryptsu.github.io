@@ -28,7 +28,7 @@ const CodeLangAreaStyles: CSS = {
   letterSpacing: theme.letterSpacings.h5,
   fontWeight: theme.fontWeights.bold,
   textTransform: "capitalize",
-  transform: "translateY(2px)",
+  transform: "translateY(0.0625em)",
 };
 
 export default CodeLangArea;
