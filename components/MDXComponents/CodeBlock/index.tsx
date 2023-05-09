@@ -16,35 +16,32 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
   const [showInner, setShowInner] = useState<boolean>(true);
   const [wrapCode, setWrapCode] = useState<boolean>(false);
   const [blockHeight, setBlockHeight] = useState<number | null>(null);
-  const [isFirstTime, setIsFirstTime] = useState<boolean>(true);
+  const [shouldToggleAnimation, setShouldToggleAnimation] = useState<boolean>(true);
   const [codeBlockStateIndex, setCodeBlockStateIndex] = useState<CodeBlockStateEnum>(CodeBlockStateEnum.normal);
 
   const ToggleContentFn = () => {
     setShowInner(!showInner);
-    setIsFirstTime(false);
+    setShouldToggleAnimation(false);
   }
 
   const ToggleWrapFn = () => {
     setWrapCode(!wrapCode);
-    setIsFirstTime(false);
+    setShouldToggleAnimation(true);
   }
   
   const UpdateVisualStateFn = () => {
     let nextCodeBlockStateIndex = (codeBlockStateIndex + 1) % CodeBlockStates.length;
     setCodeBlockStateIndex(nextCodeBlockStateIndex);
-    setIsFirstTime(false);
 
     switch (CodeBlockStates[nextCodeBlockStateIndex]) {
       case CodeBlockStateEnum.normal:
-        setShowInner(true);
-        setWrapCode(false);
+        ToggleContentFn();
         break;
       case CodeBlockStateEnum.wrapCode:
-        setShowInner(true);
-        setWrapCode(true);
+        ToggleWrapFn();
         break;
       case CodeBlockStateEnum.closeBox:
-        setShowInner(false);
+        ToggleContentFn();
         break;
     }
   }
@@ -60,7 +57,7 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
         wrapCode,
         codeBlockState: CodeBlockStates[codeBlockStateIndex],
         blockHeight,
-        isFirstTime,
+        shouldToggleAnimation,
 
         ToggleContentFn,
         ToggleWrapFn,

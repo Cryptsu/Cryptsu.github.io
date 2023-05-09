@@ -17,14 +17,21 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
     showInner, 
     wrapCode, 
     blockHeight,
-    isFirstTime,
+    shouldToggleAnimation,
 
     UpdateBlockHeightFn
   } = useContext(CodeBlockContext);
 
   useLayoutEffect(() => {
     let blockItem = blockRef.current;
-    if (blockItem && showInner && blockHeight === null) {
+    if ( blockItem && 
+         showInner && 
+          // blockItem.clientHeight is 0 when it is in the transitional state, between 
+          // showInner=false -> showInner=true. We must not update height during this
+          // phase.
+        (blockHeight === null || blockItem.clientHeight > 0)
+    ) 
+    {
       UpdateBlockHeightFn(blockItem.clientHeight);
     }
   });
@@ -35,14 +42,14 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
         ref={blockRef}
         style={CodeBlockInnerStyles} 
         css={
-          !isFirstTime
-            ? {...(
+          shouldToggleAnimation
+            ? {}
+            : {...(
                     showInner
                       ? CodeBlockIfShowStyles
                       : CodeBlockIfHiddenStyles
                   ), height: blockHeight
               }
-            : {}
         }
         {...otherProps}
       >

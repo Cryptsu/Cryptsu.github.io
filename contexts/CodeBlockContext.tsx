@@ -8,7 +8,7 @@ type CodeBlockContextType = (
     wrapCode: boolean;
     codeBlockState: CodeBlockStateEnum;
     blockHeight: number | null;
-    isFirstTime: boolean;
+    shouldToggleAnimation: boolean;
   
     // Layout change functions
     ToggleContentFn: () => void;
@@ -36,7 +36,7 @@ export const CodeBlockContext: CodeBlockContextType = createContext({
   wrapCode: false as boolean,
   codeBlockState: CodeBlockStateEnum.normal as CodeBlockStateEnum,
   blockHeight: null as (number | null),
-  isFirstTime: true as boolean,
+  shouldToggleAnimation: true as boolean,
 
   // Template change functions
   ToggleContentFn: () => {},
