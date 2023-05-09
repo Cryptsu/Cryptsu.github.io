@@ -1,6 +1,7 @@
 import { serialize } from "next-mdx-remote/serialize";
 import { minify } from "uglify-js";
-import { getPostData } from "./process-posts"
+import { getPostData } from "./process-posts";
+import { customRemarkDirective } from "./compile-directive";
 
 // remark/rehype markdown plugins
 import remarkGfm from "remark-gfm";
@@ -10,6 +11,7 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import remarkEmoji from "remark-emoji";
+import remarkDirective from "remark-directive";
 
 import type { PostWithSourceType } from "@/types/post";
 
@@ -40,7 +42,15 @@ export const compilePost
 
         [
           remarkEmoji // Add supports for Emojis.
-        ]
+        ],
+
+        [
+          remarkDirective
+        ],
+
+        [
+          customRemarkDirective
+        ],
       ],
 
       rehypePlugins: [
