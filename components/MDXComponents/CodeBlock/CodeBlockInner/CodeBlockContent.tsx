@@ -1,16 +1,18 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, RefObject } from "react";
 import type { CSS } from "@stitches/react";
 
 type CodeBlockContentProps = PropsWithChildren<{
   wrapCode: boolean;
+  elementRef: RefObject<HTMLElement>;
 }>
 
-const CodeBlockContent = ({children, wrapCode, ...otherProps}: CodeBlockContentProps) => {
+const CodeBlockContent = ({children, wrapCode, elementRef, ...otherProps}: CodeBlockContentProps) => {
   return (
     <Style 
+      ref={elementRef}
       style={CodeBlockContentStyles} 
       css={
         wrapCode

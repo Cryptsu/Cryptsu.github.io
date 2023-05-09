@@ -1,8 +1,8 @@
-import React, { ForwardedRef } from "react";
+import React from "react";
 import { styled } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { CSS } from "@stitches/react";
-import type { PropsWithChildren, RefObject } from "react";
+import type { PropsWithChildren, ForwardedRef } from "react";
 import type { NextNode } from "@/types/next.d";
 
 // * TODO: This is where if somehow, in the future,

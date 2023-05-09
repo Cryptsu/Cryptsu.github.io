@@ -12,51 +12,44 @@ type CodeBlockInnerProps = PropsWithChildren<{}>
 
 const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
   // Get number of lines for display.
-  const blockRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLElement>(null);
   const { 
     showInner, 
     wrapCode, 
     blockHeight,
     shouldToggleAnimation,
-
     UpdateBlockHeightFn
   } = useContext(CodeBlockContext);
 
   useLayoutEffect(() => {
-    let blockItem = blockRef.current;
-    if ( blockItem && 
-         showInner && 
-          // blockItem.clientHeight is 0 when it is in the transitional state, between 
-          // showInner=false -> showInner=true. We must not update height during this
-          // phase.
-        (blockHeight === null || blockItem.clientHeight > 0)
-    ) 
-    {
-      UpdateBlockHeightFn(blockItem.clientHeight);
-    }
+    let blockItem = contentRef.current;
+    if (blockItem)
+      UpdateBlockHeightFn(blockItem.scrollHeight);
   });
 
   return (
-    <Style>
-      <Style
-        ref={blockRef}
-        style={CodeBlockInnerStyles} 
-        css={
-          shouldToggleAnimation
-            ? {}
-            : {...(
-                    showInner
-                      ? CodeBlockIfShowStyles
-                      : CodeBlockIfHiddenStyles
-                  ), height: blockHeight
-              }
-        }
-        {...otherProps}
+    <Style
+      style={CodeBlockInnerStyles} 
+      css={
+        !shouldToggleAnimation
+          ? {
+              height: showInner ? "auto" : "0px"
+            }
+          : {...(
+                  showInner
+                    ? CodeBlockIfShowStyles
+                    : CodeBlockIfHiddenStyles
+                ), height: blockHeight
+            }
+      }
+      {...otherProps}
+    >
+      <CodeBlockContent 
+        wrapCode={wrapCode} 
+        elementRef={contentRef}
       >
-        <CodeBlockContent wrapCode={wrapCode}>
-          {children}
-        </CodeBlockContent>
-      </Style>
+        {children}
+      </CodeBlockContent>
     </Style>
   )
 }
@@ -99,6 +92,8 @@ const CodeBlockInnerStyles: CSS = {
   display: "flex",
   flexDirection: "row",
   gap: 8,
+
+  overflowY: "scroll",
 };
 
 export default CodeBlockInner;

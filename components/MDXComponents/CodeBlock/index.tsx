@@ -13,41 +13,44 @@ type CodeBlockProps = PropsWithChildren<{
 }>
 
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
+  const [codeBlockStateIndex, setCodeBlockStateIndex] = useState<CodeBlockStateEnum>(CodeBlockStateEnum.normal);
   const [showInner, setShowInner] = useState<boolean>(true);
   const [wrapCode, setWrapCode] = useState<boolean>(false);
   const [blockHeight, setBlockHeight] = useState<number | null>(null);
-  const [shouldToggleAnimation, setShouldToggleAnimation] = useState<boolean>(true);
-  const [codeBlockStateIndex, setCodeBlockStateIndex] = useState<CodeBlockStateEnum>(CodeBlockStateEnum.normal);
+  const [shouldToggleAnimation, setShouldToggleAnimation] = useState<boolean>(false);
 
+  // ----------- For Desktop -----------
   const ToggleContentFn = () => {
+    setShouldToggleAnimation(true);
     setShowInner(!showInner);
-    setShouldToggleAnimation(false);
   }
 
   const ToggleWrapFn = () => {
+    setShouldToggleAnimation(false);
     setWrapCode(!wrapCode);
-    setShouldToggleAnimation(true);
   }
   
+  // ----------- For Mobile -----------
   const UpdateVisualStateFn = () => {
     let nextCodeBlockStateIndex = (codeBlockStateIndex + 1) % CodeBlockStates.length;
     setCodeBlockStateIndex(nextCodeBlockStateIndex);
 
     switch (CodeBlockStates[nextCodeBlockStateIndex]) {
       case CodeBlockStateEnum.normal:
-        ToggleContentFn();
+        setShouldToggleAnimation(true);
+        setShowInner(true);
         break;
       case CodeBlockStateEnum.wrapCode:
-        ToggleWrapFn();
+        setShouldToggleAnimation(false);
+        setShowInner(true);
+        setWrapCode(true);
         break;
       case CodeBlockStateEnum.closeBox:
-        ToggleContentFn();
+        setShouldToggleAnimation(true);
+        setWrapCode(false);
+        setShowInner(false);
         break;
     }
-  }
-
-  const UpdateBlockHeightFn = (height: number) => {
-    setBlockHeight(height);
   }
 
   return (
@@ -62,7 +65,7 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
         ToggleContentFn,
         ToggleWrapFn,
         UpdateVisualStateFn,
-        UpdateBlockHeightFn,
+        UpdateBlockHeightFn: setBlockHeight,
       }}
     >
       <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
