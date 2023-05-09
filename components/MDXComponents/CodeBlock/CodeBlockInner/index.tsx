@@ -11,7 +11,6 @@ import type { CSS } from "@stitches/react";
 type CodeBlockInnerProps = PropsWithChildren<{}>
 
 const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
-  // Get number of lines for display.
   const contentRef = useRef<HTMLElement>(null);
   const { 
     showInner, 
