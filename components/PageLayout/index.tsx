@@ -70,7 +70,13 @@ const PageLayoutStyles: CSS = {
 }
 
 const PageLayoutHeaderStyles: CSS = {
+  // Sticky bars block too much content on
+  // mobile screens :(
   position: "sticky",
+  '@medium': {
+    position: "relative"
+  },
+
   top: 0,
   zIndex: theme.zIndices.header,
 }
