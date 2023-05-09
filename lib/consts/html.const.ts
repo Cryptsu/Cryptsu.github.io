@@ -25,3 +25,5 @@ export const TR = "tr"
 export const UL = "ul"
 export const SPAN = "span"
 export const TIME = "time"
+
+// Custom tags -- made for directives

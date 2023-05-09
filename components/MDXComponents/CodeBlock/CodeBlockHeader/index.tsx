@@ -15,7 +15,7 @@ type CodeBlockHeaderProps = PropsWithChildren<{
 const CodeBlockHeader = ({content, className, ...otherProps}: CodeBlockHeaderProps) => {
   // Parse language name
   const classNames = className?.split(' ');
-  const languageClass = ( // TODO: this language detection mechanism may break in the future!
+  const languageClass = ( // * TODO: this language detection mechanism may break in the future!
     classNames?.find(className => /language-*/.test(className))
   );
   const languageName = languageClass ? languageClass.slice("language-".length) : "";

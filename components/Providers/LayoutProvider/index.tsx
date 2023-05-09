@@ -30,9 +30,9 @@ const LayoutProvider = ({ children }: LayoutProviderProps) => {
     setCurrentTheme(userConfigTheme);
     setCurrentLocale(userConfigLocale);
 
-    // TODO: This hack works to prevent flickering
-    // during page scrolling, but ugly as hell. 
-    // Please change. (or not.)
+    // * TODO: This hack works to prevent flickering
+    // * during page scrolling, but ugly as hell. 
+    // * Please change. (or not.)
     document.documentElement.classList.remove(ThemeClassMap[ThemeConst.THEME_DEFAULT]);
     document.documentElement.classList.add(ThemeClassMap[userConfigTheme]);
   }, []);
@@ -45,9 +45,9 @@ const LayoutProvider = ({ children }: LayoutProviderProps) => {
 
         setTheme: 
           (theme: string) => { 
-            // TODO: This hack works to prevent flickering
-            // during page scrolling, but ugly as hell. 
-            // Please change. (or not.)
+            // * TODO: This hack works to prevent flickering
+            // * during page scrolling, but ugly as hell. 
+            // * Please change. (or not.)
             document.documentElement.classList.remove(ThemeClassMap[currentTheme]);
             document.documentElement.classList.add(ThemeClassMap[theme]);
 

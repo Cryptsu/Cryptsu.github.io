@@ -28,8 +28,8 @@ const UnorderedListStyles: CSS = {
     marginRight: 16,
   },
 
-  // TODO: This ListItemNo is entangled with the one at OrderedList.
-  // If this value is changed in the future, please check here.
+  // * TODO: This ListItemNo is entangled with the one at OrderedList.
+  // * If this value is changed in the future, please check here.
   counterReset: "ListItemNo",
   [`& ${HtmlConst.LI}`]: {
     [`${HtmlConst.LI}:before`]: {

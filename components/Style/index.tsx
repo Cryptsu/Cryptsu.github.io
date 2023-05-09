@@ -5,9 +5,9 @@ import type { CSS } from "@stitches/react";
 import type { PropsWithChildren, RefObject } from "react";
 import type { NextNode } from "@/types/next.d";
 
-// TODO: This is where if somehow, in the future,
-//       if stitches.dev work more on Static Extraction,
-//       then we might consider changing this.
+// * TODO: This is where if somehow, in the future,
+// *      if stitches.dev work more on Static Extraction,
+// *      then we might consider changing this.
 type StyleProps = PropsWithChildren<{
   // Default style
   style?: CSS,

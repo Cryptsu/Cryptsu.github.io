@@ -6,7 +6,7 @@ export const clientScript = (
   Mobile_ClassName,
   Tablet_ClassName,
 ) => {
-  // TODO: This detection mechanism might change in the future.
+  // * TODO: This detection mechanism might change in the future.
   var documentElement = document.documentElement;
   var userAgent = window.navigator.userAgent;
 
