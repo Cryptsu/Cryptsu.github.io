@@ -15,6 +15,7 @@ type CodeBlockProps = PropsWithChildren<{
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
   const [showInner, setShowInner] = useState<boolean>(true);
   const [wrapCode, setWrapCode] = useState<boolean>(false);
+  const [blockHeight, setBlockHeight] = useState<number | null>(null);
   const [codeBlockStateIndex, setCodeBlockStateIndex] = useState<CodeBlockStateEnum>(CodeBlockStateEnum.normal);
 
   const ToggleContentFn = () => {
@@ -44,16 +45,22 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
     }
   }
 
+  const UpdateBlockHeightFn = (height: number) => {
+    setBlockHeight(height);
+  }
+
   return (
     <CodeBlockContext.Provider
       value={{
         showInner,
         wrapCode,
         codeBlockState: CodeBlockStates[codeBlockStateIndex],
+        blockHeight,
 
         ToggleContentFn,
         ToggleWrapFn,
         UpdateVisualStateFn,
+        UpdateBlockHeightFn,
       }}
     >
       <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>

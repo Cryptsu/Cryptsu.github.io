@@ -7,11 +7,13 @@ type CodeBlockContextType = (
     showInner: boolean;
     wrapCode: boolean;
     codeBlockState: CodeBlockStateEnum;
+    blockHeight: number | null;
   
     // Layout change functions
     ToggleContentFn: () => void;
     ToggleWrapFn: () => void;
     UpdateVisualStateFn: () => void;
+    UpdateBlockHeightFn: (x: number) => void;
   }>
 )
 
@@ -32,9 +34,11 @@ export const CodeBlockContext: CodeBlockContextType = createContext({
   showInner: true as boolean,
   wrapCode: false as boolean,
   codeBlockState: CodeBlockStateEnum.normal as CodeBlockStateEnum,
+  blockHeight: null as (number | null),
 
   // Template change functions
   ToggleContentFn: () => {},
   ToggleWrapFn: () => {},
   UpdateVisualStateFn: () => {},
+  UpdateBlockHeightFn: (_) => {},
 })

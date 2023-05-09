@@ -15,7 +15,7 @@ const CodeBlockContent = ({children, wrapCode, ...otherProps}: CodeBlockContentP
       css={
         wrapCode
           ? { whiteSpace: "pre-wrap", lineBreak: "anywhere" }
-          : { overflow: "auto" }
+          : { overflowX: "auto" }
       }
       {...otherProps}
     >
@@ -30,6 +30,7 @@ const CodeBlockContentStyles: CSS = {
   // And set scroll-bar width to thin :) 
   paddingBottom: 8,
   scrollbarWidth: "thin", // This attribute only applies on Firefox.
+  overflowY: "hidden",    // This helps during retracting code blocks...
 
   // Not styled code text
   color: theme.colors.textGeneral,

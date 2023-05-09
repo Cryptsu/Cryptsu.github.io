@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useLayoutEffect, useState, useEffect } from "react";
+import useOnce from "@/hooks/useOnce";
 import { CodeBlockContext } from "@/contexts/CodeBlockContext";
 import Style from "@/components/Style";
 import CodeBlockContent from "./CodeBlockContent";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme, keyframes } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -11,14 +12,36 @@ type CodeBlockInnerProps = PropsWithChildren<{}>
 
 const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
   // Get number of lines for display.
-  const { showInner, wrapCode } = useContext(CodeBlockContext);
+  const { 
+    showInner, 
+    wrapCode, 
+    blockHeight,
+    UpdateBlockHeightFn
+  } = useContext(CodeBlockContext);
+  const blockRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    let blockItem = blockRef.current;
+    if (blockItem && showInner && blockHeight === null) {
+      UpdateBlockHeightFn(blockItem.clientHeight);
+    }
+  });
+
   return (
     <Style>
       <Style
+        ref={blockRef}
         style={CodeBlockInnerStyles} 
-        css={{
-          display: showInner ? "" : "none"
-        }}
+        css={
+          blockHeight !== null
+            ? {...(
+                    showInner
+                      ? CodeBlockIfShowStyles
+                      : CodeBlockIfHiddenStyles
+                  ), height: blockHeight
+              }
+            : {}
+        }
         {...otherProps}
       >
         <CodeBlockContent wrapCode={wrapCode}>
@@ -27,6 +50,27 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
       </Style>
     </Style>
   )
+}
+
+const CodeBlockIfShowStyles: CSS = {
+  animation: `${keyframes({
+    "0%": {
+      opacity: 0,
+      height: 0,
+    },
+    "100%": {
+      opacity: 1,
+    }
+  })} 1s ease forwards`,
+}
+
+const CodeBlockIfHiddenStyles: CSS = {
+  animation: `${keyframes({
+    "100%": {
+      opacity: 0,
+      height: 0,
+    }
+  })} 1s ease forwards`,
 }
 
 const CodeBlockInnerStyles: CSS = {
