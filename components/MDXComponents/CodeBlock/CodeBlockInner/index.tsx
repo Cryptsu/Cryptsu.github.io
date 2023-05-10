@@ -10,7 +10,6 @@ import type { CSS } from "@stitches/react";
 type CodeBlockInnerProps = PropsWithChildren<{}>
 
 const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
-  const outerRef = useRef<HTMLElement>(null);
   const innerRef = useRef<HTMLElement>(null);
   const { 
     showInner, 
@@ -21,17 +20,14 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
   } = useContext(CodeBlockContext);
 
   useLayoutEffect(() => {
-    let outerItem = outerRef.current;
     let innerItem = innerRef.current;
-    if (innerItem && outerItem) {
-      const scrollbarThickness = innerItem.offsetHeight - outerItem.offsetHeight;
-      UpdateBlockHeightFn(innerItem.scrollHeight + scrollbarThickness);
+    if (innerItem) {
+      UpdateBlockHeightFn(innerItem.scrollHeight);
     }
   });
 
   return (
     <Style
-      ref={outerRef}
       style={CodeBlockInnerStyles} 
       css={
         !shouldToggleAnimation
