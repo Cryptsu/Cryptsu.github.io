@@ -218,6 +218,14 @@ const TableOfContentStyles: CSS = {
 
   '&>:last-child': {
     marginBottom: "1em",
+  },
+
+  '&::-webkit-scrollbar:vertical': {
+    width: 4,
+  },
+
+  '&::-webkit-scrollbar-track:vertical:hover': {
+    backgroundImage: `none`,
   }
 };
 
