@@ -401,8 +401,6 @@ export const globalStyles = globalCss({
 
   '::-webkit-scrollbar-thumb:hover': {
     backgroundColor: theme.colors.primary,
-    backgroundSize: "8px 4px",
-    backgroundRepeat: "no-repeat",
   },
 
   '::-webkit-scrollbar-track': {
