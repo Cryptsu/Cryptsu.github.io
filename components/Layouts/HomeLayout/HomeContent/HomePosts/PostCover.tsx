@@ -18,10 +18,10 @@ const PostCover = ({children, coverImageURL, link, ...otherProps}: PostCoverProp
     return <Style 
               style={PostCoverStyles} 
               elementName={HtmlConst.IMG} 
-              src={coverImageURL ? coverImageURL : AssetsConst.EMPTY_SVG} 
+              src={coverImageURL ? coverImageURL : AssetsConst.EMPTY_IMG} 
               onError={
                 (event: Event) => {
-                  (event.target as HTMLImageElement).src = AssetsConst.NO_EXISTS_SVG
+                  (event.target as HTMLImageElement).src = AssetsConst.NO_EXISTS_IMG
                 }
               }
               {...otherProps}

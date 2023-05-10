@@ -22,7 +22,7 @@ const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) =>
               css={{width, height}} 
               onError={
                 (event: Event) => {
-                  (event.target as HTMLImageElement).src = AssetsConst.NO_EXISTS_SVG
+                  (event.target as HTMLImageElement).src = AssetsConst.NO_EXISTS_IMG
                 }
               }
               {...otherProps}

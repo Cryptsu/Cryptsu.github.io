@@ -147,7 +147,8 @@ export const {
       codeDeletion: "#ff1b1b",
       codeLiteral: "#fbe281",
 
-     
+      // Scrollbar
+      scrollbarScroll: "$veryWhite",
     },
 
     fonts: {
@@ -365,7 +366,7 @@ export const globalStyles = globalCss({
 
   'body': {
     backgroundColor: "$pageBackground",
-    backgroundImage: `url("${AssetsConst.GRAIN_PNG}")`,
+    backgroundImage: `url("${AssetsConst.GRAIN}")`,
     pointerEvents: "none",  
   },
 
@@ -379,5 +380,40 @@ export const globalStyles = globalCss({
       // really unbalanced :(
       textSizeAdjust: "100%",
     }
+  },
+
+  // ==============================================================
+  //
+  //                THIS WHOLE SECTION IS DEDICATED
+  //                      TO SCROLL-BAR STYLES
+  //
+  // ==============================================================
+  '::-webkit-scrollbar': {
+    width: "8px",
+    height: "4px",
+  },
+
+  '::-webkit-scrollbar-thumb': {
+    backgroundColor: theme.colors.scrollbarScroll,
+    borderRadius: "24px",
+    backgroundClip: "padding-box",
+  },
+
+  '::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: theme.colors.primary,
+  },
+
+  '::-webkit-scrollbar-track': {
+    borderRadius: '10px',
+  },
+
+  '::-webkit-scrollbar-track:vertical:hover': {
+    backgroundImage: `url("${AssetsConst.SCROLLBARTRACK_Y}")`,
+    backgroundRepeat: "repeat-y"
+  },
+
+  '::-webkit-scrollbar-track:horizontal:hover': {
+    backgroundImage: `url("${AssetsConst.SCROLLBARTRACK_X}")`,
+    backgroundRepeat: "repeat-x"
   }
 });

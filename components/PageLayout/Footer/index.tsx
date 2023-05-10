@@ -32,7 +32,7 @@ const FooterStyles: CSS = {
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,
   backgroundColor: theme.colors.pageBackground,
-  backgroundImage: `url(${AssetsConst.GRAIN_PNG})`,
+  backgroundImage: `url(${AssetsConst.GRAIN})`,
 
   zIndex: theme.zIndices.footer,
 };
