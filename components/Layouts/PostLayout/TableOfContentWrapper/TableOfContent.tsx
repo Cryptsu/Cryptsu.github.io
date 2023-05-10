@@ -135,11 +135,6 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
           <Style key={index} 
             style={TOCLinkWrapperStyles}
             css={{
-              borderWidth: `0px 0px 0px ${
-                intersections[index] == 0 
-                  ? "0.25em" 
-                  : 0
-              }`,
               marginLeft: `calc(1.5em * ${headingInfo.level - 1})`,
               marginTop: (
                 headingInfo.level === 1 && index !== 0 
@@ -163,6 +158,19 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
               ),
             }}
           >
+            <Style
+              css={{
+                position: "absolute",
+                height: "100%",        
+                borderStyle: "solid",
+                borderColor: theme.colors.textLess,
+                borderWidth: `0px 0px 0px ${
+                  intersections[index] == 0 
+                    ? "0.25em" 
+                    : 0
+                }`,
+              }}
+            />
             <Style 
               onClick={
                 () => {
@@ -240,9 +248,8 @@ const TOCHeaderStyles: CSS = {
 }
 
 const TOCLinkWrapperStyles: CSS = {
+  position: "relative",
   display: "flex",
-  borderStyle: "solid",
-  borderColor: theme.colors.textLess,
 }
 
 const TOCLinkStyles: CSS = {
