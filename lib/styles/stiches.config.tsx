@@ -389,8 +389,8 @@ export const globalStyles = globalCss({
   //
   // ==============================================================
   '::-webkit-scrollbar': {
-    width: "8px",
-    height: "4px",
+    width: "12px",
+    height: "12px",
   },
 
   '::-webkit-scrollbar-thumb': {
@@ -401,6 +401,8 @@ export const globalStyles = globalCss({
 
   '::-webkit-scrollbar-thumb:hover': {
     backgroundColor: theme.colors.primary,
+    backgroundSize: "8px 4px",
+    backgroundRepeat: "no-repeat",
   },
 
   '::-webkit-scrollbar-track': {
@@ -409,7 +411,7 @@ export const globalStyles = globalCss({
 
   '::-webkit-scrollbar-track:vertical:hover': {
     backgroundImage: `url("${AssetsConst.SCROLLBARTRACK_Y}")`,
-    backgroundRepeat: "repeat-y"
+    backgroundRepeat: "repeat-y",
   },
 
   '::-webkit-scrollbar-track:horizontal:hover': {

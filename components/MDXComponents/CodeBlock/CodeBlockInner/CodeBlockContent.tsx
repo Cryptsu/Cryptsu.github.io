@@ -1,6 +1,6 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
+import { AssetsConst, HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren, RefObject } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -31,8 +31,18 @@ const CodeBlockContentStyles: CSS = {
   // So there need a padding on the bottom... (sigh)
   // And set scroll-bar width to thin :) 
   paddingBottom: 8,
-  scrollbarWidth: "thin", // This attribute only applies on Firefox.
   overflowY: "hidden",    // This helps during retracting code blocks...
+  
+  // Smaller scrollbar
+  scrollbarWidth: "thin", // This attribute only applies on Firefox.
+  '&::-webkit-scrollbar': {
+    height: "4px",
+  },
+
+  '&::-webkit-scrollbar-track:horizontal:hover': {
+    backgroundImage: `url("${AssetsConst.SCROLLBARTRACK_X_CODE}")`,
+    backgroundRepeat: "repeat-x",
+  },
 
   // Not styled code text
   color: theme.colors.textGeneral,
