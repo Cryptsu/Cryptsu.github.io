@@ -1,5 +1,4 @@
 import React, { useContext, useRef, useLayoutEffect, useState, useEffect } from "react";
-import useOnce from "@/hooks/useOnce";
 import { CodeBlockContext } from "@/contexts/CodeBlockContext";
 import Style from "@/components/Style";
 import CodeBlockContent from "./CodeBlockContent";
@@ -11,7 +10,8 @@ import type { CSS } from "@stitches/react";
 type CodeBlockInnerProps = PropsWithChildren<{}>
 
 const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
-  const contentRef = useRef<HTMLElement>(null);
+  const outerRef = useRef<HTMLElement>(null);
+  const innerRef = useRef<HTMLElement>(null);
   const { 
     showInner, 
     wrapCode, 
@@ -21,13 +21,17 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
   } = useContext(CodeBlockContext);
 
   useLayoutEffect(() => {
-    let blockItem = contentRef.current;
-    if (blockItem)
-      UpdateBlockHeightFn(blockItem.scrollHeight);
+    let outerItem = outerRef.current;
+    let innerItem = innerRef.current;
+    if (innerItem && outerItem) {
+      const scrollbarThickness = innerItem.offsetHeight - outerItem.offsetHeight;
+      UpdateBlockHeightFn(innerItem.scrollHeight + scrollbarThickness);
+    }
   });
 
   return (
     <Style
+      ref={outerRef}
       style={CodeBlockInnerStyles} 
       css={
         !shouldToggleAnimation
@@ -45,7 +49,7 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
     >
       <CodeBlockContent 
         wrapCode={wrapCode} 
-        elementRef={contentRef}
+        elementRef={innerRef}
       >
         {children}
       </CodeBlockContent>
