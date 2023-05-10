@@ -135,11 +135,24 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
           <Style key={index} 
             style={TOCLinkWrapperStyles}
             css={{
-              marginTop: headingInfo.level === 1 && index !== 0 ? 4 : 0,
-              marginLeft: `calc(24px * ${headingInfo.level - 1})`,
-              borderWidth: `0px 0px 0px ${intersections[index] == 0 ? 4 : 0}px`,
-              fontWeight: (
+              borderWidth: `0px 0px 0px ${
                 intersections[index] == 0 
+                  ? "0.25em" 
+                  : 0
+              }`,
+              marginLeft: `calc(1.5em * ${headingInfo.level - 1})`,
+              marginTop: (
+                headingInfo.level === 1 && index !== 0 
+                  ? "0.5em" 
+                  : 0
+              ),
+              fontSize: (
+                headingInfo.level === 1 
+                  ? theme.fontSizes.h5 
+                  : theme.fontSizes.h6
+              ),
+              fontWeight: (
+                intersections[index] == 0
                   ? theme.fontWeights.bold 
                   : theme.fontWeights.normal
               ),
@@ -179,10 +192,7 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
 
 const TableOfContentStyles: CSS = {
   fontFamily: theme.fonts.global,
-  fontWeight: theme.fontWeights.h6,
-  fontSize: theme.fontSizes.h6,
   letterSpacing: theme.letterSpacings.h4,
-  color: theme.colors.textLess,
   wordBreak: "break-word",
 
   borderWidth: "0.25em",

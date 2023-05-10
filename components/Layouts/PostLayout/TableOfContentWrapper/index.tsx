@@ -56,12 +56,12 @@ const TableOfContentWrapper = ({children, ...otherProps}: TableOfContentWrapperP
                 : "none",
 
               width: "50vw",
-              maxWidth: 320,
-              top: "10vh",
+              maxWidth: "20em",
+              top: "5vh",
               bottom: "10vh",
               maxHeight: "80vh",
-              marginLeft: 16,
-              marginRight: 16,
+              marginLeft: "1em",
+              marginRight: "1em",
             }
           }}
         />
