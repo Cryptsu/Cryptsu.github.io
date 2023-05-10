@@ -91,8 +91,6 @@ const CodeBlockInnerStyles: CSS = {
   display: "flex",
   flexDirection: "row",
   gap: 8,
-
-  overflowY: "scroll",
 };
 
 export default CodeBlockInner;
