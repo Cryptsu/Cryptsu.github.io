@@ -220,8 +220,18 @@ const TableOfContentStyles: CSS = {
     marginBottom: "1em",
   },
 
-  '&::-webkit-scrollbar:vertical': {
-    width: 4,
+  '&::-webkit-scrollbar': {
+    width: "8px",
+  },
+
+  '&::-webkit-scrollbar-thumb:vertical': {
+    backgroundImage: `linear-gradient($scrollbarThumb, $scrollbarThumb)`,
+    backgroundSize: "4px 100%",
+    backgroundPositionX: "2px",
+    backgroundRepeat: "no-repeat",
+    '&:hover': {
+      backgroundImage: `none`,
+    }
   },
 
   '&::-webkit-scrollbar-track:vertical:hover': {

@@ -148,7 +148,7 @@ export const {
       codeLiteral: "#fbe281",
 
       // Scrollbar
-      scrollbarScroll: "$veryWhite",
+      scrollbarThumb: "#4d4d4d",
     },
 
     fonts: {
@@ -394,13 +394,24 @@ export const globalStyles = globalCss({
   },
 
   '::-webkit-scrollbar-thumb': {
-    backgroundColor: theme.colors.scrollbarScroll,
     borderRadius: "24px",
-    backgroundClip: "padding-box",
+    '&:vertical': {
+      backgroundImage: `linear-gradient($scrollbarThumb, $scrollbarThumb)`,
+      backgroundSize: "6px 100%",
+      backgroundPositionX: "3px",
+      backgroundRepeat: "no-repeat",
+    },
+    '&:horizontal': {
+      backgroundImage: `linear-gradient($scrollbarThumb, $scrollbarThumb)`,
+      backgroundSize: "100% 6px",
+      backgroundPositionY: "3px",
+      backgroundRepeat: "no-repeat",
+    }
   },
 
   '::-webkit-scrollbar-thumb:hover': {
     backgroundColor: theme.colors.primary,
+    backgroundImage: `none`,
   },
 
   '::-webkit-scrollbar-track': {

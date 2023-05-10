@@ -34,9 +34,23 @@ const CodeBlockContentStyles: CSS = {
   overflowY: "hidden",    // This helps during retracting code blocks...
   
   // Smaller scrollbar
-  scrollbarWidth: "thin", // This attribute only applies on Firefox.
+  // This attribute only applies on Firefox.
+  scrollbarWidth: "thin", 
+
+  // This attribute applies on stuffs that has
+  // -webkit-...
   '&::-webkit-scrollbar': {
-    height: "4px",
+    height: "6px",
+  },
+
+  '&::-webkit-scrollbar-thumb:horizontal': {
+    backgroundImage: `linear-gradient($scrollbarThumb, $scrollbarThumb)`,
+    backgroundSize: "100% 4px",
+    backgroundPositionY: "1px",
+    backgroundRepeat: "no-repeat",
+    '&:hover': {
+      backgroundImage: `none`,
+    }
   },
 
   '&::-webkit-scrollbar-track:horizontal:hover': {
