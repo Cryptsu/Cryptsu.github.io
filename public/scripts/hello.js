@@ -1,0 +1,1 @@
+console.log("Testing script inside a page :)")

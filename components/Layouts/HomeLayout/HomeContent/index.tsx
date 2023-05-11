@@ -17,12 +17,13 @@ type HomeContentProps = PropsWithChildren<{
 const HomeContent = ({children, posts, ...otherProps}: HomeContentProps) => {
   const [ currentPage, setCurrentPage ] = useState<number | null>(null);
   const [ scrollXYs, setScrollXYs ] = useState<number[]>([0, 0]);
-
-  useLayoutEffect(() => {
+  const justResize = useRef<boolean>(false);
+  
+  const onPageResize = () => {
     if (currentPage !== null) {
       let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
       let scrollWidth  = document.documentElement.scrollWidth  || document.body.scrollWidth;
-
+      
       // For non-Chrome solutions
       document.documentElement.scrollTo({
         left: scrollWidth - scrollXYs[0], 
@@ -36,11 +37,27 @@ const HomeContent = ({children, posts, ...otherProps}: HomeContentProps) => {
         top: scrollHeight - scrollXYs[1],
         behavior: "auto",
       })
+
+      // Set scroll-size so that
+      // we don't scroll during
+      // page update
+      justResize.current = true;
     }
+  }
+
+  useLayoutEffect(() => {
+    onPageResize();
   /* eslint-disable react-hooks/exhaustive-deps */}, [currentPage]);
 
   // Track scrolling on the website.
   const onContentScroll = () => {
+    // Please don't scroll if page 
+    // has just been recently resized.
+    if (justResize.current) {
+      justResize.current = false;
+      return;
+    }
+
     let scrollLeft   = document.documentElement.scrollLeft   || document.body.scrollLeft;
     let scrollTop    = document.documentElement.scrollTop    || document.body.scrollTop;
     let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
@@ -56,9 +73,14 @@ const HomeContent = ({children, posts, ...otherProps}: HomeContentProps) => {
   }
 
   useEffect(() => { 
+    const observer = new ResizeObserver(onPageResize);
+    observer.observe(document.body);
     window.addEventListener('scroll', onContentScroll);
     return (
-      () => window.removeEventListener('scroll', onContentScroll)
+      () => {
+        window.removeEventListener('scroll', onContentScroll)
+        observer.unobserve(document.body);
+      }
     )
   })
 

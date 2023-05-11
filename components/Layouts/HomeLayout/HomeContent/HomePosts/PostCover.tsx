@@ -50,8 +50,12 @@ const PostCoverWrapperWrapperStyles: CSS = {
 
 const PostCoverWrapperStyles: CSS = {
   display: "flex",
-  width: "75%",
   padding: 4,
+
+  width: "75%",
+  '@medium': {
+    width: "100%",
+  },
 
   backgroundImage: theme.colors.gradient12,
   borderRadius: 16,
@@ -75,7 +79,7 @@ const PostCoverStyles: CSS = {
   borderRadius: 16,
 
   width: "100%",
-  height: "12.5em",
+  height: "auto",
   objectFit: "cover",
 };
 
