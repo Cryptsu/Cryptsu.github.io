@@ -56,11 +56,6 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   div: [{replacedElement: MathBlock, classNames: ["math-display", "math"]}],
   li: [{replacedElement: ListItem}],
   table: [{replacedElement: Table}],
-
-  // BlogImg can be its own thing :)
-  BlogImg: [{replacedElement: BlogImg}],
-
-  main: [{replacedElement: Blockquote}],
 };
 
 export default MDXComponentsConfig;
