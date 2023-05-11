@@ -216,16 +216,26 @@ const TableOfContentStyles: CSS = {
   paddingLeft: "2em",
   paddingRight: "2em",
 
+  // 2nd child is likely
+  // to be the first TOC
+  // header.
+  '&>:nth-child(2)': {
+    marginTop: "0.5em",
+  },
+
   '&>:last-child': {
     marginBottom: "1em",
   },
 
+  // Customize scrollbar because
+  // original scrollbar looks really
+  // bad.
   '&::-webkit-scrollbar': {
     width: "8px",
   },
 
   '&::-webkit-scrollbar-thumb:vertical': {
-    backgroundImage: `linear-gradient($scrollbarThumb, $scrollbarThumb)`,
+    backgroundImage: `linear-gradient(${theme.colors.scrollbarThumb}, ${theme.colors.scrollbarThumb})`,
     backgroundSize: "4px 100%",
     backgroundPositionX: "2px",
     backgroundRepeat: "no-repeat",
@@ -241,16 +251,15 @@ const TableOfContentStyles: CSS = {
 
 const TOCHeaderStyles: CSS = {
   color: theme.colors.tertiary,
-  fontSize: theme.fontSizes.h5,
+  fontSize: theme.fontSizes.h6,
   fontWeight: theme.fontWeights.bold,
   textAlign: "center",
 
   border: 0,
   margin: 0,
   borderBottom: "0.125em",
-  marginBottom: "1em",
-  marginTop: "1em",
   paddingBottom: "0.5em",
+  paddingTop: "0.5em",
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,
 

@@ -50,7 +50,7 @@ const HomePostsHeaderStyles: CSS = {
   
   color: theme.colors.tertiary,
   backgroundColor: theme.colors.postsBackground,
-  boxShadow: theme.shadows.depthShadow,
+  boxShadow: `${theme.shadows.depthShadow}, ${theme.shadows.homePosts}`,
 
   borderRadius: 24,
   marginBottom: "0.25em",
