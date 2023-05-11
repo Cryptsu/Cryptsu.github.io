@@ -44,17 +44,18 @@ const CodeBlockContentStyles: CSS = {
   },
 
   '&::-webkit-scrollbar-thumb:horizontal': {
-    backgroundImage: `linear-gradient($scrollbarThumb, $scrollbarThumb)`,
+    backgroundImage: `linear-gradient(${theme.colors.scrollbarThumb}, ${theme.colors.scrollbarThumb})`,
     backgroundSize: "100% 4px",
     backgroundPositionY: "1px",
-    backgroundRepeat: "no-repeat",
     '&:hover': {
       backgroundImage: `none`,
     }
   },
 
   '&::-webkit-scrollbar-track:horizontal:hover': {
-    backgroundImage: `url("${AssetsConst.SCROLLBARTRACK_X_CODE}")`,
+    backgroundImage: `linear-gradient(${theme.colors.scrollbarTrack}, ${theme.colors.scrollbarTrack})`,
+    backgroundSize: "100% 2px",
+    backgroundPositionY: "2px",
     backgroundRepeat: "repeat-x",
   },
 

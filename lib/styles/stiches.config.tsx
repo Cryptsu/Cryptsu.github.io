@@ -149,6 +149,7 @@ export const {
 
       // Scrollbar
       scrollbarThumb: "#4d4d4d",
+      scrollbarTrack: "#44525F",
     },
 
     fonts: {
@@ -419,12 +420,16 @@ export const globalStyles = globalCss({
   },
 
   '::-webkit-scrollbar-track:vertical:hover': {
-    backgroundImage: `url("${AssetsConst.SCROLLBARTRACK_Y}")`,
+    backgroundImage: `linear-gradient($scrollbarTrack, $scrollbarTrack)`,
+    backgroundSize: "2px 100%",
+    backgroundPositionX: "5px",
     backgroundRepeat: "repeat-y",
   },
 
   '::-webkit-scrollbar-track:horizontal:hover': {
-    backgroundImage: `url("${AssetsConst.SCROLLBARTRACK_X}")`,
+    backgroundImage: `linear-gradient($scrollbarTrack, $scrollbarTrack)`,
+    backgroundSize: "100% 2px",
+    backgroundPositionY: "5px",
     backgroundRepeat: "repeat-x"
   }
 });
