@@ -17,8 +17,10 @@ type HomePostsProps = PropsWithChildren<{
 const HomePosts = ({children, posts, ...otherProps}: HomePostsProps) => {
   return (
     <>
-      <Style style={HomePostsHeaderStyles}>
-        {TxtConst.TXT_POSTS}
+      <Style style={HomePostsHeaderWrapperStyles}>
+        <Style style={HomePostsHeaderStyles}>
+          {TxtConst.TXT_POSTS}
+        </Style>
       </Style>
       {
         posts.map((post, index) => 
@@ -34,14 +36,26 @@ const HomePosts = ({children, posts, ...otherProps}: HomePostsProps) => {
   )
 }
 
+const HomePostsHeaderWrapperStyles: CSS = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+}
+
 const HomePostsHeaderStyles: CSS = {
   fontFamily: theme.fonts.global,
-  fontSize: theme.fontSizes.h2,
-  letterSpacing: theme.letterSpacings.h2,
-  fontWeight: theme.fontWeights.bold,
-  color: theme.colors.textGeneral,
+  fontSize: `min(${theme.fontSizes.h1}, 8vh)`,
+  fontWeight: theme.fontWeights.normal,
+  letterSpacing: theme.letterSpacings.h1,
+  
+  color: theme.colors.tertiary,
+  backgroundColor: theme.colors.postsBackground,
+  boxShadow: theme.shadows.depthShadow,
 
-  paddingBottom: 8,
+  borderRadius: 24,
+  marginBottom: "0.5em",
+  paddingLeft: "0.5em",
+  paddingRight: "0.5em",
   '&:before': {
     content: "< ",
     color: theme.colors.textLeast,
@@ -49,7 +63,7 @@ const HomePostsHeaderStyles: CSS = {
   '&:after': {
     content: " />",
     color: theme.colors.textLeast,
-  }
+  },
 }
 
 const HomePostStyles: CSS = {

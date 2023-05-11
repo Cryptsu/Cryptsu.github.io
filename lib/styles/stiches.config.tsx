@@ -107,6 +107,7 @@ export const {
       // ========================== Main page ==============================
       //   -> Author section
       authorBackground: hexToRgba("#202220", 0.5),
+      postsBackground: "$black",
 
       // ========================== Post page ==============================
       //   -> Button
