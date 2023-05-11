@@ -59,6 +59,8 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
 
   // BlogImg can be its own thing :)
   BlogImg: [{replacedElement: BlogImg}],
+
+  main: [{replacedElement: Blockquote}],
 };
 
 export default MDXComponentsConfig;

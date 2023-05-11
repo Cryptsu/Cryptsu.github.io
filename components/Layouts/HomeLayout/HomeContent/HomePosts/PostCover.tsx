@@ -50,25 +50,26 @@ const PostCoverWrapperWrapperStyles: CSS = {
 
 const PostCoverWrapperStyles: CSS = {
   display: "flex",
-  padding: 4,
-
   width: "75%",
   '@medium': {
     width: "100%",
   },
 
+  // Custom "border" of the cover.
   backgroundImage: theme.colors.gradient12,
   borderRadius: 16,
+  padding: "0.25em",
 
   '@media (hover: hover)': {
     '&:hover': {
-      transform: "translateX(-6px) translateY(-6px)",
+      transition: "all 0.25s",
       boxShadow: theme.shadows.homePostCoverHover,
+      transform: "translateX(-0.325em) translateY(-0.325em)",
     },
   },
   
   '&:active': {
-    transform: "translateX(-1px) translateY(-1px)",
+    transform: "translateX(-0.0625em) translateY(-0.0625em)",
     boxShadow: theme.shadows.homePostCoverClick,
   }
 };

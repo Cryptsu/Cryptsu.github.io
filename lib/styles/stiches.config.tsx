@@ -78,6 +78,7 @@ export const {
       textActive: "$veryWhite",
       textGeneral: "$white",
       textLess: "#bfddce",
+      textLLess: "#91a89c",
       textLesser: "#778980",
       textLeast: "#454C48",
 
@@ -221,6 +222,7 @@ export const {
     shadows: {
       depthShadow: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
       homePostCoverHover: "0.375em 0.375em #454C48",
+      homePostCoverHoverMediaSmall: "0.125em 0.125em #454C48",
       homePostCoverClick: "0.0625em 0.0625em #454C48",
       navLinkDropdown: "0.25em 0.25em #454C48",
       codeCopyBtnNormal: "0 0.25em #265D8B",

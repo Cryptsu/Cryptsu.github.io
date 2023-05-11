@@ -11,9 +11,7 @@ type BlockquoteProps = PropsWithChildren<{
 const Blockquote = ({children, ...otherProps}: BlockquoteProps) => {
   return (
     <Style style={BlockquoteStyles} elementName={HtmlConst.BLOCKQUOTE} {...otherProps}>
-      <Style style={BlockquoteInnerStyles}>
-        {children}
-      </Style>
+      {children}
     </Style>
   )
 }
@@ -40,11 +38,10 @@ const BlockquoteStyles: CSS = {
   backgroundColor: theme.colors.quoteBackground,
   borderColor: theme.colors.quoteLegend,
   borderRadius: "1.5em",
-  boxShadow: theme.shadows.depthShadow
-};
+  boxShadow: theme.shadows.depthShadow,
 
-const BlockquoteInnerStyles: CSS = {
-  opacity: 0.75,
-}
+  // Text color
+  color: theme.colors.textLLess,
+};
 
 export default Blockquote;
