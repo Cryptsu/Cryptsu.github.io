@@ -9,7 +9,7 @@
 export const TXT_BLOG_NAME = "Cryptsu";
 export const TXT_AUTHOR_NAME = "Mistsu";
 export const TXT_FOOTER = `::: Made with (❤️ && 😭) by ${TXT_AUTHOR_NAME} :::`
-export const TXT_AUTHOR_DESC = "Hello, friends. This is a place wher'e I write my writeups on Crypto CTF challenges :3";
+export const TXT_AUTHOR_DESC = "Hello, friends. This is a place where I write my writeups on Crypto CTF challenges :3";
 export const TXT_SHORT_DESC = "Mistsu's blog";
 
 // Navigation stuffs
