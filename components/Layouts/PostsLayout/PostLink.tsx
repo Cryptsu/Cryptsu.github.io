@@ -1,7 +1,6 @@
 import Style from "@/components/Style";
 import NextLink from "next/link";
 import { theme } from "@/lib/styles/stiches.config";
-import { AppConfig } from "@/lib/config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";

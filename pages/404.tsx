@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useLayoutEffect } from "react";
-import useOnce from "@/hooks/useOnce";
+import { NextSeo } from "next-seo";
 import Style from "@/components/Style";
 import { config, theme } from "@/lib/styles/stiches.config";
 import { HtmlConst, TxtConst } from "@/lib/consts";
@@ -172,16 +172,19 @@ const _404 = ({children, ...otherProps}: _404Props) => {
   /* eslint-disable react-hooks/exhaustive-deps */}, [isUserStay]);
 
   return (
-    <Style ref={parentRef} style={_404Styles} {...otherProps}>
-      <Style ref={errItemRef} style={ErrorWrapperStyles}>
-        <Style style={Text404Styles}>
-          {TxtConst.TXT_404}
-        </Style>
-        <Style style={TextPageNotFoundStyles}>
-          {TxtConst.TXT_PAGE_NOT_FOUND}
+    <>
+      <NextSeo title={TxtConst.TXT_TITLE_404}/>
+      <Style ref={parentRef} style={_404Styles} {...otherProps}>
+        <Style ref={errItemRef} style={ErrorWrapperStyles}>
+          <Style style={Text404Styles}>
+            {TxtConst.TXT_404}
+          </Style>
+          <Style style={TextPageNotFoundStyles}>
+            {TxtConst.TXT_PAGE_NOT_FOUND}
+          </Style>
         </Style>
       </Style>
-    </Style>
+    </>
   )
 }
 

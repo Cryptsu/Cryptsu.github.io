@@ -4,9 +4,11 @@ export type PostFrontMatterType = {
   title: string;
   date: string;
   slug: string;
+  permalink: string;
   description?: string;
   coverImage?: string;
   minsRead: number;
+  tags?: string[];
   noWords: number;
 };
 

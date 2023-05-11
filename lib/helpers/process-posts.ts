@@ -53,7 +53,8 @@ export const getPostData
       title: (data.title === undefined ? "" : data.title),
       minsRead: Math.round(readingTime(rawContent).minutes),
       noWords: readingTime(rawContent).words,
-      slug
+      permalink: `${AppConfig.BLOG_URL}/${AppConfig.POSTS_DIR}/${slug}/`,
+      slug,
     },
     content
   }

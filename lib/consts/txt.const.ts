@@ -4,17 +4,24 @@
 // Maybe replaced later with something
 // that could be language-switchable.
 //
+
+// Config?
 export const TXT_BLOG_NAME = "Cryptsu";
+export const TXT_AUTHOR_NAME = "Mistsu";
+export const TXT_FOOTER = `::: Made with (❤️ && 😭) by ${TXT_AUTHOR_NAME} :::`
+export const TXT_AUTHOR_DESC = "Hello, friends. This is a place wher'e I write my writeups on Crypto CTF challenges :3";
+export const TXT_SHORT_DESC = "Mistsu's blog";
+
+// Navigation stuffs
 export const TXT_NAV_HOME = "/home";
 export const TXT_NAV_TEST = "/test";
 export const TXT_NAV_ABOUT = "/about";
 export const TXT_NAV_POSTS = "/posts";
+
 export const TXT_CODE_IS_HIDDEN = "... hidden ...";
 export const TXT_TOC = "table-of-content";
 export const TXT_WORDS = "words";
 export const TXT_MIN_READ = 'mins';
-export const TXT_FOOTER = "::: Made with (❤️ && 😭) by Mistsu :::"
-export const TXT_AUTHOR_DESC = "Hello, friends. This is a place where I write my writeups on Crypto CTF challenges :3";
 export const TXT_BLINK_CHAR = "▌";
 export const TXT_NO_DESCRIPTION = "(no description provided)";
 export const TXT_POSTS = "POSTS";
@@ -28,3 +35,10 @@ export const TXT_CODE_COPY_BUTTON_DESC = "Copy code to clipboard.";
 export const TXT_404 = "404";
 export const TXT_PAGE_NOT_FOUND = "Page not found";
 export const TXT_UR_BROWSER_SUCKS = "Your browser sucks, you should consider getting a new one (one that supports display: grid)"
+
+// Titles
+export const TXT_TITLE_404 = "404 Page Not Found";
+export const TXT_TITLE_HOME = "Mistsu's blog";
+export const TXT_TITLE_POSTS = "Posts";
+export const TXT_DESC_HOME = "Hello. Welcome to my blog :) This is where I share my thoughts on CTF challenges.";
+export const TXT_DESC_POSTS = "List all of my blog posts within a single page.";

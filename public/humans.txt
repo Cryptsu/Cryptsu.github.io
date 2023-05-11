@@ -1,0 +1,40 @@
+          ##
+   ###----##
+   ###      \
+   /        ##__
+  /       ##   #     --#
+ :           __/   -#   :
+,'          _\     >     :
+####      :'     #########:
+##########          |  ###:
+######################    :
+#######################   :
+######################...,'
+            :
+             ;
+              ;
+               ;
+              ,;
+           ;##########
+          ;###########
+,,,,,,,,,;###########
+
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# HUMAN
+
+    Mistsu
+
+# TECHNOLOGY
+
+  - Crypto
+  - Idk...
+
+# VIEW SOURCE
+
+    https://github.com/Cryptsu/Cryptsu.github.io
+
+# LICENSE
+
+    Do I need one?
