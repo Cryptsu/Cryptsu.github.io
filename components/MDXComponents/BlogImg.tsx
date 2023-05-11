@@ -51,9 +51,11 @@ const BlogImgWrapperStyles: CSS = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
+
+  gap: "0.5em",
   margin: 0,
-  marginTop: 32,
-  marginBottom: 32,
+  marginTop: "2em",
+  marginBottom: "2em",
 };
 
 const BlogImgStyles: CSS = {
@@ -75,13 +77,13 @@ const BlogImgDescriptionStyles: CSS = {
     maxWidth: "100%",
   },
 
-  borderWidth: 2,
+  borderWidth: "0.125em",
   borderStyle: "dashed",
-  borderRadius: 8,
-  paddingTop: 4,
-  paddingBottom: 4,
-  paddingLeft: 8,
-  paddingRight: 8,
+  borderRadius: 16,
+  paddingTop: "0.25em",
+  paddingBottom: "0.25em",
+  paddingLeft: "0.75em",
+  paddingRight: "0.75em",
   borderColor: "#00000000", // For zero opacity :3
   '&:hover': {
     borderColor: theme.colors.borderGeneral,

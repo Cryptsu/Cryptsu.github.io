@@ -53,7 +53,7 @@ const HomePostsHeaderStyles: CSS = {
   boxShadow: theme.shadows.depthShadow,
 
   borderRadius: 24,
-  marginBottom: "0.5em",
+  marginBottom: "0.25em",
   paddingLeft: "0.5em",
   paddingRight: "0.5em",
   '&:before': {
