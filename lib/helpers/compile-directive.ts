@@ -12,7 +12,6 @@ export function customRemarkDirective() {
         node.type === 'containerDirective'
       ) 
       {
-        // 
         const data = node.data || (node.data = {});
         const hast = h(node.name, node.attributes === null ? undefined : node.attributes);
         data.hName = hast.tagName;

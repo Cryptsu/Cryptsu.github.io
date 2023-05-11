@@ -24,10 +24,10 @@ const NavLinkConfig: NavLinkConfigType = {
       href: LinkConst.LINK_POSTS,
       name: TxtConst.TXT_NAV_POSTS,
     },
-    {
-      href: LinkConst.LINK_ABOUT,
-      name: TxtConst.TXT_NAV_ABOUT,
-    },
+    // {
+    //   href: LinkConst.LINK_ABOUT,
+    //   name: TxtConst.TXT_NAV_ABOUT,
+    // },
   ]
 };
 
