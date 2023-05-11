@@ -59,24 +59,24 @@ export const defaultSeo: DefaultSeoProps = {
       href: AssetsConst.FAVICON_APPLETOUCHICON_PNG,
       sizes: `${512}x${512}`,
     },
-    {
-      rel: "manifest",
-      href: "/site.webmanifest",
-    },
-    {
-      rel: "alternate",
-      href: "/feed.xml",
-      type: "application/rss+xml",
-      // @ts-ignore
-      title: `${AppConfig.BLOG_NAME} (RSS)`,
-    },
-    {
-      rel: "alternate",
-      href: "/feed.atom",
-      type: "application/atom+xml",
-      // @ts-ignore
-      title: `${AppConfig.BLOG_NAME} (Atom)`,
-    },
+    // {
+    //   rel: "manifest",
+    //   href: "/site.webmanifest",
+    // },
+    // {
+    //   rel: "alternate",
+    //   href: "/feed.xml",
+    //   type: "application/rss+xml",
+    //   // @ts-ignore
+    //   title: `${AppConfig.BLOG_NAME} (RSS)`,
+    // },
+    // {
+    //   rel: "alternate",
+    //   href: "/feed.atom",
+    //   type: "application/atom+xml",
+    //   // @ts-ignore
+    //   title: `${AppConfig.BLOG_NAME} (Atom)`,
+    // },
     // {
     //   rel: "webmention",
     //   href: `https://webmention.io/${AppConfig.webmentionId}/webmention`,
