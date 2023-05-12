@@ -6,7 +6,7 @@ import {
 export const POSTS_DIR = "posts";
 export const LOCALE = "en-US";
 export const TIME_ZONE = "Antarctica/Davis"; // This is the only way I could get the correct time zone :(
-export const BLOG_URL = "cryptsu.github.io";
+export const BLOG_URL = "https://cryptsu.github.io";
 export const BLOG_NAME = TxtConst.TXT_BLOG_NAME;
 export const AUTHOR_NAME = TxtConst.TXT_AUTHOR_NAME;
 export const AUTHOR_DESC = TxtConst.TXT_AUTHOR_DESC;
