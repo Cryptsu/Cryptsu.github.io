@@ -22,6 +22,24 @@ export type PostProps = PostWithSourceType & {
 }
 
 const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log({
+    title: frontMatter.title,
+    url: frontMatter.permalink,
+    type: "article",
+    article: {
+      authors: [AppConfig.AUTHOR_NAME],
+      tags: frontMatter.tags,
+      publishedTime: frontMatter.date,
+      modifiedTime: frontMatter.date,
+    },
+    images: [
+      {
+        url: `${frontMatter.coverImage || AppConfig.AUTHOR_LOGO}`,
+        alt: frontMatter.title,
+      },
+    ],
+  })
+
   return (
     <>
       <NextSeo
@@ -40,7 +58,7 @@ const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPr
           },
           images: [
             {
-              url: `${AppConfig.BLOG_URL}${frontMatter.coverImage || AppConfig.AUTHOR_LOGO}`,
+              url: `${frontMatter.coverImage || AppConfig.AUTHOR_LOGO}`,
               alt: frontMatter.title,
             },
           ],
@@ -56,7 +74,7 @@ const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPr
         description={frontMatter.description || AppConfig.AUTHOR_DESC}
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
-        images={[`${AppConfig.BLOG_URL}${frontMatter.coverImage || AppConfig.AUTHOR_LOGO}`]}
+        images={[`${frontMatter.coverImage || AppConfig.AUTHOR_LOGO}`]}
         {...articleJsonLd}
       />
 
