@@ -66,7 +66,11 @@ const TableOfContentWrapper = ({children, ...otherProps}: TableOfContentWrapperP
           }}
         />
       </Style>
-      <TOCToggleBtn showTOCMobile={showTOCMobile} onClick={() => {setShowTOCMobile(!showTOCMobile)}}/>
+
+      <TOCToggleBtn 
+        showTOCMobile={showTOCMobile} 
+        onClick={() => {setShowTOCMobile(!showTOCMobile)}}
+      />
     </>
   )
 }

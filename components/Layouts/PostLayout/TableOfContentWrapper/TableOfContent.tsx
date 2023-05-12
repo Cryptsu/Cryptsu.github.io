@@ -220,7 +220,7 @@ const TableOfContentStyles: CSS = {
   // to be the first TOC
   // header.
   '&>:nth-child(2)': {
-    marginTop: "0.5em",
+    marginTop: "0.75em",
   },
 
   '&>:last-child': {
@@ -258,7 +258,7 @@ const TOCHeaderStyles: CSS = {
   border: 0,
   margin: 0,
   borderBottom: "0.125em",
-  paddingBottom: "0.5em",
+  paddingBottom: "0.25em",
   paddingTop: "0.5em",
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,
