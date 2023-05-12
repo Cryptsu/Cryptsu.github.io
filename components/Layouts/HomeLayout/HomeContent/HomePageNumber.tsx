@@ -22,7 +22,7 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
     )
 
   const setPageNumber = (pageNumber: number) => {
-    if (currentPage === null && pageNumber == 0)
+    if (currentPage === 0 && pageNumber == 0)
       return;
     if (pageNumber >= 0 && pageNumber < noPages)
       setCurrentPage(pageNumber)
