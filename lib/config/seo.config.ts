@@ -16,7 +16,7 @@ export const defaultSeo: DefaultSeoProps = {
     type: "website",
     images: [
       {
-        url: `${AppConfig.BLOG_URL}${AppConfig.AUTHOR_LOGO}`,
+        url: `${AppConfig.AUTHOR_LOGO}`,
         alt: `${AppConfig.BLOG_NAME} – ${AppConfig.SHORT_DESC}`,
       },
     ],
