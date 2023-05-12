@@ -14,6 +14,7 @@ export const SHORT_DESC = TxtConst.TXT_SHORT_DESC;
 export const AUTHOR_LOGO = AssetsConst.ZIGGS;
 export const AUTHOR_SOCIAL = {
   github: "Mistsuu",
+  twitter: "Mistsu1",
 }
 
 // Hmmm... This should be moved into home.config.ts...?

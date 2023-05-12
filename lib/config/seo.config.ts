@@ -21,11 +21,11 @@ export const defaultSeo: DefaultSeoProps = {
       },
     ],
   },
-  // twitter: {
-  //   handle: `@${AppConfig.authorSocial?.twitter}`,
-  //   site: `@${AppConfig.authorSocial?.twitter}`,
-  //   cardType: "summary",
-  // },
+  twitter: {
+    handle: `@${AppConfig.AUTHOR_SOCIAL?.twitter}`,
+    site: `@${AppConfig.AUTHOR_SOCIAL?.twitter}`,
+    cardType: "summary",
+  },
   additionalMetaTags: [
     {
       name: "viewport",
@@ -106,7 +106,7 @@ export const socialProfileJsonLd: SocialProfileJsonLdProps = {
     `${AppConfig.BLOG_URL}/`,
     `https://github.com/${AppConfig.AUTHOR_SOCIAL?.github}`,
     // `https://keybase.io/${AppConfig.AUTHOR_SOCIAL?.keybase}`,
-    // `https://twitter.com/${AppConfig.AUTHOR_SOCIAL?.twitter}`,
+    `https://twitter.com/${AppConfig.AUTHOR_SOCIAL?.twitter}`,
     // `https://medium.com/@${AppConfig.AUTHOR_SOCIAL?.medium}`,
     // `https://www.linkedin.com/in/${AppConfig.AUTHOR_SOCIAL?.linkedin}/`,
     // `https://www.facebook.com/${AppConfig.AUTHOR_SOCIAL?.facebook}`,
