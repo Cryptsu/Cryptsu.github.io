@@ -1,4 +1,5 @@
 import Style from "@/components/Style";
+import BlinkingText from "@/components/BlinkingText";
 import PostTitle from "./PostTitle";
 import PostMetadatas from "./PostMetadatas";
 import { theme } from "@/lib/styles/stiches.config";
@@ -14,7 +15,7 @@ const PostHeader = ({children, frontMatter, ...otherProps}: PostHeaderProps) => 
   return (
     <Style style={PostHeaderStyles} {...otherProps}>
       <PostTitle>
-        {frontMatter.title}
+        <BlinkingText text={frontMatter.title}> </BlinkingText>
       </PostTitle>
       <PostMetadatas frontMatter={frontMatter}/>
     </Style>
