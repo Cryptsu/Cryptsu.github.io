@@ -15,7 +15,10 @@ const PostHeader = ({children, frontMatter, ...otherProps}: PostHeaderProps) => 
   return (
     <Style style={PostHeaderStyles} {...otherProps}>
       <PostTitle>
-        <BlinkingText text={frontMatter.title}> </BlinkingText>
+        <BlinkingText 
+          text={frontMatter.title}
+          blinkColor={theme.colors.secondary.value} 
+        />
       </PostTitle>
       <PostMetadatas frontMatter={frontMatter}/>
     </Style>
