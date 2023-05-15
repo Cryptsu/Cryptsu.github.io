@@ -7,7 +7,8 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "new": "node scripts/create-post.js"
   },
   "dependencies": {
     "@primer/octicons": "^18.2.0",
@@ -29,6 +30,7 @@
     "open-iconic": "^1.1.1",
     "p-map": "^5.5.0",
     "p-memoize": "^7.1.1",
+    "prompt-sync": "^4.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
@@ -43,7 +45,8 @@
     "remark-math": "^5.1.1",
     "remark-unwrap-images": "^3.0.1",
     "typescript": "4.9.5",
-    "uglify-js": "^3.17.4"
+    "uglify-js": "^3.17.4",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1"

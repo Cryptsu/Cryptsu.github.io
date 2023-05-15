@@ -22,8 +22,17 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
     )
 
   const setPageNumber = (pageNumber: number) => {
-    if (currentPage === 0 && pageNumber == 0)
+    // Prevent re-rendering when click on 0... 
+    //
+    // I know that if currentPage is the same
+    // then page will not re-render, however,
+    // The way I implement this is quite
+    // suck ( currentPage can be null 
+    // on the outer element ), so this is 
+    // totally understandable.
+    if (currentPage === pageNumber)
       return;
+
     if (pageNumber >= 0 && pageNumber < noPages)
       setCurrentPage(pageNumber)
   }
