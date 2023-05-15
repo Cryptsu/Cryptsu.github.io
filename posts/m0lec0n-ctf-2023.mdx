@@ -141,9 +141,7 @@ P = [[w**(i*j) for i in range(N)] for j in range(N)]
 P = Matrix(C, P)
 
 # But we don't want to diagonalize it, 
-# instead, we take advantage of the properties
-# of diagonalized multiplications (yes I made up this term
-# bc idk what's the real one)
+# instead, we take advantage of this property:
 #    U   = P D P^-1 
 # => U.T = P^-1.T D.T P.T 
 #        = P^-1.T D P.T      (since D.T == D)
