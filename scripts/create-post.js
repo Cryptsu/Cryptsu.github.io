@@ -1,19 +1,48 @@
 const fs = require("fs");
 const path = require("path");
 const crypto = require('crypto');
-hash = crypto.createHash('sha256');
-const yargs = require("yargs/yargs");
-const prompt = require("prompt-sync")({sigint: true});
+const yargs = require("yargs");
 const { 
   hideBin 
 } = require("yargs/helpers");
 
-// Parse arguments
+// ==================== Parse arguments ====================
 const argv = yargs(
   hideBin(
     process.argv
   )
-).argv;
+)
+  .option('t')
+  .alias('t', 'title')
+  .nargs('t', 1)
+  .describe('t', 'Title of the post.')
+  .default('t', 'Untitled')
+
+  .option('d')
+  .alias('d', 'description')
+  .nargs('d', 1)
+  .describe('d', 'Description of the post.')
+  .default('d', '')
+
+  .option('i')
+  .alias('i', 'coverImage')
+  .nargs('i', 1)
+  .describe('i', 'Link to the image cover.')
+  .default('i', '')
+
+  .option('T')
+  .alias('T', 'time')
+  .nargs('T', 1)
+  .describe('T', 'Date of post.')
+  .default('T', new Date().toString())
+
+  .option('s')
+  .alias('s', 'slug')
+  .nargs('s', 1)
+  .describe('s', 'Path to post.')
+  .default('s', crypto.randomBytes(4).toString('hex'))
+
+.argv;
 
 // TODO: Remember to change here
 //       if you change stuffs at /lib/config/app.config
@@ -21,25 +50,11 @@ const argv = yargs(
 const POSTS_DIR = "./posts";
 
 // ------------------------ Parse ------------------------
-let title = "A new post.";
-let description = "";
-let coverImage = "";
-let date = new Date().toString();
-let slug = "";
-hash.update(date);
-hash.update(crypto.randomBytes(16));
-slug = hash.digest('hex').slice(8, 12);
-
-if (argv.title)
-  title = argv.title;
-if (argv.description)
-  description = argv.description;
-if (argv.coverImage)
-  coverImage = argv.coverImage;
-if (argv.date)
-  date = argv.date;
-if (argv.slug)
-  slug = argv.slug;
+title = argv.title;
+description = argv.description;
+coverImage = argv.coverImage;
+date = argv.date;
+slug = argv.slug;
 
 // ------------------------ Check ------------------------
 let path_to_post = path.join(
