@@ -30,11 +30,11 @@ const argv = yargs(
   .describe('i', 'Link to the image cover.')
   .default('i', '')
 
-  .option('T')
-  .alias('T', 'time')
-  .nargs('T', 1)
-  .describe('T', 'Date of post.')
-  .default('T', new Date().toString())
+  .option('D')
+  .alias('D', 'date')
+  .nargs('D', 1)
+  .describe('D', 'Date of post.')
+  .default('D', new Date().toString())
 
   .option('s')
   .alias('s', 'slug')
