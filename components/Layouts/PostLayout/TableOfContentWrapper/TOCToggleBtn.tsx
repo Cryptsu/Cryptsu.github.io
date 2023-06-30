@@ -1,6 +1,6 @@
 import Style from "@/components/Style";
 import Button from "@/components/Button";
-import { ListOrderedIcon } from "@/components/Icons";
+import { ListOrderedIcon, XIcon } from "@/components/Icons";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
@@ -23,10 +23,18 @@ const TOCToggleBtn = ({children, showTOCMobile, ...otherProps}: TOCToggleBtnProp
       }
       {...otherProps}
     >
-      <Style 
-        style={IconStyles} 
-        as={ListOrderedIcon}
-      />
+      {
+        showTOCMobile
+          ? <Style
+              style={IconTOCOffStyles} 
+              as={XIcon}
+            />
+          : <Style 
+              style={IconTOCOnStyles} 
+              as={ListOrderedIcon}
+            />
+      }
+      
     </Style>
   )
 }
@@ -58,10 +66,16 @@ const TOCToggleBtnStyles: CSS = {
   }
 };
 
-const IconStyles: CSS = {
+const IconTOCOnStyles: CSS = {
   fill: theme.colors.iconGeneral,
   width: "1em",
   height: "1em",
+}
+
+const IconTOCOffStyles: CSS = {
+  fill: theme.colors.error,
+  width: "1.5em",
+  height: "1.5em",
 }
 
 export default TOCToggleBtn;
