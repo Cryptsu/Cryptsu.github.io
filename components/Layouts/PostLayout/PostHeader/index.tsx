@@ -2,6 +2,7 @@ import Style from "@/components/Style";
 import BlinkingText from "@/components/BlinkingText";
 import PostTitle from "./PostTitle";
 import PostMetadatas from "./PostMetadatas";
+import PostDescription from "./PostDescription";
 import { theme } from "@/lib/styles/stiches.config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -20,6 +21,7 @@ const PostHeader = ({children, frontMatter, ...otherProps}: PostHeaderProps) => 
           blinkColor={theme.colors.secondary.value} 
         />
       </PostTitle>
+      <PostDescription description={frontMatter.description}/>
       <PostMetadatas frontMatter={frontMatter}/>
     </Style>
   )

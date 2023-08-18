@@ -1,7 +1,10 @@
 ---
 title: 'Midnightsun CTF 2023'
 date: 'April 12, 2023'
-description: Lately, I haven't been playing CTFs much... So I was kinda dumb on everything. Anyways, I encouter a nice Crypto challenge on MidnightCTF.
+description: |
+    Lately, I haven't been playing CTFs much... So I was kinda dumb on everything.
+    Anyways, I encouter a nice Crypto challenge on MidnightCTF.
+    
 coverImage: /images/posts/midnightsun-2023/cover.png
 ---
 
@@ -97,7 +100,7 @@ During local test, I realized that $k$ is very small (like, $2$ or $3$ or someth
 
 The left column represents the percentage of occurances for a certain $k$. And you can see for *ALMOST ALL* cases, $k$ will just land around on some value $ \le 6 $. *(yes, while you can argue that the spike of $2$ is just **5%**, so the rest could be much bigger, however, the probability of $k$ landing $> 20$ is just **12%**)*
 
-Also, you can notice that the plot is flat before a sudden spike around $k = 2$. This happens because $k$ can be represented in the form of $\frac{1}{x} + x$, and by Cauchy inequality, $\frac{1}{x} + x \ge 2$ for any $x > 0$.
+Also, you can notice that the plot is flat before a sudden spike around $k = 2$. This happens because $k$ can be represented in the form of $\frac{1}{x} + x$, and from AM-GM Inequality, $\frac{1}{x} + x \ge 2\sqrt{\frac{1}{x}x} = 2$ for any $x > 0$.
 
 <br/>
 Anyways, this means in most cases, we can expect:

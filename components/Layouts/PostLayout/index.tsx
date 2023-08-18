@@ -1,7 +1,6 @@
 // All MDX components
 import ContentProvider from "@/components/Providers/ContentProvider";
 import Style from "@/components/Style";
-import PostDescription from "./PostDescription";
 import PostContent from "./PostContent";
 import PostHeader from "./PostHeader";
 import PostNavigation from "./PostNavigation";
@@ -28,7 +27,6 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
       <Style style={PostLayoutStyles}>
         <Style style={PostContentGroupStyles}>
           <Style style={PostContentInnerStyles}>
-            <PostDescription description={frontMatter.description}/>
             <PostContent sourceContent={sourceContent}/>
           </Style>
           <Style style={PostTOCGroupStyles}>

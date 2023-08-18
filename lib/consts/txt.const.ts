@@ -9,8 +9,8 @@
 export const TXT_BLOG_NAME = "Cryptsu";
 export const TXT_AUTHOR_NAME = "Mistsu";
 export const TXT_FOOTER = `::: Made with (❤️ && 😭) by ${TXT_AUTHOR_NAME} :::`
-export const TXT_AUTHOR_DESC = "Welcome to my blog :) I'm just a very small Crypto player in a big world. I hope you enjoy your stay here!";
-export const TXT_SHORT_DESC = "Mistsu's blog";
+export const TXT_AUTHOR_DESC = "Hiii. Welcome to my blog :) This is where I share my thoughts on CTF challenges, mostly ones that involve Cryptography.";
+export const TXT_SHORT_DESC = "Mistsu's Blog";
 
 // Navigation stuffs
 export const TXT_NAV_HOME = "/home";
@@ -33,12 +33,12 @@ export const TXT_CODE_YELLOW_BUTTON_DESC = "Toggle code wrapping (if code has lo
 export const TXT_CODE_GREEN_BUTTON_DESC = "This one does nothing, just for pretty. If you have any idea what functionality this one should have, please tell me :#";
 export const TXT_CODE_COPY_BUTTON_DESC = "Copy code to clipboard.";
 export const TXT_404 = "404";
-export const TXT_PAGE_NOT_FOUND = "Page not found";
+export const TXT_PAGE_NOT_FOUND = "Page Not Found";
 export const TXT_UR_BROWSER_SUCKS = "Your browser sucks, you should consider getting a new one (one that supports display: grid)"
 
 // Titles
 export const TXT_TITLE_404 = "404 Page Not Found";
-export const TXT_TITLE_HOME = "Mistsu's blog";
+export const TXT_TITLE_HOME = "Home";
 export const TXT_TITLE_POSTS = "Posts";
 export const TXT_DESC_HOME = "Hello. Welcome to my blog :) This is where I share my thoughts on CTF challenges.";
 export const TXT_DESC_POSTS = "List all of my blog posts within a single page.";

@@ -9,9 +9,12 @@ type CodeLangAreaProps = PropsWithChildren<{
 }>
 
 const CodeLangArea = ({languageName="", ...otherProps}: CodeLangAreaProps) => {
+  // todo: Code language area should be changed to icon display
+  // and supports mapping unsupported languages to known language
+  // (ex. sagemath -> python)
   return (
     <Style style={CodeLangAreaStyles} {...otherProps}>
-      {languageName}
+      {/* {languageName} */} 
     </Style>
   )
 }

@@ -20,6 +20,7 @@ const PostDescriptionStyles: CSS = {
   color: theme.colors.textLesser,
   fontSize: theme.fontSizes.h5,
   letterSpacing: theme.letterSpacings.h5,
+  whiteSpace: "pre-line",
 }
 
 export default PostDescription;

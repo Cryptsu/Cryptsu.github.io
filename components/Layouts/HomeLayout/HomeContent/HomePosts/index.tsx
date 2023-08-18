@@ -44,7 +44,7 @@ const HomePostsHeaderWrapperStyles: CSS = {
 
 const HomePostsHeaderStyles: CSS = {
   fontFamily: theme.fonts.global,
-  fontSize: `min(${theme.fontSizes.h1}, 8vh)`,
+  fontSize: `min(${theme.fontSizes.h1}, 8vw)`,
   fontWeight: theme.fontWeights.normal,
   letterSpacing: theme.letterSpacings.h1,
   
@@ -57,12 +57,14 @@ const HomePostsHeaderStyles: CSS = {
   paddingLeft: "0.5em",
   paddingRight: "0.5em",
   '&:before': {
-    content: "< ",
+    content: "<",
     color: theme.colors.textLeast,
+    paddingRight: "0.25em",
   },
   '&:after': {
-    content: " />",
+    content: "/>",
     color: theme.colors.textLeast,
+    paddingLeft: "0.125em",
   },
 }
 
