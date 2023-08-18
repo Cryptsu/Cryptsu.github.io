@@ -53,6 +53,7 @@ const BlinkingTextStyles: CSS = {
 }
 
 const BlinkingCharStyles: CSS = {
+  paddingLeft: "0.25em",
   animation: `${keyframes({
     "0%": {
       opacity: 1,
