@@ -26,7 +26,7 @@ const Heading = ({children, level=1, id="", ...otherProps}: HeadingProps) => {
 
   return (
     <Style style={HeadingCommonStyles} css={HeadingStyles[level]} elementName={`h${level}`} {...otherProps}>
-      <Style style={HeadingTargetStyles} ref={headingRef} id={id}/>
+      <Style style={HeadingSelectStyles} ref={headingRef} id={id}/>
       {children}
     </Style>
   )
@@ -39,9 +39,12 @@ export const H4 = (props: PropsWithChildren<{}>) => <Heading level={4} {...props
 export const H5 = (props: PropsWithChildren<{}>) => <Heading level={5} {...props}/>
 export const H6 = (props: PropsWithChildren<{}>) => <Heading level={6} {...props}/>
 
-const HeadingTargetStyles: CSS = {
+const HeadingSelectStyles: CSS = {
   position: "absolute",
-  top: -90,
+  top: "-2.5em",
+  '@medium': {
+    top: "-0.5em",
+  }
 }
 
 const HeadingCommonStyles: CSS = {
