@@ -44,8 +44,8 @@ const PostCoverWrapperWrapperStyles: CSS = {
   justifyContent: "center",
   alignItems: "center",
 
-  paddingTop: 8,
-  paddingBottom: 8,
+  marginTop: 8,
+  marginBottom: 8,
 }
 
 const PostCoverWrapperStyles: CSS = {
@@ -57,27 +57,32 @@ const PostCoverWrapperStyles: CSS = {
 
   // Custom "border" of the cover.
   backgroundImage: theme.colors.gradient12,
-  borderRadius: 16,
-  padding: "0.25em",
+
+  // Overrides CustomLink property.
+  padding: 3,
 
   '@media (hover: hover)': {
     '&:hover': {
       transition: "all 0.25s",
       boxShadow: theme.shadows.homePostCoverHover,
-      transform: "translateX(-0.325em) translateY(-0.325em)",
+      transform: "translateX(-0.2em) translateY(-0.2em)",
+      backgroundImage: theme.colors.gSecondary,
+      borderColor: "#00000000",
     },
   },
   
   '&:active': {
     transform: "translateX(-0.0625em) translateY(-0.0625em)",
     boxShadow: theme.shadows.homePostCoverClick,
+    backgroundImage: theme.colors.gSecondary,
+    borderColor: "#00000000",
   }
 };
 
 const PostCoverStyles: CSS = {
   backgroundColor: theme.colors.pageBackground,
   boxShadow: theme.shadows.depthShadow,
-  borderRadius: 16,
+  borderRadius: "0.75rem",
 
   width: "100%",
   height: "auto",

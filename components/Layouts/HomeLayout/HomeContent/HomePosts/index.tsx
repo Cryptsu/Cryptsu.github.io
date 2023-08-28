@@ -82,7 +82,7 @@ const HomePostStyles: CSS = {
   border: 0,
   borderTop: "0.125em",
   borderStyle: "dashed",
-  borderColor: theme.colors.divider25,
+  borderColor: theme.colors.divider20,
 };
 
 export default HomePosts;

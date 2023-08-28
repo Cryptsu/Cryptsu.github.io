@@ -83,6 +83,7 @@ export const {
       textLeast: "#454C48",
 
       //=> divider
+      divider20: hexToRgba("#BCDACB", 0.2),
       divider25: hexToRgba("#BCDACB", 0.25),
       divider50: hexToRgba("#454C48", 0.5),
 
@@ -109,6 +110,11 @@ export const {
       //   -> Author section
       authorBackground: hexToRgba("#202220", 0.5),
       postsBackground: "$black",
+
+      //   -> Post section
+      postCoverBorder: `$white`,
+      postCoverBackground: `linear-gradient(0deg, #454C4850, #454C4850)`,
+      postCoverBackgroundHover: `linear-gradient(0deg, #18191825, #18191825)`,
 
       // ========================== Post page ==============================
       //   -> Button
@@ -222,7 +228,7 @@ export const {
     shadows: {
       depthShadow: `0px 0px 20px 20px ${hexToRgba("#000000", 0.25)}`,
       homePosts: "0px 0.125em #202020",
-      homePostCoverHover: "0.375em 0.375em #454C48",
+      homePostCoverHover: "0.4em 0.4em #454C48",
       homePostCoverClick: "0.0625em 0.0625em #454C48",
       navLinkDropdown: "0.25em 0.25em #454C48",
       codeCopyBtnNormal: "0 0.25em #265D8B",
