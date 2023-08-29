@@ -27,6 +27,10 @@ const PostOtherMetadataStyles: CSS = {
   fontSize: theme.fontSizes.h6,
   fontWeight: theme.fontWeights.bold,
   letterSpacing: theme.letterSpacings.h6,
+
+  padding: 0,
+  paddingLeft: "0.3rem",
+  paddingRight: "0.3rem",
 }
 
 const PostTimeReadStyles: CSS = {

@@ -22,6 +22,10 @@ const PostDescriptionStyles: CSS = {
   letterSpacing: theme.letterSpacings.h5,
   lineHeights: theme.lineHeights.h5,
   whiteSpace: "pre-line",
+
+  padding: 0,
+  paddingLeft: "0.3rem",
+  paddingRight: "0.3rem",
 }
 
 export default PostDescription;

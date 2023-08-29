@@ -44,8 +44,8 @@ const PostCoverWrapperWrapperStyles: CSS = {
   justifyContent: "center",
   alignItems: "center",
 
-  marginTop: "0.5rem",
-  marginBottom: "0.5rem",
+  marginTop: "0.3em",
+  marginBottom: "0.3em",
 }
 
 const PostCoverWrapperStyles: CSS = {
@@ -58,7 +58,6 @@ const PostCoverWrapperStyles: CSS = {
   },
 
   // Custom "border" of the cover.
-  backgroundImage: theme.colors.gradient12,
 
   '@media (hover: hover)': {
     '&:hover': {
@@ -76,9 +75,8 @@ const PostCoverWrapperStyles: CSS = {
   },
   
   '@media (hover: none)': {
-    '&:active': {
-      backgroundImage: theme.colors.gSecondary,
-    }
+    borderColor: theme.colors.divider20,
+    movUnderline: `${theme.colors.gSecondary} 100% 0px 0px`,
   },
 };
 

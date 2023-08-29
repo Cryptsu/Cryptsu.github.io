@@ -25,6 +25,9 @@ const PostTitleStyles: CSS = {
   letterSpacing: theme.letterSpacings.h3,
 
   padding: 0,
+  paddingLeft: "0.3rem",
+  paddingRight: "0.3rem",
+  
   '&:link': {
     textDecoration: "underline",
   },

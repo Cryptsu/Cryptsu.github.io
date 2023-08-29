@@ -81,6 +81,15 @@ const LogoGroupStyles: CSS = {
   display: "flex",
   justifyContent: "center",
   color: theme.colors.black,
+
+  // So that the word 'Cryptsu'
+  // glows in appropriate area...
+  paddingTop: "0.75em",
+  paddingBottom: "0.75em",
+  [`&.${ClassConst.CLASS_MOBILE}`]: {
+    paddingTop: "0.6375em",
+    paddingBottom: "0.6375em",
+  }
 }
 
 const ToggleButtonsGroupStyles: CSS = {
