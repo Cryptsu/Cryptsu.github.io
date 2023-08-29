@@ -14,8 +14,12 @@ export function customRemarkDirective() {
       {
         const data = node.data || (node.data = {});
         const hast = h(node.name, node.attributes === null ? undefined : node.attributes);
-        data.hName = hast.tagName;
-        data.hProperties = hast.properties;
+        switch(node.name) {
+          default:
+            data.hName = hast.tagName;
+            data.hProperties = hast.properties;
+            break
+        }
       }
     })
   }

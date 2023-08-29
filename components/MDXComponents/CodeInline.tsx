@@ -10,7 +10,11 @@ type CodeInlineProps = PropsWithChildren<{
 
 const CodeInline = ({children, ...otherProps}: CodeInlineProps) => {
   return (
-    <Style style={CodeInlineStyles} elementName={HtmlConst.CODE} {...otherProps}>
+    <Style 
+      style={CodeInlineStyles} 
+      elementName={HtmlConst.CODE} 
+      {...otherProps}
+    >
       {children}
     </Style>
   )
@@ -18,6 +22,7 @@ const CodeInline = ({children, ...otherProps}: CodeInlineProps) => {
 
 const CodeInlineStyles: CSS = {
   fontFamily: theme.fonts.code,
+  fontWeight: theme.fontWeights.bold,
   color: theme.colors.primary,
   
   paddingLeft: 8,

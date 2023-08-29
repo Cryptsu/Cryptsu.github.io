@@ -43,11 +43,11 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   p: [{replacedElement: Paragraph}],
   blockquote: [{replacedElement: Blockquote}],
   a: [{replacedElement: ParsedLink}],
-
   code: [
     {replacedElement: CodeBlock, classNames: ["code-highlight"]},
     {replacedElement: CodeInline}
   ],
+
 
   ul: [{replacedElement: UnorderedList}],
   ol: [{replacedElement: OrderedList}],

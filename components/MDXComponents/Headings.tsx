@@ -41,9 +41,9 @@ export const H6 = (props: PropsWithChildren<{}>) => <Heading level={6} {...props
 
 const HeadingSelectStyles: CSS = {
   position: "absolute",
-  top: "-2.5em",
+  top: "-6rem",
   '@medium': {
-    top: "-0.5em",
+    top: "-0.5rem",
   }
 }
 
