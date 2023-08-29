@@ -3,6 +3,7 @@ import Style from "@/components/Style";
 import CustomLink from "@/components/CustomLink";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst, AssetsConst } from "@/lib/consts";
+import { AppConfig } from "@/lib/config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -25,7 +26,7 @@ const PostCover = ({children, slug, coverImageURL, link, ...otherProps}: PostCov
                   ? (
                       coverImageURL.startsWith('/') 
                         ? coverImageURL
-                        : path.join(AssetsConst.POSTIMG_FOLDER, slug, coverImageURL)
+                        : path.join('/', AppConfig.POSTIMAGE_DIR, slug, coverImageURL)
                     ) 
                   : AssetsConst.EMPTY_IMG
               } 

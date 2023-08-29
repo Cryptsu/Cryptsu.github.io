@@ -45,9 +45,11 @@ const argv = yargs(
 .argv;
 
 // TODO: Remember to change here
-//       if you change stuffs at /lib/config/app.config
+//       if you change stuffs at 
+//          /lib/config/app.config
 // ----------------------- Configs -----------------------
-const POSTS_DIR = "./posts";
+const POSTS_DIR     = "./posts";
+const POSTIMAGE_DIR = "./public/images/posts";
 
 // ------------------------ Parse ------------------------
 title = argv.title;
@@ -62,9 +64,21 @@ let path_to_post = path.join(
                     slug + '.mdx'
                    );
 
+let path_to_image_post = path.join(
+                    POSTIMAGE_DIR,
+                    slug
+                   );
+
 if (!fs.existsSync(POSTS_DIR)) {
   fs.mkdirSync(
     POSTS_DIR, 
+    { recursive: true }
+  )
+}
+
+if (!fs.existsSync(POSTIMAGE_DIR)) {
+  fs.mkdirSync(
+    POSTIMAGE_DIR,
     { recursive: true }
   )
 }
@@ -74,7 +88,21 @@ if (fs.existsSync(path_to_post)) {
   process.exit(-1);
 }
 
+if (fs.existsSync(path_to_image_post)) {
+  console.log(`[!] Error! Image folder for post at ${path_to_image_post} has been created! Exiting...`)
+  process.exit(-1);
+}
+
 // ------------------------ Main ------------------------
+
+// Create the image folder to put files in...
+fs.mkdirSync(
+  path_to_image_post,
+  { recursive: true }
+)
+console.log(`[i] Created a new image folder at ${path_to_image_post}!`);
+
+// Create the .mdx file to post...
 let frontMatter = '';
 frontMatter += '---\n';
 frontMatter += `title: ${title}\n`;

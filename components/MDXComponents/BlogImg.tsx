@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { AssetsConst, HtmlConst } from "@/lib/consts";
+import { AppConfig } from "@/lib/config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -28,7 +29,8 @@ const BlogImg = ({children, alt, width, height, src, ...otherProps}: BlogImgProp
       && possibleCategory
   ) {
     src = path.join(
-      AssetsConst.IMG_FOLDER,
+      '/',
+      AppConfig.IMAGE_DIR,
       possibleCategory,
       possibleSlug,
       src

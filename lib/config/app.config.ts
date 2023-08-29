@@ -1,9 +1,14 @@
+import path from "path";
 import { 
   TxtConst,
   AssetsConst
 } from "@/lib/consts";
 
 export const POSTS_DIR = "posts";
+export const IMAGE_DIR = "images";
+export const POSTIMAGE_DIR = path.join(IMAGE_DIR, "posts");
+export const ASSETIMAGE_DIR = path.join(IMAGE_DIR, "assets");
+
 export const LOCALE = "en-US";
 export const TIME_ZONE = "Antarctica/Davis"; // This is the only way I could get the correct time zone :(
 export const BLOG_URL = "https://cryptsu.github.io";
