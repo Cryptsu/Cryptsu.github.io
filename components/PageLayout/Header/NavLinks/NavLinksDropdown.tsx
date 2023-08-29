@@ -2,7 +2,7 @@ import { useState } from "react";
 import Style from "@/components/Style";
 import NavLink from "./NavLink";
 import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
+import { ClassConst } from "@/lib/consts";
 import NavLinkConfig from "@/lib/config/navlink.config";
 import type { PropsWithChildren } from "react";
 import type { NextRouter } from "next/router";
@@ -100,6 +100,10 @@ const NavLinksIconStyles: CSS = {
   fill: theme.colors.primary,
   width: "1.5em",
   height: "1.5em",
+  [`&.${ClassConst.CLASS_MOBILE}`]: {
+    width: "1.275em",
+    height: "1.275em",
+  },
 
   fillRule: "nonzero",
   stroke: theme.colors.primary,

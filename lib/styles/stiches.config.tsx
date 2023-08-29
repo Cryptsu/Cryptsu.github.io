@@ -52,7 +52,7 @@ export const {
       tertiaryActive: "#F6ABA9",
 
       // Gradient
-      gradient12: "linear-gradient(90deg, $primary 0%, $secondary 100%)",
+      gradient12: "linear-gradient(to right, $secondary, $primary)",
 
       // Colors in theme
       red: "$tertiary",
@@ -167,16 +167,16 @@ export const {
     },
 
     fontSizes: {
-      h0: "55px",
-      h1: "43px",
-      h2: "33.5px",
-      h3: "26px",
-      h4: "20px",
-      h5: "16px",
-      h6: "14px",
+      h0: "var(--h0)",
+      h1: "var(--h1)",
+      h2: "var(--h2)",
+      h3: "var(--h3)",
+      h4: "var(--h4)",
+      h5: "var(--h5)",
+      h6: "var(--h6)",
 
-      err: "128px",
-      date: "18px",
+      err: "var(--err)",
+      date: "var(--date)",
     },
 
     fontWeights: {
@@ -389,6 +389,36 @@ export const globalStyles = globalCss({
       // into the elements, making the page appears
       // really unbalanced :(
       textSizeAdjust: "100%",
+    }
+  },
+
+  // ==============================================================
+  //
+  //                THIS WHOLE SECTION IS DEDICATED
+  //                      TO FONT-SIZES :)
+  //
+  // ==============================================================
+  ':root': {
+    $h0: "55px",
+    $h1: "43px",
+    $h2: "33.5px",
+    $h3: "26px",
+    $h4: "20px",
+    $h5: "16px",
+    $h6: "14px",
+    $err: "128px",
+    $date: "18px",
+
+    [`&.${ClassConst.CLASS_MOBILE}`]: {
+      $h0: "46.75px",
+      $h1: "36.55px",
+      $h2: "28.475px",
+      $h3: "22.1px",
+      $h4: "17.0px",
+      $h5: "13.6px",
+      $h6: "11.9px",
+      $err: "108.8px",
+      $date: "15.3px",
     }
   },
 

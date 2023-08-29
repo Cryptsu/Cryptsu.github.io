@@ -44,22 +44,21 @@ const PostCoverWrapperWrapperStyles: CSS = {
   justifyContent: "center",
   alignItems: "center",
 
-  marginTop: 8,
-  marginBottom: 8,
+  marginTop: "0.5rem",
+  marginBottom: "0.5rem",
 }
 
 const PostCoverWrapperStyles: CSS = {
   display: "flex",
   width: "75%",
-  '@medium': {
+  padding: 4,           // Overrides CustomLink property.
+  '@medium': {    
     width: "100%",
+    padding: 3,         // Overrides CustomLink property.
   },
 
   // Custom "border" of the cover.
   backgroundImage: theme.colors.gradient12,
-
-  // Overrides CustomLink property.
-  padding: 3,
 
   '@media (hover: hover)': {
     '&:hover': {
@@ -67,16 +66,20 @@ const PostCoverWrapperStyles: CSS = {
       boxShadow: theme.shadows.homePostCoverHover,
       transform: "translateX(-0.2em) translateY(-0.2em)",
       backgroundImage: theme.colors.gSecondary,
-      borderColor: "#00000000",
     },
+
+    '&:active': {
+      transform: "translateX(-0.0625em) translateY(-0.0625em)",
+      boxShadow: theme.shadows.homePostCoverClick,
+      backgroundImage: theme.colors.gSecondary,
+    }
   },
   
-  '&:active': {
-    transform: "translateX(-0.0625em) translateY(-0.0625em)",
-    boxShadow: theme.shadows.homePostCoverClick,
-    backgroundImage: theme.colors.gSecondary,
-    borderColor: "#00000000",
-  }
+  '@media (hover: none)': {
+    '&:active': {
+      backgroundImage: theme.colors.gSecondary,
+    }
+  },
 };
 
 const PostCoverStyles: CSS = {

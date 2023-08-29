@@ -2,6 +2,7 @@ import Style from "@/components/Style"
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import { theme } from "@/lib/styles/stiches.config";
+import { ClassConst } from "@/lib/consts";
 import type { CSS } from "@stitches/react";
 
 const Header = () => {
@@ -38,6 +39,10 @@ const HeaderStyles: CSS = {
     paddingRight: "5%",
   },
 
+  // Global font
+  fontSize: theme.fontSizes.h5,
+  letterSpacing: theme.letterSpacings.h5,
+
   // Create the divider
   borderBottom: "0.25em",
   borderTop: 0,
@@ -59,8 +64,13 @@ const NavLinkGroupStyles: CSS = {
   display: "flex",
   justifyContent: "left",
   alignItems: "center",
+
   paddingTop: "1em",
   paddingBottom: "1em",
+  [`&.${ClassConst.CLASS_MOBILE}`]: {
+    paddingTop: "0.85em",
+    paddingBottom: "0.85em",
+  }
 }
 
 const LogoGroupStyles: CSS = {
@@ -71,8 +81,6 @@ const LogoGroupStyles: CSS = {
   display: "flex",
   justifyContent: "center",
   color: theme.colors.black,
-  paddingTop: "0.75em",
-  paddingBottom: "0.75em",
 }
 
 const ToggleButtonsGroupStyles: CSS = {

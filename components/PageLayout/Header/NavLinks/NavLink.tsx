@@ -30,6 +30,7 @@ const NavLinkStyles: CSS = {
   // Font customize
   fontFamily: theme.fonts.global,
   letterSpacing: theme.letterSpacings.h5,
+  fontSize: theme.fontSizes.h5,
   color: theme.colors.primary,
 
   // Set moving underline
@@ -40,9 +41,14 @@ const NavLinkCurrentStyles: CSS = {
   // Font customize
   fontFamily: theme.fonts.global,
   fontWeight: theme.fontWeights.bold,
-  fontSize: theme.fontSizes.h5,
-  letterSpacing: theme.letterSpacings.h5,
   color: theme.colors.primary,
+
+  fontSize: theme.fontSizes.h4,
+  letterSpacing: theme.letterSpacings.h4,
+  '@medium': {
+    fontSize: theme.fontSizes.h5,
+    letterSpacing: theme.letterSpacings.h5,
+  },
 
   // Set moving underline
   staticUnderline: `${theme.colors.gPrimary} 2px 8px 6px`,
