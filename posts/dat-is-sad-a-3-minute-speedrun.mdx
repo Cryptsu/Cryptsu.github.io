@@ -370,7 +370,7 @@ And this is the result on my 8-thread, 4 core machine :dancers::dancers::dancers
 
 ## ... and better?
 
-... And we can do even better than this! You see, *Sage's* **crt()** only returns the result of the new remainder, it doesn't return the new moduli, although it also calculate the new moduli on the run as well! This makes us having to recalculate it later just to append to our new moduli array, which seems redundant to be honest.
+... And we can do even better than this! You see, *Sage's* `crt()` only returns the result of the new remainder, it doesn't return the new moduli, although it also calculate the new moduli on the run as well! This makes us having to recalculate it later just to append to our new moduli array, which seems redundant to be honest.
 
 ```python
 ### Snippet from CRT_list()
@@ -385,7 +385,7 @@ return x % m # Should also return m
 
 
 
-Sage's code base is already nice, so I just pull the functions **crt()** and **CRT_list()** out from the source and modify it a little bit so that they could return the new moduli as well:
+Sage's code base is already nice, so I just pull the functions `crt()` and `CRT_list()` out from the source and modify it a little bit so that they could return the new moduli as well:
 
 ```python
 from   sage.all              import *
@@ -514,9 +514,6 @@ m_65537 = CRT_(c, n, debug=True, SEG_SIZE=8, NO_CORES=8)
 print(long_to_bytes(Integer(m_65537).nth_root(65537)))
 ```
 
-
-
-With this final piece of code, we have reduced about 20 seconds worth of runtime. Which is actually pretty crazy, considering that the intended solution for this challenge was running the code for about **3 hours** by writing optimised **CRT**() code in **Julia** instead of **Python** *(confirmed by cothan himself)*!! Now, a low-end user can run this algorithm within minutes, seconds even! With a machine running with many more cores, it can perform this task like a breeze!
+With this final piece of code, we have reduced about 20 seconds worth of runtime. Which is actually pretty crazy, considering that the intended solution for this challenge was running the code for about **3 hours** by writing optimised `CRT()` code in **Julia** instead of **Python** *(confirmed by cothan himself)*!! Now, a low-end user can run this algorithm within minutes, seconds even! With a machine running with many more cores, it can perform this task like a breeze!
 
 ![](optimisation-3)
-
