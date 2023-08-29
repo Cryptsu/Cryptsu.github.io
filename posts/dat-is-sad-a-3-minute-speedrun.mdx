@@ -15,7 +15,7 @@ where `N = pq`, where `p` and `q` are two big *(512-bit)* primes and `N > M`. Th
 
 :br
 
-## Idea
+# IDEA
 
 Notice `M` does not change all the time, nor it is being randomly padded. We could use the Hastad's attack by getting `65537` different `C`s, *(:code[C<sub>1</sub>], :code[C<sub>2</sub>], ...)* and `65537` different `N`s *(:code[N<sub>1</sub>], :code[N<sub>2</sub>], ...)* and recover the actual :code[M<sup>65537</sup>] by:
 $$
@@ -42,7 +42,7 @@ To recover `M`, all we need is to take the `65537-th` root of :code[M<sup>65537<
 
 :br
 
-## Collect C-N Pairs
+# Collect C-N Pairs
 
 Collecting **65537** `C`s and `N`s is doable. Since for each request the server sends us **100** `C-N` pairs, we just need to send `(65537//100 + 1) = 656` **requests** in total. Took a while (about an hour), but definitely feasible.
 
@@ -90,9 +90,9 @@ from n import n
 m_65537 = crt(c, n)
 print(long_to_bytes(Integer(m_65537).nth_root(65537)))
 ```
-:br
 
-## Reality is Harsh
+:br
+# Reality is Harsh
 
 So we waited...
 
@@ -104,7 +104,7 @@ Why did it take so long???
 
 :br
 
-### Sage's CRT is Slow
+## Sage's CRT is Slow
 
 Here's the snippet of code from Sage's implementation of `crt()`, function `CRT_list()` that handles when the inputs to `crt()` are lists.
 
@@ -170,7 +170,7 @@ And I haven't mention the runtime of the [multiply algorithm](https://www.wikiwa
 
 :br
 
-### From O(k<sup>2</sup>) to O(klogk)
+## From O(k<sup>2</sup>) to O(klogk)
 
 Instead of doing **CRT** sequentially from left to right each loop like Sage's algorithm, what we did in each loop is doing **CRT** for EACH 2 NUMBERS in the array. After `k/2` runs we create 2 new list of `k/2` `2b`**-bit** remainders and modulus. Then we do the same thing again, yield 2 new list of `k/4` `4b`**-bit** remainders and modulus... Until the list of remainder has only one element :kissing:
 
@@ -276,7 +276,7 @@ And the algorithm only took us **3 minutes** to run, which is definitely faster 
 
 ![](result-dat-is-sad)
 
-## Even Better: From 3 to 1 minute (update)
+# Even Better: From 3 to 1 minute (update)
 
 It's great that my writeup got so many praises from the author, *cothan* who is also a long-time Crypto player :smiley: I'm crying in happiness right now **TwT**. Although I came up with the algorithm, but I got stuck and gave up half-way through. It was *Timmy* who stick to my idea and implement it to solve it *(thank you very^n where n goes to infinity much)* and get juicy points :kissing: And he also noticed for somehow, grouping **8** `crt()`s together seems to be a better choice than **2**(?)
 
@@ -368,7 +368,7 @@ And this is the result on my 8-thread, 4 core machine :dancers::dancers::dancers
 
 ![](optimisation-2)
 
-## ... and better?
+# ... and better?
 
 ... And we can do even better than this! You see, *Sage's* `crt()` only returns the result of the new remainder, it doesn't return the new moduli, although it also calculate the new moduli on the run as well! This makes us having to recalculate it later just to append to our new moduli array, which seems redundant to be honest.
 

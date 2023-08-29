@@ -5,16 +5,16 @@ description: Probability and whatnot...
 coverImage: hint-from-author.png
 ---
 
-## Introduction
+# Introduction
 
 This is a crazy challenge that drained my team's brains :cry: and we couldn't solve it in time of the CTF :slightly_frowning_face: After 2 days of trying to brainstorm, we have finally be able to crack the code, with a little bit of luck :kissing: 
 
 Since the intended solution will be provided by the author *catto* after the finals (**18/12**), which is over **ONE MONTH AFTER** from when I'm writing these lines (*why it gotta take so long catto* :sob: :sob: :sob:), I decided to create my own writeup to explain our method of solving this problem :kissing:
 
 :br
-## Challenge
+# Challenge
 
-### Description
+## Description
 
 The server generates a **securely random 64-bit hex string password** that is kept secret. We as the clients have to guess the secret password to get the flag.
 
@@ -23,7 +23,7 @@ The server gives us hints about the password through the output of the `encrypt(
 This writeup provides a way to obtain the flag with **8** outputs of `encrypt(password)` in a probability of about **$1/40$**.
 
 :br
-### Code
+## Code
 
 ```python
 #!/usr/bin/env python3
@@ -105,7 +105,7 @@ chall()
 ```
 
 :br
-## Analyzing stuffs...
+# Analyzing stuffs...
 
 Let's first dissect everything in the source code to see what it does and how to make sense of the data given to us :kissing: If you've already known what to expect, you can hop onto the next section to see the discussion of the solution :heart:
 
@@ -222,7 +222,7 @@ Now we know how to view the encrypted password, let's discuss the solution!
 
 
 :br
-## How to know the bits of `password`?
+# How to know the bits of `password`?
 
 In order to get all the bits of `password`, we must be able to classify which vector $\overrightarrow{v_i}$ in `ct` belongs to which vector space. Is $\overrightarrow{v_i}$ generated from `BASIS[:64]` *(so $password_{i}$ is 0)*, or `BASIS[64:]` *(so $password_{i}$ is 1)*? 
 
@@ -232,7 +232,7 @@ We don't even have `BASIS`, so if we know a particular vector is formed by a set
 
 ![](no-yes.png)
 
-## Notations
+# Notations
 
 Before moving on, I think I should introduce some notations here to help discussing the next part.
 
@@ -258,7 +258,7 @@ Before moving on, I think I should introduce some notations here to help discuss
 
 
 :br
-## Matrix1.0
+# Matrix1.0
 
 In *Glitch in the matrix 1.0*, comparing $password_i$ and $password_j$ is very much doable. To solve this challenge, we have to provide a way to differentiate between the vectors that are either generated from `BASIS[:64]` or `BASIS[64:]`.
 
@@ -286,7 +286,7 @@ In script, we fix $i = 0$ and let $j$ runs from $1 - 63$ to generate the mapping
 
 
 :br
-## Matrix2.0
+# Matrix2.0
 
 *Glitch in the matrix 2.0* is the updated version where `BASIS` is shuffled every-time we request a new `encrypt(password)`. This means that the property that:
 
@@ -294,7 +294,7 @@ In script, we fix $i = 0$ and let $j$ runs from $1 - 63$ to generate the mapping
 
 is not correct this time around, which is very sad :sob:. We also cannot refer to `BASIS[:64]` and `BASIS[64:]` as constants anymore.
 
-### Probability hint 
+## Probability hint 
 
 After a while, a hint came out from the author:
 
@@ -322,7 +322,7 @@ $$
 This might be the "probability" thing *catto* was talking about! Also from this another idea is formed!
 
 :br
-### Detecting $\lfloor{\frac{128}{n}}\rfloor + 1$ similar bits in `password`
+## Detecting $\lfloor{\frac{128}{n}}\rfloor + 1$ similar bits in `password`
 
 Let's say we generate `encrypt(password)` $n$ times for $n \ge 3$.
 
@@ -380,7 +380,7 @@ However, in order for this to work, we need to make sure to choose $n$ so that b
 It turns out, if scenario **1.** occurs more likely, scenario **2.** will occur less likely and vice versa, so we need to balance $n$. Through trials and errors, I've decided to choose $n = 8$ and the correct set $\{{i_0}, {i_1}, ..., {i_{\lfloor{\frac{128}{n}}\rfloor}}\}$ is found in a probability of about $1/20$, after brute forcing at most $400000$ sets.
 
 :br
-### Recover the remaining bits in `password`
+## Recover the remaining bits in `password`
 
 Remember the matrix $M$ from the last section? We can use it to detect the rest of the bits in `password`. For every $j$-th bit in `password` that $j \notin \{{i_0}, {i_1}, ..., {i_{\lfloor{\frac{128}{n}}\rfloor}}\}$, I decided to construct a new matrix $N$ from $M$ that is:
 $$
@@ -402,7 +402,7 @@ Then compares $rank(N)$:
 With this information, we can recover `password` with a probability of $1/2$.
 
 :br
-## Solve code
+# Solve code
 
 This piece of code implements what I've just described above, with some small changes:
 

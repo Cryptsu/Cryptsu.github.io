@@ -136,16 +136,6 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
             style={TOCLinkWrapperStyles}
             css={{
               marginLeft: `calc(1.5em * ${headingInfo.level - 1})`,
-              marginTop: (
-                headingInfo.level === 1 && index !== 0 
-                  ? "0.5em" 
-                  : 0
-              ),
-              fontSize: (
-                headingInfo.level === 1 
-                  ? theme.fontSizes.h5 
-                  : theme.fontSizes.h6
-              ),
               fontWeight: (
                 intersections[index] == 0
                   ? theme.fontWeights.bold 
@@ -277,6 +267,7 @@ const TOCHeaderStyles: CSS = {
 const TOCLinkWrapperStyles: CSS = {
   position: "relative",
   display: "flex",
+  fontSize: theme.fontSizes.h6,
 }
 
 const TOCLinkStyles: CSS = {
