@@ -1,3 +1,5 @@
+import path from "path";
+import { useRouter } from "next/router";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
 import { AssetsConst, HtmlConst } from "@/lib/consts";
@@ -11,7 +13,28 @@ type BlogImgProps = PropsWithChildren<{
   height?: string | number, // Scale to your desire...
 }>
 
-const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) => {
+const BlogImg = ({children, alt, width, height, src, ...otherProps}: BlogImgProps) => {
+  // If path does not starts with
+  // '/', we can change it into relative
+  // import :) A bit hacky method, though...
+  const router = useRouter();
+  const currentURL = router.asPath.split('/')
+  const possibleSlug = currentURL.pop();
+  const possibleCategory = currentURL.pop();
+  if (
+    !src.startsWith('/') 
+      && !(new RegExp("(^(http|https)://)|(^data:image/)", "i")).test(src)
+      && possibleSlug 
+      && possibleCategory
+  ) {
+    src = path.join(
+      AssetsConst.IMG_FOLDER,
+      possibleCategory,
+      possibleSlug,
+      src
+    )
+  }
+
   // What the hell... If I put a component inside a function  
   // then when Next.js compiles, it will register onError !?
   const renderImg = () => {
@@ -19,6 +42,7 @@ const BlogImg = ({children, alt, width, height, ...otherProps}: BlogImgProps) =>
               elementName={HtmlConst.IMG} 
               style={BlogImgStyles} 
               alt={alt} 
+              src={src}
               css={{width, height}} 
               onError={
                 (event: Event) => {

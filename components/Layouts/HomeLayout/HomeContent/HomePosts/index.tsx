@@ -25,7 +25,7 @@ const HomePosts = ({children, posts, ...otherProps}: HomePostsProps) => {
       {
         posts.map((post, index) => 
           <Style key={index} style={HomePostStyles} {...otherProps}>
-            <PostCover coverImageURL={post.coverImage} link={`/${AppConfig.POSTS_DIR}/${post.slug}`}/>
+            <PostCover coverImageURL={post.coverImage} slug={post.slug} link={`/${AppConfig.POSTS_DIR}/${post.slug}`}/>
             <PostTitle title={post.title} link={`/${AppConfig.POSTS_DIR}/${post.slug}`}/>
             <PostDescription description={post.description}/>
             <PostOtherMetadata post={post}/>

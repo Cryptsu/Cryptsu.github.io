@@ -1,3 +1,4 @@
+import path from "path";
 import Style from "@/components/Style";
 import CustomLink from "@/components/CustomLink";
 import { theme } from "@/lib/styles/stiches.config";
@@ -9,16 +10,25 @@ import type { CSS } from "@stitches/react";
 type PostCoverProps = PropsWithChildren<{
   coverImageURL?: string;
   link: string;
+  slug: string;
 }>
 
-const PostCover = ({children, coverImageURL, link, ...otherProps}: PostCoverProps) => {
+const PostCover = ({children, slug, coverImageURL, link, ...otherProps}: PostCoverProps) => {
   // What the hell... If I put a component inside a function
   // then when Next.js compiles, it will register onError !?
   const renderImg = () => {
     return <Style 
               style={PostCoverStyles} 
               elementName={HtmlConst.IMG} 
-              src={coverImageURL ? coverImageURL : AssetsConst.EMPTY_IMG} 
+              src={
+                coverImageURL 
+                  ? (
+                      coverImageURL.startsWith('/') 
+                        ? coverImageURL
+                        : path.join(AssetsConst.POSTIMG_FOLDER, slug, coverImageURL)
+                    ) 
+                  : AssetsConst.EMPTY_IMG
+              } 
               onError={
                 (event: Event) => {
                   (event.target as HTMLImageElement).src = AssetsConst.NO_EXISTS_IMG
