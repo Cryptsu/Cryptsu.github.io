@@ -6,6 +6,7 @@ description: I didn't solve any Crypto challenges but my teammates carry 🥰
 ---
 
 For a while now, after the ~*death*~ postponed activities of `u0K++`, I've got a chance to join in `idek` team *(thanks `lanleft` so much because I'm incredibly socially awkward...)*. I really like the guys there, they are so vibrant, fun and incredibly smart. I'm not any of those descriptions though, and so, in this CTF, I sliently watch them carry 😗
+<br/>
 
 # Challenge
 This challenge provides a some sort of **Diffle-Hellman key exchange-ish**- protocol in the form of `64x64` matrices in `ZZ`. The premise is very straight-forward. You're given:
@@ -60,6 +61,7 @@ ss = hashlib.sha256(str(S1).encode()).digest()
 enc = bytes([x^^y for x, y in zip(FLAG, ss)])
 print(enc.hex())
 ```
+<br/>
 
 # Analysis
 This challenge has my brain go buckeroo 😵‍💫, because I don't know what to focus on. At first, I thought the polynomials used to create the matrices `Ux` has something important to do with all of this, but all of that just go to nowhere. My teammate `A~Z` had an idea of using `QuadraticForm` do something with the factorization of matrices, but I had no idea what that is *(and still doesn't)*. After a while, he also abandoned that idea as well and realized the actual solution thanks to the suggestion of `蛋捲鯛魚燒`.
@@ -112,8 +114,9 @@ Because $D$ is a diagonal matrix, `A~Z` has a very interesting insight:
 ![](a-z-insight.webp)
 
 After we get $D$, we find $U = PDP^{-1}$, which then we can compute `S1` -> `ss` -> solve `flag`!!! 
+<br/>
 
-# Solve script
+# Solve Script
 ```python
 from sage.all import *
 from ast import literal_eval
