@@ -26,7 +26,7 @@ const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPr
     <>
       <NextSeo
         title={frontMatter.title}
-        description={frontMatter.description || AppConfig.AUTHOR_DESC}
+        description={frontMatter.description || AppConfig.DESCRIPTIONS.AUTHOR}
         canonical={frontMatter.permalink}
         openGraph={{
           title: frontMatter.title,
@@ -53,7 +53,7 @@ const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPr
       <ArticleJsonLd
         url={frontMatter.permalink}
         title={frontMatter.title}
-        description={frontMatter.description || AppConfig.AUTHOR_DESC}
+        description={frontMatter.description || AppConfig.DESCRIPTIONS.AUTHOR}
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
         images={[`${AppConfig.BLOG_URL}${frontMatter.coverImage || AppConfig.AUTHOR_LOGO}`]}

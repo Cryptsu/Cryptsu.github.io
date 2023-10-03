@@ -5,20 +5,12 @@
 // that could be language-switchable.
 //
 
-// Config?
-export const TXT_BLOG_NAME = "Cryptsu";
-export const TXT_AUTHOR_NAME = "Mistsu";
-export const TXT_FOOTER = `::: Made with (❤️ && 😭) by ${TXT_AUTHOR_NAME} :::`
-export const TXT_AUTHOR_DESC = "Hiii. Welcome to my blog :) This is where I share my thoughts on CTF challenges, mostly ones that involve Cryptography.";
-export const TXT_SHORT_DESC = "Mistsu's Blog";
-
 // Navigation stuffs
 export const TXT_NAV_HOME = "/home";
 export const TXT_NAV_TEST = "/test";
 export const TXT_NAV_ABOUT = "/about";
 export const TXT_NAV_POSTS = "/posts";
 
-export const TXT_CODE_IS_HIDDEN = "... hidden ...";
 export const TXT_TOC = "table-of-content";
 export const TXT_WORDS = "words";
 export const TXT_MIN_READ = 'mins';
@@ -40,5 +32,3 @@ export const TXT_UR_BROWSER_SUCKS = "Your browser sucks, you should consider get
 export const TXT_TITLE_404 = "404 Page Not Found";
 export const TXT_TITLE_HOME = "Home";
 export const TXT_TITLE_POSTS = "Posts";
-export const TXT_DESC_HOME = "Hello. Welcome to my blog :) This is where I share my thoughts on CTF challenges.";
-export const TXT_DESC_POSTS = "List all of my blog posts within a single page.";

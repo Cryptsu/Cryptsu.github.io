@@ -1,6 +1,5 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { AssetsConst, HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren, RefObject } from "react";
 import type { CSS } from "@stitches/react";
 

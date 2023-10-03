@@ -1,12 +1,12 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { TxtConst } from "@/lib/consts";
+import { AppConfig } from "@/lib/config";
 import type { CSS } from "@stitches/react";
 
 const BlogName = () => {
   return (
     <Style style={BlogNameStyles}>
-      {TxtConst.TXT_BLOG_NAME}
+      {AppConfig.BLOG_NAME}
     </Style>
   )
 }

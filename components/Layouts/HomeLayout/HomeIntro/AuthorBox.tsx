@@ -20,7 +20,7 @@ const AuthorBox = ({children, ...otherProps}: AuthorBoxProps) => {
         {AppConfig.AUTHOR_NAME}
       </Style>
       <Style style={AuthorBoxDescStyles}>
-        <BlinkingText text={AppConfig.AUTHOR_DESC} blinkColor={`${theme.colors.secondary}`} />
+        <BlinkingText text={AppConfig.DESCRIPTIONS.AUTHOR} blinkColor={`${theme.colors.secondary}`} />
       </Style>
     </Style>
   )

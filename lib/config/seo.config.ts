@@ -1,23 +1,22 @@
-import { AssetsConst } from "@/lib/consts";
-import { AppConfig } from ".";
+import { AppConfig, AssetsConfig } from ".";
 import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
 
 // Most of this file simply takes the data already defined in ./AppConfig.js and translates it into objects that are
 // compatible with next-seo's props:
 // https://github.com/garmeeh/next-seo#default-seo-configuration
 export const defaultSeo: DefaultSeoProps = {
-  defaultTitle: `${AppConfig.SHORT_DESC} - ${AppConfig.BLOG_NAME}`,
+  defaultTitle: `${AppConfig.DESCRIPTIONS.SHORT} - ${AppConfig.BLOG_NAME}`,
   titleTemplate: `%s – ${AppConfig.BLOG_NAME}`, // appends `– siteName` to title provided by each page (except home)
-  description: AppConfig.AUTHOR_DESC,
+  description: AppConfig.DESCRIPTIONS.AUTHOR,
   openGraph: {
     siteName: AppConfig.BLOG_NAME,
-    title: `${AppConfig.BLOG_NAME} – ${AppConfig.SHORT_DESC}`,
+    title: `${AppConfig.BLOG_NAME} – ${AppConfig.DESCRIPTIONS.SHORT}`,
     locale: AppConfig.LOCALE?.replace("-", "_"),
     type: "website",
     images: [
       {
         url: `${AppConfig.BLOG_URL}${AppConfig.AUTHOR_LOGO}`,
-        alt: `${AppConfig.BLOG_NAME} – ${AppConfig.SHORT_DESC}`,
+        alt: `${AppConfig.BLOG_NAME} – ${AppConfig.DESCRIPTIONS.SHORT}`,
       },
     ],
   },
@@ -47,16 +46,16 @@ export const defaultSeo: DefaultSeoProps = {
   additionalLinkTags: [
     {
       rel: "icon",
-      href: AssetsConst.FAVICON_ICO,
+      href: AssetsConfig.FAVICON_ICO,
     },
     {
       rel: "icon",
-      href: AssetsConst.FAVICON_ICO,
+      href: AssetsConfig.FAVICON_ICO,
       type: "image/png",
     },
     {
       rel: "apple-touch-icon",
-      href: AssetsConst.FAVICON_APPLETOUCHICON_PNG,
+      href: AssetsConfig.FAVICON_APPLETOUCHICON_PNG,
       sizes: `${512}x${512}`,
     },
     // {

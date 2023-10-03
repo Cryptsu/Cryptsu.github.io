@@ -1,5 +1,6 @@
 import { createStitches } from "@stitches/react";
-import { AssetsConst, ClassConst } from "@/lib/consts";
+import { ClassConst } from "@/lib/consts";
+import { AssetsConfig } from "@/lib/config";
 import type * as Stitches from "@stitches/react";
 
 // Helpers
@@ -376,7 +377,7 @@ export const globalStyles = globalCss({
 
   'body': {
     backgroundColor: "$pageBackground",
-    backgroundImage: `url("${AssetsConst.GRAIN}")`,
+    backgroundImage: `url("${AssetsConfig.GRAIN_WEBP}")`,
     pointerEvents: "none",  
   },
 

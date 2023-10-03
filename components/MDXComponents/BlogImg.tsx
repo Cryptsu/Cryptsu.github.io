@@ -2,8 +2,8 @@ import path from "path";
 import { useRouter } from "next/router";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { AssetsConst, HtmlConst } from "@/lib/consts";
-import { AppConfig } from "@/lib/config";
+import { HtmlConst } from "@/lib/consts";
+import { AppConfig, AssetsConfig } from "@/lib/config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -48,7 +48,7 @@ const BlogImg = ({children, alt, width, height, src, ...otherProps}: BlogImgProp
               css={{width, height}} 
               onError={
                 (event: Event) => {
-                  (event.target as HTMLImageElement).src = AssetsConst.NO_EXISTS_IMG
+                  (event.target as HTMLImageElement).src = AssetsConfig.NO_EXISTS_IMG
                 }
               }
               {...otherProps}

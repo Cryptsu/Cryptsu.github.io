@@ -1,6 +1,7 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { AssetsConst, TxtConst } from "@/lib/consts";
+import { TxtConst } from "@/lib/consts";
+import { AppConfig, AssetsConfig } from "@/lib/config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -11,7 +12,7 @@ type FooterProps = PropsWithChildren<{
 const Footer = ({children, ...otherProps}: FooterProps) => {
   return (
     <Style style={FooterStyles} {...otherProps}>
-      {TxtConst.TXT_FOOTER}
+      {AppConfig.DESCRIPTIONS.FOOTER}
     </Style>
   )
 }
@@ -32,7 +33,7 @@ const FooterStyles: CSS = {
   borderStyle: "dashed",
   borderColor: theme.colors.divider25,
   backgroundColor: theme.colors.pageBackground,
-  backgroundImage: `url(${AssetsConst.GRAIN})`,
+  backgroundImage: `url(${AssetsConfig.GRAIN_WEBP})`,
 
   zIndex: theme.zIndices.footer,
 };

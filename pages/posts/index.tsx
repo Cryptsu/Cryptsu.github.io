@@ -2,6 +2,7 @@ import { NextSeo } from "next-seo";
 import { getAllPosts } from "@/lib/helpers/process-posts";
 import PostsLayout from "@/components/Layouts/PostsLayout";
 import { TxtConst } from "@/lib/consts";
+import { AppConfig } from "@/lib/config";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import type { PostsByYearType } from "@/types/post";
 
@@ -14,7 +15,7 @@ const Posts = ({ postsByYear }: InferGetStaticPropsType<typeof getStaticProps>) 
     <>
       <NextSeo
         title={TxtConst.TXT_TITLE_POSTS}
-        description={TxtConst.TXT_DESC_POSTS}
+        description={AppConfig.DESCRIPTIONS.POSTS}
         openGraph={{
           title: TxtConst.TXT_TITLE_POSTS,
         }}
