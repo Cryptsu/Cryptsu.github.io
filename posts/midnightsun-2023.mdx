@@ -1,16 +1,14 @@
 ---
-title: 'Midnightsun CTF 2023'
+title: 'Midnightsun CTF 2023 - IKEA'
 date: 'April 12, 2023'
 description: |
     Lately, I haven't been playing CTFs much... So I was kinda dumb on everything.
-    Anyways, I encouter a nice Crypto challenge on MidnightCTF.
+    Anyways, I encouter a nice RSA Crypto challenge on MidnightCTF.
     
 coverImage: cover.png
 ---
 
-# Ikea
-
-## Challenge 
+# Challenge Source
 
 ```python
 p = random_prime(2**1024)
@@ -48,8 +46,9 @@ print(n)
 print(p + b^2 * q)
 print(a^2 * p + q)
 ```
+<br/>
 
-## Idea
+# Idea
 Well, this is just classic RSA encryption. On its own, this scheme is definitely not breakable. However, the author provides some additional values $h_0, h_1$ so that somehow, we can use them to decrypt the encrypted value $c$:
 $$
 h_0 = p + qb^2 \\
@@ -110,8 +109,9 @@ $$
 $$
 
 or if you are really skeptical, you can bound it to be $\le ab + 10000$, just to be sure :slightly_smiling_face: This means that we can find $ab$ just by bruteforcing **10000** values around $\sqrt{\frac{h_0h_1}{n}}$.
+<br/>
 
-## Solve
+# Get $p$
 Knowing $ab$, we now have **4 equations** with **4 variables** to solve:
 $$
     pq = n \\
@@ -155,8 +155,9 @@ for delta in trange(0, 1000):
 
 # q = 109813633407350440684752357104087423730270808390261227637462376676953120335377705330415425210793126533507813859480119893163026376723863463313335381388502153679899248105338398482841127131263152039296390164162491463575378945424202721526857339615769738614581032689687091169497613753054146273393581209744585087263
 ```
+<br/>
 
-### Get flag
+# Get Flag
 Since we have $p,q$, we can now recover the private exponent and solve for flag :slightly_smiling_face:
 ```python
 from Crypto.Util.number import *
