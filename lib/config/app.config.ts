@@ -2,7 +2,7 @@ import path from "path";
 
 // Directories
 export const POSTS_DIR = "posts";
-export const IMAGE_DIR = "images";
+export const IMAGE_DIR = "/images";
 export const POSTIMAGE_DIR = path.join(IMAGE_DIR, "posts");
 export const ASSETIMAGE_DIR = path.join(IMAGE_DIR, "assets");
 
