@@ -1,6 +1,6 @@
 import path from "path";
 import { 
-    AppConfig 
+  AppConfig 
 } from '@/lib/config';
 
 export const GRAIN_WEBP                 = path.join(AppConfig.ASSETIMAGE_DIR, "grain.webp");

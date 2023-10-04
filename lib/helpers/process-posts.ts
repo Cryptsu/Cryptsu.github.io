@@ -52,6 +52,7 @@ export const getPostData
       date: formatDate(data.date),
       title: (data.title === undefined ? "" : data.title),
       minsRead: Math.round(readingTime(rawContent).minutes),
+      draft: (data.draft === undefined ? false : data.draft),
       noWords: readingTime(rawContent).words,
       permalink: `${AppConfig.BLOG_URL}/${AppConfig.POSTS_DIR}/${slug}/`,
       slug,
@@ -65,8 +66,11 @@ export const getAllPosts
       async ()
     : Promise<PostFrontMatterType[]> =>
     {
-      const slugs = await getPostSlugs();
-      const datas = await pMap(slugs, async (slug) => (await getPostData(slug)).frontMatter);
+      const slugs =  await getPostSlugs();
+      const datas = (await pMap(slugs, async (slug) => (await getPostData(slug)).frontMatter))
+                            .filter(
+                               (data) => data.draft === false
+                             );
       
       // Now it is correct :)
       datas.sort((post1, post2) => (post1.date > post2.date ? -1:1));

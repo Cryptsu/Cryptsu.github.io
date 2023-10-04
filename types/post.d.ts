@@ -9,6 +9,7 @@ export type PostFrontMatterType = {
   coverImage?: string;
   minsRead: number;
   tags?: string[];
+  draft: boolean;
   noWords: number;
 };
 
