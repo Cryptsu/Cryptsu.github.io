@@ -15,7 +15,7 @@ Basically, the challenge:
 - gives us said outputs,
 - gives us the `FLAG` **XORed** with the `sha512()` hash of $f(x)$'s coefficients array.
 
-# Trying Stuffs
+# Trying stuffs until we get some idea...
 
 Since it's hard to crack `sha512()`, or reverse **XOR** function with 0 knowleges about one of its inputs, our only route is to recover $f(x)$ from its outputs.
 
@@ -118,7 +118,7 @@ You have a hunch that this route sucks. Matrix multiplication with a vector stil
 
 ![](eggroll-insight.png)
 
-Others seem to brush off his idea, and to be honest, they seem tired and confused at that point, so it's understandable. But you remember from the **1%** of knowledge you watched in [this Youtube video by Reducible](https://youtu.be/h7apO7q16V0?si=KnmopD-iq8Nrtiqq), that **FFT** is some algorithm that can be done in $O(N\log{N})$, which is something way better than $O(N^2)$, is probably exactly what we need right now!! 
+Others seem to brush off his idea, and to be honest, they seem tired and confused at that point, so it's understandable. But you remember from the **1%** of knowledge you watched in some Youtube video, that **FFT** is some algorithm that can be done in $O(N\log{N})$, which is something way better than $O(N^2)$, is probably exactly what we need right now!! 
 <br/>
 
 Hmm... But you forgot what it does...
@@ -126,12 +126,12 @@ Hmm... But you forgot what it does...
 
 ## Fast Fourier Transform
 
-**Fast Fourier Transform**, or **FFT** for short, is an algorithm that also do the **convert coefficients -> values** thingy. However, this algorithm has a restriction: 
+**Fast Fourier Transform**, or **FFT** for short, is an algorithm that also can do the **convert coefficients -> values** thingy. However, this algorithm has a restriction: 
 
-The inputs to $f(x)$ must be $\omega_N^0, \omega_N^1, ..., \omega_N^{N-1}$, instead of arbitrary values $x_0, x_1, ..., x_{N-1}$. $\omega_N$ is **any** $N$-**th [root of unity](https://www.wikiwand.com/en/Root_of_unity).** 
+The inputs to $f(x)$ must be $\omega_N^0, \omega_N^1, ..., \omega_N^{N-1}$, instead of arbitrary values $x_0, x_1, ..., x_{N-1}$, where $\omega_N$ is **any** $N$-**th [root of unity](https://www.wikiwand.com/en/Root_of_unity).** 
 <br/>
 
-> Actually the actual purpose of this seems to be **some values -> frequency thingy conversion** stuffs. But in this case, it still true **(?)** idk... math is weird... But if you want to know the actual definition of **FFT**, you can read it here: [Wiki](https://www.wikiwand.com/en/Fast_Fourier_transform)
+> Hmm.. The actual purpose of **FFT** seems to be **some values -> frequency thingy conversion** stuffs. But in this case, it still true **(?)** idk... math is weird... But if you want to know the actual definition of **FFT**, you can read it here: [Wiki](https://www.wikiwand.com/en/Fast_Fourier_transform)
 <br/>
 
 To understand why **FFT** does this, let's formulize things.
@@ -140,11 +140,11 @@ Same as before, this relationship can be represented as the product of a **Vande
 
 $$
 \begin{bmatrix}
-	\omega_N^0 & \omega_N^0     & \omega_N^0        & ... & \omega_N^0            & \omega_N^0             \\
-	\omega_N^0 & \omega_N^1     & \omega_N^2        & ... & \omega_N^{N-2}        & \omega_N^{N-1}         \\
-	\omega_N^0 & \omega_N^2     & \omega_N^4        & ... & \omega_N^{2N-4}       & \omega_N^{2N-2}       \\
-	... \\
-	\omega_N^0 & \omega_N^{N-1} & \omega_N^{2(N-1)} & ... & \omega_N^{(N-2)(N-1)} & \omega_N^{(N-1)(N-1)} \\
+    \omega_N^0 & \omega_N^0     & \omega_N^0        & ... & \omega_N^0            & \omega_N^0             \\
+    \omega_N^0 & \omega_N^1     & \omega_N^2        & ... & \omega_N^{N-2}        & \omega_N^{N-1}         \\
+    \omega_N^0 & \omega_N^2     & \omega_N^4        & ... & \omega_N^{2N-4}       & \omega_N^{2N-2}       \\
+    ... \\
+    \omega_N^0 & \omega_N^{N-1} & \omega_N^{2(N-1)} & ... & \omega_N^{(N-2)(N-1)} & \omega_N^{(N-1)(N-1)} \\
 \end{bmatrix}
 
 \begin{bmatrix}
@@ -184,4 +184,38 @@ D_{\omega_N}^{-1} = \frac{D_{\omega_N^{-1}}}{N}
 $$
 <br/>
 
-Since $\omega_N^{-1}$ is also *just another root of unity*, this means that the inverse process of **FFT** is just another **FFT** with an extra step of scaling down the outputs by $N$! Ahhh! You reason that the scaling process will definitely take $O(N)$, so if **FFT** can run in $O(N\log{N})$, then the inverse is also the same *(yey)*
+Since $\omega_N^{-1}$ is also *just another root of unity*, this means that the inverse process of **FFT** is just another **FFT** with an extra step of scaling down the outputs by $N$! Ahhh! The scaling process will definitely take $O(N)$, so if **FFT** can run in $O(N\log{N})$, then the inverse version (**IFFT**) is also the same *(yey)*
+<br/>
+
+And it turns out there's an optimized version of **FFT** that allows us to calculate in $O(N\log{N})$! For more details, please consider watching [this video by Reducible](https://youtu.be/h7apO7q16V0?si=KnmopD-iq8Nrtiqq), this guy is really good **:>** 
+<br/>
+
+{/* todo: create a component called YoutubeEmbed in the future. */}
+<div
+    style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    }}
+>
+    <iframe 
+        width="90%" 
+        height="315" 
+        style={{
+            border: "3px dashed #73403F",
+            borderBottom: "0px",
+            borderRadius: "16px",
+            boxShadow: "0px 12px #B03836"
+        }}
+        src="https://www.youtube.com/embed/h7apO7q16V0?si=eGmeua3pbAir6VEc" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowFullScreen="true" 
+        webkitallowfullscreen="true" 
+        mozallowfullscreen="true"
+    >
+    </iframe>
+</div>
+<br/>
+
