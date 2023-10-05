@@ -1,6 +1,187 @@
 ---
-title: "BRICS+ CTF - SSS: We need to Transform"
+title: "BRICS+ CTF - SSS (Part 1): We Need to Transform"
 date: Tue Oct 04 2023 15:28:12 GMT+0700 (Indochina Time)
-description: I hate this challenge so much :(
-draft: false
+description: A noob look into what the hell all of this is about :'3
+draft: true
 ---
+
+No, not that **Kamen Rider/Ben 10** stuffs. But before we dive further into what **"Transform"** I'm talking about, let's introduce you to this CTF challenge first.
+
+# Intro
+
+Basically, the challenge:
+- generates a random polynomial $f(x)$ with `20000156` terms,
+- evaluates the outputs $f(0), f(1), ..., f(20000159)$ except for $f(69), f(420)$ and $f(1337)$ *(all computations are done modulo `20000159`)*,
+- gives us said outputs,
+- gives us the `FLAG` **XORed** with the `sha512()` hash of $f(x)$'s coefficients array.
+
+# Trying Stuffs
+
+Since it's hard to crack `sha512()`, or reverse **XOR** function with 0 knowleges about one of its inputs, our only route is to recover $f(x)$ from its outputs.
+
+## Lagrange Interpolation
+
+So, if you're a noob like me, your first thought will probably be: 
+> "Well, this is a piece of cake. 
+> 
+> We have $20000156$ outputs, the polynomial has $20000156$ terms. I'll just use the [Lagrange Interpolation](https://www.wikiwand.com/en/Lagrange_polynomial). They have this fancy math that **computes a polynomial's coefficients from its evaluations**. 
+> 
+> We meet all the requirements needed to carry out the computation."
+<br/>
+
+So you gleefully copy an implementation from the Internet, adding inputs, modify stuffs, typing, thinking to yourself: **"EZ"**. 
+
+You run the code and wonder why it takes so long. Maybe the output array is too big and needed some time to load? No, it had already been done! You throw a `tqdm` bar into the main loop of the code and see that it estimates the algorithm will be running for another `7000` hours.
+<br/>
+
+Shit.
+
+You dig into the implementation of **Lagrange Interpolation**, and realize that given a polynomial with $N$ terms:
+- it computes the sum of $N$ terms, 
+- each term is the product of smaller $N-1$ linear polynomials.
+<br/>
+
+An $O(N^2)$ runtime... 
+
+This algorithm works fast for small polynomial sizes, like `2` or `3` and some numbers close to it like `10000`, but not `20000156`. This is when you gasp: *"This is not Crypto, this is some [Codeforces](https://codeforces.com/) obsure **200+ IQ** optimization problem!!"* You know you suck, but you still want try another stuffs anyways, to see where it goes.
+<br/>
+
+## The Vandermonde Matrix
+From your experiences of watching math videos on Youtube, feeling smart then remember like **1%** about it the next day, you realize that ~~you don't know what to do now and feel like shit *(meanwhile, your teammate is saying something about **vandermonde**)*~~ maybe sometimes we need to derail to some random ideas to get to smart one, so that's what you did.
+<br/>
+
+So you definitely ~~did look at [this wiki page](https://www.wikiwand.com/en/Vandermonde_matrix) and~~ have **an insight** on your own ~~*(no)*~~: 
+
+The evaluation of $f(x) = \sum_{k=0}^{N-1} c_k x^k$ at $x_0$ can be represented as a dot product: $f(x_0) = (x_0^0, x_0^1, ..., x_0^{N-1}) \cdot (c_0, c_1, ..., c_{N-1})$.
+<br/>
+
+Or maybe, as a multiplication of `1xN` matrix with another `Nx1` matrix?
+$$
+\begin{bmatrix}
+x_0^0 & x_0^1 & ... & x_0^{N-1}
+\end{bmatrix}
+
+\begin{bmatrix}
+c_0 \\ c_1 \\ ... \\ c_{N-1}
+\end{bmatrix}
+
+= 
+
+\begin{bmatrix}
+f(x_0)
+\end{bmatrix}
+$$
+<br/>
+
+And you see that you can extend the `1xN` matrix on the left so that on the right side you can compute not only $f(x_0)$, but also $f(x_1), f(x_2), ...$ and so on:
+$$
+\begin{bmatrix}
+x_0^0     & x_0^1     & ... & x_0^{N-1}     \\
+x_1^0     & x_1^1     & ... & x_1^{N-1}     \\
+... \\
+x_{N-1}^0 & x_{N-1}^1 & ... & x_{N-1}^{N-1} \\
+\end{bmatrix}
+
+\begin{bmatrix}
+c_0 \\ c_1 \\ ... \\ c_{N-1}
+\end{bmatrix}
+
+= 
+
+\begin{bmatrix}
+f(x_0) \\ f(x_1) \\ ... \\ f(x_{N-1})
+\end{bmatrix}
+$$
+<br/>
+
+The `NxN` matrix on the left side seems like a special type of matrix. Maybe you discovered a new thing 😱 (and not something already been discovered and called [the Vandermonde Matrix](https://www.wikiwand.com/en/Vandermonde_matrix))? Anyways, you decide to name this thing [the Vandermonde Matrix](https://www.wikiwand.com/en/Vandermonde_matrix), because it sounds right somehow...
+
+Let's rewrite the equation into: 
+$
+V \text{ } \overrightarrow{f} = \overrightarrow{y}
+$,
+where:
+- $\overrightarrow{f}$ is $f(x)$'s coefficients vector.
+- $\overrightarrow{y}$ is $f(x)$'s outputs vector.
+- $V$ is the Vandermonde matrix.
+<br/>
+
+Which leads to $\overrightarrow{f} = V^{-1} \text{ } \overrightarrow{y}$ and because we need to recover $f(x)$'s coefficients from its outputs, this shifts our focus into...
+
+![this is when I started googling about vandermonde](genni-insight.png)
+
+A couple of Google Searches leads us to [this website](https://proofwiki.org/wiki/Inverse_of_Vandermonde_Matrix):
+
+![Seems bad, but I dunno why...](inverse_vandermonde.png)
+
+You have a hunch that this route sucks. Matrix multiplication with a vector still takes $O(N^2)$ as far as you know, and at the same time, `EggRoll`, from your team says this:
+
+![](eggroll-insight.png)
+
+Others seem to brush off his idea, and to be honest, they seem tired and confused at that point, so it's understandable. But you remember from the **1%** of knowledge you watched in [this Youtube video by Reducible](https://youtu.be/h7apO7q16V0?si=KnmopD-iq8Nrtiqq), that **FFT** is some algorithm that can be done in $O(N\log{N})$, which is something way better than $O(N^2)$, is probably exactly what we need right now!! 
+<br/>
+
+Hmm... But you forgot what it does...
+<br/>
+
+## Fast Fourier Transform
+
+**Fast Fourier Transform**, or **FFT** for short, is an algorithm that also do the **convert coefficients -> values** thingy. However, this algorithm has a restriction: 
+
+The inputs to $f(x)$ must be $\omega_N^0, \omega_N^1, ..., \omega_N^{N-1}$, instead of arbitrary values $x_0, x_1, ..., x_{N-1}$. $\omega_N$ is **any** $N$-**th [root of unity](https://www.wikiwand.com/en/Root_of_unity).** 
+<br/>
+
+> Actually the actual purpose of this seems to be **some values -> frequency thingy conversion** stuffs. But in this case, it still true **(?)** idk... math is weird... But if you want to know the actual definition of **FFT**, you can read it here: [Wiki](https://www.wikiwand.com/en/Fast_Fourier_transform)
+<br/>
+
+To understand why **FFT** does this, let's formulize things.
+
+Same as before, this relationship can be represented as the product of a **Vandermonde matrix** with the **coefficient vector** $\overrightarrow{f}$:
+
+$$
+\begin{bmatrix}
+	\omega_N^0 & \omega_N^0     & \omega_N^0        & ... & \omega_N^0            & \omega_N^0             \\
+	\omega_N^0 & \omega_N^1     & \omega_N^2        & ... & \omega_N^{N-2}        & \omega_N^{N-1}         \\
+	\omega_N^0 & \omega_N^2     & \omega_N^4        & ... & \omega_N^{2N-4}       & \omega_N^{2N-2}       \\
+	... \\
+	\omega_N^0 & \omega_N^{N-1} & \omega_N^{2(N-1)} & ... & \omega_N^{(N-2)(N-1)} & \omega_N^{(N-1)(N-1)} \\
+\end{bmatrix}
+
+\begin{bmatrix}
+c_0     \\
+c_1     \\
+c_2     \\
+...     \\
+c_{N-2} \\
+c_{N-1}
+\end{bmatrix}
+
+=
+
+\begin{bmatrix}
+f(\omega_N^0) \\
+f(\omega_N^1) \\
+f(\omega_N^2) \\
+... \\
+f(\omega_N^{N-2}) \\
+f(\omega_N^{N-1})
+\end{bmatrix}
+$$
+<br/>
+
+Let's rewrite the equation into: 
+$
+D_{\omega_N} \text{ } \overrightarrow{f} = \overrightarrow{y_{\omega_N}}
+$, where:
+- $\overrightarrow{f}$ is $f(x)$'s coefficients vector.
+- $\overrightarrow{y_{\omega_N}}$ is $f(x)$'s outputs vector of $f(x)$ evaluated at $\omega_N^0, \omega_N^1, ..., \omega_N^{N-1}$.
+- $D_{\omega_N}$ is a special case of Vandermonde matrix, called the [DFT matrix](https://www.wikiwand.com/en/DFT_matrix), whose entries can be generated solely from $\omega_N$.
+<br/>
+
+Same as before, we have: $\overrightarrow{f} = D_{\omega_N}^{-1} \text{ } \overrightarrow{y_{\omega_N}}$. And it turns out that,
+$$
+D_{\omega_N}^{-1} = \frac{D_{\omega_N^{-1}}}{N}
+$$
+<br/>
+
+Since $\omega_N^{-1}$ is also *just another root of unity*, this means that the inverse process of **FFT** is just another **FFT** with an extra step of scaling down the outputs by $N$! Ahhh! You reason that the scaling process will definitely take $O(N)$, so if **FFT** can run in $O(N\log{N})$, then the inverse is also the same *(yey)*
