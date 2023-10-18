@@ -32,11 +32,12 @@ const YoutubeEmbedStyles: CSS = {
 const YoutubeEmbedIframeStyles: CSS = {
   width: "90%",
   height: 315,
+  marginBottom: "1em",
 
-  border: `3px dashed ${theme.colors.tertiaryInactive}`,
+  border: `0.1875em dashed ${theme.colors.tertiaryInactive}`,
   borderBottom: 0,
-  borderRadius: 16,
-  boxShadow: `0px 12px ${theme.colors.tertiaryShadow}`
+  borderRadius: "1em",
+  boxShadow: `0px 0.75em ${theme.colors.tertiaryShadow}`
 }
 
 export default YoutubeEmbed;
