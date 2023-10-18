@@ -1,21 +1,20 @@
 ---
-title: "BRICS+ CTF - SSS (Part 1): We Need to Transform"
+title: "BRICS+ CTF - SSS: Optimizing FFT"
 date: Tue Oct 04 2023 15:28:12 GMT+0700 (Indochina Time)
-description: A noob look into what the hell all of this is about :'3
+description: I'm depressed after trying to solve this...
 draft: true
 ---
-
-No, not that **Kamen Rider/Ben 10** stuffs. But before we dive further into what **"Transform"** I'm talking about, let's introduce you to this CTF challenge first.
 
 # Intro
 
 Basically, the challenge:
-- generates a random polynomial $f(x)$ with `20000156` terms,
-- evaluates the outputs $f(0), f(1), ..., f(20000159)$ except for $f(69), f(420)$ and $f(1337)$ *(all computations are done modulo `20000159`)*,
+- generates a random polynomial $f(x)$ with $N=$`20000156` terms in $\mathbb{F}_{p}$, where $p = 20000159$,
+- evaluates the outputs $f(0), f(1), ..., f(p-1)$ except for $f(69), f(420)$ and $f(1337)$,
 - gives us said outputs,
 - gives us the `FLAG` **XORed** with the `sha512()` hash of $f(x)$'s coefficients array.
+<br/>
 
-# Trying stuffs until we get some idea...
+# Trying stuffs...
 
 Since it's hard to crack `sha512()`, or reverse **XOR** function with 0 knowleges about one of its inputs, our only route is to recover $f(x)$ from its outputs.
 
@@ -52,7 +51,7 @@ From your experiences of watching math videos on Youtube, feeling smart then rem
 
 So you definitely ~~did look at [this wiki page](https://www.wikiwand.com/en/Vandermonde_matrix) and~~ have **an insight** on your own ~~*(no)*~~: 
 
-The evaluation of $f(x) = \sum_{k=0}^{N-1} c_k x^k$ at $x_0$ can be represented as a dot product: $f(x_0) = (x_0^0, x_0^1, ..., x_0^{N-1}) \cdot (c_0, c_1, ..., c_{N-1})$.
+The evaluation of $f(x) = \sum_{k=0}^{N-1} f_k x^k$ at $x_0$ can be represented as a dot product: $f(x_0) = (x_0^0, x_0^1, ..., x_0^{N-1}) \cdot (f_0, f_1, ..., f_{N-1})$.
 <br/>
 
 Or maybe, as a multiplication of `1xN` matrix with another `Nx1` matrix?
@@ -62,7 +61,7 @@ x_0^0 & x_0^1 & ... & x_0^{N-1}
 \end{bmatrix}
 
 \begin{bmatrix}
-c_0 \\ c_1 \\ ... \\ c_{N-1}
+f_0 \\ f_1 \\ ... \\ f_{N-1}
 \end{bmatrix}
 
 = 
@@ -83,7 +82,7 @@ x_{N-1}^0 & x_{N-1}^1 & ... & x_{N-1}^{N-1} \\
 \end{bmatrix}
 
 \begin{bmatrix}
-c_0 \\ c_1 \\ ... \\ c_{N-1}
+f_0 \\ f_1 \\ ... \\ f_{N-1}
 \end{bmatrix}
 
 = 
@@ -106,13 +105,13 @@ where:
 - $V$ is the Vandermonde matrix.
 <br/>
 
-Which leads to $\overrightarrow{f} = V^{-1} \text{ } \overrightarrow{y}$ and because we need to recover $f(x)$'s coefficients from its outputs, this shifts our focus into...
+Which leads to $\overrightarrow{f} = V^{-1} \text{ } \overrightarrow{y}$. As long as $x_0 \neq x_1 \neq x_2 \neq ... \neq x_{N-1}$, $V$ is invertible. Anyways, this shifts our focus into...
 
 ![this is when I started googling about vandermonde](genni-insight.png)
 
 A couple of Google Searches leads us to [this website](https://proofwiki.org/wiki/Inverse_of_Vandermonde_Matrix):
 
-![Seems bad, but I dunno why...](inverse_vandermonde.png)
+![seems bad, but I dunno why...](inverse_vandermonde.png)
 
 You have a hunch that this route sucks. Matrix multiplication with a vector still takes $O(N^2)$ as far as you know, and at the same time, `EggRoll`, from your team says this:
 
@@ -136,7 +135,7 @@ The inputs to $f(x)$ must be $\omega_N^0, \omega_N^1, ..., \omega_N^{N-1}$, inst
 
 To understand why **FFT** does this, let's formulize things.
 
-Same as before, this relationship can be represented as the product of a **Vandermonde matrix** with the **coefficient vector** $\overrightarrow{f}$:
+Same as before, this relationship between coefficients and values can be represented as the product of a **Vandermonde matrix** with the **coefficient vector** $\overrightarrow{f}$:
 
 $$
 \begin{bmatrix}
@@ -148,12 +147,12 @@ $$
 \end{bmatrix}
 
 \begin{bmatrix}
-c_0     \\
-c_1     \\
-c_2     \\
+f_0     \\
+f_1     \\
+f_2     \\
 ...     \\
-c_{N-2} \\
-c_{N-1}
+f_{N-2} \\
+f_{N-1}
 \end{bmatrix}
 
 =
@@ -219,3 +218,95 @@ And it turns out there's an optimized version of **FFT** that allows us to calcu
 </div>
 <br/>
 
+So now it seems like we've found our path! **However**, if you've watched the video like me, you'd notice there are a *few problems...*
+<br/>
+
+# Oh No...
+
+A lot of *oh-noes...*
+
+## Not a Power of 2
+
+In order for this optimized version to work, $N$ **must be a power of 2** *(that's why this is called "Radix-2 FFT")*, and `20000156`, well, is not. We can sort of *"pretending"* that $f(x)$ has more than `20000156` terms, where the leading coefficients are all $0$s.
+$$
+f(x) = f_0 * x_0 + f_1 * x_1 + ... + f_{N-1} * x_{N-1} \\
+\downarrow \\
+f(x) = f_0 * x_0 + f_1 * x_1 + ... + f_{N-1} * x_{N-1} + 0 * x_N + 0 * x_{N+1} + 0 * ...
+$$
+<br/>
+
+## More Outputs
+
+But then that would mean we need more than `20000156` outputs!! We might want to use Lagrange Interpolation to recover more values. But it takes $O(N^2)$!!
+
+Also, in this CTF challenge, we can only get `3` more outputs, because $x \equiv x + 20000159$, so $f(20000160)$ is just $f(1)$... 
+
+*(it turns out, in this particular CTF challenge, we can recover `3` missing values $f(69), f(420), f(1337)$ in $O(4*N)$-ish due to some very clever parameter choices, but that's for later :-))*
+<br/>
+
+## No $2^s$-th roots of unity...
+
+**However**, even if we're able to extend to some $2^s$ length, get some $2^s$ outputs, let's say, the closet one $\geq$ `20000156`: $2^{25}$. By then we still wouldn't be able to do **IFFT**: the algorithm requires a $2^{25}$-th root of unity, and no such thing exists in $\mathbb{F}_{p}$! Since prime factors of $p - 1$ are $2, 10000079$, we can only have $2, 10000079$, or $20000158$-th roots of unity only...
+
+You might be tempted to extend the current working field to $\mathbb{F}_{p^k}$, where $p^k - 1$ divides $2^{25}$. But it turns out, up until $k = 1000$, $p^k - 1$ divides $2^{13}$ at best.
+<br/>
+
+## Author's Solution
+
+From this point, I keep exhaust myself until the end of the CTF, trying out ideas, but nothing works. If it works, then the runtime is often $O(pq)$ where $q$ is the biggest prime of $p-1$... And then, the author publish their solution in the Discord Server, 
+
+![woah...](discord-solution.png)
+
+... to which `Genni` responds:
+
+![i want it too...](genni-replies.png)
+
+# Bluestein's algorithm / Chirp-Z transform
+
+## Like Multiplying 2 polynomials
+
+Turns out there's a very clever way we can transform the **FFT** problem for $N$ coefficients to another **FFT** problem for $2^s$ coefficients. There's no way a dumb person like me can think stuffs like this. But anyways, here's the explanation: 
+
+This is an another way we can look at the **FFT** matrix multiplication above:
+$$
+f(\omega_N^{j}) = \sum_{k=0}^{N-1}f_k \text{ } \omega_N^{jk}
+$$
+<br/>
+
+Since $jk = \frac{j^2 + k^2 - (j-k)^2}{2}$, we have ($\omega_{2N} = \omega_N^{\frac{1}{2}}$):
+
+$$
+\begin{matrix}
+f(\omega_N^{j})                             & = &                   & \sum_{k=0}^{N-1} & f_k                            & \omega_N^{jk} \\
+                                            & = & \omega_{2N}^{j^2} & \sum_{k=0}^{N-1} & f_k                            & \omega_{2N}^{k^2} \text{ } \omega_{2N}^{-(j-k)^2} \\
+
+f(\omega_N^{j}) \text{ } \omega_{2N}^{-j^2} & = &                   & \sum_{k=0}^{N-1} & f_k \text{ } \omega_{2N}^{k^2} & \omega_{2N}^{-(j-k)^2}
+\end{matrix}
+$$
+<br/>
+
+If we let:
+- $f(\omega_N^{j}) \text{ } \omega_{2N}^{-j^2}$ be $Z_j$.
+- $f_k \text{ } \omega_{2N}^{k^2}$ be $X_k$.
+- $\omega_{2N}^{-(j-k)^2}$ be $Y_{j-k}$.
+<br/>
+
+We'd obtain the following equation:
+$$
+\begin{matrix}
+Z_j = \sum_{k=0}^{N-1} X_k * Y_{j-k}
+\end{matrix}
+$$
+
+One may look at this and might relate to the fact that this is like multiplying `2` **"polynomial-ish"** $X(x) * Y(x) = Z(x)$. 
+<br/>
+
+Like, given any 2 polynomials $m(x) * n(x) = o(x)$, you would notice that:
+
+$$
+\begin{matrix}
+o_j = \sum_{k=0}^{j} m_k * n_{j-k}
+\end{matrix}
+$$
+
+where $m(x) = \sum_{i} m_i x^i, n(x) = \sum_{i} n_i x^i, o(x) = \sum_{i} o_i x^i$. However, there's a difference in the sum: 
