@@ -48,8 +48,8 @@ const argv = yargs(
 //       if you change stuffs at 
 //          /lib/config/app.config
 // ----------------------- Configs -----------------------
-const POSTS_DIR     = "./posts";
-const POSTIMAGE_DIR = "./public/images/posts";
+const POSTS_DIR      = "./posts";
+const ATTACHPOST_DIR = "./public/attachments/posts";
 
 // ------------------------ Parse ------------------------
 title = argv.title;
@@ -64,8 +64,8 @@ let path_to_post = path.join(
                     slug + '.mdx'
                    );
 
-let path_to_image_post = path.join(
-                    POSTIMAGE_DIR,
+let path_to_attach_post = path.join(
+                    ATTACHPOST_DIR,
                     slug
                    );
 
@@ -76,9 +76,9 @@ if (!fs.existsSync(POSTS_DIR)) {
   )
 }
 
-if (!fs.existsSync(POSTIMAGE_DIR)) {
+if (!fs.existsSync(ATTACHPOST_DIR)) {
   fs.mkdirSync(
-    POSTIMAGE_DIR,
+    ATTACHPOST_DIR,
     { recursive: true }
   )
 }
@@ -88,8 +88,8 @@ if (fs.existsSync(path_to_post)) {
   process.exit(-1);
 }
 
-if (fs.existsSync(path_to_image_post)) {
-  console.log(`[!] Error! Image folder for post at ${path_to_image_post} has been created! Exiting...`)
+if (fs.existsSync(path_to_attach_post)) {
+  console.log(`[!] Error! Attachment folder for post at ${path_to_attach_post} has been created! Exiting...`)
   process.exit(-1);
 }
 
@@ -97,10 +97,10 @@ if (fs.existsSync(path_to_image_post)) {
 
 // Create the image folder to put files in...
 fs.mkdirSync(
-  path_to_image_post,
+  path_to_attach_post,
   { recursive: true }
 )
-console.log(`[i] Created a new image folder at ${path_to_image_post}!`);
+console.log(`[i] Created a new attachment folder at ${path_to_attach_post}!`);
 
 // Create the .mdx file to post...
 let frontMatter = '';
