@@ -30,7 +30,7 @@ const BlogImg = ({children, alt, width, height, src, ...otherProps}: BlogImgProp
   ) {
     src = path.join(
       '/',
-      AppConfig.IMAGE_DIR,
+      AppConfig.ATTACH_DIR,
       possibleCategory,
       possibleSlug,
       src

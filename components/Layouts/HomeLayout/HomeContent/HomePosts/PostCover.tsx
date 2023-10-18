@@ -26,7 +26,7 @@ const PostCover = ({children, slug, coverImageURL, link, ...otherProps}: PostCov
                   ? (
                       coverImageURL.startsWith('/') 
                         ? coverImageURL
-                        : path.join('/', AppConfig.POSTIMAGE_DIR, slug, coverImageURL)
+                        : path.join('/', AppConfig.ATTACHPOST_DIR, slug, coverImageURL)
                     ) 
                   : AssetsConfig.EMPTY_IMG
               } 

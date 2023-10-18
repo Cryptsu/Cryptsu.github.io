@@ -2,8 +2,8 @@ import path from "path";
 
 // Directories
 export const POSTS_DIR = "posts";
-export const IMAGE_DIR = "/images";
-export const POSTIMAGE_DIR = path.join(IMAGE_DIR, "posts");
+export const ATTACH_DIR = "/attachments";
+export const ATTACHPOST_DIR = path.join(ATTACH_DIR, "posts");
 export const ASSET_DIR = "/assets";
 
 // Author's configs
