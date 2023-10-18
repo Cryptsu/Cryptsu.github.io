@@ -10,7 +10,7 @@ type YoutubeEmbedProps = PropsWithChildren<{
 
 const YoutubeEmbed = ({children, id, ...otherProps}: YoutubeEmbedProps) => {
   return (
-    <Style style={YoutubeEmbedStyles} elementName={HtmlConst.YTEMBED} {...otherProps}>
+    <Style style={YoutubeEmbedStyles} elementName={HtmlConst.DIV} {...otherProps}>
       <Style
         elementName={HtmlConst.IFRAME}
         style={YoutubeEmbedIframeStyles}

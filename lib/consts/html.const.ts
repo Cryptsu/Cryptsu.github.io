@@ -26,6 +26,3 @@ export const UL = "ul"
 export const SPAN = "span"
 export const TIME = "time"
 export const IFRAME = "iframe"
-
-// Custom tags -- made for directives
-export const YTEMBED = "ytembed"
