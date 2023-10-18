@@ -17,7 +17,7 @@ export const AUTHOR_SOCIAL = {
 
 // Display / SEO descriptions
 export const DESCRIPTIONS = {
-  AUTHOR: "Hiii. Welcome to my blog :) This is where I share my thoughts on CTF challenges, mostly ones that involve Cryptography.",
+  AUTHOR: "I have no jobs so I do write-ups :-3",
   SHORT: "Mistsu's Blog",
   FOOTER: "::: Made with (❤️ && 😭) by Mistsu :::",
 
