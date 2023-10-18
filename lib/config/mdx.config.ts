@@ -20,6 +20,9 @@ import MathInline from '@/components/MDXComponents/MathInline';
 import MathBlock from '@/components/MDXComponents/MathBlock';
 import Table from '@/components/MDXComponents/Table';
 
+// ============= Custom components =============
+import YoutubeEmbed from '@/components/MDXComponents/Customs/YoutubeEmbed';
+
 export type MDXComponentsConfigType = {
   [componentName: string]: {
     replacedElement: NextNode,
@@ -48,7 +51,6 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
     {replacedElement: CodeInline}
   ],
 
-
   ul: [{replacedElement: UnorderedList}],
   ol: [{replacedElement: OrderedList}],
   img: [{replacedElement: BlogImg}],
@@ -56,6 +58,9 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   div: [{replacedElement: MathBlock, classNames: ["math-display", "math"]}],
   li: [{replacedElement: ListItem}],
   table: [{replacedElement: Table}],
+
+  // ============= Custom components =============
+  ytembed: [{replacedElement: YoutubeEmbed}]
 };
 
 export default MDXComponentsConfig;
