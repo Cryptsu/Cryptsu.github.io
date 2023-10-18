@@ -4,12 +4,12 @@ import path from "path";
 export const POSTS_DIR = "posts";
 export const IMAGE_DIR = "/images";
 export const POSTIMAGE_DIR = path.join(IMAGE_DIR, "posts");
-export const ASSETIMAGE_DIR = path.join(IMAGE_DIR, "assets");
+export const ASSET_DIR = "/assets";
 
 // Author's configs
 export const BLOG_NAME = "Cryptsu";
 export const AUTHOR_NAME = "Mistsu";
-export const AUTHOR_LOGO = path.join(ASSETIMAGE_DIR, "author-logo.webp");
+export const AUTHOR_LOGO = path.join(ASSET_DIR, "author-logo.webp");
 export const AUTHOR_SOCIAL = {
   github: "Mistsuu",
   twitter: "Mistsu1",
