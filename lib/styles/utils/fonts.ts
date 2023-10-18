@@ -5,7 +5,7 @@ import {
 export const JetBrainsMono = JetBrainsMonoLoader({
   weight: "variable",
   display: "swap",
-  preload: true,
+  preload: false,
   subsets: ["latin", "vietnamese"],
   style: ["italic", "normal"]
 });
