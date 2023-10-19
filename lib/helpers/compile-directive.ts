@@ -34,8 +34,6 @@ export function customRemarkDirective() {
         }
 
         if (node.name === 'ytembed') {
-          const id = attributes.id;
-
           if (
             node.type === 'textDirective' ||
             node.type === 'containerDirective'
@@ -46,7 +44,7 @@ export function customRemarkDirective() {
             )
           }
 
-          if (!id) {
+          if (!attributes.id) {
             file.fail(
               'Expect `#id` on `::ytembed` directive: `::ytembed[Description]{#id}`.',
               node
