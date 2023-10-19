@@ -38,6 +38,7 @@ export function customRemarkDirective() {
           const hast = h(node.name, attributes === null ? undefined : attributes);
           data.hName = hast.tagName;
           data.hProperties = hast.properties;
+          return;
         }
       }
     })
