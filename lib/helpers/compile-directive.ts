@@ -13,9 +13,27 @@ export function customRemarkDirective() {
         node.type === 'containerDirective'
       ) 
       {
+        const data = node.data || (node.data = {});
+        const attributes = node.attributes || {};
+        const hast = h(node.name, attributes === null ? undefined : attributes);
+
+        if (node.name === 'code') {
+          if (
+            node.type === 'leafDirective' ||
+            node.type === 'containerDirective'
+          ) {
+            file.fail(
+              'Unexpected ::code leaf directive or :::code container directive, please use :code for a text directive.',
+              node
+            )
+          }
+
+          data.hName = hast.tagName;
+          data.hProperties = hast.properties;
+          return;
+        }
+
         if (node.name === 'ytembed') {
-          const data = node.data || (node.data = {});
-          const attributes = node.attributes || {};
           const id = attributes.id;
 
           if (
@@ -35,7 +53,6 @@ export function customRemarkDirective() {
             )
           }
 
-          const hast = h(node.name, attributes === null ? undefined : attributes);
           data.hName = hast.tagName;
           data.hProperties = hast.properties;
           return;
