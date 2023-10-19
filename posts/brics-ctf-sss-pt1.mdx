@@ -1,5 +1,5 @@
 ---
-title: "BRICS+ CTF - SSS: Optimizing FFT"
+title: "BRICS+ CTF - SSS (Part 1): We need to Transform..."
 date: Tue Oct 04 2023 15:28:12 GMT+0700 (Indochina Time)
 description: I'm depressed after trying to solve this...
 draft: true
@@ -189,6 +189,7 @@ Since $\omega_N^{-1}$ is also *just another root of unity*, this means that the 
 And it turns out there's an optimized version of **FFT** that allows us to calculate in $O(N\log{N})$! For more details, please consider watching [this video by Reducible](https://youtu.be/h7apO7q16V0?si=KnmopD-iq8Nrtiqq), this guy is really good **:>** 
 
 ::ytembed[Reducible's Video]{#h7apO7q16V0}
+<br/>
 
 So now it seems like we've found our path! **However**, if you've watched the video like me, you'd notice there are a *few problems...*
 <br/>
@@ -223,7 +224,7 @@ Also, in this CTF challenge, we can only get `3` more outputs, because $x \equiv
 You might be tempted to extend the current working field to $\mathbb{F}_{p^k}$, where $p^k - 1$ divides $2^{25}$. But it turns out, up until $k = 1000$, $p^k - 1$ divides $2^{13}$ at best.
 <br/>
 
-## Author's Solution
+# Author's Solution
 
 From this point, I keep exhaust myself until the end of the CTF, trying out ideas, but nothing works. If it works, then the runtime is often $O(pq)$ where $q$ is the biggest prime of $p-1$... And then, the author publish their solution in the Discord Server, 
 
@@ -233,52 +234,4 @@ From this point, I keep exhaust myself until the end of the CTF, trying out idea
 
 ![i want it too...](genni-replies.png)
 
-# Bluestein's algorithm / Chirp-Z transform
-
-## Like Multiplying 2 polynomials
-
-Turns out there's a very clever way we can transform the **FFT** problem for $N$ coefficients to another **FFT** problem for $2^s$ coefficients. There's no way a dumb person like me can think stuffs like this. But anyways, here's the explanation: 
-
-This is an another way we can look at the **FFT** matrix multiplication above:
-$$
-f(\omega_N^{j}) = \sum_{k=0}^{N-1}f_k \text{ } \omega_N^{jk}
-$$
-<br/>
-
-Since $jk = \frac{j^2 + k^2 - (j-k)^2}{2}$, we have ($\omega_{2N} = \omega_N^{\frac{1}{2}}$):
-
-$$
-\begin{matrix}
-f(\omega_N^{j})                             & = &                   & \sum_{k=0}^{N-1} & f_k                            & \omega_N^{jk} \\
-                                            & = & \omega_{2N}^{j^2} & \sum_{k=0}^{N-1} & f_k                            & \omega_{2N}^{k^2} \text{ } \omega_{2N}^{-(j-k)^2} \\
-
-f(\omega_N^{j}) \text{ } \omega_{2N}^{-j^2} & = &                   & \sum_{k=0}^{N-1} & f_k \text{ } \omega_{2N}^{k^2} & \omega_{2N}^{-(j-k)^2}
-\end{matrix}
-$$
-<br/>
-
-If we let:
-- $f(\omega_N^{j}) \text{ } \omega_{2N}^{-j^2}$ be $Z_j$.
-- $f_k \text{ } \omega_{2N}^{k^2}$ be $X_k$.
-- $\omega_{2N}^{-(j-k)^2}$ be $Y_{j-k}$.
-<br/>
-
-We'd obtain the following equation:
-$$
-\begin{matrix}
-Z_j = \sum_{k=0}^{N-1} X_k * Y_{j-k}
-\end{matrix}
-$$
-
-One may look at this and might relate to the fact that this is like multiplying `2` **"polynomial-ish"** $X(x) * Y(x) = Z(x)$. 
-<br/>
-
-Like, given any 2 polynomials $m(x) * n(x) = o(x)$, you would notice that:
-
-$$
-\begin{matrix}
-o_j = \sum_{k=0}^{j} m_k * n_{j-k}
-\end{matrix}
-$$
-
-where $m(x) = \sum_{i} m_i x^i$, $n(x) = \sum_{i} n_i x^i$, $o(x) = \sum_{i} o_i x^i$. However, there's a difference in the sum: 
+After reading this, my mind feels even more clueless... So this post should stop here. Part 2 will be focusing on how to understand the solution \:v
