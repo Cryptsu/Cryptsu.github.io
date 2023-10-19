@@ -17,6 +17,9 @@ export function customRemarkDirective() {
         const attributes = node.attributes || {};
         const hast = h(node.name, attributes === null ? undefined : attributes);
 
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //    :code[Some text or HTML here]
+        ////////////////////////////////////////////////////////////////////////////////////////////
         if (node.name === 'code') {
           if (
             node.type === 'leafDirective' ||
@@ -33,6 +36,9 @@ export function customRemarkDirective() {
           return;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //    ::ytembed[Some Description]{#video-id}
+        ////////////////////////////////////////////////////////////////////////////////////////////
         if (node.name === 'ytembed') {
           if (
             node.type === 'textDirective' ||
