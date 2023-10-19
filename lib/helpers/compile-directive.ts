@@ -13,6 +13,33 @@ export function customRemarkDirective() {
         node.type === 'containerDirective'
       ) 
       {
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //    unallowed tags handled here :-)
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        if (
+          node.name !== 'code' &&
+          node.name !== 'ytembed'
+        ) {
+          if (node.type === 'textDirective')
+            file.fail(
+              `Unexpected directive :${node.name}.`,
+              node
+            )
+
+
+          if (node.type === 'leafDirective')
+            file.fail(
+              `Unexpected directive ::${node.name}.`,
+              node
+            )
+
+          if (node.type === 'containerDirective')
+            file.fail(
+              `Unexpected directive :::${node.name}.`,
+              node
+            )
+        }
+
         const data = node.data || (node.data = {});
         const attributes = node.attributes || {};
         const hast = h(node.name, attributes === null ? undefined : attributes);
