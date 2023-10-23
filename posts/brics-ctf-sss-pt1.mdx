@@ -2,13 +2,16 @@
 title: "BRICS+ CTF - SSS (Part 1): We need to Transform..."
 date: Tue Oct 04 2023 15:28:12 GMT+0700 (Indochina Time)
 description: I'm depressed after trying to solve this...
-draft: true
+coverImage: cover.webp
+draft: false
 ---
 
 # Intro
 
-Basically, the challenge:
-- generates a random polynomial $f(x)$ with $N=$`20000156` terms in $\mathbb{F}_{p}$, where $p = 20000159$,
+Once in a while, there comes a problem that makes you more conscious about your insignificant intelligence... Today, it comes in the form of a CTF challenge \:'\<\<
+
+Basically, there's this challenge:
+- generates a random polynomial $f(x)$ with $N=$ `20000156` terms in $\mathbb{F}_{p}$, where $p=$ `20000159`,
 - evaluates the outputs $f(0), f(1), ..., f(p-1)$ except for $f(69), f(420)$ and $f(1337)$,
 - gives us said outputs,
 - gives us the `FLAG` **XORed** with the `sha512()` hash of $f(x)$'s coefficients array.
@@ -23,7 +26,7 @@ Since it's hard to crack `sha512()`, or reverse **XOR** function with 0 knowlege
 So, if you're a noob like me, your first thought will probably be: 
 > "Well, this is a piece of cake. 
 > 
-> We have $20000156$ outputs, the polynomial has $20000156$ terms. I'll just use the [Lagrange Interpolation](https://www.wikiwand.com/en/Lagrange_polynomial). They have this fancy math that **computes a polynomial's coefficients from its evaluations**. 
+> We have $20000156$ outputs, the polynomial has $20000156$ terms. I'll just use the [Lagrange Interpolation](https://www.wikiwand.com/en/Lagrange_polynomial). They have this fancy math that **computes a polynomial's $N$ coefficients from its $N$ evaluations**. 
 > 
 > We meet all the requirements needed to carry out the computation."
 <br/>
@@ -33,7 +36,7 @@ So you gleefully copy an implementation from the Internet, adding inputs, modify
 You run the code and wonder why it takes so long. Maybe the output array is too big and needed some time to load? No, it had already been done! You throw a `tqdm` bar into the main loop of the code and see that it estimates the algorithm will be running for another `7000` hours.
 <br/>
 
-Shit.
+Shit :shit:.
 
 You dig into the implementation of **Lagrange Interpolation**, and realize that given a polynomial with $N$ terms:
 - it computes the sum of $N$ terms, 
@@ -42,14 +45,14 @@ You dig into the implementation of **Lagrange Interpolation**, and realize that 
 
 An $O(N^2)$ runtime... 
 
-This algorithm works fast for small polynomial sizes, like `2` or `3` and some numbers close to it like `10000`, but not `20000156`. This is when you gasp: *"This is not Crypto, this is some [Codeforces](https://codeforces.com/) obsure **200+ IQ** optimization problem!!"* You know you suck, but you still want try another stuffs anyways, to see where it goes.
+This algorithm works fast for small polynomial sizes, like `2` or `3` and some numbers close to it like `10000`, but not `20000156`. This is when you **GASP**: *"This is not Crypto, this is some [Codeforces](https://codeforces.com/) obsure **200+ IQ** optimization problem!!"* You know you suck, but you still want try solving a coding optimization stuffs anyways, to see where it goes. Oh boy how shitty you're going feel afterwards!
 <br/>
 
 ## The Vandermonde Matrix
 From your experiences of watching math videos on Youtube, feeling smart then remember like **1%** about it the next day, you realize that ~~you don't know what to do now and feel like shit *(meanwhile, your teammate is saying something about **vandermonde**)*~~ maybe sometimes we need to derail to some random ideas to get to smart one, so that's what you did.
 <br/>
 
-So you definitely ~~did look at [this wiki page](https://www.wikiwand.com/en/Vandermonde_matrix) and~~ have **an insight** on your own ~~*(no)*~~: 
+So you definitely ~~did look at [this wiki page](https://www.wikiwand.com/en/Vandermonde_matrix) and did not~~ have **an insight** on your own: 
 
 The evaluation of $f(x) = \sum_{k=0}^{N-1} f_k x^k$ at $x_0$ can be represented as a dot product: $f(x_0) = (x_0^0, x_0^1, ..., x_0^{N-1}) \cdot (f_0, f_1, ..., f_{N-1})$.
 <br/>
@@ -93,7 +96,7 @@ f(x_0) \\ f(x_1) \\ ... \\ f(x_{N-1})
 $$
 <br/>
 
-The `NxN` matrix on the left side seems like a special type of matrix. Maybe you discovered a new thing 😱 (and not something already been discovered and called [the Vandermonde Matrix](https://www.wikiwand.com/en/Vandermonde_matrix))? Anyways, you decide to name this thing [the Vandermonde Matrix](https://www.wikiwand.com/en/Vandermonde_matrix), because it sounds right somehow...
+The `NxN` matrix on the left side seems like a special type of matrix. Maybe you discovered a new thing 😱 *(and not something already been discovered and called [the Vandermonde Matrix](https://www.wikiwand.com/en/Vandermonde_matrix))*? Anyways, you decide to name this thing [the Vandermonde Matrix](https://www.wikiwand.com/en/Vandermonde_matrix), because it sounds right somehow...
 
 Let's rewrite the equation into: 
 $
@@ -127,10 +130,13 @@ Hmm... But you forgot what it does...
 
 **Fast Fourier Transform**, or **FFT** for short, is an algorithm that also can do the **convert coefficients -> values** thingy. However, this algorithm has a restriction: 
 
-The inputs to $f(x)$ must be $\omega_N^0, \omega_N^1, ..., \omega_N^{N-1}$, instead of arbitrary values $x_0, x_1, ..., x_{N-1}$, where $\omega_N$ is **any** $N$-**th [root of unity](https://www.wikiwand.com/en/Root_of_unity).** 
-<br/>
+The inputs to $f(x)$ must be $\omega_N^0, \omega_N^1, ..., \omega_N^{N-1}$, instead of arbitrary values $x_0, x_1, ..., x_{N-1}$, where $\omega_N$ is **any** $N$-**th [root of unity](https://www.wikiwand.com/en/Root_of_unity)** *(except `1` to avoid $\omega_N^0 \neq \omega_N^1 \neq ... \neq \omega_N^{N-1}$)*. 
 
-> Hmm.. The actual purpose of **FFT** seems to be **some values -> frequency thingy conversion** stuffs. But in this case, it still true **(?)** idk... math is weird... But if you want to know the actual definition of **FFT**, you can read it here: [Wiki](https://www.wikiwand.com/en/Fast_Fourier_transform)
+> **Hmm..** Actually that's what I understand about this...
+> 
+> The actual purpose of **FFT** seems to be **some values -> frequency thingy conversion** stuffs. But in this case, it still true **(?)** idk... math is weird... Maybe I'm wrong on something @.@
+> 
+> But if you want to know the actual definition of **FFT**, you can read it here: [Wiki](https://www.wikiwand.com/en/Fast_Fourier_transform)
 <br/>
 
 To understand why **FFT** does this, let's formulize things.
@@ -174,7 +180,7 @@ D_{\omega_N} \text{ } \overrightarrow{f} = \overrightarrow{y_{\omega_N}}
 $, where:
 - $\overrightarrow{f}$ is $f(x)$'s coefficients vector.
 - $\overrightarrow{y_{\omega_N}}$ is $f(x)$'s outputs vector of $f(x)$ evaluated at $\omega_N^0, \omega_N^1, ..., \omega_N^{N-1}$.
-- $D_{\omega_N}$ is a special case of Vandermonde matrix, called the [DFT matrix](https://www.wikiwand.com/en/DFT_matrix), whose entries can be generated solely from $\omega_N$.
+- $D_{\omega_N}$ is a special case of Vandermonde matrix, called the [DFT matrix](https://www.wikiwand.com/en/DFT_matrix), whose entries can be generated solely from $\omega_N$ and their positions.
 <br/>
 
 Same as before, we have: $\overrightarrow{f} = D_{\omega_N}^{-1} \text{ } \overrightarrow{y_{\omega_N}}$. And it turns out that,
@@ -186,7 +192,7 @@ $$
 Since $\omega_N^{-1}$ is also *just another root of unity*, this means that the inverse process of **FFT** is just another **FFT** with an extra step of scaling down the outputs by $N$! Ahhh! The scaling process will definitely take $O(N)$, so if **FFT** can run in $O(N\log{N})$, then the inverse version (**IFFT**) is also the same *(yey)*
 <br/>
 
-And it turns out there's an optimized version of **FFT** that allows us to calculate in $O(N\log{N})$! For more details, please consider watching [this video by Reducible](https://youtu.be/h7apO7q16V0?si=KnmopD-iq8Nrtiqq), this guy is really good **:>** 
+And it turns out there's an optimized version of **FFT** that allows us to calculate in $O(N\log{N})$, called the *Radix-2 FFT*! For more details, please consider watching [this video by Reducible](https://youtu.be/h7apO7q16V0?si=KnmopD-iq8Nrtiqq), this guy is really good **:>** 
 
 ::ytembed[Reducible's Video]{#h7apO7q16V0}
 <br/>
@@ -208,20 +214,31 @@ f(x) = f_0 * x_0 + f_1 * x_1 + ... + f_{N-1} * x_{N-1} + 0 * x_N + 0 * x_{N+1} +
 $$
 <br/>
 
-## More Outputs
+## Can't get much more outputs
 
 But then that would mean we need more than `20000156` outputs!! We might want to use Lagrange Interpolation to recover more values. But it takes $O(N^2)$!!
 
-Also, in this CTF challenge, we can only get `3` more outputs, because $x \equiv x + 20000159$, so $f(20000160)$ is just $f(1)$... 
+Also, in this CTF challenge, we can only get `3` more outputs, because $x \equiv x + 20000159$, so $f(20000160)$ is just $f(1)$... And *none* of the numbers from `20000156` to `20000159` are powers of 2.
+<br/>
 
-*(it turns out, in this particular CTF challenge, we can recover `3` missing values $f(69), f(420), f(1337)$ in $O(4*N)$-ish due to some very clever parameter choices, but that's for later :-))*
+> **Note from Mistsu in the future**: 
+> 
+> *It turns out*, in this particular CTF challenge, we can **AND** just need to recover `3` missing values $f(69), f(420), f(1337)$ in $O(4*N)$-ish due to some very clever parameter choices, while still can do **FFT** in $O(N\log{N})$! 
+> 
+> but we're ahead of ourselves at this point heheheh **:-)**
 <br/>
 
 ## No $2^s$-th roots of unity...
 
-**However**, even if we're able to extend to some $2^s$ length, get some $2^s$ outputs, let's say, the closet one $\geq$ `20000156`: $2^{25}$. By then we still wouldn't be able to do **IFFT**: the algorithm requires a $2^{25}$-th root of unity, and no such thing exists in $\mathbb{F}_{p}$! Since prime factors of $p - 1$ are $2, 10000079$, we can only have $2, 10000079$, or $20000158$-th roots of unity only...
+**However**, even if we're able to extend to some $2^s$ length, get some $2^s$ outputs, let's say, the closet one $\geq$ `20000156`: $2^{25}$. By then we still wouldn't be able to do **IFFT**: the algorithm requires a $2^{25}$-th root of unity, and no such thing exists in $\mathbb{F}_{p}$. 
 
-You might be tempted to extend the current working field to $\mathbb{F}_{p^k}$, where $p^k - 1$ divides $2^{25}$. But it turns out, up until $k = 1000$, $p^k - 1$ divides $2^{13}$ at best.
+Because of number theory and [group theory](https://www.wikiwand.com/en/Lagrange%27s_theorem_(group_theory)) stuffs, any subgroup of the [multiplicative group](https://www.wikiwand.com/en/Multiplicative_group) $\mathbb{F}_{p}^{\times}$ must have [order](https://www.wikiwand.com/en/Order_(group_theory)) dividing $p-1$. What this is saying is that good luck trying to find $g \neq 1$ such that $g^{3} \equiv 1 \mod {p}$ when $3 \nmid p-1$...
+
+The only prime factors of $p - 1$ are $2, 10000079$, we can only use $2, 10000079$, or $20000158$-th roots of unity for doing FFT only...
+<br/>
+
+
+...You might be tempted to extend the current working field to $\mathbb{F}_{p^k}$, where you can find subgroups with order dividing $p^k - 1$. **But it turns out**, up until $k = 1000$, $p^k - 1$ is divisible by $2^{13}$ at best. And you might want to stop here, because going further means that your **CPU & RAM** goes bye bye computing those elements. And you also have to do Larange Interpolation to have outputs of inputs in that field...
 <br/>
 
 # Author's Solution
