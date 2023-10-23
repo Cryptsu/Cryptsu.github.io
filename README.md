@@ -15,7 +15,7 @@ For visualization, I got my inspirations from these websites, which are from CTF
 - https://chovid99.github.io/: For the homepage's icon and text typing stuffs / page structure.
 - https://mystiz.hk/: For inspiring me to use Mono-fonts / have cool table of content / table-style on my page. He also writes really cool Crypto posts.
 
-# Compatibility with Vanilla Markdown
+## Compatibility with Vanilla Markdown
 The markdowns on this page are compatible with normal markdown, with some exceptions of usages of `remark-directive`s *([https://github.com/remarkjs/remark-directive](Link))*:
 
 ### `::ytembed`
@@ -26,3 +26,10 @@ Embed `Youtube`'s video into the blog. **Usage**:
 ::ytembed[Video's description]{#video-id}
 ```
 
+### `:code`
+
+Mark a markdown block formatted as inine code like `this`. **Usage**:
+
+```markdown
+:code[some-text-or-markdown bla bla bla]
+```
