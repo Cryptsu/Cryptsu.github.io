@@ -19,14 +19,14 @@ type CodeBlockContextType = (
 )
 
 export enum CodeBlockStateEnum {
-  normal,
   wrapCode,
+  stretch,
   closeBox,
 }
 
 export const CodeBlockStates: CodeBlockStateEnum[] = [
-  CodeBlockStateEnum.normal,
   CodeBlockStateEnum.wrapCode,
+  CodeBlockStateEnum.stretch,
   CodeBlockStateEnum.closeBox,
 ]
 
@@ -34,7 +34,7 @@ export const CodeBlockContext: CodeBlockContextType = createContext({
   // Code block states
   showInner: true as boolean,
   wrapCode: false as boolean,
-  codeBlockState: CodeBlockStateEnum.normal as CodeBlockStateEnum,
+  codeBlockState: CodeBlockStateEnum.wrapCode as CodeBlockStateEnum,
   blockHeight: null as (number | null),
   shouldToggleAnimation: true as boolean,
 

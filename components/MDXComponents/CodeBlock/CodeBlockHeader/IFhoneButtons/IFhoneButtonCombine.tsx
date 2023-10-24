@@ -1,6 +1,6 @@
 import Style from "@/components/Style";
 import Button from "@/components/Button";
-import { ChevronUpIcon, ReplyIcon, ChevronDownIcon } from "@/components/Icons";
+import { ChevronUpIcon, ReplyIcon, ArrowBothIcon } from "@/components/Icons";
 import { CodeBlockStateEnum } from "@/contexts/CodeBlockContext";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
@@ -13,13 +13,13 @@ type IFhoneButtonCombineProps = PropsWithChildren<{
 }>
 
 const IconMap = {
-  [CodeBlockStateEnum.normal]: ChevronDownIcon,
+  [CodeBlockStateEnum.stretch]: ArrowBothIcon,
   [CodeBlockStateEnum.closeBox]: ChevronUpIcon,
   [CodeBlockStateEnum.wrapCode]: ReplyIcon,
 }
 
 const CSSMap = {
-  [CodeBlockStateEnum.normal]: {},
+  [CodeBlockStateEnum.stretch]: {},
   [CodeBlockStateEnum.closeBox]: {},
   [CodeBlockStateEnum.wrapCode]: { 
     transform: "scaleY(-1)"

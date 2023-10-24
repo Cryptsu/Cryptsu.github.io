@@ -13,9 +13,9 @@ type CodeBlockProps = PropsWithChildren<{
 }>
 
 const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
-  const [codeBlockStateIndex, setCodeBlockStateIndex] = useState<CodeBlockStateEnum>(CodeBlockStateEnum.normal);
+  const [codeBlockStateIndex, setCodeBlockStateIndex] = useState<CodeBlockStateEnum>(CodeBlockStateEnum.wrapCode);
   const [showInner, setShowInner] = useState<boolean>(true);
-  const [wrapCode, setWrapCode] = useState<boolean>(false);
+  const [wrapCode, setWrapCode] = useState<boolean>(true);
   const [blockHeight, setBlockHeight] = useState<number | null>(null);
   const [shouldToggleAnimation, setShouldToggleAnimation] = useState<boolean>(false);
 
@@ -35,15 +35,18 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
     let nextCodeBlockStateIndex = (codeBlockStateIndex + 1) % CodeBlockStates.length;
     setCodeBlockStateIndex(nextCodeBlockStateIndex);
 
+    console.log(nextCodeBlockStateIndex, CodeBlockStates[nextCodeBlockStateIndex])
+
     switch (CodeBlockStates[nextCodeBlockStateIndex]) {
-      case CodeBlockStateEnum.normal:
+      case CodeBlockStateEnum.wrapCode:
         setShouldToggleAnimation(true);
+        setWrapCode(true);
         setShowInner(true);
         break;
-      case CodeBlockStateEnum.wrapCode:
+      case CodeBlockStateEnum.stretch:
         setShouldToggleAnimation(false);
+        setWrapCode(false);
         setShowInner(true);
-        setWrapCode(true);
         break;
       case CodeBlockStateEnum.closeBox:
         setShouldToggleAnimation(true);
