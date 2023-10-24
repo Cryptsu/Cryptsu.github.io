@@ -203,15 +203,19 @@ So now it seems like we've found our path! **However**, if you've watched the vi
 # Oh No...
 
 A lot of *oh-noes...*
+<br/>
 
 ## Not a Power of 2
 
-In order for this optimized version to work, $N$ **must be a power of 2** *(that's why this is called "Radix-2 FFT")*, and `20000156`, well, is not. We can sort of *"pretending"* that $f(x)$ has more than `20000156` terms, where the leading coefficients are all $0$s.
+In order for this optimized version to work, $N$ **must be a power of 2** *(that's why this is called "Radix-2 FFT")*, and `20000156`, well, is not. But we can sort of *"cheat"* by *"pretending"* that $f(x)$ has more than `20000156` terms, with the leading coefficients are all $0$s.
 $$
 f(x) = f_0 * x_0 + f_1 * x_1 + ... + f_{N-1} * x_{N-1} \\
 \downarrow \\
 f(x) = f_0 * x_0 + f_1 * x_1 + ... + f_{N-1} * x_{N-1} + 0 * x_N + 0 * x_{N+1} + 0 * ...
 $$
+<br/>
+
+So why not, *say*, think that $f(x)$ has the number of coefficients $N$ = the closet power of two $\geq$ `20000156`, idk, like $2^{25}$?
 <br/>
 
 ## Can't get much more outputs
@@ -230,16 +234,18 @@ Also, in this CTF challenge, we can only get `3` more outputs, because $x \equiv
 
 ## No $2^s$-th roots of unity...
 
-**However**, even if we're able to extend to some $2^s$ length, get some $2^s$ outputs, let's say, the closet one $\geq$ `20000156`: $2^{25}$. By then we still wouldn't be able to do **IFFT**: the algorithm requires a $2^{25}$-th root of unity, and no such thing exists in $\mathbb{F}_{p}$. 
+**However**, even if we're able to extend to some $2^s$ length, get some $2^s$ outputs, in this case $2^{25}$. By then we still wouldn't be able to do **IFFT**: the algorithm requires a $2^{25}$-th root of unity, and no such thing exists in $\mathbb{F}_{p}$. 
 
 Because of number theory and [group theory](https://www.wikiwand.com/en/Lagrange%27s_theorem_(group_theory)) stuffs, any subgroup of the [multiplicative group](https://www.wikiwand.com/en/Multiplicative_group) $\mathbb{F}_{p}^{\times}$ must have [order](https://www.wikiwand.com/en/Order_(group_theory)) dividing $p-1$. What this is saying is that good luck trying to find $g \not\equiv 1$ such that $g^{x} \equiv 1 \mod {p}$ when $x \nmid p-1$... You can start with `3` to experiment 😘
 
-The only prime factors of $p - 1$ are $2, 10000079$, we can only use $2, 10000079$, or $20000158$-th roots of unity for doing FFT only...
+The only prime factors of $p - 1$ are $2, 10000079$, we can only use $2, 10000079$, or $20000158$-th roots of unity for doing **FFT** only... But apperantly that means we can only work with cases where $N$ = `2`, `10000079` or `20000158`!?
 <br/>
 
 > **Note from Mistsu in a closer future**: 
 > 
-> There's a very cool algorithm that allows us to do **FFT** in $O(N\log{N})$**-ish** without us needing to have $2^s$-th root of unity **:-)**, but rather $N$-th root of unity $\not\equiv 1$ for any $N$ dividing $p - 1$!
+> It seems like we can only work with **FFT** when $N$ is some number dividing $p-1$... 
+> 
+> However, there's a very cool modification to **FFT** that allows us to do **FFT** in $O(N\log{N})$**-ish** without us needing to have $2^s$-th root of unity **:-)**, but with just $N$-th roots of unity and $N$ outputs of $f(x)$!
 <br/>
 
 
