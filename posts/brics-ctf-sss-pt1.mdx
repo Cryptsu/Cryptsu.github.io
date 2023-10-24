@@ -1,5 +1,5 @@
 ---
-title: "BRICS+ CTF - SSS (Part 1): We need to Transform..."
+title: "BRICS+ CTF - SSS (Part 1): There is this really scary CTF challenge..."
 date: Tue Oct 04 2023 15:28:12 GMT+0700 (Indochina Time)
 description: I'm depressed after trying to solve this...
 coverImage: cover.webp
@@ -232,9 +232,14 @@ Also, in this CTF challenge, we can only get `3` more outputs, because $x \equiv
 
 **However**, even if we're able to extend to some $2^s$ length, get some $2^s$ outputs, let's say, the closet one $\geq$ `20000156`: $2^{25}$. By then we still wouldn't be able to do **IFFT**: the algorithm requires a $2^{25}$-th root of unity, and no such thing exists in $\mathbb{F}_{p}$. 
 
-Because of number theory and [group theory](https://www.wikiwand.com/en/Lagrange%27s_theorem_(group_theory)) stuffs, any subgroup of the [multiplicative group](https://www.wikiwand.com/en/Multiplicative_group) $\mathbb{F}_{p}^{\times}$ must have [order](https://www.wikiwand.com/en/Order_(group_theory)) dividing $p-1$. What this is saying is that good luck trying to find $g \neq 1$ such that $g^{3} \equiv 1 \mod {p}$ when $3 \nmid p-1$...
+Because of number theory and [group theory](https://www.wikiwand.com/en/Lagrange%27s_theorem_(group_theory)) stuffs, any subgroup of the [multiplicative group](https://www.wikiwand.com/en/Multiplicative_group) $\mathbb{F}_{p}^{\times}$ must have [order](https://www.wikiwand.com/en/Order_(group_theory)) dividing $p-1$. What this is saying is that good luck trying to find $g \not\equiv 1$ such that $g^{x} \equiv 1 \mod {p}$ when $x \nmid p-1$... You can start with `3` to experiment 😘
 
 The only prime factors of $p - 1$ are $2, 10000079$, we can only use $2, 10000079$, or $20000158$-th roots of unity for doing FFT only...
+<br/>
+
+> **Note from Mistsu in a closer future**: 
+> 
+> There's a very cool algorithm that allows us to do **FFT** in $O(N\log{N})$**-ish** without us needing to have $2^s$-th root of unity **:-)**, but rather $N$-th root of unity $\not\equiv 1$ for any $N$ dividing $p - 1$!
 <br/>
 
 
