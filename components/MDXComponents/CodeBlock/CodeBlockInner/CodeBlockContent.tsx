@@ -15,7 +15,7 @@ const CodeBlockContent = ({children, wrapCode, elementRef, ...otherProps}: CodeB
       style={CodeBlockContentStyles} 
       css={
         wrapCode
-          ? { whiteSpace: "pre-wrap", lineBreak: "anywhere" }
+          ? { whiteSpace: "pre-wrap", wordBreak: "break-word" }
           : { overflowX: "auto" }
       }
       {...otherProps}
