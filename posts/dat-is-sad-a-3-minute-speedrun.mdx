@@ -13,7 +13,7 @@ C = M^{65537} \mod N
 $$
 where `N = pq`, where `p` and `q` are two big *(512-bit)* primes and `N > M`. This makes `N` 1024-bit. The server generates these `C` and `N`, then send them to us, the client as many times as we like, each time a different `C` and a different `N > M` composed by entirely different `p`s and `q`s.
 
-:br
+<br/>
 
 # IDEA
 
@@ -22,13 +22,13 @@ $$
 M^{65537} \mod lcm(N_1, N_2, ...) 
 \\ = crt([C_1, C_2, C_3, ..., C_{65537}], [N_1, N_2, N_3, ..., N_{65537}])
 $$
-:br
+<br/>
 
 If we consider each of the `N` composed by different prime numbers, then :code[lcm(N<sub>1</sub>, N<sub>2</sub>, ...) = N<sub>1</sub>N<sub>2</sub>...N<sub>65537</sub>] so
 $$
 M^{65537} \mod lcm(N_1, N_2, ...)  = M^{65537} \mod N_1N_2...N_{65537}
 $$
-:br
+<br/>
 
 Since
 $$
@@ -37,10 +37,10 @@ M < N_i \\\text{for every i} \in [1, 65537] \\
 \\ \rightarrow M^{65537} \mod N_1N_2...N_{65537} = M^{65537}
 $$
 
-:br
+<br/>
 To recover `M`, all we need is to take the `65537-th` root of :code[M<sup>65537</sup>], which can be done very fast using *Sagemath*, and we're done!
 
-:br
+<br/>
 
 # Collect C-N Pairs
 
@@ -91,7 +91,7 @@ m_65537 = crt(c, n)
 print(long_to_bytes(Integer(m_65537).nth_root(65537)))
 ```
 
-:br
+<br/>
 # Reality is Harsh
 
 So we waited...
@@ -102,7 +102,7 @@ And it did not give us any output.
 
 Why did it take so long???
 
-:br
+<br/>
 
 ## Sage's CRT is Slow
 
@@ -119,7 +119,7 @@ for i in range(1, len(v)):
 return x % m
 ```
 
-:br
+<br/>
 
 Basically, what this function does is it builds up the calculation like so:
 $$
@@ -138,13 +138,13 @@ The result of the algorithm is :code[x<sub>len(C)</sub>].
 The algorithm works fine, it gets the job done. The problem lies when the number of values inputed at `CRT` **IS BIG**. 
 
 
-:br
+<br/>
 
 To demonstrate what I mean, let's dig in to see what happens in each loop of that `CRT_list()` function.
 
 :code[x<sub>0</sub>] has **1024** bits. Let's replace this number of bits with `b` and assume that the time taken to write data to a `b`**-bit number** is :code[T<sub>b</sub>], and it scales up linearly with `b`. 
 
-:br
+<br/>
 After each loop, we need to create a new variable :code[x<sub>i</sub>] with `+b` bits more than :code[x<sub>i-1</sub>] and write data to it. So in time, the number of bits of :code[x<sub>i</sub>] will be like this: 
 $$
 [b, 2b, 3b, 4b, ..., 65537b]
@@ -156,7 +156,7 @@ $$
 As we can see, for `b = 1024`, the time taken to write one number is neglectable, but *2 billions of similar writes* would make a HUGE different.
 
  
-:br
+<br/>
 Let's analyse the runtime in **O-notation**. Replace `65537`, the amount of numbers used in CRT, with `k` we have:
 $$
 T_{total} \approx \frac{T_bk^2}{2} = O(k^2)
@@ -164,23 +164,23 @@ $$
 Not a very good runtime to be honest :v:
 
 
-:br
+<br/>
 
 And I haven't mention the runtime of the [multiply algorithm](https://www.wikiwand.com/en/Karatsuba_algorithm) between 2 numbers, which has a more dominant runtime. It has :code[O(b<sup>log<sub>2</sub>3</sup>)] with respect to the number of bits, and is used a lot during CRT. Here I will stick to the write-data algorithm as it is easier to elaborate :kissing: 
 
-:br
+<br/>
 
 ## From O(k<sup>2</sup>) to O(klogk)
 
 Instead of doing **CRT** sequentially from left to right each loop like Sage's algorithm, what we did in each loop is doing **CRT** for EACH 2 NUMBERS in the array. After `k/2` runs we create 2 new list of `k/2` `2b`**-bit** remainders and modulus. Then we do the same thing again, yield 2 new list of `k/4` `4b`**-bit** remainders and modulus... Until the list of remainder has only one element :kissing:
 
-:br
+<br/>
 
 At the first `k/2` runs, the runtime for write data to `k/2` `2b`**-bit** number is:
 $$
 T_{2b} * \frac{k}{2} = 2T_{b} * \frac{k}{2} = kT_b
 $$
-:br
+<br/>
 
 The next `n/4` run yields the runtime of:
 $$
@@ -188,23 +188,23 @@ T_{4b} * \frac{k}{4} = 4T_b * \frac{k}{4} = kT_b
 $$
 And so on...
 
-:br
+<br/>
 
 Since the number of runs divides by 2 each loop, we have in total `log(k)` loops, which yield the total runtime *for creating and writing memory* of:
 $$
 T_{total} = kT_b\log(k) = O(k\log(k))
 $$
-:br
+<br/>
 
 Comparing to the previous :code[O(k<sup>2</sup>)] algorithm, we have achieved a speed up of about (for `k=65537`):
 $$
 \frac{k}{2} / log(k) = \frac{65537}{2 * \log(65537)} \approx 2048 \text{ times}
 $$
-:br
+<br/>
 
 *Again, this is only the speed up ratio for creating and writing new memory, for speeding up in multiplication and other more time-consuming activities in `crt()`, it's different, but I guess we could just expect some value around this.*
 
-:br
+<br/>
 
 With that in mind, let's implement the code *(btw for some reason the algorithm runs faster when we consider in each loop doing **CRT** for every **8 NUMBERS** instead of **2**)*:
 
@@ -270,7 +270,7 @@ def CRT_(r, m, SEG_SIZE=8, debug=False):
 m_65537 = CRT_(c, n, debug=True)
 print(long_to_bytes(Integer(m_65537).nth_root(65537)))
 ```
-:br
+<br/>
 
 And the algorithm only took us **3 minutes** to run, which is definitely faster than infinity :)
 
@@ -361,7 +361,7 @@ m_65537 = CRT_(c, n, debug=True, SEG_SIZE=8)
 print(long_to_bytes(Integer(m_65537).nth_root(65537)))
 ```
 
-:br
+<br/>
 
 
 And this is the result on my 8-thread, 4 core machine :dancers::dancers::dancers::dancers: wow!! 3 times faster.

@@ -23,7 +23,7 @@ I've seen the discussion around the challenge and I saw players talking about br
 
 Although this approach only gives us the correct output $\frac{1}{4}$ of the time, I still think it is interesting so it would be fun to share it :slightly_smiling_face:
 
-:br
+<br/>
 # TL;DR
 
 ---
@@ -34,7 +34,7 @@ Although this approach only gives us the correct output $\frac{1}{4}$ of the tim
 
 ---
 
-:br
+<br/>
 Consider a list of outputs from `rand.Intn(n)` named $R$ where `n` is a relatively small number $< 2^{31}$. The $i$-th element $R_i$ will most likely fall into one of these 4 cases:
 $$
 R_i = R_{i-607} + R_{i-273} \mod {n}
@@ -47,7 +47,7 @@ R_i = R_{i-607} + R_{i-273} - 2^{31} + 1 \mod {n}
 $$
 and we use **one of these 4 equations as our strategy to guess the next output**. Each round we bet `balance`**/2** (*or some number that is linear to `balance`, like `balance`**/3** or sth, your pick :kissing_smiling_eyes:*). This strategy allows our money not to run out too quickly when we guess the wrong number while still guarantees our money growing exponentially if we win. Since **win amount** is $>>$ **lose amount**, we will benefit in the long run and hence can reach our target `balance`.
 
-:br
+<br/>
 # Challenge description
 
 >  *(if you know all the functionalities of the code files, you may skip this section anyways :slightly_smiling_face: )*
@@ -95,7 +95,7 @@ return nil
 
 
 
-:br
+<br/>
 - **bet** a number `n` between $[0, 2023)$ with some non-negative `amount` (*if you put in a negative number, the server will correct it to become positive anyways :sneezing_face:  -- this became the exploit point of the first challenge, Casino 1, because it didn't check whether the amount is negative or not.*) 
 
   
@@ -146,7 +146,7 @@ return nil
 ```
 
 
-:br
+<br/>
 - **show balance with proof**: You give your `username` to the server and it gives you the `balance` along with a `proofData` to prove that you actually own that amount of money.
 
   
@@ -181,7 +181,7 @@ return nil
 ```
 
 		
-:br
+<br/>
 - **get the flag**. In order to retrieve the flag, we need to provide our `balance`. We also need to provide a `proofData`, which is generated from the previous section and it's there so that we cannot lie about our `balance`. The more `balance` we have, the more bytes of the flag is revealed to us.
 
 - **<u>*example request:*</u>** 
@@ -223,14 +223,14 @@ return nil
 // ...
 ```
 
-:br
+<br/>
 # Analysis
 
 The number of flag bytes revealed to us scales linearly with the number of **bytes** there are in our `balance`, so we probably need to have a lot of money to get the full flag. **For example**, if the flag is $50$ bytes long, we need at least $2^{50*8} = 2^{400}$ coin units to get all of it, which is a really really really big number comparing to our humble $2023$ coins at the beginning.
 
 There are two ways we may want to approach this problem.
 
-:br
+<br/>
 ## The IAVL bug
 
 First one is the **IAVL bug**. You can see that users' data is stored in the `Casino` structure, which contains a `tree` object. This `tree` data type comes from `github.com/cosmos/iavl` library.
@@ -285,7 +285,7 @@ However, our investigation about the tree stuff ends here, because this is where
 - [Binance Chain Bridge Exploitation Writeup - Part 1](https://blog.verichains.io/p/binance-bridge-exploitation-preliminary)
 - [Binance Chain Bridge Exploitation Writeup - Part 2](https://blog.verichains.io/p/binance-chain-bridge-exploitation)
 
-:br
+<br/>
 ## The Go `math/rand` stuff
 
 The second way you could dig at this challenge is by exploiting the `rand.Intn(n)` function from `math/rand` library. Remember, the server creates random numbers in $[0, 2023)$ and you can try to guess them in order to gain/or lose money. 
@@ -293,7 +293,7 @@ The second way you could dig at this challenge is by exploiting the `rand.Intn(n
 We can try to go all random; however, that only guarantees us to get the correct answer in a probability of $\frac{1}{2023}$, and from the way the server rewards us, **+**$2022$ * `balance` for winning and **-**`balance` for losing, it seems like we will just be stuck in the same loop forever if we do that.
 
 
-:br
+<br/>
 
 ---
 
@@ -311,7 +311,7 @@ The reason this is feasible because the `math/rand` library *<u>"implements pseu
 
 ---
 
-:br
+<br/>
 A **pseudo-random number generator**, or **PRNG**, like this would generate all of their supposed random numbers based on a `seed` value. If you know the `seed`, you basically become god and predict all `n` values in the bet game. 
 
 As some players have pointed out, it is possible to recover the `seed` of Go's PRNG, because:
@@ -322,7 +322,7 @@ This means we just need to brute-force every value from $0$ to $2^{32} - 1 = 429
 
 While it is very simple to setup the code to do this, an hour, to me, still feels like it's too much. If you code wrong *(probably you won't but who knows?)*, you would've to spend another hour to debug :slightly_smiling_face: Luckily tho, we can find the pattern of `rand.Intn(2023)` without the seed :wink:, thus solving this challenge in a matter of seconds.
 
-:br
+<br/>
 # Finding pattern in `rand.Intn(n)`
 
 ## Graphing the Calls
@@ -348,7 +348,7 @@ While the above graph looks kinda crazy *(or not, idk...)*, when we create an ab
 ![](abstraction.png)
 
 
-:br
+<br/>
 ## Formualize it
 
 The graph above can be simplified as a formula in **Python**:
@@ -375,7 +375,7 @@ This implies if we have two Go programs set to the same `seed`, one outputting 1
 
 ---
 
-:br
+<br/>
 ... You're probably wondering why I keep mentioning `n` is small in the code comment. Well, the above statement *is not entirely true*. It only happens in **high probability** for small `n`. For big `n` $< 2^{31}$, `rand.Intn(n)` may call `rand.Uint64()` multiple times before outputting a number. If we investigate into the `rand.Int31n(n)` function, 
 
 ```go
@@ -390,11 +390,11 @@ func (r *Rand) Int31n(n int32) int32 {
 }
 ```
 
-:br
+<br/>
 you can see that there also exists a `max` variable, and we have to call `rand.Int31()` repeatedly until we hit a value `<= max`. If `n` is small, `max` would be very close to $2^{31}$, thus we most likely just need to call `rand.Int31()` only once for each `rand.Intn(n)`.
 
 
-:br
+<br/>
 Oh, but there is an exception if `n` is a power of $2$. If `n` is $2^{\text{something}}$, every call to `rand.Intn(n)` will definitely call `rand.Int31()` once.
 
 ```go
@@ -409,7 +409,7 @@ func (r *Rand) Int31n(n int32) int32 {
 ```
 
 
-:br
+<br/>
 ## More Pattern
 
 Consider $R$ a list of consecutive outputs from `rand.Intn(n)`, $S$ a list of consecutive outputs from `rand.Uint64()` setting to the same `seed` starting at the same time, when `n` is a small number $< 2^{31}$, we most likely have:
@@ -419,7 +419,7 @@ $$
 where $S_i, R_i$ is the $i$-th output of `rand.Uint64()` and `rand.Intn(n)`.
 
 
-:br
+<br/>
 What's great about this formula is that we can now derive a pattern for `rand.Intn(n)` through the pattern of `rand.Uint64()`. And it turns out the pattern of `rand.Uint64()` is very simple. When you look at the code for `rand.Uint64()`, you can see it get output from `rng.vec` array while updating it.
 
 ```go
@@ -482,7 +482,7 @@ $$
 *(while it is seemingly enough to conclude $S_i = S_{i-607} + S_{i-273}$ based on the `x := rng.vec[rng.feed] + rng.vec[rng.tap]` line, however since `rng.vec` is stored in an `int64` array, we have to include the$\mod 2^{64}$ in there.)*
 
 
-:br
+<br/>
 ## The tale of adding two numbers
 
 > *(i think this section is kinda overkill, but whatever -_-)*
@@ -550,7 +550,7 @@ $$
 R_i = R_{i-607} + R_{i-273} - \{0, 2^{31}\} + \{0, 1\} \mod n
 $$
 
-:br
+<br/>
 ## Take your `balance` to the infinity and beyond :rocket:
 
 Now we've known how the outputs of `rand.Intn(n)` are related. We can collect numbers generated by the server into a list $R$ by just **betting** random numbers in $[0, 2023)$. You can bet $0$ coin units to prevent yourself from losing money. 
@@ -573,7 +573,7 @@ Because win amount is $2022$ times bigger than lose amount, while our possibilit
 
 When you get $2^{400}$ coin units, you request `showBalanceWithProof` to get `proofData` then submit it along with your `balance` to `PrintFlag` to grab some flag! *(yey)*
 
-:br
+<br/>
 # Appendices
 
 ## Solve script

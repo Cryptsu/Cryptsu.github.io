@@ -11,7 +11,7 @@ This is a crazy challenge that drained my team's brains :cry: and we couldn't so
 
 Since the intended solution will be provided by the author *catto* after the finals (**18/12**), which is over **ONE MONTH AFTER** from when I'm writing these lines (*why it gotta take so long catto* :sob: :sob: :sob:), I decided to create my own writeup to explain our method of solving this problem :kissing:
 
-:br
+<br/>
 # Challenge
 
 ## Description
@@ -22,7 +22,7 @@ The server gives us hints about the password through the output of the `encrypt(
 
 This writeup provides a way to obtain the flag with **8** outputs of `encrypt(password)` in a probability of about **$1/40$**.
 
-:br
+<br/>
 ## Code
 
 ```python
@@ -104,7 +104,7 @@ def chall():
 chall()
 ```
 
-:br
+<br/>
 # Analyzing stuffs...
 
 Let's first dissect everything in the source code to see what it does and how to make sense of the data given to us :kissing: If you've already known what to expect, you can hop onto the next section to see the discussion of the solution :heart:
@@ -221,7 +221,7 @@ All of these **XOR**s and **2-dimensional arrays** and **lists** of **0**s and *
 Now we know how to view the encrypted password, let's discuss the solution!
 
 
-:br
+<br/>
 # How to know the bits of `password`?
 
 In order to get all the bits of `password`, we must be able to classify which vector $\overrightarrow{v_i}$ in `ct` belongs to which vector space. Is $\overrightarrow{v_i}$ generated from `BASIS[:64]` *(so $password_{i}$ is 0)*, or `BASIS[64:]` *(so $password_{i}$ is 1)*? 
@@ -257,7 +257,7 @@ Before moving on, I think I should introduce some notations here to help discuss
 - $\#S$ is the **length** of set $S$.
 
 
-:br
+<br/>
 # Matrix1.0
 
 In *Glitch in the matrix 1.0*, comparing $password_i$ and $password_j$ is very much doable. To solve this challenge, we have to provide a way to differentiate between the vectors that are either generated from `BASIS[:64]` or `BASIS[64:]`.
@@ -285,7 +285,7 @@ In script, we fix $i = 0$ and let $j$ runs from $1 - 63$ to generate the mapping
 
 
 
-:br
+<br/>
 # Matrix2.0
 
 *Glitch in the matrix 2.0* is the updated version where `BASIS` is shuffled every-time we request a new `encrypt(password)`. This means that the property that:
@@ -304,7 +304,7 @@ And we still had no idea what the hell she is talking about until the end of the
 
 ...
 
-:br
+<br/>
 And then, a thought comes to my mind: 
 
 While it's true that $\overrightarrow{v_{i, a}}$ is not gonna be generated from the same set of 64 vectors as $\overrightarrow{v_{i, b}}$ if $a \neq b$, some of the vectors in those sets might overlap. Let $P(S_{i, a} \cap S_{i, b} = \{\})$ be the probability of $S_{i, b}$ purposefully choosing a set of different 64 vectors to $S_{i, a}$ in a list of 128 vectors, then:
@@ -321,12 +321,12 @@ $$
 
 This might be the "probability" thing *catto* was talking about! Also from this another idea is formed!
 
-:br
+<br/>
 ## Detecting $\lfloor{\frac{128}{n}}\rfloor + 1$ similar bits in `password`
 
 Let's say we generate `encrypt(password)` $n$ times for $n \ge 3$.
 
-:br
+<br/>
 And somehow, for a certain value of $password_i$, we obtain the vectors $\overrightarrow{v_{i, 0}}, \overrightarrow{v_{i, 1}}, ..., \overrightarrow{v_{i, n-1}}$  such that: 
 $$
 \#(S_{i, 0} \cup S_{i, 1} \cup S_{i, 2} \text{ } \cup \text{ } ... \text{ } \cup S_{i, n-1}) \le 127
@@ -335,12 +335,12 @@ This means that $S_{i, 0} \cup S_{i, 1} \cup S_{i, 2} \text{ } \cup \text{ } ...
 
 
 
-:br
+<br/>
 And somehow, we can find a set of $\lfloor{\frac{128}{n}}\rfloor + 1$ elements $\{password_{i_0}, password_{i_1}, ..., password_{i_{\lfloor{\frac{128}{n}}\rfloor}}\}$,  where $password_{i_0} = password_{i_1} = \text{ } ... = password_{i_{\lfloor{\frac{128}{n}}\rfloor}}$.
 
 
 
-:br
+<br/>
 So, this matrix $M$, which has $n(\lfloor{\frac{128}{n}}\rfloor + 1) > 128$ rows,
 $$
 M = 
@@ -360,15 +360,15 @@ $$
 must have rank $\le 127$ as all of these vectors are generated from the set of $S_{i, 0} \cup S_{i, 1} \cup S_{i, 2} \text{ } \cup \text{ } ... \text{ } \cup S_{i, n-1}$, which contains only $\le 127$ rows of `BASIS`.
 
 
-:br
+<br/>
 If we change just one of $password_{i_k}$ to a different bit from the rest, the above matrix $M$ will most likely have higher rank *(often $128$*) than before, since there will be a row in $M$ that is a linear combination of the vectors including the one(s) that is/are not in $S_{i, 0} \cup S_{i, 1} \cup S_{i, 2} \text{ } \cup \text{ } ... \text{ } \cup S_{i, n-1}$. 
 
 
-:br
+<br/>
 Here comes our mechanism to detect $\lfloor{\frac{128}{n}}\rfloor + 1$ similar bits in `password`. In particular, if we randomize $\{{i_0}, {i_1}, ..., {i_{\lfloor{\frac{128}{n}}\rfloor}}\}$ enough times and construct $M$, we might stumble across a situation where $M$ has rank $\le 127$ and we can use this to say that $password_{i_0} = password_{i_1} = \text{ } ... = password_{i_{\lfloor{\frac{128}{n}}\rfloor}}$ with **high probability**.
 
 
-:br
+<br/>
 However, in order for this to work, we need to make sure to choose $n$ so that both of these conditions hold:
 
 1. $\#(S_{i, 0} \cup S_{i, 1} \cup S_{i, 2} \text{ } \cup \text{ } ... \text{ } \cup S_{i, n-1}) \le 127$ occurs in **high probability**.
@@ -376,10 +376,10 @@ However, in order for this to work, we need to make sure to choose $n$ so that b
 2. Choose $\{{i_0}, {i_1}, ..., {i_{\lfloor{\frac{128}{n}}\rfloor}}\}$ that $password_{i_0} = password_{i_1} = \text{ } ... = password_{i_{\lfloor{\frac{128}{n}}\rfloor}} = 0$ in **high probability**.
 
 
-:br
+<br/>
 It turns out, if scenario **1.** occurs more likely, scenario **2.** will occur less likely and vice versa, so we need to balance $n$. Through trials and errors, I've decided to choose $n = 8$ and the correct set $\{{i_0}, {i_1}, ..., {i_{\lfloor{\frac{128}{n}}\rfloor}}\}$ is found in a probability of about $1/20$, after brute forcing at most $400000$ sets.
 
-:br
+<br/>
 ## Recover the remaining bits in `password`
 
 Remember the matrix $M$ from the last section? We can use it to detect the rest of the bits in `password`. For every $j$-th bit in `password` that $j \notin \{{i_0}, {i_1}, ..., {i_{\lfloor{\frac{128}{n}}\rfloor}}\}$, I decided to construct a new matrix $N$ from $M$ that is:
@@ -401,7 +401,7 @@ Then compares $rank(N)$:
 
 With this information, we can recover `password` with a probability of $1/2$.
 
-:br
+<br/>
 # Solve code
 
 This piece of code implements what I've just described above, with some small changes:
