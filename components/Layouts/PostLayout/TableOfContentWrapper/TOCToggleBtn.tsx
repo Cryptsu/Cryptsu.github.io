@@ -18,8 +18,20 @@ const TOCToggleBtn = ({children, showTOCMobile, ...otherProps}: TOCToggleBtnProp
       style={TOCToggleBtnStyles} 
       css={
         showTOCMobile
-          ? { zIndex: theme.zIndices.tocBtnClick, }
-          : { zIndex: theme.zIndices.tocBtnNormal, }
+          ? { 
+              zIndex: theme.zIndices.tocBtnClick, 
+              display: "none", 
+              '@larger': {
+                display: "flex"
+              },
+            }
+          : { 
+              zIndex: theme.zIndices.tocBtnNormal, 
+              display: "none", 
+              '@larger': {
+                display: "flex"
+              },
+            }
       }
       {...otherProps}
     >
@@ -59,11 +71,6 @@ const TOCToggleBtnStyles: CSS = {
     backgroundColor: theme.colors.secondary,
     boxShadow: theme.shadows.tocMobileBtnClick,
   },
-
-  display: "none",
-  '@larger': {
-    display: "flex"
-  }
 };
 
 const IconTOCOnStyles: CSS = {
