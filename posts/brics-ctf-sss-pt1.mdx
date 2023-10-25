@@ -49,7 +49,7 @@ This algorithm works fast for small polynomial sizes, like `2` or `3` and some n
 <br/>
 
 ## The Vandermonde Matrix
-From your experiences of watching math videos on Youtube, feeling smart then remember like **1%** about it the next day, you realize that ~~you don't know what to do now and feel like shit *(meanwhile, your teammate is saying something about **vandermonde**)*~~ maybe sometimes we need to derail to some random ideas to get to smart one, so that's what you did.
+From your experiences of watching math videos on Youtube, feeling smart then remember like **1%** about it the next day, you realize that ~~you still don't know what to do now and feel like shit *(meanwhile, your teammate is saying something about **vandermonde**)*~~ maybe sometimes we need to derail to some random ideas to get to smart one, so that's what you did.
 <br/>
 
 So you definitely ~~did look at [this wiki page](https://www.wikiwand.com/en/Vandermonde_matrix) and did not~~ have **an insight** on your own: 
@@ -57,7 +57,7 @@ So you definitely ~~did look at [this wiki page](https://www.wikiwand.com/en/Van
 The evaluation of $f(x) = \sum_{k=0}^{N-1} f_k x^k$ at $x_0$ can be represented as a dot product: $f(x_0) = (x_0^0, x_0^1, ..., x_0^{N-1}) \cdot (f_0, f_1, ..., f_{N-1})$.
 <br/>
 
-Or maybe, as a multiplication of `1xN` matrix with another `Nx1` matrix?
+Or maybe, as a multiplication of `1xN` matrix with another `Nx1` matrix:
 $$
 \begin{bmatrix}
 x_0^0 & x_0^1 & ... & x_0^{N-1}
@@ -108,11 +108,11 @@ where:
 - $V$ is the Vandermonde matrix.
 <br/>
 
-Which leads to $\overrightarrow{f} = V^{-1} \text{ } \overrightarrow{y}$. As long as $x_0 \neq x_1 \neq x_2 \neq ... \neq x_{N-1}$, $V$ is invertible. Anyways, this shifts our focus into...
+Which leads to $\overrightarrow{f} = V^{-1} \text{ } \overrightarrow{y}$. As long as $x_0 \neq x_1 \neq x_2 \neq ... \neq x_{N-1}$, $V$ is invertible. Because we have $\overrightarrow{y}$ and want to find $\overrightarrow{f}$, this shifts our focus into...
 
 ![this is when I started googling about vandermonde](genni-insight.png)
 
-A couple of Google Searches leads us to [this website](https://proofwiki.org/wiki/Inverse_of_Vandermonde_Matrix):
+A couple of Google searches leads us to [this website](https://proofwiki.org/wiki/Inverse_of_Vandermonde_Matrix):
 
 ![seems bad, but I dunno why...](inverse_vandermonde.png)
 
@@ -123,7 +123,7 @@ You have a hunch that this route sucks. Matrix multiplication with a vector stil
 Others seem to brush off his idea, and to be honest, they seem tired and confused at that point, so it's understandable. But you remember from the **1%** of knowledge you watched in some Youtube video, that **FFT** is some algorithm that can be done in $O(N\log{N})$, which is something way better than $O(N^2)$, is probably exactly what we need right now!! 
 <br/>
 
-Hmm... But you forgot what it does...
+Hmm... But you forget what it does...
 <br/>
 
 ## Fast Fourier Transform
@@ -183,13 +183,20 @@ $, where:
 - $D_{\omega_N}$ is a special case of Vandermonde matrix, called the [DFT matrix](https://www.wikiwand.com/en/DFT_matrix), whose entries can be generated solely from $\omega_N$ and their positions.
 <br/>
 
-Same as before, we have: $\overrightarrow{f} = D_{\omega_N}^{-1} \text{ } \overrightarrow{y_{\omega_N}}$. And it turns out that,
+Same as before, we want to **convert values in $\overrightarrow{y}$ -> coefficients $\overrightarrow{f}$**, which is esentially the inverse process of **FFT**. 
+
+We have: $\overrightarrow{f} = D_{\omega_N}^{-1} \text{ } \overrightarrow{y_{\omega_N}}$, where $D_{\omega_N}$ is invertible since $\omega_N^0 \neq \omega_N^1 \neq ... \neq \omega_N^{N-1}$. It turns out that the inverse of a **DFT matrix** is **another DFT matrix** scaled down by $N$:
 $$
 D_{\omega_N}^{-1} = \frac{D_{\omega_N^{-1}}}{N}
 $$
 <br/>
 
-Since $\omega_N^{-1}$ is also *just another root of unity*, this means that the inverse process of **FFT** is just another **FFT** with an extra step of scaling down the outputs by $N$! Ahhh! The scaling process will definitely take $O(N)$, so if **FFT** can run in $O(N\log{N})$, then the inverse version (**IFFT**) is also the same *(yey)*
+Since $\omega_N^{-1}$ is also *just another root of unity* **&** multiply with a **DFT matrix** is just doing **FFT**, this means that the inverse process of **FFT** (**IFFT**) is just another **FFT** with an extra step of scaling down all the outputs by $N$! **Ahhh!**
+<br/>
+
+What you can take away from this is that **IFFT** is nearly as fast as **FFT** *(scaling values down by a constant is a really fast process btw)*. I dunno if there're better methods, so this could be wrong, but if you look at the other method we found to **convert values -> coefficients**, the difference it has with **convert coefficients -> values** involves an additional process of inverting a really big matrix: A very complex process that takes a lot of **CPU & RAM**. So this seems like a huge hidden win that we just discover blindly **:-3**
+
+Also, this means that if you can somehow make **FFT** fast, **IFFT** is also being fast too!
 <br/>
 
 And it turns out there's an optimized version of **FFT** that allows us to calculate in $O(N\log{N})$, called the *Radix-2 FFT*! For more details, please consider watching [this video by Reducible](https://youtu.be/h7apO7q16V0?si=KnmopD-iq8Nrtiqq), this guy is really good **:>** 
