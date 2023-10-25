@@ -54,7 +54,7 @@ export const getPostData
       minsRead: Math.round(readingTime(rawContent).minutes),
       draft: (data.draft === undefined ? false : data.draft),
       noWords: readingTime(rawContent).words,
-      permalink: `${AppConfig.BLOG_URL}/${AppConfig.POSTS_DIR}/${slug}/`,
+      permalink: `${AppConfig.BLOG_URL}/${AppConfig.POSTS_DIR}/${slug}`,
       slug,
     },
     content
