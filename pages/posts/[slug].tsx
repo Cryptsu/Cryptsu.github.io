@@ -29,7 +29,7 @@ const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPr
   // '/', we can change it into relative
   // import :) A bit hacky method, though...
   const router = useRouter();
-  const currentURL = router.asPath.split('?')[0].split('/');
+  const currentURL = router.asPath.split('/');
   const possibleSlug = currentURL.pop();
   const possibleCategory = currentURL.pop();
   
