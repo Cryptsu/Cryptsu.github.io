@@ -21,12 +21,14 @@ Basically, there's this challenge:
 
 Since it's hard to crack `sha512()`, or reverse **XOR** function with 0 knowleges about one of its inputs, our only route is to recover $f(x)$ from its outputs.
 
+![](values-_-coefficients-figure.webp)
+
 ## Lagrange Interpolation
 
 So, if you're a noob like me, your first thought will probably be: 
 > "Well, this is a piece of cake. 
 > 
-> We have $20000156$ outputs, the polynomial has $20000156$ terms. I'll just use the [Lagrange Interpolation](https://www.wikiwand.com/en/Lagrange_polynomial). They have this fancy math that **computes a polynomial's $N$ coefficients from its $N$ evaluations**. 
+> I'll just use the [Lagrange Interpolation](https://www.wikiwand.com/en/Lagrange_polynomial). They have this fancy math that **computes a polynomial's $N$ coefficients from its $N$ evaluations**. 
 > 
 > We meet all the requirements needed to carry out the computation."
 <br/>
@@ -45,7 +47,7 @@ You dig into the implementation of **Lagrange Interpolation**, and realize that 
 
 An $O(N^2)$ runtime... 
 
-This algorithm works fast for small polynomial sizes, like `2` or `3` and some numbers close to it like `10000`, but not `20000156`. This is when you **GASP**: *"This is not Crypto, this is some [Codeforces](https://codeforces.com/) obsure **200+ IQ** optimization problem!!"* You know you suck, but you still want try solving a coding optimization stuffs anyways, to see where it goes. Oh boy how shitty you're going feel afterwards!
+This algorithm works fast for small polynomial sizes, like `2` or `3` and some numbers close to it like `10000`, but not `20000156`. This is when you **GASP**: *"This is not Crypto, this is some [Codeforces](https://codeforces.com/) obsure **200+ IQ** optimization problem!!"* You know you suck, but you still want try solving a coding optimization stuffs anyways, to see where it goes.
 <br/>
 
 ## The Vandermonde Matrix
@@ -191,15 +193,19 @@ D_{\omega_N}^{-1} = \frac{D_{\omega_N^{-1}}}{N}
 $$
 <br/>
 
-Since $\omega_N^{-1}$ is also *just another root of unity* **&** multiply with a **DFT matrix** is just doing **FFT**, this means that the inverse process of **FFT** (**IFFT**) is just another **FFT** with an extra step of scaling down all the outputs by $N$! **Ahhh!**
+Since $\omega_N^{-1}$ is also *just another root of unity* **&** multiply with a **DFT matrix** is just doing **FFT**, this means that the inverse process of **FFT** (**IFFT**) is just another **FFT** with an extra step of scaling down all the outputs by $N$, which is an $O(N)$ step.
+
+![](fft%20-%20ifft.png)
 <br/>
 
-What you can take away from this is that **IFFT** is nearly as fast as **FFT** *(scaling values down by a constant is a really fast process btw)*. I dunno if there're better methods, so this could be wrong, but if you look at the other method we found to **convert values -> coefficients**, the difference it has with **convert coefficients -> values** involves an additional process of inverting a really big matrix: A very complex process that takes a lot of **CPU & RAM**. So this seems like a huge hidden win that we just discover blindly **:-3**
+What you can take away from this is that **IFFT is as fast as FFT**. 
 
-Also, this means that if you can somehow make **FFT** fast, **IFFT** is also being fast too!
+If you look at the other methods we found to convert *values -> coefficients*, the difference it has with the backward process involves an additional process of inverting a really big matrix: A very complex process taking a lot of **CPU & RAM**. So this seems like a huge hidden win that we just discover blindly **:-3**
+
+Also, this means that if you can somehow make **FFT** fast, you can do **FFT** *back-and-forth* with ease.
 <br/>
 
-And it turns out there's an optimized version of **FFT** that allows us to calculate in $O(N\log{N})$, called the *Radix-2 FFT*! For more details, please consider watching [this video by Reducible](https://youtu.be/h7apO7q16V0?si=KnmopD-iq8Nrtiqq), this guy is really good **:>** 
+And it turns out there's an optimized version of **FFT** that has $O(N\log{N})$ runtime, called the *Radix-2 FFT*! For more details, please consider watching [this video by Reducible](https://youtu.be/h7apO7q16V0?si=KnmopD-iq8Nrtiqq), this guy is really good **:>** 
 
 ::ytembed[Reducible's Video]{#h7apO7q16V0}
 <br/>
@@ -227,36 +233,37 @@ So why not, *say*, think that $f(x)$ has the number of coefficients $N$ = the cl
 
 ## Can't get much more outputs
 
-But then that would mean we need more than `20000156` outputs!! We might want to use Lagrange Interpolation to recover more values. But it takes $O(N^2)$!!
+But then that would mean we need more than `20000156` outputs!! We might want to use Lagrange Interpolation to recover more values. But as we analyzed from the **Lagrange Interpolation** section, it takes $O(N^2)$ for each input to produce the output!!
 
 Also, in this CTF challenge, we can only get `3` more outputs, because $x \equiv x + 20000159$, so $f(20000160)$ is just $f(1)$... And *none* of the numbers from `20000156` to `20000159` are powers of 2.
 <br/>
 
-> **Note from Mistsu in the future**: 
+> **<ins>Note from Mistsu in the future:</ins>**
 > 
-> *It turns out*, in this particular CTF challenge, we can **AND** just need to recover `3` missing values $f(69), f(420), f(1337)$ in $O(4*N)$-ish due to some very clever parameter choices, while still can do **FFT** in $O(N\log{N})$! 
+> *It turns out*, in this particular CTF challenge, we can **AND** just need to recover $f(69), f(420), f(1337)$, where each calculation takes $O(4*N)$ due to some very clever parameter choices, while still can do **FFT** in $O(N\log{N})$! 
 > 
-> but we're ahead of ourselves at this point heheheh **:-)**
-<br/>
-
-## No $2^s$-th roots of unity...
-
-**However**, even if we're able to extend to some $2^s$ length, get some $2^s$ outputs, in this case $2^{25}$. By then we still wouldn't be able to do **IFFT**: the algorithm requires a $2^{25}$-th root of unity, and no such thing exists in $\mathbb{F}_{p}$. 
-
-Because of number theory and [group theory](https://www.wikiwand.com/en/Lagrange%27s_theorem_(group_theory)) stuffs, any subgroup of the [multiplicative group](https://www.wikiwand.com/en/Multiplicative_group) $\mathbb{F}_{p}^{\times}$ must have [order](https://www.wikiwand.com/en/Order_(group_theory)) dividing $p-1$. What this is saying is that good luck trying to find $g \not\equiv 1$ such that $g^{x} \equiv 1 \mod {p}$ when $x \nmid p-1$... You can start with `3` to experiment 😘
-
-The only prime factors of $p - 1$ are $2, 10000079$, we can only use $2, 10000079$, or $20000158$-th roots of unity for doing **FFT** only... But apperantly that means we can only work with cases where $N$ = `2`, `10000079` or `20000158`!?
-<br/>
-
-> **Note from Mistsu in a closer future**: 
-> 
-> It seems like we can only work with **FFT** when $N$ is some number dividing $p-1$... 
-> 
-> However, there's a very cool modification to **FFT** that allows us to do **FFT** in $O(N\log{N})$**-ish** without us needing to have $2^s$-th root of unity **:-)**, but with just $N$-th roots of unity *(if such a thing exists)* and $N$ outputs of $f(x)$!
+> *but we're ahead of ourselves at this point heheheh* **:-)**
 <br/>
 
 
-...You might be tempted to extend the current working field to $\mathbb{F}_{p^k}$, where you can find subgroups of $\mathbb{F}_{p^k}^{\times}$ with order dividing $p^k - 1$. **But it turns out**, up until $k = 1000$, $p^k - 1$ is divisible by $2^{13}$ at best. And you might want to stop here, because going further means that your **CPU & RAM** goes bye bye computing those elements. And you also have to do Larange Interpolation to have outputs of inputs in that field...
+## There's probably no such thing as $2^s$-th roots of unity...
+
+Say, we're able to extend the length of $f$ to $2^{25}$. By then we still wouldn't be able to do **IFFT**: the algorithm requires a $2^{25}$-th root of unity, and no such thing exists in $\mathbb{F}_{p}$. 
+
+Because of number theory and [group theory](https://www.wikiwand.com/en/Lagrange%27s_theorem_(group_theory)) stuffs, any subgroup of the [multiplicative group](https://www.wikiwand.com/en/Multiplicative_group) $\mathbb{F}_{p}^{\times}$ must have [order](https://www.wikiwand.com/en/Order_(group_theory)) dividing $p-1$. This means good luck trying to find $g \not\equiv 1$ such that $g^{x} \equiv 1 \mod {p}$ when $x \nmid p-1$... You can start with `3` to experiment 😘
+
+The only prime factors of $p - 1$ are `2`, `10000079`, that means $\mathbb{F}_p$ only has `2`, `10000079`, or `20000158`-th roots of unity! But apperantly that means we can only work with cases where $N$ = `2`, `10000079` or `20000158`!? 
+
+Since we can only *"pretend"* it has more coefficients than `20000156`, we're locked to the choice of `20000158`. Since `20000158` is not a power of 2, it seems like we can't do **FFT** in $O(N\log{N})$.
+<br/>
+
+> **<ins>Note from Mistsu in the closer future:</ins>**
+> 
+> *we can* \:-)
+<br/>
+
+
+...You might be tempted to extend the current working field to $\mathbb{F}_{p^k}$, where you can find subgroups of $\mathbb{F}_{p^k}^{\times}$ with order dividing $p^k - 1$. **However**, up until $k = 1000$, $p^k - 1$ is divisible by $2^{13}$ at best. And you might want to stop here, because going further means that your **CPU & RAM** goes bye bye computing those elements. And you also have to do Larange Interpolation to have outputs of $f$ in that field...
 <br/>
 
 # Author's Solution
