@@ -30,7 +30,6 @@ jobs:
         cache: 'yarn'
     - run: yarn install
     - run: yarn build
-    - run: yarn export
     - run: touch ./out/.nojekyll
 
     - name: Deploy 🚀

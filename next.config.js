@@ -2,6 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
 
+  output: "export",
+
   // Image optimization
   images: {
     loader: "akamai",
