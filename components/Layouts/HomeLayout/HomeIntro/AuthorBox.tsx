@@ -62,7 +62,8 @@ const AuthorBoxLogoImgStyles: CSS = {
   '@tiny': {
     width: "80%",
     height: "auto",
-  }, 
+  },
+  userSelect: "none",
 }
 
 const AuthorBoxLogoStyles: CSS = {

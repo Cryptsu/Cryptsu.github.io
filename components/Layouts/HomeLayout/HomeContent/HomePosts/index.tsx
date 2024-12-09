@@ -40,6 +40,7 @@ const HomePostsHeaderWrapperStyles: CSS = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  userSelect: "none",
 }
 
 const HomePostsHeaderStyles: CSS = {

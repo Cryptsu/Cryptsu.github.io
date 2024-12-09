@@ -36,6 +36,8 @@ const FooterStyles: CSS = {
   backgroundImage: `url(${AssetsConfig.GRAIN_WEBP})`,
 
   zIndex: theme.zIndices.footer,
+
+  userSelect: "none",
 };
 
 export default Footer;
