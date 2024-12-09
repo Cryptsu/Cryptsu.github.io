@@ -84,4 +84,4 @@ export const compilePost
   //   frontMatter,
   //   sourceContent
   // }
-}
+};
