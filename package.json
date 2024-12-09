@@ -48,7 +48,6 @@
     "strip-comments": "^2.0.1",
     "trim-lines": "^3.0.1",
     "typescript": "4.9.5",
-    "uglify-js": "^3.17.4",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
