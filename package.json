@@ -16,6 +16,7 @@
     "@types/node": "18.15.1",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@types/strip-comments": "^2.0.4",
     "@types/uglify-js": "^3.17.1",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.7",
@@ -44,6 +45,8 @@
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
     "remark-unwrap-images": "^3.0.1",
+    "strip-comments": "^2.0.1",
+    "trim-lines": "^3.0.1",
     "typescript": "4.9.5",
     "uglify-js": "^3.17.4",
     "yargs": "^17.7.2"
