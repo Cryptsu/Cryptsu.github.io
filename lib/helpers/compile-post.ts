@@ -55,11 +55,21 @@ export const compilePost
 
       rehypePlugins: [
         [
-          rehypeKatex  // To display multi-line latex.
+          rehypeKatex,  // To display multi-line latex.
+          {
+            // Configure error handling
+            strict: (errorCode: string, errorMsg: string) => {
+              // Ignore this error
+              if (errorCode == 'newLineInDisplayMode') {
+                return;
+              }
+              console.log(`LaTeX-incompatible input and strict mode is set to be an optional function: ${errorMsg} [${errorCode}]`)
+            }
+          }
         ],
 
         [
-          rehypeSlug   // Attaches IDs to headers based on the content. Maybe useful for table of content?
+          rehypeSlug    // Attaches IDs to headers based on the content. Maybe useful for table of content?
         ],
 
         [
