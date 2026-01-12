@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "export": "next export",
     "start": "next start",
@@ -49,6 +49,6 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@svgr/webpack": "^6.5.1"
+    "@svgr/webpack": "^8.1.0"
   }
 }
