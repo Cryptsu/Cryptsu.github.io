@@ -1,10 +1,7 @@
 import { useState } from "react";
 import useOnce from "@/hooks/useOnce";
-import Style from "@/components/Style";
 import { config } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
-import type { CSS } from "@stitches/react";
 
 type TinyPageProps = PropsWithChildren<{
 

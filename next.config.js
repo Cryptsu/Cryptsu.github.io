@@ -11,33 +11,50 @@ const nextConfig = {
   },
 }
 
+const webpack_override_svg_viewbox_rule = {
+  loader: '@svgr/webpack',
+  options: {
+    prettier: false,
+    svgo: true,
+    svgoConfig: {
+      plugins: [
+        {
+          name: 'preset-default',
+          params: {
+            overrides: { removeViewBox: false },
+          },
+        },
+      ],
+    },
+    titleProp: true,
+  },
+}
+
 const webpackConfig = {
   webpack(config) {
     config.module.rules.push({
-      loader: '@svgr/webpack',
-      options: {
-        prettier: false,
-        svgo: true,
-        svgoConfig: {
-          plugins: [
-            {
-              name: 'preset-default',
-              params: {
-                overrides: { removeViewBox: false },
-              },
-            },
-          ],
-        },
-        titleProp: true,
-      },
+      ...webpack_override_svg_viewbox_rule,
       test: /\.svg$/,
     });
-
     return config;
+  },
+}
+
+const turbopackConfig = {
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: [
+          webpack_override_svg_viewbox_rule
+        ],
+        as: '*.js',
+      },
+    },
   },
 }
 
 module.exports = {
   ...nextConfig,
   ...webpackConfig,
+  ...turbopackConfig,
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Style from "@/components/Style";
-import { keyframes, theme } from "@/lib/styles/stiches.config";
+import { keyframes } from "@/lib/styles/stiches.config";
 import { HtmlConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
