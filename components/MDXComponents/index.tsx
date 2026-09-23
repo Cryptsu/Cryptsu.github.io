@@ -1,14 +1,14 @@
-import React from "react";
-import Style from "@/components/Style";
-import MDXComponentsConfig from "@/lib/config/mdx.config";
+import      Style                       from "@/components/Style";
+import      MDXComponentsConfig         from "@/lib/config/mdx.config";
 import type { MDXComponentsConfigType } from "@/lib/config/mdx.config";
-import type { MDXRemoteProps } from "next-mdx-remote";
+import type { MDXRemoteProps }          from "next-mdx-remote";
+import type { MDXComponents }           from "mdx/types.d.ts";
 
 const CompileComponentsConfig 
   = (MDXComponentsConfig: MDXComponentsConfigType)
   : MDXRemoteProps["components"] => 
 {
-  let mdxComponents: MDXRemoteProps["components"] = {};
+  let mdxComponents: MDXComponents = {};
   for (let componentName of Object.keys(MDXComponentsConfig)) {
     mdxComponents[componentName] = ({children, className, ...otherProps}) => {
       // Get all classnames

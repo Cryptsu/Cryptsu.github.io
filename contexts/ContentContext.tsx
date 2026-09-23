@@ -4,7 +4,7 @@ import type { Context, Dispatch, ReactNode, RefObject } from "react";
 export type HeadingInfoType = {
   headingContent: string | ReactNode,
   headingID: string,
-  headingRef: RefObject<HTMLElement>,
+  headingRef: RefObject<HTMLElement | null>,
   level: number,
 }
 

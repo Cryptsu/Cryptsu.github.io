@@ -5,7 +5,7 @@ import type { CSS } from "@stitches/react";
 
 type CodeBlockContentProps = PropsWithChildren<{
   wrapCode: boolean;
-  elementRef: RefObject<HTMLElement>;
+  elementRef: RefObject<HTMLElement | null>;
 }>
 
 const CodeBlockContent = ({children, wrapCode, elementRef, ...otherProps}: CodeBlockContentProps) => {

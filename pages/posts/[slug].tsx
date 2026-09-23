@@ -80,11 +80,11 @@ const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPr
 
       <ArticleJsonLd
         url={frontMatter.permalink}
-        title={frontMatter.title}
+        headline={frontMatter.title}
         description={frontMatter.description || AppConfig.DESCRIPTIONS.AUTHOR}
         datePublished={frontMatter.date}
         dateModified={frontMatter.date}
-        images={[`${AppConfig.BLOG_URL}/${shareImageURL}`]}
+        image={[`${AppConfig.BLOG_URL}/${shareImageURL}`]}
         {...articleJsonLd}
       />
 

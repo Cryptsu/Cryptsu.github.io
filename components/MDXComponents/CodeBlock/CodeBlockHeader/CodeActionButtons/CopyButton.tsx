@@ -23,10 +23,9 @@ const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyBut
     e.currentTarget.blur();
 
     // send plaintext to the clipboard
-    const didCopy = copy(innerText(content));
-
-    // indicate success
-    setCopied(didCopy);
+    copy(innerText(content)).then(didCopy => {
+      setCopied(didCopy);
+    });
   };
 
   useEffect(() => {
