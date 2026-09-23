@@ -28,8 +28,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - run: yarn install
-    - run: yarn build
+    - run: npm run install
+    - run: npm run build
     - run: touch ./out/.nojekyll
 
     - name: Deploy 🚀
