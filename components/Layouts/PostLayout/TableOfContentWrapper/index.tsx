@@ -1,11 +1,10 @@
-import { useState } from "react";
-import Style from "@/components/Style";
-import TableOfContent from "./TableOfContent";
-import TOCToggleBtn from "./TOCToggleBtn";
-import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
+import      { useState }          from "react";
+import      Style                 from "@/components/Style";
+import      TableOfContent        from "./TableOfContent";
+import      TOCToggleBtn          from "./TOCToggleBtn";
+import      { theme }             from "@/lib/styles/stiches.config";
 import type { PropsWithChildren } from "react";
-import type { CSS } from "@stitches/react";
+import type { CSS }               from "@stitches/react";
 
 type TableOfContentWrapperProps = PropsWithChildren<{
 

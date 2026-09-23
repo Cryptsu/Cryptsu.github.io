@@ -1,5 +1,6 @@
-import { AppConfig, AssetsConfig } from ".";
-import type { DefaultSeoProps, SocialProfileJsonLdProps, ArticleJsonLdProps } from "next-seo";
+import      { AppConfig, AssetsConfig }    from ".";
+import type { Person, ArticleJsonLdProps } from "next-seo";
+import type { DefaultSeoProps }            from "next-seo/pages";
 
 // Most of this file simply takes the data already defined in ./AppConfig.js and translates it into objects that are
 // compatible with next-seo's props:
@@ -97,8 +98,8 @@ export const defaultSeo: DefaultSeoProps = {
 };
 
 // https://github.com/garmeeh/next-seo#social-profile
-export const socialProfileJsonLd: SocialProfileJsonLdProps = {
-  type: "Person",
+export const socialProfileJsonLd: Person = {
+  "@type": "Person",
   name: AppConfig.AUTHOR_NAME,
   url: `${AppConfig.BLOG_URL}/`,
   sameAs: [
@@ -116,8 +117,10 @@ export const socialProfileJsonLd: SocialProfileJsonLdProps = {
 
 // Just the basic items applicable to all notes, extended by pages/notes/[slug].tsx
 // https://github.com/garmeeh/next-seo#article-1
-export const articleJsonLd: Pick<ArticleJsonLdProps, "authorName" | "publisherName" | "publisherLogo"> = {
-  authorName: [AppConfig.AUTHOR_NAME],
-  publisherName: AppConfig.BLOG_NAME,
-  publisherLogo: `${AppConfig.BLOG_URL}${AppConfig.AUTHOR_LOGO}`,
+export const articleJsonLd: Pick<ArticleJsonLdProps, "author" | "publisher"> = {
+  author: [AppConfig.AUTHOR_NAME],
+  publisher: {
+    name: AppConfig.BLOG_NAME,
+    logo: `${AppConfig.BLOG_URL}${AppConfig.AUTHOR_LOGO}`,
+  }
 };

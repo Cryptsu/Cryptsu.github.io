@@ -75,7 +75,7 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
   const onUpdateTableOfContent = () => {
     let newIntersectValues: number[] = [];
     for (let index = 0; index < headingInfos.length; ++index) {
-      let headingRect = headingInfos[index].headingRef.current?.getBoundingClientRect();
+      let headingRect = headingInfos[index].headingRef?.current?.getBoundingClientRect();
       let headingPosition = 2; 
       if (headingRect) {
         if (headingRect.top < -1) 
@@ -168,7 +168,7 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
                   // using href because appearantly, 
                   // Chrome is unable to scroll
                   // at two places simutaneously...
-                  let headingRect = headingInfo.headingRef.current?.getBoundingClientRect();
+                  let headingRect = headingInfo.headingRef?.current?.getBoundingClientRect();
                   if (headingRect)
                     window.scrollTo({ 
                       top: window.scrollY + headingRect.y, 

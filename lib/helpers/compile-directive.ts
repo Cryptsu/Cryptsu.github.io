@@ -1,7 +1,6 @@
-import { visit } from 'unist-util-visit';
-import { h } from 'hastscript';
-import { HtmlConst } from "@/lib/consts";
-import type { Root } from "mdast";
+import      { visit } from 'unist-util-visit';
+import      { h }     from 'hastscript';
+import type { Root }  from "mdast";
 import type { VFile } from "vfile";
 
 export function customRemarkDirective() {
@@ -42,7 +41,7 @@ export function customRemarkDirective() {
 
         const data = node.data || (node.data = {});
         const attributes = node.attributes || {};
-        const hast = h(node.name, attributes === null ? undefined : attributes);
+        const hast = h(node.name, attributes);
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //    :code[Some text or HTML here]
