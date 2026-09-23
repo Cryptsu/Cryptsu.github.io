@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useLayoutEffect } from "react";
-import { NextSeo } from "next-seo";
+import { generateNextSeo } from "next-seo/pages";
 import Style from "@/components/Style";
 import { config, theme } from "@/lib/styles/stiches.config";
 import { HtmlConst, TxtConst } from "@/lib/consts";
@@ -173,7 +173,9 @@ const _404 = ({children, ...otherProps}: _404Props) => {
 
   return (
     <>
-      <NextSeo title={TxtConst.TXT_TITLE_404}/>
+      {generateNextSeo({
+        title: TxtConst.TXT_TITLE_404,
+      })}
       <Style ref={parentRef} style={_404Styles} {...otherProps}>
         <Style ref={errItemRef} style={ErrorWrapperStyles}>
           <Style style={Text404Styles}>

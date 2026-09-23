@@ -1,4 +1,4 @@
-import { NextSeo } from "next-seo";
+import { generateNextSeo } from "next-seo/pages";
 import { getAllPosts } from "@/lib/helpers/process-posts";
 import HomeLayout from "@/components/Layouts/HomeLayout";
 import { TxtConst } from "@/lib/consts";
@@ -13,13 +13,13 @@ import type { PostFrontMatterType } from "@/types/post";
 const Home = ({posts}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <NextSeo
-        title={TxtConst.TXT_TITLE_HOME}
-        description={AppConfig.DESCRIPTIONS.HOME}
-        openGraph={{
+      {generateNextSeo({
+        title: TxtConst.TXT_TITLE_HOME,
+        description: AppConfig.DESCRIPTIONS.HOME,
+        openGraph: {
           title: TxtConst.TXT_TITLE_HOME,
-        }}
-      />
+        },
+      })}
 
       <HomeLayout 
         posts={posts}

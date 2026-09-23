@@ -1,7 +1,8 @@
 import path from "path";
 import { useRouter } from "next/router";
 
-import { NextSeo, ArticleJsonLd } from "next-seo";
+import { generateNextSeo } from "next-seo/pages";
+import { ArticleJsonLd } from "next-seo";
 import { articleJsonLd } from "@/lib/config/seo.config"
 
 import { compilePost } from "@/lib/helpers/compile-post";
@@ -51,11 +52,11 @@ const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPr
 
   return (
     <>
-      <NextSeo
-        title={frontMatter.title}
-        description={frontMatter.description || AppConfig.DESCRIPTIONS.AUTHOR}
-        canonical={frontMatter.permalink}
-        openGraph={{
+      {generateNextSeo({
+        title: frontMatter.title,
+        description: frontMatter.description || AppConfig.DESCRIPTIONS.AUTHOR,
+        canonical: frontMatter.permalink,
+        openGraph: {
           title: frontMatter.title,
           url: frontMatter.permalink,
           type: "article",
@@ -71,11 +72,11 @@ const Post = ({frontMatter, sourceContent, prevPost, nextPost}: InferGetStaticPr
               alt: frontMatter.title,
             },
           ],
-        }}
-        twitter={{
+        },
+        twitter: {
           cardType: "summary_large_image",
-        }}
-      />
+        },
+      })}
 
       <ArticleJsonLd
         url={frontMatter.permalink}

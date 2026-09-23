@@ -5,7 +5,7 @@ import { customRemarkDirective } from "./compile-directive";
 
 // remark/rehype markdown plugins
 import remarkGfm from "remark-gfm";
-import remarkUnwrapImages from "remark-unwrap-images";
+import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 import rehypeKatex from "rehype-katex";
@@ -30,10 +30,6 @@ export const compilePost
       remarkPlugins: [
         [
           remarkGfm,  // Supports tables, footnotes, etc...
-        ],
-
-        [
-          remarkUnwrapImages  // Remove redundant lines in paragraphs?
         ],
 
         [
@@ -77,6 +73,10 @@ export const compilePost
           {
             ignoreMissing: true,
           }
+        ],
+
+        [
+          rehypeUnwrapImages, // Remove redundant lines in paragraphs?
         ]
       ]
     }
