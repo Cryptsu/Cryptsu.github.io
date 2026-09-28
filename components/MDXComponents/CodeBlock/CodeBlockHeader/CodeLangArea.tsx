@@ -1,8 +1,8 @@
-import Style from "@/components/Style";
+import Style     from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { ClassConst, HtmlConst } from "@/lib/consts";
+
 import type { PropsWithChildren } from "react";
-import type { CSS } from "@stitches/react";
+import type { CSS }               from "@stitches/react";
 
 type CodeLangAreaProps = PropsWithChildren<{
   languageName?: string
@@ -14,7 +14,7 @@ const CodeLangArea = ({languageName="", ...otherProps}: CodeLangAreaProps) => {
   // (ex. sagemath -> python)
   return (
     <Style style={CodeLangAreaStyles} {...otherProps}>
-      {/* {languageName} */} 
+      {languageName} 
     </Style>
   )
 }

@@ -6,6 +6,7 @@ import IFhoneButtonRed from "./IFhoneButtonRed";
 import IFhoneButtonYellow from "./IFhoneButtonYellow";
 import IFhoneButtonCombine from "./IFhoneButtonCombine";
 import { ClassConst, TxtConst } from "@/lib/consts";
+
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -43,7 +44,7 @@ const IFhoneButtonsStyles: CSS = {
   justifyContent: "left",
   alignItems: "center",
   transform: "translateY(2px)",
-  gap: 8,
+  gap: 2,
   [`.${ClassConst.CLASS_MOBILE} &`]: {
     display: "none"
   },

@@ -2,8 +2,7 @@ import Style from "@/components/Style";
 import IFhoneButtons from "./IFhoneButtons";
 import CodeActionButtons from "./CodeActionButtons";
 import CodeLangArea from "./CodeLangArea";
-import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
+
 import type { PropsWithChildren, ReactNode } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -33,9 +32,6 @@ const CodeBlockHeaderStyles: CSS = {
   display: "grid",
   gridTemplateAreas: "'codeblock-header-ifhone-btn codeblock-header-lang-area codeblock-header-action-btn'",
   gridTemplateColumns: "1fr 1fr 1fr",
-
-  paddingLeft: 16,
-  paddingRight: 16,
 };
 
 const CodeIFhoneButtonGroupStyles: CSS = {
