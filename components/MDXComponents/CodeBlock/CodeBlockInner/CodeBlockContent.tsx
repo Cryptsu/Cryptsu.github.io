@@ -1,5 +1,6 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
+
 import type { PropsWithChildren, RefObject } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -60,9 +61,6 @@ const CodeBlockContentStyles: CSS = {
 
   // Not styled code text
   color: theme.colors.textGeneral,
-
-  // Add a bit of padding
-  marginLeft: 4,
 
   ////////////////////// CODE HIGHLIGHTING //////////////////////
   // TODO

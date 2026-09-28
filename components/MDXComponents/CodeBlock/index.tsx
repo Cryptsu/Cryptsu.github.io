@@ -5,6 +5,7 @@ import CodeBlockHeader from "./CodeBlockHeader";
 import CodeBlockInner from "./CodeBlockInner";
 import { theme } from "@/lib/styles/stiches.config";
 import { HtmlConst } from "@/lib/consts";
+
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -90,12 +91,12 @@ const CodeBlockStyles: CSS = {
 const CodeBlockLayoutStyles: CSS = {
   marginTop: "1em",
   marginBottom: "1em",
-  marginLeft: "2em",
-  marginRight: "2em",
+  marginLeft: "-1em",
+  marginRight: "-1em",
   borderRadius: "1em",
   '@large': {
-    marginLeft: 0,
-    marginRight: 0,
+    marginLeft: "-1em",
+    marginRight: "-1em",
   },
 
   display: "flex",
