@@ -1,6 +1,5 @@
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -17,7 +16,6 @@ const PostTitle = ({children, ...otherProps}: PostTitleProps) => {
 }
 
 const PostTitleStyles: CSS = {
-  color: theme.colors.textGeneral,
   fontSize: theme.fontSizes.h0,
   fontWeight: theme.fontWeights.h0,
   letterSpacing: theme.letterSpacings.h0,

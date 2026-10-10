@@ -26,7 +26,6 @@ const PostDescription = ({ description }: PostDescriptionProps) => {
 const PostDescriptionStyles: CSS = {
   paddingBottom: "0.25em",
 
-  color: theme.colors.textGeneral,
   fontSize: theme.fontSizes.h4,
   fontWeight: theme.fontWeights.h4,
   letterSpacing: theme.letterSpacings.h4,

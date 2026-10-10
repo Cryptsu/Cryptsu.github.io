@@ -103,7 +103,6 @@ const AuthorBoxDescStyles: CSS = {
     letterSpacing: theme.letterSpacings.h6,
     lineHeight: theme.lineHeights.h6,
   },
-  color: theme.colors.textGeneral,
 }
 
 export default AuthorBox;

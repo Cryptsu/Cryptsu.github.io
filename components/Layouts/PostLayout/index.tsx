@@ -61,7 +61,6 @@ const PostContentGroupStyles: CSS = {
   },
 
   // Global rules
-  color: theme.colors.textGeneral,
   fontFamily: theme.fonts.content,
   fontSize: theme.fontSizes.h5,
   fontWeight: theme.fontWeights.h5,

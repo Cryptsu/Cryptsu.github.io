@@ -242,7 +242,6 @@ const TextPageNotFoundStyles: CSS = {
   fontSize: theme.fontSizes.h2,
   fontWeight: theme.fontWeights.h2,
   letterSpacing: theme.letterSpacings.h2,
-  color: theme.colors.textGeneral,
   textAlign: "center",
   textDecoration: "underline",
 }

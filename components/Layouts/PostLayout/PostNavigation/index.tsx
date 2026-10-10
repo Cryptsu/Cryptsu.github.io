@@ -34,7 +34,6 @@ const PostNavigation = ({children, prevPost, nextPost, ...otherProps}: PostNavig
 
 const PostNavigationWrapperStyles: CSS = {
   width: "100%",
-  color: theme.colors.textGeneral,
 };
 
 const OtherPostGroupStyles: CSS = {

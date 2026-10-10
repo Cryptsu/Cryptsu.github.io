@@ -361,7 +361,9 @@ export const globalStyles = globalCss({
   'html, body': { 
     margin: 0,
     padding: 0,
+
     fontFamily: theme.fonts.global,
+    color: theme.colors.textGeneral,
   },
 
   // Easier to customize link.

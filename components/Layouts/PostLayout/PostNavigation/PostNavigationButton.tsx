@@ -123,12 +123,11 @@ const PostNavigationArrowStyles: CSS = {
 }
 
 const PostLinkStyles: CSS = {
-  '&:link': {
-    color: theme.colors.textGeneral,
-  },
-  '&:visited': {
-    color: theme.colors.textGeneral,
-  },
+  color: theme.colors.textGeneral,
+  // '&:link': {
+  // },
+  // '&:visited': {
+  // },
 }
 
 const PostTitleStyles: CSS = {
