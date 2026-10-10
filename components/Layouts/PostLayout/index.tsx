@@ -24,29 +24,18 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
   return (
     <ContentProvider>
       <PostHeader frontMatter={frontMatter}/>
-      <Style style={PostLayoutStyles}>
-        <Style style={PostContentGroupStyles}>
-          <Style style={PostContentInnerStyles}>
-            <PostContent sourceContent={sourceContent}/>
-          </Style>
-          <Style style={PostTOCGroupStyles}>
-            <TableOfContentWrapper/>
-          </Style>
-          <Style style={PostNavigationGroupStyles}>
-            <PostNavigation nextPost={nextPost} prevPost={prevPost} />
-          </Style>
+      <Style style={PostContentGroupStyles}>
+        <Style style={PostContentInnerStyles}>
+          <PostContent sourceContent={sourceContent}/>
+        </Style>
+        <TableOfContentWrapper additionalStyles={PostTOCGroupStyles}/>
+        <Style style={PostNavigationGroupStyles}>
+          <PostNavigation nextPost={nextPost} prevPost={prevPost} />
         </Style>
       </Style>
     </ContentProvider>
   )
 }
-
-const PostLayoutStyles: CSS = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  marginBottom: "1.5em",
-};
 
 const PostContentGroupStyles: CSS = {
   display: "grid",
@@ -59,6 +48,9 @@ const PostContentGroupStyles: CSS = {
   '@medium': {
     gridTemplateColumns: "calc(100vw - 32px)",
   },
+
+  justifyContent: "center",
+  marginBottom: "1.5em",
 
   // Global rules
   fontFamily: theme.fonts.content,
