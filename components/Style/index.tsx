@@ -45,10 +45,7 @@ const StyleWithRef = ({
   // Somehow, wrap an element like this will cause 
   // serverside rendering to include all CSS styles
   // of the generated class during page load in <head/>.
-  const CSSWrapper = useMemo(
-    () => styled(elementName, ...composedStyles),
-    [elementName, composedStyles]
-  );
+  const CSSWrapper = styled(elementName, ...composedStyles);
   return (
     <CSSWrapper ref={ref} {...otherProps}>
       {children}
