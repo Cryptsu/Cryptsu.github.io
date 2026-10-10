@@ -176,6 +176,7 @@ export const {
       h5: "var(--h5)",
       h6: "var(--h6)",
 
+      toc: "calc(var(--h6) * 0.85)",
       err: "var(--err)",
       date: "var(--date)",
     },
