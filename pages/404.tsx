@@ -198,7 +198,6 @@ const _404Styles: CSS = {
   position: "relative",
   overflowX: "auto",
   height: "100%",
-  fontFamily: theme.fonts.global,
 };
 
 const ErrorWrapperStyles: CSS = {

@@ -2,7 +2,6 @@ import { useEffect, useRef, useReducer, useMemo, useLayoutEffect } from "react"
 import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stiches.config";
-import { TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -186,7 +185,6 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
 }
 
 const TableOfContentStyles: CSS = {
-  fontFamily: theme.fonts.global,
   letterSpacing: theme.letterSpacings.h4,
   wordBreak: "break-word",
 

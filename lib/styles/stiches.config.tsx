@@ -309,10 +309,10 @@ export const {
       let marginY = "0px";
 
       let attrs = attrsStr.split(" ");
-      color              = (attrs[0] === undefined ? color     : attrs[0]);
-      thickness          = (attrs[1] === undefined ? thickness : attrs[1]);
-      marginX            = (attrs[2] === undefined ? marginX   : attrs[2]);
-      marginY            = (attrs[3] === undefined ? marginY   : attrs[3]);
+      color     = (attrs[0] === undefined ? color     : attrs[0]);
+      thickness = (attrs[1] === undefined ? thickness : attrs[1]);
+      marginX   = (attrs[2] === undefined ? marginX   : attrs[2]);
+      marginY   = (attrs[3] === undefined ? marginY   : attrs[3]);
 
       return {
         backgroundImage: color,
@@ -358,9 +358,10 @@ export const ThemeClassMap: ThemeClassMapType = {
 //                              GLOBAL CONFIG
 ///////////////////////////////////////////////////////////////////////////
 export const globalStyles = globalCss({
-  '*': { 
+  'html, body': { 
     margin: 0,
     padding: 0,
+    fontFamily: theme.fonts.global,
   },
 
   // Easier to customize link.

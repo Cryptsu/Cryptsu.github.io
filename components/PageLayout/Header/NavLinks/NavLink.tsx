@@ -28,7 +28,6 @@ const NavLink = ({children, href, isCurrent, ...otherProps}: NavLinkProps) => {
 
 const NavLinkStyles: CSS = {
   // Font customize
-  fontFamily: theme.fonts.global,
   letterSpacing: theme.letterSpacings.h5,
   fontSize: theme.fontSizes.h5,
   color: theme.colors.primary,
@@ -39,7 +38,6 @@ const NavLinkStyles: CSS = {
 
 const NavLinkCurrentStyles: CSS = {
   // Font customize
-  fontFamily: theme.fonts.global,
   fontWeight: theme.fontWeights.bold,
   color: theme.colors.primary,
 
