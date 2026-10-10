@@ -127,9 +127,6 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
 
   return (
     <Style ref={scrollRef} style={TableOfContentStyles} css={css} {...otherProps}>
-      <Style style={TOCHeaderStyles}>
-        {TxtConst.TXT_TOC}
-      </Style>
       {
         headingInfos.map((headingInfo, index) => 
           <Style key={index} 
@@ -153,10 +150,10 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
                 position: "absolute",
                 height: "100%",        
                 borderStyle: "solid",
-                borderColor: theme.colors.textLess,
+                borderColor: theme.colors.secondary,
                 borderWidth: `0px 0px 0px ${
                   intersections[index] == 0 
-                    ? "0.25em" 
+                    ? "0.125em" 
                     : 0
                 }`,
               }}
@@ -193,9 +190,6 @@ const TableOfContentStyles: CSS = {
   letterSpacing: theme.letterSpacings.h4,
   wordBreak: "break-word",
 
-  borderWidth: "0.25em",
-  borderColor: theme.colors.borderGeneral,
-  borderStyle: "solid",
   scrollBehavior: "auto",
   overflow: "auto",
 
@@ -205,17 +199,6 @@ const TableOfContentStyles: CSS = {
 
   paddingLeft: "2em",
   paddingRight: "2em",
-
-  // 2nd child is likely
-  // to be the first TOC
-  // header.
-  '&>:nth-child(2)': {
-    marginTop: "0.75em",
-  },
-
-  '&>:last-child': {
-    marginBottom: "1em",
-  },
 
   // Customize scrollbar because
   // original scrollbar looks really
@@ -238,31 +221,6 @@ const TableOfContentStyles: CSS = {
     backgroundImage: `none`,
   }
 };
-
-const TOCHeaderStyles: CSS = {
-  color: theme.colors.tertiary,
-  fontSize: theme.fontSizes.h6,
-  fontWeight: theme.fontWeights.bold,
-  textAlign: "center",
-
-  border: 0,
-  margin: 0,
-  borderBottom: "0.125em",
-  paddingBottom: "0.25em",
-  paddingTop: "0.5em",
-  borderStyle: "dashed",
-  borderColor: theme.colors.divider25,
-
-  '&:before': {
-    content: "'< '",
-    color: theme.colors.divider25,
-  },
-
-  '&:after': {
-    content: "' />'",
-    color: theme.colors.divider25,
-  },
-}
 
 const TOCLinkWrapperStyles: CSS = {
   position: "relative",
