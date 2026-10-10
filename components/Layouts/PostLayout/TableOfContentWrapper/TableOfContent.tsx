@@ -197,6 +197,9 @@ const TableOfContentStyles: CSS = {
 
   paddingLeft: "2em",
   paddingRight: "2em",
+  '&>:last-child': {
+    marginBottom: "1em",
+  },
 
   // Customize scrollbar because
   // original scrollbar looks really
