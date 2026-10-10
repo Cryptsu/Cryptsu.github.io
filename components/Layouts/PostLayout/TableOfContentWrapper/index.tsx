@@ -7,18 +7,18 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type TableOfContentWrapperProps = PropsWithChildren<{
-  additionalStyles?: CSS
+  styles?: CSS
 }>
 
 // Gotta put it inside here so that useState
 // does not re-render the whole layout during
 // update :>
-const TableOfContentWrapper = ({children, additionalStyles, ...otherProps}: TableOfContentWrapperProps) => {
+const TableOfContentWrapper = ({ styles={} }: TableOfContentWrapperProps) => {
   const [ showTOCMobile, setShowTOCMobile ] = useState<boolean>(false);
 
   return (
     <>
-      <Style styles={[TableOfContentWrapperStyles, additionalStyles]} 
+      <Style styles={[TableOfContentWrapperStyles, styles]} 
         css={
           showTOCMobile
             ? {

@@ -28,7 +28,7 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
         <Style style={PostContentInnerStyles}>
           <PostContent sourceContent={sourceContent}/>
         </Style>
-        <TableOfContentWrapper additionalStyles={PostTOCGroupStyles}/>
+        <TableOfContentWrapper styles={PostTOCGroupStyles}/>
         <Style style={PostNavigationGroupStyles}>
           <PostNavigation nextPost={nextPost} prevPost={prevPost} />
         </Style>
