@@ -1,4 +1,3 @@
-import Style from "@/components/Style";
 import CustomLink from "@/components/CustomLink";
 import BlogName from "./BlogName";
 import Lock from "./Lock";
