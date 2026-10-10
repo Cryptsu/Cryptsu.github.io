@@ -13,12 +13,10 @@ const PageLayout = ({ children, ...otherProps }: PageLayoutProps) => {
   return (
     <>
       <Style style={PageLayoutStyles} {...otherProps}>
-        <Style style={PageLayoutHeaderStyles}>
-          <Header/>
-        </Style>
-        <Style>
+        <Header additionalStyles={PageLayoutHeaderStyles} />
+        <>
           {children}
-        </Style>
+        </>
         <Footer/>
       </Style>
 

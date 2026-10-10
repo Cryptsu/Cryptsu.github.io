@@ -3,11 +3,16 @@ import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import { theme } from "@/lib/styles/stiches.config";
 import { ClassConst } from "@/lib/consts";
+import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
-const Header = () => {
+type HeaderProps = PropsWithChildren<{
+  additionalStyles?: CSS
+}>;
+
+const Header = ({ additionalStyles }: HeaderProps) => {
   return (
-    <Style styles={HeaderStyles}>
+    <Style styles={[HeaderStyles, additionalStyles]}>
       <Style style={NavLinkGroupStyles}>
         <NavLinks/>
       </Style>
@@ -16,7 +21,6 @@ const Header = () => {
       </Style>
       {/*<Style style={ToggleButtonsGroupStyles}>
       </Style>*/}
-      <div></div>
     </Style>
   )
 }
