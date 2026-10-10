@@ -1,6 +1,4 @@
 import { theme } from "@/lib/styles/stiches.config";
-import Link from "next/link";
-import Style from "@/components/Style";
 import CustomLink from "@/components/CustomLink";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -28,9 +26,10 @@ const NavLink = ({children, href, isCurrent, ...otherProps}: NavLinkProps) => {
 
 const NavLinkStyles: CSS = {
   // Font customize
-  letterSpacing: theme.letterSpacings.h5,
+  letterSpacing: theme.letterSpacings.h6,
   fontSize: theme.fontSizes.h5,
   color: theme.colors.primary,
+  whiteSpace: "nowrap",
 
   // Set moving underline
   movUnderline: `${theme.colors.gradient12} 2px 12px 6px`,
@@ -40,6 +39,7 @@ const NavLinkCurrentStyles: CSS = {
   // Font customize
   fontWeight: theme.fontWeights.bold,
   color: theme.colors.primary,
+  whiteSpace: "nowrap",
 
   fontSize: theme.fontSizes.h4,
   letterSpacing: theme.letterSpacings.h4,

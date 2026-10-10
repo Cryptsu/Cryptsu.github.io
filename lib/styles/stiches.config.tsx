@@ -133,7 +133,6 @@ export const {
       //   -> Layout
       pageBackground: "$blackest",
       navLinkDropdownBackground: "$black",
-      navLinkDropdownBtnBorder: "#050505",
 
       //   -> Quoteblock
       quoteLegend: "$black",
