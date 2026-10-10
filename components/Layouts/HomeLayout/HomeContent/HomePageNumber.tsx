@@ -110,7 +110,6 @@ const HomePageNumber = ({children, currentPage, setCurrentPage, noPosts, ...othe
 
 // ================================ HOME PAGE NUMBERS ================================
 const HomePageNumberStyles: CSS = {
-  fontFamily: theme.fonts.global,
   userSelect: "none",
 
   display: "flex",

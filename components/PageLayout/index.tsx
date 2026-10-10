@@ -13,12 +13,10 @@ const PageLayout = ({ children, ...otherProps }: PageLayoutProps) => {
   return (
     <>
       <Style style={PageLayoutStyles} {...otherProps}>
-        <Style style={PageLayoutHeaderStyles}>
-          <Header/>
-        </Style>
-        <Style>
+        <Header styles={PageLayoutHeaderStyles} />
+        <>
           {children}
-        </Style>
+        </>
         <Footer/>
       </Style>
 
@@ -87,7 +85,6 @@ const AltPageLayoutStyles: CSS = {
   marginTop: 32,
   marginBottom: 32,
 
-  fontFamily: theme.fonts.global,
   fontWeight: theme.fontWeights.extrabold,
   color: theme.colors.white,
   fontSize: 40,
@@ -106,7 +103,6 @@ const AltPageLayout2Styles: CSS = {
       justifyContent: "center",
       alignItems: "center",
 
-      fontFamily: theme.fonts.global,
       fontWeight: theme.fontWeights.extrabold,
       fontSize: "33vw",
       color: theme.colors.primary,

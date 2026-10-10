@@ -12,7 +12,7 @@ type NavLinksDropdownProps = PropsWithChildren<{
   router: NextRouter
 }>
 
-const NavLinksDropdown = ({children, router, ...otherProps}: NavLinksDropdownProps) => {
+const NavLinksDropdown = ({ router }: NavLinksDropdownProps) => {
   const [ 
     isNavBarDropDown, 
     setIsNavBarDropdown 
@@ -46,7 +46,7 @@ const NavLinksDropdown = ({children, router, ...otherProps}: NavLinksDropdownPro
                       <NavLink href={navItem.href} isCurrent={isCurrent}>
                         {navItem.name}
                       </NavLink>
-                  </Style>
+                   </Style>
           })
         }
       </Style>
@@ -73,21 +73,20 @@ const NavLinksDropdownStyles: CSS = {
 
   paddingTop: "1em",
   paddingBottom: "1em",
-  paddingLeft: "1em",
-  paddingRight: "1em",
+  paddingLeft: "0.5em",
+  paddingRight: "0.5em",
 
   borderRadius: "1em",
-  borderWidth: "0.25em",
+  border: 0,
+  borderWidth: 2,
   borderColor: theme.colors.borderGeneral,
-  borderStyle: "solid",
+  borderStyle: "dashed",
 }
 
 const NavLinksIconWrapperStyles: CSS = {
   padding: 4,
   borderRadius: 8,
-  borderColor: theme.colors.navLinkDropdownBtnBorder,
-  borderWidth: 2,
-  borderStyle: "solid",
+  border: 0,
   backgroundColor: theme.colors.navLinkDropdownBackground,
   '&:active': {
     opacity: "70%",

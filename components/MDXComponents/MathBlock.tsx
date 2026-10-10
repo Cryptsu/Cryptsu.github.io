@@ -10,7 +10,7 @@ type MathBlockProps = PropsWithChildren<{
 
 const MathBlock = ({children, ...otherProps}: MathBlockProps) => {
   return (
-    <Style style={MathBlockStyles} elementName={HtmlConst.DIV} {...otherProps}>
+    <Style style={MathBlockStyles} elementName={HtmlConst.SPAN} {...otherProps}>
       {children}
     </Style>
   )

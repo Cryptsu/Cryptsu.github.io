@@ -23,7 +23,6 @@ const FooterStyles: CSS = {
   textAlign: "center",
 
   color: theme.colors.textLesser,
-  fontFamily: theme.fonts.global,
   fontSize: theme.fontSizes.h5,
   fontWeight: theme.fontWeights.bold,
   letterSpacing: theme.letterSpacings.h5,

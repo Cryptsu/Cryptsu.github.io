@@ -3,20 +3,24 @@ import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import { theme } from "@/lib/styles/stiches.config";
 import { ClassConst } from "@/lib/consts";
+import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
-const Header = () => {
+type HeaderProps = PropsWithChildren<{
+  styles?: CSS
+}>;
+
+const Header = ({ styles={} }: HeaderProps) => {
   return (
-    <Style style={HeaderStyles}>
+    <Style styles={[HeaderStyles, styles]}>
       <Style style={NavLinkGroupStyles}>
         <NavLinks/>
       </Style>
       <Style style={LogoGroupStyles}>
         <Logo/>      
       </Style>
-      <Style style={ToggleButtonsGroupStyles}>
-        
-      </Style>
+      {/*<Style style={ToggleButtonsGroupStyles}>
+      </Style>*/}
     </Style>
   )
 }
@@ -92,14 +96,14 @@ const LogoGroupStyles: CSS = {
   }
 }
 
-const ToggleButtonsGroupStyles: CSS = {
-  // For grid display
-  gridArea: "buttons",
-
-  // Others
-  display: "flex",
-  justifyContent: "right",
-  alignItems: "center",
-}
+// const ToggleButtonsGroupStyles: CSS = {
+//   // For grid display
+//   gridArea: "buttons",
+//
+//   // Others
+//   display: "flex",
+//   justifyContent: "right",
+//   alignItems: "center",
+// }
 
 export default Header;

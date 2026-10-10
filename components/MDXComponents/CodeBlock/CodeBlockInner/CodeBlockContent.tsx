@@ -59,9 +59,6 @@ const CodeBlockContentStyles: CSS = {
     backgroundRepeat: "repeat-x",
   },
 
-  // Not styled code text
-  color: theme.colors.textGeneral,
-
   ////////////////////// CODE HIGHLIGHTING //////////////////////
   // TODO
   // * This part in the future might be changed

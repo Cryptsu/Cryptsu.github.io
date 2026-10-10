@@ -1,24 +1,24 @@
-import      { useState }          from "react";
-import      Style                 from "@/components/Style";
-import      TableOfContent        from "./TableOfContent";
-import      TOCToggleBtn          from "./TOCToggleBtn";
-import      { theme }             from "@/lib/styles/stiches.config";
+import { useState } from "react";
+import Style from "@/components/Style";
+import TableOfContent from "./TableOfContent";
+import TOCToggleBtn from "./TOCToggleBtn";
+import { theme } from "@/lib/styles/stiches.config";
 import type { PropsWithChildren } from "react";
-import type { CSS }               from "@stitches/react";
+import type { CSS } from "@stitches/react";
 
 type TableOfContentWrapperProps = PropsWithChildren<{
-
+  styles?: CSS
 }>
 
 // Gotta put it inside here so that useState
 // does not re-render the whole layout during
 // update :>
-const TableOfContentWrapper = ({children, ...otherProps}: TableOfContentWrapperProps) => {
+const TableOfContentWrapper = ({ styles={} }: TableOfContentWrapperProps) => {
   const [ showTOCMobile, setShowTOCMobile ] = useState<boolean>(false);
 
   return (
     <>
-      <Style style={TableOfContentWrapperStyles} 
+      <Style styles={[TableOfContentWrapperStyles, styles]} 
         css={
           showTOCMobile
             ? {
@@ -80,7 +80,7 @@ const TableOfContentWrapperStyles: CSS = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-  }
+  },
 };
 
 export default TableOfContentWrapper;

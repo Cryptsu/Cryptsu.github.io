@@ -11,7 +11,6 @@ export const TXT_NAV_TEST = "/test";
 export const TXT_NAV_ABOUT = "/about";
 export const TXT_NAV_POSTS = "/posts";
 
-export const TXT_TOC = "TABLE OF CONTENT";
 export const TXT_WORDS = "words";
 export const TXT_MIN_READ = 'mins';
 export const TXT_BLINK_CHAR = "▌";

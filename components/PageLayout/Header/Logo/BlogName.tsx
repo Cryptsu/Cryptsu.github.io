@@ -13,7 +13,6 @@ const BlogName = () => {
 
 const BlogNameStyles: CSS = {
   color: theme.colors.primary,
-  fontFamily: theme.fonts.global,
   fontSize: theme.fontSizes.h3,
   fontWeight: theme.fontWeights.h3,
   letterSpacing: theme.letterSpacings.h3,

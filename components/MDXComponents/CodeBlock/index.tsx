@@ -73,12 +73,10 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
       }}
     >
       <Style style={CodeBlockStyles} elementName={HtmlConst.CODE} {...otherProps}>
-        <Style style={CodeBlockLayoutStyles}>
-          <CodeBlockHeader content={children} className={className}/>
-          <CodeBlockInner>
-            {children}
-          </CodeBlockInner>
-        </Style>
+        <CodeBlockHeader content={children} className={className}/>
+        <CodeBlockInner>
+          {children}
+        </CodeBlockInner>
       </Style>
     </CodeBlockContext.Provider>
   )
@@ -86,9 +84,7 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
 
 const CodeBlockStyles: CSS = {
   fontFamily: theme.fonts.code,
-};
 
-const CodeBlockLayoutStyles: CSS = {
   marginTop: "1em",
   marginBottom: "1em",
   marginLeft: "-1em",

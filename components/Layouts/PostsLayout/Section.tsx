@@ -31,8 +31,6 @@ const SectionStyles: CSS = {
       paddingTop: "1em",
     }
   },
-
-  fontFamily: theme.fonts.global,
 };
 
 export default Section;

@@ -37,9 +37,6 @@ const PostHeaderStyles: CSS = {
   // Padding
   marginTop: "1.5em",
   marginBottom: "2.5em",
-
-  // Font customization
-  fontFamily: theme.fonts.global,
 };
 
 export default PostHeader;

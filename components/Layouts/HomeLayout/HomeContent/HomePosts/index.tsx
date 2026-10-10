@@ -44,7 +44,6 @@ const HomePostsHeaderWrapperStyles: CSS = {
 }
 
 const HomePostsHeaderStyles: CSS = {
-  fontFamily: theme.fonts.global,
   fontSize: `min(${theme.fontSizes.h1}, 8vw)`,
   fontWeight: theme.fontWeights.normal,
   letterSpacing: theme.letterSpacings.h1,
@@ -79,7 +78,6 @@ const HomePostStyles: CSS = {
   flexDirection: "column",
   gap: "0.25rem",
 
-  fontFamily: theme.fonts.global,
   border: 0,
   borderTop: "0.125rem",
   borderStyle: "dashed",
