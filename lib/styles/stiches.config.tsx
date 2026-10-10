@@ -358,7 +358,7 @@ export const ThemeClassMap: ThemeClassMapType = {
 //                              GLOBAL CONFIG
 ///////////////////////////////////////////////////////////////////////////
 export const globalStyles = globalCss({
-  'html, body': { 
+  'html, body, ul': { 
     margin: 0,
     padding: 0,
 
