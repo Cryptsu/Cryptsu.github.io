@@ -17,11 +17,16 @@ const MathBlock = ({children, ...otherProps}: MathBlockProps) => {
 }
 
 const MathBlockStyles: CSS = {
-  overflowX: "auto",
+  // for some reason, the math block
+  // is scrollable despite the height
+  // is right?
+  overflowY: "hidden",
 
   border: 0,
   borderTop: 2,
   borderBottom: 2,
+  paddingTop: 12,
+  paddingBottom: 12,
   borderStyle: "dashed",
   borderColor: theme.colors.divider50,
 };

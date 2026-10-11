@@ -1,15 +1,15 @@
-import      Style                       from "@/components/Style";
-import      MDXComponentsConfig         from "@/lib/config/mdx.config";
+import Style from "@/components/Style";
+import MDXComponentsConfig from "@/lib/config/mdx.config";
 import type { MDXComponentsConfigType } from "@/lib/config/mdx.config";
-import type { MDXRemoteProps }          from "next-mdx-remote";
-import type { MDXComponents }           from "mdx/types.d.ts";
+import type { MDXRemoteProps } from "next-mdx-remote";
+import type { MDXComponents } from "mdx/types.d.ts";
 
 const CompileComponentsConfig 
   = (MDXComponentsConfig: MDXComponentsConfigType)
   : MDXRemoteProps["components"] => 
 {
   let mdxComponents: MDXComponents = {};
-  for (let componentName of Object.keys(MDXComponentsConfig)) {
+  for (const componentName of Object.keys(MDXComponentsConfig)) {
     mdxComponents[componentName] = ({children, className, ...otherProps}) => {
       // Get all classnames
       const classNames = (
@@ -18,7 +18,7 @@ const CompileComponentsConfig
           : []
       );
 
-      for (let replaceConfig of MDXComponentsConfig[componentName]) {
+      for (const replaceConfig of MDXComponentsConfig[componentName]) {
         // If additonal classes are provided, then cross check.
         let existMatch = true;
         if (replaceConfig.classNames)
