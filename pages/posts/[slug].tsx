@@ -20,7 +20,7 @@ import "katex/dist/katex.min.css"
 // Main element
 ///////////////////////////////////////////////////////////////////
 
-export type PostProps = PostWithSourceType & {
+type PostProps = PostWithSourceType & {
   prevPost: PostFrontMatterType | null,
   nextPost: PostFrontMatterType | null,
 }
