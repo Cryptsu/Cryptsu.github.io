@@ -66,6 +66,7 @@ export const {
       blackest: "#101010",
       grey: "#454C48",
       white: "#DCFFEE",
+      orange: "rgb(248, 179, 9)",
       veryWhite: "#fdfdfd",
       brightRed: "$tertiaryActive",
       brightGreen: "$primaryActive",
@@ -158,9 +159,13 @@ export const {
       codeDeletion: "#ff1b1b",
       codeLiteral: "#fbe281",
 
-      // Scrollbar
+      // Scrollbar (for Chrome only)
       scrollbarThumb: "#4d4d4d",
       scrollbarTrack: "#44525F",
+
+      // Posts navigation buttons
+      postPrevNavBackground: "rgb(from $prev r g b / 0.05)",
+      postNextNavBackground: "rgb(from $next r g b / 0.05)",
     },
 
     fonts: {

@@ -24,8 +24,16 @@ const PostNavigation = ({children, prevPost, nextPost, ...otherProps}: PostNavig
       </Style>
 
       <Style style={PostNavigationButtonGroupStyles}>
-        <PostNavigationButton direction={"prev"} postTitle={prevPost?.title} postLink={`/${AppConfig.POSTS_DIR}/${prevPost?.slug}`} />
-        <PostNavigationButton direction={"next"} postTitle={nextPost?.title} postLink={`/${AppConfig.POSTS_DIR}/${nextPost?.slug}`} />
+        <PostNavigationButton 
+          direction={"prev"} 
+          postTitle={prevPost?.title} 
+          postLink={`/${AppConfig.POSTS_DIR}/${prevPost?.slug}`} 
+        />
+        <PostNavigationButton 
+          direction={"next"} 
+          postTitle={nextPost?.title} 
+          postLink={`/${AppConfig.POSTS_DIR}/${nextPost?.slug}`} 
+        />
       </Style>
 
     </Style>
