@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import { styled } from "@/lib/styles/stiches.config";
+import React from "react";
+import { styled } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { CSS } from "@stitches/react";
 import type { PropsWithChildren, ForwardedRef } from "react";
@@ -7,8 +7,8 @@ import type { NextNode } from "@/types/next.d";
 
 type StyleProps = PropsWithChildren<{
   // Default style
-  style?: CSS, // TODO: remove this
-  styles?: CSS | CSS[],
+  style?: CSS,
+  styles?: CSS[],
 
   // CSS overwrite!
   css?: CSS,
@@ -23,9 +23,20 @@ type StyleProps = PropsWithChildren<{
   [x: string]: any,
 }>;
 
+function processStyles(styles?: CSS | CSS[]) {
+  if (!styles)
+    return [];
+
+  if (Array.isArray(styles))
+    return styles.filter((style) => style && Object.keys(style).length)
+
+  // fallback to CSS
+  return Object.keys(styles).length ? [styles] : [];
+}
+
 const StyleWithRef = ({
-    style={}, 
-    styles={},
+    style={},
+    styles=[],
     children, 
     elementName=HtmlConst.DIV, 
     ...otherProps
@@ -33,19 +44,15 @@ const StyleWithRef = ({
   
   ref: ForwardedRef<HTMLElement>
 ) => {
-  // TODO: remove this backward-compatible stuffs
-  const composedStyles = useMemo(
-    () => [
-      ...(style && Object.keys(style).length ? [style] : []),
-      ...(Array.isArray(styles) ? styles : (Object.keys(styles).length ? [styles] : [])),
-    ],
-    [JSON.stringify(style), JSON.stringify(styles)]
-  )
+  const processedStyles = [
+    ...processStyles(style),
+    ...processStyles(styles)
+  ];
 
   // Somehow, wrap an element like this will cause 
   // serverside rendering to include all CSS styles
   // of the generated class during page load in <head/>.
-  const CSSWrapper = styled(elementName, ...composedStyles);
+  const CSSWrapper = styled(elementName, ...processedStyles);
   return (
     <CSSWrapper ref={ref} {...otherProps}>
       {children}

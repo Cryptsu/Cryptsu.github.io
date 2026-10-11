@@ -1,5 +1,5 @@
 import Style from "@/components/Style";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { AppConfig } from "@/lib/config";
 import type { CSS } from "@stitches/react";
 

@@ -1,6 +1,6 @@
 import Style from "@/components/Style";
 import BlinkingText from "@/components/BlinkingText";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import type { CSS } from "@stitches/react";
 
 type PostDescriptionProps = {
@@ -13,11 +13,9 @@ const PostDescription = ({ description }: PostDescriptionProps) => {
       {
         description
           && 
-          <>
-            <Style style={PostDescriptionStyles}>
-              {description}
-            </Style>
-          </>
+          <Style style={PostDescriptionStyles}>
+            {description}
+          </Style>
       }
     </>
   )
@@ -26,11 +24,11 @@ const PostDescription = ({ description }: PostDescriptionProps) => {
 const PostDescriptionStyles: CSS = {
   paddingBottom: "0.25em",
 
+  color: theme.colors.textLess,
   fontSize: theme.fontSizes.h4,
   fontWeight: theme.fontWeights.h4,
   letterSpacing: theme.letterSpacings.h4,
 
-  textDecoration: "underline",
   textAlign: "center",
   width: "75%", 
 

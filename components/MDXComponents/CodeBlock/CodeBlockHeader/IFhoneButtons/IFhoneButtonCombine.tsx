@@ -2,7 +2,7 @@ import Style from "@/components/Style";
 import Button from "@/components/Button";
 import { ChevronUpIcon, ReplyIcon, ArrowBothIcon } from "@/components/Icons";
 import { CodeBlockStateEnum } from "@/contexts/CodeBlockContext";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";

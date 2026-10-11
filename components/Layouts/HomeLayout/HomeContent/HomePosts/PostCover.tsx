@@ -1,7 +1,7 @@
 import path from "path";
 import Style from "@/components/Style";
 import CustomLink from "@/components/CustomLink";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import { AppConfig, AssetsConfig } from "@/lib/config";
 import type { PropsWithChildren } from "react";

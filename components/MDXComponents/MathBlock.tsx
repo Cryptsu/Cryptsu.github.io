@@ -1,5 +1,5 @@
 import Style from "@/components/Style";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -17,13 +17,22 @@ const MathBlock = ({children, ...otherProps}: MathBlockProps) => {
 }
 
 const MathBlockStyles: CSS = {
-  overflowX: "auto",
+  // for some reason, the math block
+  // is scrollable despite the height
+  // is right?
+  '& > *': {
+    overflowY: "hidden",
+  },
 
-  border: 0,
-  borderTop: 2,
-  borderBottom: 2,
-  borderStyle: "dashed",
-  borderColor: theme.colors.divider50,
+  backgroundColor: theme.colors.mathBackground,
+  borderLeft: `0.5em solid ${theme.colors.primary}`,
+  borderRadius: "1.5em",
+
+  margin: "0 -1em !important",
+  paddingTop: 16,
+  paddingBottom: 16,
+
+  boxShadow: theme.shadows.depthShadow,
 };
 
 export default MathBlock;

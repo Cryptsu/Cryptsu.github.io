@@ -2,7 +2,7 @@ import Style from "@/components/Style";
 import Header from "./Header";
 import Footer from "./Footer";
 import TinyPage from "./TinyPage";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { ClassConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -13,7 +13,7 @@ const PageLayout = ({ children, ...otherProps }: PageLayoutProps) => {
   return (
     <>
       <Style style={PageLayoutStyles} {...otherProps}>
-        <Header styles={PageLayoutHeaderStyles} />
+        <Header style={PageLayoutHeaderStyles} />
         <>
           {children}
         </>

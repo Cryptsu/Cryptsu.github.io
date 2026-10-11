@@ -6,7 +6,7 @@ import PostHeader from "./PostHeader";
 import PostNavigation from "./PostNavigation";
 import TableOfContentWrapper from "./TableOfContentWrapper";
 
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 
 import type { PropsWithChildren } from "react";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -28,7 +28,7 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
         <Style style={PostContentInnerStyles}>
           <PostContent sourceContent={sourceContent}/>
         </Style>
-        <TableOfContentWrapper styles={PostTOCGroupStyles}/>
+        <TableOfContentWrapper style={PostTOCGroupStyles}/>
         <Style style={PostNavigationGroupStyles}>
           <PostNavigation nextPost={nextPost} prevPost={prevPost} />
         </Style>

@@ -62,36 +62,41 @@ You can:
 
 - *<u>**example request:**</u>*
 
-```json
-{ "recipient": "Casino", "command": "Register", "username": "Orrrrrr" }
-```
+  ```json
+  { 
+    "recipient": "Casino", 
+    "command": "Register", 
+    "username": "Orrrrrr" 
+  }
+  ```
 
 - *<u>**code:**</u>*
 
-```go
-// casino.go
-// ...
-const MaxPlayers = 100
-const InitialBalance = 2023
+  ```go
+  // casino.go
+  // ...
+  const MaxPlayers = 100
+  const InitialBalance = 2023
 
-func (c *Casino) Register(username string) error {
-exist, err := c.tree.Has([]byte(username))
-if err != nil {
-    log.Fatal(err)
-}
-if exist {
-    return errors.New("player-exists")
-}
-if c.numAccounts >= MaxPlayers {
-    return errors.New("max-players")
-}
-c.numAccounts += 1
-c.setBalance(username, big.NewInt(InitialBalance))
-fmt.Printf("Added user: %s.\n", username)
-return nil
-}
-// ...
-```
+  func (c *Casino) Register(username string) error {
+      exist, err := c.tree.Has([]byte(username))
+      if err != nil {
+          log.Fatal(err)
+      }
+      if exist {
+          return errors.New("player-exists")
+      }
+      if c.numAccounts >= MaxPlayers {
+          return errors.New("max-players")
+      }
+      c.numAccounts += 1
+      c.setBalance(username, big.NewInt(InitialBalance))
+      fmt.Printf("Added user: %s.\n", username)
+      return nil
+  }
+
+  // ...
+  ```
 
 
 
@@ -111,39 +116,46 @@ return nil
 
 - **<u>*example request:*</u>**
 
-```json
-{ "recipient": "Casino", "command": "Bet", "username": "Orrrrrr", "amount": 123, "n": 456 }
-```
+  ```json
+  {
+    "recipient": "Casino",
+    "command": "Bet",
+    "username": "Orrrrrr",
+    "amount": 123,
+    "n": 456
+  }
+  ```
   
 - <u>***code:***</u>
   
-```go
-// casino.go
-// ...
-func (c *Casino) Bet(username string, amount *big.Int, n int) error {
-currentBalance, err := c.getBalance(username)
-if err != nil {
-    return err
-}
-amount.Abs(amount)
-if currentBalance.Cmp(amount) < 0 {
-    return errors.New("insufficient-balance")
-}
-r := rand.Intn(2023)
-if r == n { // correct guess
-    reward := new(big.Int).Mul(amount, big.NewInt(2022))
-    currentBalance.Add(currentBalance, reward)
-    c.setBalance(username, currentBalance)
-    fmt.Printf("YOU WIN! Current balance: %d (+%d).\n", currentBalance, reward)
-} else {
-    currentBalance.Sub(currentBalance, amount)
-    c.setBalance(username, currentBalance)
-    fmt.Printf("YOU LOSE (%d != %d)! Current balance: %d (-%d).\n", r, n, currentBalance, amount)
-}
-return nil
-}
-// ...
-```
+  ```go
+  // casino.go
+  // ...
+  func (c *Casino) Bet(username string, amount *big.Int, n int) error {
+      currentBalance, err := c.getBalance(username)
+      if err != nil {
+          return err
+      }
+      amount.Abs(amount)
+      if currentBalance.Cmp(amount) < 0 {
+          return errors.New("insufficient-balance")
+      }
+      r := rand.Intn(2023)
+      if r == n { // correct guess
+          reward := new(big.Int).Mul(amount, big.NewInt(2022))
+          currentBalance.Add(currentBalance, reward)
+          c.setBalance(username, currentBalance)
+          fmt.Printf("YOU WIN! Current balance: %d (+%d).\n", currentBalance, reward)
+      } else {
+          currentBalance.Sub(currentBalance, amount)
+          c.setBalance(username, currentBalance)
+          fmt.Printf("YOU LOSE (%d != %d)! Current balance: %d (-%d).\n", r, n, currentBalance, amount)
+      }
+      return nil
+  }
+
+  // ...
+  ```
 
 
 <br/>
@@ -152,33 +164,44 @@ return nil
   
   
 - **<u>*example request:*</u>**
-  
-```json
-{"Recipient": "Casino", "Command": "ShowBalanceWithProof", "Username": "Orrrrrr"}
-```
+  ```json
+  {
+    "Recipient": "Casino",
+    "Command": "ShowBalanceWithProof",
+    "Username": "Orrrrrr"
+  }
+  ```
   
 - ***<u>code:</u>***
   
-```go
-// casino.go
-// ...
-func (c *Casino) ShowBalanceWithProof(username string) error {
-value, proof, err := c.tree.GetWithProof([]byte(username))
-if err != nil {
-    log.Fatal(err)
-}
-if value == nil {
-    return errors.New("player-not-exist")
-}
-proofData, err := proof.ToProto().Marshal()
-if err != nil {
-    log.Fatal(err)
-}
-fmt.Printf("%d, %s\n", new(big.Int).SetBytes(value), base64.StdEncoding.EncodeToString(proofData))
-return nil
-}
-// ...
-```
+  ```go
+  // casino.go
+  // ...
+  func (c *Casino) Bet(username string, amount *big.Int, n int) error {
+      currentBalance, err := c.getBalance(username)
+      if err != nil {
+          return err
+      }
+      amount.Abs(amount)
+      if currentBalance.Cmp(amount) < 0 {
+          return errors.New("insufficient-balance")
+      }
+      r := rand.Intn(2023)
+      if r == n { // correct guess
+          reward := new(big.Int).Mul(amount, big.NewInt(2022))
+          currentBalance.Add(currentBalance, reward)
+          c.setBalance(username, currentBalance)
+          fmt.Printf("YOU WIN! Current balance: %d (+%d).\n", currentBalance, reward)
+      } else {
+          currentBalance.Sub(currentBalance, amount)
+          c.setBalance(username, currentBalance)
+          fmt.Printf("YOU LOSE (%d != %d)! Current balance: %d (-%d).\n", r, n, currentBalance, amount)
+      }
+      return nil
+  }
+
+  // ...
+  ```
 
 		
 <br/>
@@ -186,42 +209,53 @@ return nil
 
 - **<u>*example request:*</u>** 
   
-```json
-{"Recipient": "FlagSeller", "Command": "PrintFlag", "Username": "Orrrrrr", "Balance": 674575536530165491749660868130299036066707815144061494924879197906525335081820072153268675251126472982500904339158951753600, "proof_data": [26, 46, 10, 7, 79, 114, 114, 114, 114, 114, 114, 18, 32, 109, 131, 92, 77, 137, 187, 133, 233, 12, 114, 115, 54, 175, 113, 149, 190, 174, 14, 165, 57, 118, 134, 67, 152, 122, 170, 139, 119, 113, 127, 202, 200, 24, 186, 6]}
-```
+  ```json
+  {
+    "Recipient": "FlagSeller",
+    "Command": "PrintFlag",
+    "Username": "Orrrrrr",
+    "Balance": 674575536530165491749660868130299036066707815144061494924879197906525335081820072153268675251126472982500904339158951753600,
+    "proof_data": [
+      26, 46, 10, 7, 79, 114, 114, 114, 114, 114, 114, 18, 32, 109, 131, 92, 77,
+      137, 187, 133, 233, 12, 114, 115, 54, 175, 113, 149, 190, 174, 14, 165, 57,
+      118, 134, 67, 152, 122, 170, 139, 119, 113, 127, 202, 200, 24, 186, 6
+    ]
+  }
+  ```
   
 - ***<u>code:</u>***
   
-```go
-// flag_seller.go
-// ...
-func (fs *FlagSeller) PrintFlag(usename string, balance *big.Int, proofData []byte) error {
-var pbProof iavlproto.RangeProof
-if err := proto.Unmarshal(proofData, &pbProof); err != nil {
-    return fmt.Errorf("bad proof format: %w", err)
-}
-proof, err := iavl.RangeProofFromProto(&pbProof)
-if err != nil {
-    return fmt.Errorf("bad proof format: %w", err)
-}
-if err := proof.Verify(fs.dbRootRetriever()); err != nil {
-    return fmt.Errorf("proof verification failed: %w", err)
-}
-if err := proof.VerifyItem([]byte(usename), balance.Bytes()); err != nil {
-    return fmt.Errorf("proof verification failed: %w", err)
-}
+  ```go
+  // flag_seller.go
+  // ...
+  func (fs *FlagSeller) PrintFlag(usename string, balance *big.Int, proofData []byte) error {
+      var pbProof iavlproto.RangeProof
+      if err := proto.Unmarshal(proofData, &pbProof); err != nil {
+          return fmt.Errorf("bad proof format: %w", err)
+      }
+      proof, err := iavl.RangeProofFromProto(&pbProof)
+      if err != nil {
+          return fmt.Errorf("bad proof format: %w", err)
+      }
+      if err := proof.Verify(fs.dbRootRetriever()); err != nil {
+          return fmt.Errorf("proof verification failed: %w", err)
+      }
+      if err := proof.VerifyItem([]byte(usename), balance.Bytes()); err != nil {
+          return fmt.Errorf("proof verification failed: %w", err)
+      }
 
-l := balance.BitLen() / 8
-dot3 := "..."
-if l >= len(fs.flag) {
-    l = len(fs.flag)
-    dot3 = ""
-}
-fmt.Printf("Your flag is: %s%s\n", fs.flag[:l], dot3)
-return nil
-}
-// ...
-```
+      l := balance.BitLen() / 8
+      dot3 := "..."
+      if l >= len(fs.flag) {
+          l = len(fs.flag)
+          dot3 = ""
+      }
+      fmt.Printf("Your flag is: %s%s\n", fs.flag[:l], dot3)
+      return nil
+  }
+
+  // ...
+  ```
 
 <br/>
 # Analysis

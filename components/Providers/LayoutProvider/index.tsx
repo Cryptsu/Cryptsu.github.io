@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useOnce from "@/hooks/useOnce";
 import { LayoutContext } from "@/contexts/LayoutContext";
 import { getLocalStorage, setLocalStorage } from "@/lib/helpers/storage";
-import { ThemeClassMap } from "@/lib/styles/stiches.config";
+import { ThemeClassMap } from "@/lib/styles/stitches.config";
 import { ThemeConst, StorageConst, LocaleConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 

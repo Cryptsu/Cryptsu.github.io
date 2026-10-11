@@ -1,6 +1,6 @@
 import Style from "@/components/Style";
 import CustomLink from "@/components/CustomLink";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";

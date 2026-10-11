@@ -3,7 +3,7 @@ import useOnce from "@/hooks/useOnce";
 import Style from "@/components/Style";
 import HomePosts from "./HomePosts";
 import HomePageNumber from "./HomePageNumber";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import { AppConfig } from "@/lib/config";
 import type { PropsWithChildren } from "react";

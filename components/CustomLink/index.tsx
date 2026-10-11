@@ -1,4 +1,4 @@
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import Link from "next/link";
 import Style from "@/components/Style";
 import type { CSS } from "@stitches/react";

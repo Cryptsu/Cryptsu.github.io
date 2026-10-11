@@ -1,7 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import DeviceScript from '@/components/Scripts/DeviceScript';
-import { getCssText } from '@/lib/styles/stiches.config'
-import { ThemeClassMap } from "@/lib/styles/stiches.config";
+import { getCssText } from '@/lib/styles/stitches.config'
+import { ThemeClassMap } from "@/lib/styles/stitches.config";
 import { ThemeConst } from '@/lib/consts';
 
 export default function Document() {

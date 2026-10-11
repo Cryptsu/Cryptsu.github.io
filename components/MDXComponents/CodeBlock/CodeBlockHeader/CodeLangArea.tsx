@@ -1,8 +1,7 @@
-import Style     from "@/components/Style";
-import { theme } from "@/lib/styles/stiches.config";
-
+import Style from "@/components/Style";
+import { theme } from "@/lib/styles/stitches.config";
 import type { PropsWithChildren } from "react";
-import type { CSS }               from "@stitches/react";
+import type { CSS } from "@stitches/react";
 
 type CodeLangAreaProps = PropsWithChildren<{
   languageName?: string
@@ -27,10 +26,9 @@ const CodeLangAreaStyles: CSS = {
   userSelect: "none",
   
   color: theme.colors.textLess,
-  fontSize: theme.fontSizes.h5,
-  letterSpacing: theme.letterSpacings.h5,
+  fontSize: theme.fontSizes.h6,
+  letterSpacing: theme.letterSpacings.h6,
   fontWeight: theme.fontWeights.bold,
-  textTransform: "capitalize",
   transform: "translateY(0.0625em)",
 };
 

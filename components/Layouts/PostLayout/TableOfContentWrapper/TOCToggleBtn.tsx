@@ -1,7 +1,7 @@
 import Style from "@/components/Style";
 import Button from "@/components/Button";
 import { ListOrderedIcon, XIcon } from "@/components/Icons";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";

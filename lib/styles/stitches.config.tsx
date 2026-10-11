@@ -135,8 +135,11 @@ export const {
       navLinkDropdownBackground: "$black",
 
       //   -> Quoteblock
-      quoteLegend: "$black",
+      quoteLegend: "$grey",
       quoteBackground: hexToRgba("#A8EFCD", 0.02),
+
+      //   -> Mathblock
+      mathBackground: "rgb(from $primary r g b / 0.05)",
 
       //   -> Code area
       codeInnerBackground: "$black",
@@ -280,16 +283,11 @@ export const {
     staticUnderline: (attrsStr: string) => {
       // This code is created from Jarv.is's idea
       // of a moving line under an element :)
-      let color = "#101010";
-      let thickness = "1px";
-      let marginX = "0px";
-      let marginY = "0px";
-
-      let attrs = attrsStr.split(" ");
-      color              = (attrs[0] === undefined ? color     : attrs[0]);
-      thickness          = (attrs[1] === undefined ? thickness : attrs[1]);
-      marginX            = (attrs[2] === undefined ? marginX   : attrs[2]);
-      marginY            = (attrs[3] === undefined ? marginY   : attrs[3]);
+      const attrs     = attrsStr.split(" ");
+      const color     = (attrs[0] === undefined ? "#101010" : attrs[0]);
+      const thickness = (attrs[1] === undefined ? "1px"     : attrs[1]);
+      const marginX   = (attrs[2] === undefined ? "0px"     : attrs[2]);
+      const marginY   = (attrs[3] === undefined ? "0px"     : attrs[3]);
 
       return {
         backgroundImage: color,
@@ -302,16 +300,11 @@ export const {
     movUnderline: (attrsStr: string) => {
       // This code is created from Jarv.is's idea
       // of a moving line under an element :)
-      let color = "#101010";
-      let thickness = "1px";
-      let marginX = "0px";
-      let marginY = "0px";
-
-      let attrs = attrsStr.split(" ");
-      color     = (attrs[0] === undefined ? color     : attrs[0]);
-      thickness = (attrs[1] === undefined ? thickness : attrs[1]);
-      marginX   = (attrs[2] === undefined ? marginX   : attrs[2]);
-      marginY   = (attrs[3] === undefined ? marginY   : attrs[3]);
+      const attrs     = attrsStr.split(" ");
+      const color     = (attrs[0] === undefined ? "#101010" : attrs[0]);
+      const thickness = (attrs[1] === undefined ? "1px"     : attrs[1]);
+      const marginX   = (attrs[2] === undefined ? "0px"     : attrs[2]);
+      const marginY   = (attrs[3] === undefined ? "0px"     : attrs[3]);
 
       return {
         backgroundImage: color,

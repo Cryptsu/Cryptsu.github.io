@@ -55,8 +55,8 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   ol: [{replacedElement: OrderedList}],
   img: [{replacedElement: BlogImg}],
   span: [
-    {replacedElement: MathBlock, classNames: ["katex-display", "katex"]},
     {replacedElement: MathInline, classNames: ["katex"]},
+    {replacedElement: MathBlock, classNames: ["katex-display"]},
   ],
   li: [{replacedElement: ListItem}],
   table: [{replacedElement: Table}],
