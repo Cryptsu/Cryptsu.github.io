@@ -138,6 +138,9 @@ export const {
       quoteLegend: "$black",
       quoteBackground: hexToRgba("#A8EFCD", 0.02),
 
+      //   -> Mathblock
+      mathBackground: "rgb(from $primary r g b / 0.05)",
+
       //   -> Code area
       codeInnerBackground: "$black",
       codeBlockBackground: `linear-gradient(0deg, #181918, #181918)`,

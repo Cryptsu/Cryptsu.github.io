@@ -24,8 +24,13 @@ const MathBlockStyles: CSS = {
     overflowY: "hidden",
   },
 
-  paddingTop: 12,
-  paddingBottom: 12,
+  backgroundColor: theme.colors.mathBackground,
+  borderLeft: `0.5em solid ${theme.colors.primary}`,
+  borderRadius: "1.5em",
+
+  margin: "0 -1em !important",
+  paddingTop: 16,
+  paddingBottom: 16,
 };
 
 export default MathBlock;
