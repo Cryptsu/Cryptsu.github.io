@@ -1,93 +1,58 @@
-import      { visit } from 'unist-util-visit';
-import      { h }     from 'hastscript';
-import type { Root }  from "mdast";
+import { visit } from "unist-util-visit";
+import { h } from "hastscript";
+import { DirectivesConfig } from "@/lib/config/directive.config";
+import type { Root } from "mdast";
 import type { VFile } from "vfile";
+
+const MARKERS = {
+  textDirective: ":",
+  leafDirective: "::",
+  containerDirective: ":::",
+};
 
 export function customRemarkDirective() {
   return (tree: Root, file: VFile) => {
     visit(tree, (node) => {
       if (
-        node.type === 'textDirective' ||
-        node.type === 'leafDirective' ||
-        node.type === 'containerDirective'
-      ) 
-      {
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //    unallowed tags handled here :-)
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        if (
-          node.name !== 'code' &&
-          node.name !== 'ytembed'
-        ) {
-          if (node.type === 'textDirective')
-            file.fail(
-              `Unexpected directive :${node.name}.`,
-              node
-            )
+        node.type !== "textDirective" &&
+        node.type !== "leafDirective" &&
+        node.type !== "containerDirective"
+      )
+        return;
 
+      const selector = MARKERS[node.type] + node.name;
+      if (!(selector in DirectivesConfig)) return;
 
-          if (node.type === 'leafDirective')
-            file.fail(
-              `Unexpected directive ::${node.name}.`,
-              node
-            )
+      const spec = DirectivesConfig[selector];
+      const requiredAttributes = spec.requireAttributes
+        ? spec.requireAttributes
+        : [];
+      const allowedAttributes = spec.allowedAttributes
+        ? spec.allowedAttributes
+        : [];
 
-          if (node.type === 'containerDirective')
-            file.fail(
-              `Unexpected directive :::${node.name}.`,
-              node
-            )
-        }
-
-        const data = node.data || (node.data = {});
-        const attributes = node.attributes || {};
-        const hast = h(node.name, attributes);
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //    :code[Some text or HTML here]
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        if (node.name === 'code') {
-          if (
-            node.type === 'leafDirective' ||
-            node.type === 'containerDirective'
-          ) {
-            file.fail(
-              'Unexpected ::code leaf directive or :::code container directive, please use :code for a text directive.',
-              node
-            )
-          }
-
-          data.hName = hast.tagName;
-          data.hProperties = hast.properties;
-          return;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //    ::ytembed[Some Description]{#video-id}
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        if (node.name === 'ytembed') {
-          if (
-            node.type === 'textDirective' ||
-            node.type === 'containerDirective'
-          ) {
-            file.fail(
-              'Unexpected :ytembed text directive or :::ytembed container directive, please use ::ytembed for a leaf directive.',
-              node
-            )
-          }
-
-          if (!attributes.id) {
-            file.fail(
-              'Expect `#id` on `::ytembed` directive: `::ytembed[Description]{#id}`.',
-              node
-            )
-          }
-
-          data.hName = hast.tagName;
-          data.hProperties = hast.properties;
-          return;
+      const attributes = node.attributes || {};
+      for (const attribute of Object.keys(attributes)) {
+        if (!allowedAttributes.includes(attribute)) {
+          file.fail(`Unexpected attribute "${attribute}" for ${selector}.`);
         }
       }
-    })
-  }
+
+      for (const requiredAttribute of requiredAttributes) {
+        if (!(requiredAttribute in attributes)) {
+          file.fail(
+            `Missing required attribute "${requiredAttribute}" for ${selector}.`,
+          );
+        }
+      }
+
+      const data = node.data || (node.data = {});
+      const hast = h(node.name, attributes);
+
+      // if no tagName is specified, get straight from the
+      // directive tag name.
+      data.hName = spec.tagName ? spec.tagName : hast.tagName;
+      data.hProperties = hast.properties;
+    });
+  };
 }
