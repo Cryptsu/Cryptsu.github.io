@@ -24,13 +24,8 @@ const MathBlockStyles: CSS = {
     overflowY: "hidden",
   },
 
-  border: 0,
-  borderTop: 2,
-  borderBottom: 2,
   paddingTop: 12,
   paddingBottom: 12,
-  borderStyle: "dashed",
-  borderColor: theme.colors.divider50,
 };
 
 export default MathBlock;
