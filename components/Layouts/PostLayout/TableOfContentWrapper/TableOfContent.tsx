@@ -6,10 +6,11 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type TableOfContentProps = PropsWithChildren<{
-  css?: CSS
+  css?: CSS,
+  style?: CSS,
 }>
 
-const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => {
+const TableOfContent = ({children, style={}, css={}, ...otherProps}: TableOfContentProps) => {
   ////////////////////////////////////////////////////////////////
   //
   //  This array contains values of -1, 0, or 1.
@@ -125,7 +126,7 @@ const TableOfContent = ({children, css, ...otherProps}: TableOfContentProps) => 
   }, [intersections, scrollXYs])
 
   return (
-    <Style ref={scrollRef} style={TableOfContentStyles} css={css} {...otherProps}>
+    <Style ref={scrollRef} styles={[TableOfContentStyles, style]} css={css} {...otherProps}>
       {
         headingInfos.map((headingInfo, index) => 
           <Style key={index} 
