@@ -1,3 +1,0 @@
-- [ ] Admonition cards
-- [ ] Colored texts
-- [ ] Thumbnail images are cropped to fit the ratio.
