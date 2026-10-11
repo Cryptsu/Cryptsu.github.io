@@ -24,7 +24,7 @@ const PostMetadatas = ({ frontMatter }: PostMetadatasProps) => {
         />
         <Time dateStr={frontMatter.date}/>
       </Style>
-      <Style style={PostMetadataStyles}>
+      {/*<Style style={PostMetadataStyles}>
         <NoteIcon
           style={{
             fill: theme.colors.tertiary,
@@ -33,7 +33,7 @@ const PostMetadatas = ({ frontMatter }: PostMetadatasProps) => {
           }}
         />
         {`${frontMatter.noWords} ${TxtConst.TXT_WORDS}`}
-      </Style>
+      </Style>*/}
       <Style style={PostMetadataStyles}>
         <ClockIcon
           style={{
