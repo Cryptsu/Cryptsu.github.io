@@ -20,7 +20,9 @@ const MathBlockStyles: CSS = {
   // for some reason, the math block
   // is scrollable despite the height
   // is right?
-  overflowY: "hidden",
+  '& > *': {
+    overflowY: "hidden",
+  },
 
   border: 0,
   borderTop: 2,
