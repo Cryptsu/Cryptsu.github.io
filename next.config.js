@@ -9,6 +9,9 @@ const nextConfig = {
     loader: "akamai",
     path: ""
   },
+
+  // For local development
+  allowedDevOrigins: ['127.0.0.1'],
 }
 
 const webpack_override_svg_viewbox_rule = {
