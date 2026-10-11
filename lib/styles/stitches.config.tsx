@@ -135,7 +135,7 @@ export const {
       navLinkDropdownBackground: "$black",
 
       //   -> Quoteblock
-      quoteLegend: "$black",
+      quoteLegend: "$grey",
       quoteBackground: hexToRgba("#A8EFCD", 0.02),
 
       //   -> Mathblock

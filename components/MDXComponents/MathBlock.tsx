@@ -31,6 +31,8 @@ const MathBlockStyles: CSS = {
   margin: "0 -1em !important",
   paddingTop: 16,
   paddingBottom: 16,
+
+  boxShadow: theme.shadows.depthShadow,
 };
 
 export default MathBlock;

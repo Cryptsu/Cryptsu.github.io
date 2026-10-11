@@ -17,17 +17,8 @@ const Blockquote = ({children, ...otherProps}: BlockquoteProps) => {
 }
 
 const BlockquoteStyles: CSS = {
-  // margin
-  marginTop: "0.75em",
-  marginBottom: "0.75em",
-  marginLeft: "0.5em",
-  marginRight: "0.5em",
-
-  // Create somesort of box-like pattern
-  paddingLeft: "2em",
-  paddingRight: "2em",
-  paddingTop: "0.5em",
-  paddingBottom: "0.5em",
+  margin: "0.75em -1em",
+  padding: "0.75em 1.5em",
 
   // Box border
   borderLeft: "0.5em",
@@ -41,7 +32,7 @@ const BlockquoteStyles: CSS = {
   boxShadow: theme.shadows.depthShadow,
 
   // Text color
-  color: theme.colors.textLLess,
+  color: theme.colors.textLess,
 };
 
 export default Blockquote;
