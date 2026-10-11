@@ -1,6 +1,6 @@
-import      { AppConfig, AssetsConfig }    from ".";
+import { AppConfig, AssetsConfig } from ".";
 import type { Person, ArticleJsonLdProps } from "next-seo";
-import type { DefaultSeoProps }            from "next-seo/pages";
+import type { DefaultSeoProps } from "next-seo/pages";
 
 // Most of this file simply takes the data already defined in ./AppConfig.js and translates it into objects that are
 // compatible with next-seo's props:
@@ -51,7 +51,7 @@ export const defaultSeo: DefaultSeoProps = {
     },
     {
       rel: "icon",
-      href: AssetsConfig.FAVICON_ICO,
+      href: AssetsConfig.FAVICON_PNG,
       type: "image/png",
     },
     {
