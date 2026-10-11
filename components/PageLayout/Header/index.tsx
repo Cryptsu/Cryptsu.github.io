@@ -7,12 +7,12 @@ import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type HeaderProps = PropsWithChildren<{
-  styles?: CSS
+  style?: CSS
 }>;
 
-const Header = ({ styles={} }: HeaderProps) => {
+const Header = ({ style={} }: HeaderProps) => {
   return (
-    <Style styles={[HeaderStyles, styles]}>
+    <Style styles={[HeaderStyles, style]}>
       <Style style={NavLinkGroupStyles}>
         <NavLinks/>
       </Style>
