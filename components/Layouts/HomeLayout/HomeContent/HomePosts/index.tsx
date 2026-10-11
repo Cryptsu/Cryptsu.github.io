@@ -3,7 +3,7 @@ import PostCover from "./PostCover";
 import PostTitle from "./PostTitle";
 import PostDescription from "./PostDescription";
 import PostOtherMetadata from "./PostOtherMetadata";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { TxtConst } from "@/lib/consts";
 import { AppConfig } from "@/lib/config";
 import type { PropsWithChildren } from "react";

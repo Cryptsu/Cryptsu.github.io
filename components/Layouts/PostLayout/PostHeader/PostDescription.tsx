@@ -1,6 +1,6 @@
 import Style from "@/components/Style";
 import BlinkingText from "@/components/BlinkingText";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import type { CSS } from "@stitches/react";
 
 type PostDescriptionProps = {

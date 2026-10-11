@@ -4,7 +4,7 @@ import copy from "copy-to-clipboard";
 import Style from "@/components/Style";
 import Button from "@/components/Button";
 import { ClipboardIcon, CheckIcon } from "@/components/Icons";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import type { MouseEventHandler, ComponentPropsWithoutRef, ReactNode } from "react";
 import type { CSS } from "@stitches/react";
 

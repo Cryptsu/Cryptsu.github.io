@@ -3,7 +3,7 @@ import { CodeBlockContext, CodeBlockStateEnum, CodeBlockStates } from "@/context
 import Style from "@/components/Style";
 import CodeBlockHeader from "./CodeBlockHeader";
 import CodeBlockInner from "./CodeBlockInner";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 
 import type { PropsWithChildren } from "react";

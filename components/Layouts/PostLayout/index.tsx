@@ -6,7 +6,7 @@ import PostHeader from "./PostHeader";
 import PostNavigation from "./PostNavigation";
 import TableOfContentWrapper from "./TableOfContentWrapper";
 
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 
 import type { PropsWithChildren } from "react";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useOnce from "@/hooks/useOnce";
-import { config } from "@/lib/styles/stiches.config";
+import { config } from "@/lib/styles/stitches.config";
 import type { PropsWithChildren } from "react";
 
 type TinyPageProps = PropsWithChildren<{

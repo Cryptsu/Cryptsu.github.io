@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { styled } from "@/lib/styles/stiches.config";
+import { styled } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { CSS } from "@stitches/react";
 import type { PropsWithChildren, ForwardedRef } from "react";

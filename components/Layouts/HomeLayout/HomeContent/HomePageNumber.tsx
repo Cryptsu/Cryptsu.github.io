@@ -1,6 +1,6 @@
 import Style from "@/components/Style";
 import { ArrowLeftIcon, ArrowRightIcon } from "@/components/Icons";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { AppConfig } from "@/lib/config";
 import { HtmlConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";

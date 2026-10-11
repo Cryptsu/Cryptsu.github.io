@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Style from "@/components/Style";
 import NavLink from "./NavLink";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { ClassConst } from "@/lib/consts";
 import NavLinkConfig from "@/lib/config/navlink.config";
 import type { PropsWithChildren } from "react";

@@ -1,7 +1,7 @@
 import Style from "@/components/Style"
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { ClassConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";

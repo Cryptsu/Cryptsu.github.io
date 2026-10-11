@@ -1,4 +1,4 @@
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { LockLockedIcon } from "@/components/Icons";
 
 const Lock = () => {

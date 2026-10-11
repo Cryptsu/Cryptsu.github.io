@@ -1,7 +1,7 @@
 import path from "path";
 import { useRouter } from "next/router";
 import Style from "@/components/Style";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import { AppConfig, AssetsConfig } from "@/lib/config";
 import type { PropsWithChildren } from "react";

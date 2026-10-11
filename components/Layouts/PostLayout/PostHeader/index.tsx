@@ -3,7 +3,7 @@ import BlinkingText from "@/components/BlinkingText";
 import PostTitle from "./PostTitle";
 import PostMetadatas from "./PostMetadatas";
 import PostDescription from "./PostDescription";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 import type { PostFrontMatterType } from "@/types/post.d";

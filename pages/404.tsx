@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import { generateNextSeo } from "next-seo/pages";
 import Style from "@/components/Style";
-import { config, theme } from "@/lib/styles/stiches.config";
+import { config, theme } from "@/lib/styles/stitches.config";
 import { HtmlConst, TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";

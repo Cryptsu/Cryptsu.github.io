@@ -2,7 +2,7 @@ import React, { useContext, useRef, useLayoutEffect, useState, useEffect } from 
 import { CodeBlockContext } from "@/contexts/CodeBlockContext";
 import Style from "@/components/Style";
 import CodeBlockContent from "./CodeBlockContent";
-import { theme, keyframes } from "@/lib/styles/stiches.config";
+import { theme, keyframes } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";

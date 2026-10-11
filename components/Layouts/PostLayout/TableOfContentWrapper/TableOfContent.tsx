@@ -1,7 +1,7 @@
 import { useEffect, useRef, useReducer, useMemo, useLayoutEffect } from "react"
 import useContent from "@/hooks/useContent";
 import Style from "@/components/Style";
-import { theme } from "@/lib/styles/stiches.config";
+import { theme } from "@/lib/styles/stitches.config";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
