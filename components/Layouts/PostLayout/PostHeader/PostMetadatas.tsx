@@ -11,7 +11,7 @@ type PostMetadatasProps = PropsWithChildren<{
   frontMatter: PostFrontMatterType
 }>
 
-const PostMetadatas = ({children, frontMatter, ...otherProps}: PostMetadatasProps) => {
+const PostMetadatas = ({ frontMatter }: PostMetadatasProps) => {
   return (
     <Style style={PostMetadatasStyles}>
       <Style style={PostMetadataStyles}>
