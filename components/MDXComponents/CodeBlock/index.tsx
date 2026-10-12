@@ -4,7 +4,7 @@ import Style from "@/components/Style";
 import CodeBlockHeader from "./CodeBlockHeader";
 import CodeBlockInner from "./CodeBlockInner";
 import { theme } from "@/lib/styles/stitches.config";
-import { HtmlConst } from "@/lib/consts";
+import { ClassConst, HtmlConst } from "@/lib/consts";
 
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -106,6 +106,10 @@ const CodeBlockStyles: CSS = {
   // while making children elements selectable.
   backgroundImage: `${theme.colors.codeBlockBackground}`,
   boxShadow: theme.shadows.depthShadow,
+
+  [`&:has(.${ClassConst.CLASS_CODEBLOCK_BTN}:active)`]: {
+    border: "1px solid white",
+  },
 
   // Limit the height for code view...
   // maxHeight: 240,

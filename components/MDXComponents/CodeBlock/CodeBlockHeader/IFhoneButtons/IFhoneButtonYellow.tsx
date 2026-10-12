@@ -1,7 +1,7 @@
 import Style from "@/components/Style";
 import { ArrowBothIcon, ReplyIcon } from "@/components/Icons";
 import { theme } from "@/lib/styles/stitches.config";
-import { HtmlConst } from "@/lib/consts";
+import { ClassConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -13,7 +13,7 @@ type IFhoneButtonYellowProps = PropsWithChildren<{
 
 const IFhoneButtonYellow = ({children, wrapCode, ...otherProps}: IFhoneButtonYellowProps) => {
   return (
-    <Style style={IFhoneButtonYellowStyles} {...otherProps}>
+    <Style className={ClassConst.CLASS_CODEBLOCK_BTN} style={IFhoneButtonYellowStyles} {...otherProps}>
       <Style style={IFhoneButtonIconStyles} as={wrapCode ? ArrowBothIcon : ReplyIcon} />
     </Style>
   )
@@ -44,7 +44,7 @@ const IFhoneButtonIconStyles: CSS = {
 
   transform: "scaleY(-1)",
   opacity: "0%",
-  '&:hover': {
+  [`.${ClassConst.CLASS_CODEBLOCK_BTN}:hover &`]: {
     opacity: "100%",
   }
 }

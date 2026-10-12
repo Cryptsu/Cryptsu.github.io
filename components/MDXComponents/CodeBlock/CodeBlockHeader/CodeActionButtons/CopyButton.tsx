@@ -3,6 +3,7 @@ import innerText from "react-innertext";
 import copy from "copy-to-clipboard";
 import Style from "@/components/Style";
 import { ClipboardIcon, CheckIcon } from "@/components/Icons";
+import { ClassConst } from "@/lib/consts";
 import { theme } from "@/lib/styles/stitches.config";
 import type { MouseEventHandler, ComponentPropsWithoutRef, ReactNode } from "react";
 import type { CSS } from "@stitches/react";
@@ -44,6 +45,7 @@ const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyBut
 
   return (
     <Style 
+      className={ClassConst.CLASS_CODEBLOCK_BTN}
       css={style}
       style={CopyButtonStyles} 
       onClick={handleCopyFn}

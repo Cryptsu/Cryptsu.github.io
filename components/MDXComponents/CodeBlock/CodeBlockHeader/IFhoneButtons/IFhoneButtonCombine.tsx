@@ -2,6 +2,7 @@ import Style from "@/components/Style";
 import { ChevronUpIcon, ReplyIcon, ArrowBothIcon } from "@/components/Icons";
 import { CodeBlockStateEnum } from "@/contexts/CodeBlockContext";
 import { theme } from "@/lib/styles/stitches.config";
+import { ClassConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -26,7 +27,7 @@ const CSSMap = {
 
 const IFhoneButtonCombine = ({children, codeBlockState, ...otherProps}: IFhoneButtonCombineProps) => {
   return (
-    <Style style={IFhoneButtonCombineStyles} {...otherProps}>
+    <Style className={ClassConst.CLASS_CODEBLOCK_BTN} style={IFhoneButtonCombineStyles} {...otherProps}>
       <Style 
         css={CSSMap[codeBlockState]} 
         style={IFhoneButtonIconStyles} 

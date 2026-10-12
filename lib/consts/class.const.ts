@@ -4,3 +4,7 @@ export const CLASS_MOBILE = "device-is-mobile";
 export const CLASS_TABLET = "device-is-tablet";
 export const CLASS_TOO_OLD = "device-too-outdated";
 export const CLASS_TOO_SMALL = "device-too-small";
+
+// Detect when the codeblock button is pressed
+export const CLASS_CODEBLOCK_BTN = "codeblock-btn";
+
