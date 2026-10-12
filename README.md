@@ -33,3 +33,11 @@ Mark a markdown block formatted as inine code like `this`. **Usage**:
 ```markdown
 :code[some-text-or-markdown bla bla bla]
 ```
+
+### `:text`
+
+You can create formatted text pieces! Currently only support `color` attributes.
+
+```markdown
+:text[some-text]{color=color-name}
+```

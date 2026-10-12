@@ -8,7 +8,7 @@ draft: true
 Today. I'm adding and learning the `:ytembed` tag \:3
 # TODOs
 - [x] Youtube embeds
-- [ ] Colored texts
+- [x] Colored texts
 - [ ] Callout blocks
 - [ ] Little '#' on the headers
 - [ ] Thumbnail images are cropped to fit the ratio.
@@ -16,8 +16,16 @@ Today. I'm adding and learning the `:ytembed` tag \:3
 - [ ] Horizontal scrolling will be accompanied by a dashed line to indicate unfinished scrolling
 
 # Testing colored texts
-::text[Heyhey]{style=var(--primary)}
+This text is :text[orange]{color=orange}, while this text is *:text[green and italic]{color=green}*.
+Why not adding **:text[red and bold]{color=red}**?
 
-# Using directive
+> **:text[How about in a quoteblock?]{color=blue}**
+>
+> Wow! *:text[It works]{color=orange}*!
 
+## What about in :text[headers]{color=blue}?
+*:text[Okay... I did not know that it may work? (I'm trying to write in brown, but why is it displayed as white?)]{color=brown}*
+*:text[Ah, but there isn't a brown color in here]{color=yellow}*. You will find an error in the console.
+
+# Youtube embedding
 ::ytembed[Very Good Music]{#MfSVrlvbQQA}

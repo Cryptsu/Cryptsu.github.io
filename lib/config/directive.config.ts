@@ -25,10 +25,10 @@ export const DirectivesConfig: DirectivesConfigType = {
   },
 
   ////////////////////////////////////////////////////////////////////////////////////////////
-  //    ::text[Text]{color=value}
+  //    :text[Text]{color=value}
   ////////////////////////////////////////////////////////////////////////////////////////////
-  "::text": {
-    usage: "::text[Text]{color=value}",
+  ":text": {
+    usage: ":text[Text]{[color=value]}",
     allowedAttributes: ["color"],
   }
 };
