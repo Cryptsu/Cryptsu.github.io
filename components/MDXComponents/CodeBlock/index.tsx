@@ -85,7 +85,7 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
 const CodeBlockStyles: CSS = {
   fontFamily: theme.fonts.code,
 
-  marginTop: "1em",
+  marginTop: "0.75em",
   marginBottom: "1em",
   marginLeft: "-1em",
   marginRight: "-1em",

@@ -1,9 +1,7 @@
 import Style from "@/components/Style";
-import Button from "@/components/Button";
 import { ChevronUpIcon, ReplyIcon, ArrowBothIcon } from "@/components/Icons";
 import { CodeBlockStateEnum } from "@/contexts/CodeBlockContext";
 import { theme } from "@/lib/styles/stitches.config";
-import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -29,7 +27,6 @@ const CSSMap = {
 const IFhoneButtonCombine = ({children, codeBlockState, ...otherProps}: IFhoneButtonCombineProps) => {
   return (
     <Style 
-      as={Button}
       style={IFhoneButtonCombineStyles} 
       {...otherProps}
     >
@@ -45,18 +42,24 @@ const IFhoneButtonCombine = ({children, codeBlockState, ...otherProps}: IFhoneBu
 const IFhoneButtonCombineStyles: CSS = {
   width: "1.5em",
   height: "1.5em",
-  borderRadius: "8px !important",
   cursor: "pointer",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   userSelect: "none",
 
+  borderRadius: "8px !important",
   borderWidth: "0.125em",
+  borderStyle: "dashed !important",
   borderColor: theme.colors.tertiary,
-  boxShadow: theme.shadows.codeBlockMobileBtnNormal,
+  '@media (hover: hover)': {
+    '&:hover': {
+      backgroundColor: theme.colors.buttonHoverBackground,
+      cursor: "pointer",
+    },
+  },
   '&:active': {
-    boxShadow: theme.shadows.codeBlockMobileBtnClick,
+    backgroundColor: theme.colors.tertiary,
   },
 };
 
