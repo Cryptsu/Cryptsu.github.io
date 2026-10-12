@@ -51,7 +51,7 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
         break;
       case CodeBlockStateEnum.closeBox:
         setShouldToggleAnimation(true);
-        setWrapCode(false);
+        setWrapCode(true);
         setShowInner(false);
         break;
     }
