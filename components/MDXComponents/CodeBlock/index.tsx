@@ -98,6 +98,7 @@ const CodeBlockStyles: CSS = {
   display: "flex",
   flexDirection: "column",
   padding: "1em",
+  paddingTop: "0.5em",
   gap: "1em",
 
   // This would create the effect of having opacity to the background
