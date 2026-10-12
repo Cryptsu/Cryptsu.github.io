@@ -244,6 +244,7 @@ export const {
       codeCopyBtnClick: "0 0.0625em #265D8B",
       codeBlockMobileBtnNormal: "0 0.25em #73403F",
       codeBlockMobileBtnClick: "0 0.0625em #73403F",
+      codeBlock: `0 0.6em #222222`,
       tocMobileBtnNormal: "0 0.375em #265D8B",
       tocMobileBtnClick: "0 0.125em #265D8B",
       prevBtn: "0 0.375em #B03836",
@@ -355,7 +356,8 @@ export const ThemeClassMap: ThemeClassMapType = {
 //                              GLOBAL CONFIG
 ///////////////////////////////////////////////////////////////////////////
 export const globalStyles = globalCss({
-  'html, body, ul': { 
+  'html, body, ul, pre': { 
+    // don't want default margin & padding
     margin: 0,
     padding: 0,
 
