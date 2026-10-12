@@ -15,6 +15,24 @@ Today. I'm adding and learning the `:ytembed` tag \:3
 - [ ] Implements checkboxes
 - [ ] Horizontal scrolling will be accompanied by a dashed line to indicate unfinished scrolling
 
+# Code block
+
+Beginning of this text will be some codeblocks. I'm implementing some changes to it!
+```python
+import os
+
+while True:
+    t = os.walkdir("psuedo-code-to-test")
+    if t is None:
+        break
+
+    f = open(t.path, "wb")
+    d = f.read(1234)
+    if d[:10] == f'{t.path}-header'.encode():
+        print(f'found special file: {t.path}')
+    f.close()
+```
+
 # Testing colored texts
 This text is :text[orange]{color=orange}, while this text is *:text[green and italic]{color=green}*.
 Why not adding **:text[red and bold]{color=red}**?
