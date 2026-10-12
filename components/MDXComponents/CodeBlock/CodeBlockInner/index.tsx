@@ -31,12 +31,8 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
       css={
         !shouldToggleAnimation
           ? {
-              height: showInner 
-                        ? "auto" 
-                        : "0px",
-              opacity: showInner
-                        ? 1
-                        : 0
+              height: showInner ? "auto" : "0px",
+              opacity: showInner ? 1 : 0
             }
           : {...(
                   showInner
@@ -47,10 +43,7 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
       }
       {...otherProps}
     >
-      <CodeBlockContent 
-        wrapCode={wrapCode} 
-        elementRef={innerRef}
-      >
+      <CodeBlockContent wrapCode={wrapCode} elementRef={innerRef}>
         {children}
       </CodeBlockContent>
     </Style>

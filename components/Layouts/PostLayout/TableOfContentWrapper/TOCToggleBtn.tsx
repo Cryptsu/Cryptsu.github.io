@@ -17,38 +17,35 @@ const TOCToggleBtn = ({children, showTOCMobile, ...otherProps}: TOCToggleBtnProp
       style={TOCToggleBtnStyles} 
       css={
         showTOCMobile
-          ? { 
-              zIndex: theme.zIndices.tocBtnClick, 
-              display: "none", 
-              '@larger': {
-                display: "flex"
-              },
-            }
-          : { 
-              zIndex: theme.zIndices.tocBtnNormal, 
-              display: "none", 
-              '@larger': {
-                display: "flex"
-              },
-            }
+          ? TOCBtnOnStyles
+          : TOCBtnOffStyles
       }
       {...otherProps}
     >
       {
         showTOCMobile
-          ? <Style
-              style={IconTOCOffStyles} 
-              as={XIcon}
-            />
-          : <Style 
-              style={IconTOCOnStyles} 
-              as={ListOrderedIcon}
-            />
+          ? <Style style={IconTOCOnStyles} as={XIcon} />
+          : <Style style={IconTOCOffStyles} as={ListOrderedIcon} />
       }
-      
     </Style>
   )
 }
+
+const TOCBtnOnStyles: CSS = { 
+  zIndex: theme.zIndices.tocBtnClick, 
+  display: "none", 
+  '@larger': {
+    display: "flex"
+  },
+};
+
+const TOCBtnOffStyles: CSS = { 
+  zIndex: theme.zIndices.tocBtnNormal, 
+  display: "none", 
+  '@larger': {
+    display: "flex"
+  },
+};
 
 const TOCToggleBtnStyles: CSS = {
   position: "fixed",
@@ -72,13 +69,13 @@ const TOCToggleBtnStyles: CSS = {
   },
 };
 
-const IconTOCOnStyles: CSS = {
+const IconTOCOffStyles: CSS = {
   fill: theme.colors.iconGeneral,
   width: "1em",
   height: "1em",
 }
 
-const IconTOCOffStyles: CSS = {
+const IconTOCOnStyles: CSS = {
   fill: theme.colors.error,
   width: "1.5em",
   height: "1.5em",
