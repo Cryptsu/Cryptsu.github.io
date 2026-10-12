@@ -6,13 +6,10 @@ import IFhoneButtonRed from "./IFhoneButtonRed";
 import IFhoneButtonYellow from "./IFhoneButtonYellow";
 import IFhoneButtonCombine from "./IFhoneButtonCombine";
 import { ClassConst, TxtConst } from "@/lib/consts";
-
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
-type IFhoneButtonsProps = PropsWithChildren<{
-
-}>
+type IFhoneButtonsProps = PropsWithChildren<{}>;
 
 const IFhoneButtons = ({children, ...otherProps}: IFhoneButtonsProps) => {
   const { 
@@ -26,9 +23,15 @@ const IFhoneButtons = ({children, ...otherProps}: IFhoneButtonsProps) => {
 
   return (
     <>
+      {/* Displayed on mobile */}
       <Style style={IFhoneButtonsMobileStyles} {...otherProps}>
-        <IFhoneButtonCombine codeBlockState={codeBlockState} onClick={UpdateVisualStateFn} />
+        <IFhoneButtonCombine 
+          codeBlockState={codeBlockState} 
+          onClick={UpdateVisualStateFn} 
+        />
       </Style>
+
+      {/* Displayed on desktop */}
       <Style style={IFhoneButtonsStyles} {...otherProps}>
         <IFhoneButtonRed title={TxtConst.TXT_CODE_RED_BUTTON_DESC} showInner={showInner} onClick={ToggleContentFn}/>
         <IFhoneButtonYellow title={TxtConst.TXT_CODE_YELLOW_BUTTON_DESC} wrapCode={wrapCode} onClick={ToggleWrapFn}/>
@@ -40,17 +43,18 @@ const IFhoneButtons = ({children, ...otherProps}: IFhoneButtonsProps) => {
 
 const IFhoneButtonsStyles: CSS = {
   display: "flex",
-  flexDirection: "row",
-  justifyContent: "left",
-  alignItems: "center",
-  transform: "translateY(2px)",
-  gap: 2,
   [`.${ClassConst.CLASS_MOBILE} &`]: {
     display: "none"
   },
   [`.${ClassConst.CLASS_TABLET} &`]: {
     display: "none"
-  }
+  },
+
+  flexDirection: "row",
+  justifyContent: "left",
+  alignItems: "center",
+  transform: "translateY(2px)",
+  gap: 2,
 };
 
 const IFhoneButtonsMobileStyles: CSS = {

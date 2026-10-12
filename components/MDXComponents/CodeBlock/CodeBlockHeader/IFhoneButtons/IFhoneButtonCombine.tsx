@@ -26,10 +26,7 @@ const CSSMap = {
 
 const IFhoneButtonCombine = ({children, codeBlockState, ...otherProps}: IFhoneButtonCombineProps) => {
   return (
-    <Style 
-      style={IFhoneButtonCombineStyles} 
-      {...otherProps}
-    >
+    <Style style={IFhoneButtonCombineStyles} {...otherProps}>
       <Style 
         css={CSSMap[codeBlockState]} 
         style={IFhoneButtonIconStyles} 

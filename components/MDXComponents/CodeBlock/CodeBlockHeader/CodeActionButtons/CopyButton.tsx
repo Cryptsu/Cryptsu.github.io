@@ -28,9 +28,8 @@ const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyBut
   };
 
   useEffect(() => {
-    if (!copied) {
+    if (!copied)
       return;
-    }
 
     // reset to original icon after given ms (defaults to 2 seconds)
     const reset = setTimeout(() => {
