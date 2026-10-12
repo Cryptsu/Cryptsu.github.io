@@ -28,7 +28,7 @@ const BlockquoteStyles: CSS = {
   borderStyle: "solid",
   backgroundColor: theme.colors.quoteBackground,
   borderColor: theme.colors.quoteLegend,
-  borderRadius: "1.5em",
+  borderRadius: "1em",
   boxShadow: theme.shadows.depthShadow,
 
   // Text color

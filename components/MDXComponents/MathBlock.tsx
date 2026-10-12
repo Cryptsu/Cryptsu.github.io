@@ -26,7 +26,7 @@ const MathBlockStyles: CSS = {
 
   backgroundColor: theme.colors.mathBackground,
   borderLeft: `0.5em solid ${theme.colors.primary}`,
-  borderRadius: "1.5em",
+  borderRadius: "1em",
 
   margin: "0 -1em !important",
   paddingTop: 16,
