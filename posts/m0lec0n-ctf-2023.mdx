@@ -12,17 +12,17 @@ For a while now, after the ~*death*~ postponed activities of `u0K++`, I've got a
 This challenge provides a some sort of **Diffle-Hellman key exchange-ish**- protocol in the form of `64x64` matrices in `ZZ`. The premise is very straight-forward. You're given:
 - A matrix `Q = B * B.tranpose()`, `B` unknown and random.
 - 2 matrices `M1`, `M2` generated from `Q` and unknown matrices `U1`, `U2`:
-```python
-M1 = U1.transpose() * Q * U1
-M2 = U2.transpose() * Q * U2
-```
+  ```python
+  M1 = U1.transpose() * Q * U1
+  M2 = U2.transpose() * Q * U2
+  ```
 
-The challenge has 2 matrices `S1`, `S2` that act as the shared secrets to this protocol.
-```python
-# Yeah, these 2 things are the same :3
-S1 = U1.transpose() * M2 * U1
-S2 = U2.transpose() * M1 * U2
-```
+- 2 matrices `S1`, `S2` that act as the shared secrets to this protocol.
+  ```python
+  # S1 == S2
+  S1 = U1.transpose() * M2 * U1
+  S2 = U2.transpose() * M1 * U2
+  ```
 
 It seems like the challenge would be impossible if the matrices `U1`, `U2` are any arbitary matrices, so a condition is added for their generation:
 ```python
