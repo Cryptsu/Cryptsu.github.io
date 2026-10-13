@@ -1,5 +1,5 @@
-import      useLayout             from "@/hooks/useLayout";
-import      { formatDate }        from "@/lib/helpers/format-date";
+import useLayout from "@/hooks/useLayout";
+import { formatDate } from "@/lib/helpers/format-date";
 import type { PropsWithChildren } from "react";
 
 type TimeProps = PropsWithChildren<{
