@@ -14,6 +14,7 @@ Today. I'm adding and learning the `:ytembed` tag \:3
 - [ ] Thumbnail images are cropped to fit the ratio.
 - [ ] Implements checkboxes
 - [ ] Horizontal scrolling will be accompanied by a dashed line to indicate unfinished scrolling
+- [ ] Move away from `next-mdx-remote`
 
 # Math block
 
@@ -51,7 +52,7 @@ $$
 # Code block
 
 Beginning of this text will be some codeblocks. I'm implementing some changes to it!
-```python
+```toml
 import os
 
 while True:
@@ -64,6 +65,17 @@ while True:
     if d[:10] == f'{t.path}-header'.encode():
         print(f'found special file: {t.path}')
     f.close()
+```
+
+```html
+<head></head>
+<body></body>
+```
+
+```webmanifest
+{
+  key: "value",
+}
 ```
 
 # Testing colored texts
