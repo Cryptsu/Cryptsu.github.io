@@ -25,10 +25,11 @@ const BlockquoteStyles: CSS = {
   borderRight: 0,
   borderTop: 0,
   borderBottom: 0,
-  borderStyle: "solid",
-  backgroundColor: theme.colors.quoteBackground,
-  borderColor: theme.colors.quoteLegend,
+  borderStyle: "groove",
   borderRadius: "1em",
+  backgroundColor: theme.colors.quoteBackground,
+  backgroundImage: theme.colors.blockBackgroundShade,
+  borderColor: theme.colors.quoteLegend,
   boxShadow: theme.shadows.depthShadow,
 
   // Text color

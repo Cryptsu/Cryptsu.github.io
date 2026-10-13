@@ -25,12 +25,12 @@ const MathBlockStyles: CSS = {
   },
 
   backgroundColor: theme.colors.mathBackground,
-  borderLeft: `0.5em solid ${theme.colors.primary}`,
+  backgroundImage: theme.colors.blockBackgroundShade,
+  borderLeft: `0.5em groove ${theme.colors.primary}`,
   borderRadius: "1em",
 
   margin: "0 -1em !important",
-  paddingTop: 16,
-  paddingBottom: 16,
+  padding: "0.75em 1.5em",
 
   boxShadow: theme.shadows.depthShadow,
 };

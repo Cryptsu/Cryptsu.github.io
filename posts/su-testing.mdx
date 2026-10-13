@@ -15,6 +15,39 @@ Today. I'm adding and learning the `:ytembed` tag \:3
 - [ ] Implements checkboxes
 - [ ] Horizontal scrolling will be accompanied by a dashed line to indicate unfinished scrolling
 
+# Math block
+
+This math block has a problem. I'm implementing some changes to it!
+$$
+\begin{bmatrix}
+    \omega_N^0 & \omega_N^0     & \omega_N^0        & ... & \omega_N^0            & \omega_N^0             \\
+    \omega_N^0 & \omega_N^1     & \omega_N^2        & ... & \omega_N^{N-2}        & \omega_N^{N-1}         \\
+    \omega_N^0 & \omega_N^2     & \omega_N^4        & ... & \omega_N^{2N-4}       & \omega_N^{2N-2}       \\
+    ... \\
+    \omega_N^0 & \omega_N^{N-1} & \omega_N^{2(N-1)} & ... & \omega_N^{(N-2)(N-1)} & \omega_N^{(N-1)(N-1)} \\
+\end{bmatrix}
+
+\begin{bmatrix}
+f_0     \\
+f_1     \\
+f_2     \\
+...     \\
+f_{N-2} \\
+f_{N-1}
+\end{bmatrix}
+
+=
+
+\begin{bmatrix}
+f(\omega_N^0) \\
+f(\omega_N^1) \\
+f(\omega_N^2) \\
+... \\
+f(\omega_N^{N-2}) \\
+f(\omega_N^{N-1})
+\end{bmatrix}
+$$
+
 # Code block
 
 Beginning of this text will be some codeblocks. I'm implementing some changes to it!
@@ -50,16 +83,22 @@ Why not adding **:text[red and bold]{color=red}**?
 This is warning block.
 :::
 
-:::note
+:::note{title="How to write a note"}
+This is a note block with a title *:text["How to write a note"]{color=yellow}*.
 :::
 
 :::tip
+This is a tip block on how to leave a tip.
 :::
 
 :::caution
+Oh no! You must stay away from this!
 :::
 
 :::important
+What? 
+
+![shocked](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsO6iaPC-Ta3YvQKJTfmsMgfyOZVdKlxsWeaCFbJm2aImKADiQuSmFqXyr&s=10)
 :::
 
 # Youtube embedding

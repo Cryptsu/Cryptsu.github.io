@@ -95,8 +95,8 @@ const CodeBlockStyles: CSS = {
     marginRight: "-1em",
   },
 
-  borderTop: "1px solid $grey",
-  borderBottom: "1px solid $grey",
+  borderTop: `1px solid ${theme.colors.codeBlockFlare}`,
+  borderBottom: `1px solid ${theme.colors.codeBlockFlare}`,
 
   display: "flex",
   flexDirection: "column",
@@ -107,7 +107,7 @@ const CodeBlockStyles: CSS = {
   // This would create the effect of having opacity to the background
   // Stops phones from keeping selecting background image instead of content.
   // while making children elements selectable.
-  backgroundImage: `${theme.colors.codeBlockBackground}`,
+  backgroundImage: theme.colors.codeBlockBackground,
   boxShadow: `${theme.shadows.depthShadow}, ${theme.shadows.codeBlock}`,
 
   overflow: "clip",           // makes the buttons' click halos area clip

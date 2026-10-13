@@ -135,6 +135,9 @@ export const {
       pageBackground: "$blackest",
       navLinkDropdownBackground: "$black",
 
+      //   -> Blocks (general callout block)
+      blockBackgroundShade: `linear-gradient(90deg, #000000af 0%, #00000000 5%, #00000000 98%, #050505 100%)`,
+
       //   -> Quoteblock
       quoteLegend: "$grey",
       quoteBackground: hexToRgba("#A8EFCD", 0.02),
@@ -143,8 +146,9 @@ export const {
       mathBackground: "rgb(from $primary r g b / 0.05)",
 
       //   -> Code area
+      codeBlockFlare: "$grey",
       codeInnerBackground: "$black",
-      codeBlockBackground: `linear-gradient(90deg, #101010 0%, #181918 2%, #181918 98%, #101010 100%);`,
+      codeBlockBackground: `linear-gradient(90deg, #101010 0%, #181918 2%, #181918 98%, #101010 100%)`,
 
       //      -> Code text area
       codeComment: "#8F8F8F",
