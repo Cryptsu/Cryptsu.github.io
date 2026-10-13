@@ -86,7 +86,7 @@ const CodeBlockStyles: CSS = {
   fontFamily: theme.fonts.code,
 
   marginTop: "0.75em",
-  marginBottom: "1em",
+  marginBottom: "1.6em",
   marginLeft: "-1em",
   marginRight: "-1em",
   borderRadius: "1em",
@@ -94,6 +94,9 @@ const CodeBlockStyles: CSS = {
     marginLeft: "-1em",
     marginRight: "-1em",
   },
+
+  borderTop: "1px solid $grey",
+  borderBottom: "1px solid $grey",
 
   display: "flex",
   flexDirection: "column",
@@ -105,10 +108,12 @@ const CodeBlockStyles: CSS = {
   // Stops phones from keeping selecting background image instead of content.
   // while making children elements selectable.
   backgroundImage: `${theme.colors.codeBlockBackground}`,
-  boxShadow: theme.shadows.depthShadow,
+  boxShadow: `${theme.shadows.depthShadow}, ${theme.shadows.codeBlock}`,
 
   [`&:has(.${ClassConst.CLASS_CODEBLOCK_BTN}:active)`]: {
-    border: "4px solid $white",
+    transition: "all 0.25s",
+    boxShadow: `${theme.shadows.depthShadow}, ${theme.shadows.codeBlockPressed}`,
+    transform: "translateY(0.4em)",
   },
 
   // Limit the height for code view...

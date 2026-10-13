@@ -144,7 +144,7 @@ export const {
 
       //   -> Code area
       codeInnerBackground: "$black",
-      codeBlockBackground: `linear-gradient(0deg, #181918, #181918)`,
+      codeBlockBackground: `linear-gradient(90deg, #101010 0%, #181918 2%, #181918 98%, #101010 100%);`,
 
       //      -> Code text area
       codeComment: "#8F8F8F",
@@ -244,7 +244,8 @@ export const {
       codeCopyBtnClick: "0 0.0625em #265D8B",
       codeBlockMobileBtnNormal: "0 0.25em #73403F",
       codeBlockMobileBtnClick: "0 0.0625em #73403F",
-      codeBlock: `0 0.6em #222222`,
+      codeBlock: `0 0.6em #333333`,
+      codeBlockPressed: `0 0.2em #333333`,
       tocMobileBtnNormal: "0 0.375em #265D8B",
       tocMobileBtnClick: "0 0.125em #265D8B",
       prevBtn: "0 0.375em #B03836",
