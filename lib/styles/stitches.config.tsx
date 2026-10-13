@@ -383,6 +383,12 @@ export const globalStyles = globalCss({
     backgroundColor: "$pageBackground",
     backgroundImage: `url("${AssetsConfig.GRAIN_WEBP}")`,
     pointerEvents: "none",  
+
+    // pressing copy-code button sometimes accidentally
+    // selects text, so this fix is made.
+    [`&:has(.${ClassConst.CLASS_CODEBLOCK_BTN}:active)`]: {
+      userSelect: "none",
+    },
   },
 
   [`.${ClassConst.CLASS_IOS}, .${ClassConst.CLASS_SAFARI}`]: {
@@ -397,7 +403,7 @@ export const globalStyles = globalCss({
     }
   },
 
-  [`.${ClassConst.CLASS_HALO_CLICKER}`]: {
+  [`.${ClassConst.CLASS_CODEBLOCK_BTN}`]: {
     // A hack class. When a clickable element
     // is pressed, a halo is created surrounding
     // that element with radius size specified

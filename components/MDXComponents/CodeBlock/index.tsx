@@ -110,6 +110,7 @@ const CodeBlockStyles: CSS = {
   backgroundImage: `${theme.colors.codeBlockBackground}`,
   boxShadow: `${theme.shadows.depthShadow}, ${theme.shadows.codeBlock}`,
 
+  overflow: "clip",           // makes the buttons' click halos area clip
   [`&:has(.${ClassConst.CLASS_CODEBLOCK_BTN}:active)`]: {
     userSelect: "none",       // copy on the phone accidentally selects text.
     transition: "all 0.25s",

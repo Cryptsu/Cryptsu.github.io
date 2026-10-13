@@ -16,7 +16,7 @@ const IFhoneButtonGreen = ({
 }: IFhoneButtonGreenProps) => {
   return (
     <Style
-      className={`${ClassConst.CLASS_CODEBLOCK_BTN} ${ClassConst.CLASS_HALO_CLICKER}`}
+      className={ClassConst.CLASS_CODEBLOCK_BTN}
       style={IFhoneButtonGreenStyles}
       {...otherProps}
     >

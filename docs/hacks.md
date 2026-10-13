@@ -17,4 +17,4 @@ area. The halo's radius size is specified by `inset`.
     }
 }
 ```
-
+The root element must include `overflow: clip;` to avoid the size of the page getting stretched.

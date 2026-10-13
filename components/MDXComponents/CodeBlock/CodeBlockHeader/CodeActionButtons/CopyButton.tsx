@@ -45,7 +45,7 @@ const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyBut
 
   return (
     <Style 
-      className={`${ClassConst.CLASS_CODEBLOCK_BTN} ${ClassConst.CLASS_HALO_CLICKER}`}
+      className={ClassConst.CLASS_CODEBLOCK_BTN}
       css={style}
       style={CopyButtonStyles} 
       onClick={handleCopyFn}
