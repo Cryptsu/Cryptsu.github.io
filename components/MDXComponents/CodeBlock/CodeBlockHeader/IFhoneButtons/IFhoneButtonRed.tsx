@@ -1,7 +1,6 @@
 import Style from "@/components/Style";
 import { ChevronUpIcon, ChevronDownIcon } from "@/components/Icons";
 import { theme } from "@/lib/styles/stitches.config";
-import { ClassConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -13,7 +12,7 @@ type IFhoneButtonRedProps = PropsWithChildren<{
 
 const IFhoneButtonRed = ({children, showInner, ...otherProps}: IFhoneButtonRedProps) => {
   return (
-    <Style className={ClassConst.CLASS_CODEBLOCK_BTN} style={IFhoneButtonRedStyles} {...otherProps}>
+    <Style style={IFhoneButtonRedStyles} {...otherProps}>
       <Style style={IFhoneButtonIconStyles} as={showInner ? ChevronUpIcon : ChevronDownIcon} />
     </Style>
   )
@@ -41,7 +40,7 @@ const IFhoneButtonIconStyles: CSS = {
   height: "0.75em",
 
   opacity: "0%",
-  [`.${ClassConst.CLASS_CODEBLOCK_BTN}:hover &`]: {
+  '&:hover': {
     opacity: "100%",
   }
 }

@@ -1,7 +1,6 @@
 import Style from "@/components/Style";
 import { DotIcon } from "@/components/Icons";
 import { theme } from "@/lib/styles/stitches.config";
-import { ClassConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -12,7 +11,7 @@ type IFhoneButtonGreenProps = PropsWithChildren<{
 
 const IFhoneButtonGreen = ({children, ...otherProps}: IFhoneButtonGreenProps) => {
   return (
-    <Style className={ClassConst.CLASS_CODEBLOCK_BTN} style={IFhoneButtonGreenStyles} {...otherProps}>
+    <Style style={IFhoneButtonGreenStyles} {...otherProps}>
       <Style style={IFhoneButtonIconStyles} as={DotIcon} />
     </Style>
   )
@@ -40,7 +39,7 @@ const IFhoneButtonIconStyles: CSS = {
   height: "0.75em",
 
   opacity: "0%",
-  [`.${ClassConst.CLASS_CODEBLOCK_BTN}:hover &`]: {
+  '&:hover': {
     opacity: "100%",
   }
 }

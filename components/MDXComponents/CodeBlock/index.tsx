@@ -108,7 +108,7 @@ const CodeBlockStyles: CSS = {
   boxShadow: theme.shadows.depthShadow,
 
   [`&:has(.${ClassConst.CLASS_CODEBLOCK_BTN}:active)`]: {
-    border: "1px solid white",
+    border: "4px solid $white",
   },
 
   // Limit the height for code view...
