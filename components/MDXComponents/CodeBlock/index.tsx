@@ -111,6 +111,7 @@ const CodeBlockStyles: CSS = {
   boxShadow: `${theme.shadows.depthShadow}, ${theme.shadows.codeBlock}`,
 
   [`&:has(.${ClassConst.CLASS_CODEBLOCK_BTN}:active)`]: {
+    userSelect: "none",       // copy on the phone accidentally selects text.
     transition: "all 0.25s",
     boxShadow: `${theme.shadows.depthShadow}, ${theme.shadows.codeBlockPressed}`,
     transform: "translateY(0.4em)",
