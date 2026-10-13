@@ -3,11 +3,11 @@ __turbopack_load_page_chunks__("/posts/[slug]", [
   "static/chunks/3g1e91afibwbc.js",
   "static/chunks/0p6r9ij020-94.js",
   "static/chunks/0kscc4t_gvoen.js",
-  "static/chunks/21xj7i20d9fw_.js",
+  "static/chunks/088g29bgo5sbz.js",
   "static/chunks/2tzb02k8qxqc2.js",
   "static/chunks/2_bmp7e4sso_k.js",
   "static/chunks/3mp1td5bso4f1.js",
   "static/chunks/267efuqdz1vrc.css",
   "static/chunks/3c4-ozf1dxam2.css",
-  "static/chunks/turbopack-134d1ofj8t02q.js"
+  "static/chunks/turbopack-0x4xuevhgzieb.js"
 ])
