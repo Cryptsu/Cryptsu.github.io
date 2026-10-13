@@ -19,3 +19,8 @@ For visualization, I got my inspirations from these websites, which are from CTF
 The markdowns on this page are compatible with normal markdown, with some exceptions of usages of `remark-directive`s *([https://github.com/remarkjs/remark-directive](Link))*:
 
 For details, visit [directive-docs](docs/directives.md).
+
+## Create a new blog
+```sh
+npm run new -- --help
+```
