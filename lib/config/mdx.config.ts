@@ -14,8 +14,8 @@ import MathBlock from "@/components/MDXComponents/MathBlock";
 import Table from "@/components/MDXComponents/Table";
 
 // ============= Custom components =============
-import YoutubeEmbed from "@/components/MDXComponents/Customs/YoutubeEmbed";
-import Text from "@/components/MDXComponents/Customs/Text";
+import YoutubeEmbed from "@/components/MDXComponents/YoutubeEmbed";
+import Text from "@/components/MDXComponents/Text";
 
 export type MDXComponentsConfigType = {
   [componentName: string]: {
