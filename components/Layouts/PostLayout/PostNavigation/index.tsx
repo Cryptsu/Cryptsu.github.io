@@ -8,14 +8,13 @@ import type { CSS } from "@stitches/react";
 import type { PostFrontMatterType } from "@/types/post";
 
 type PostNavigationProps = PropsWithChildren<{
-  style?: CSS,
   prevPost: PostFrontMatterType | null,
   nextPost: PostFrontMatterType | null,
 }>
 
-const PostNavigation = ({children, prevPost, nextPost, style, ...otherProps}: PostNavigationProps) => {
+const PostNavigation = ({children, prevPost, nextPost, ...otherProps}: PostNavigationProps) => {
   return (
-    <Style styles={[PostNavigationWrapperStyles, style]} {...otherProps}>
+    <Style style={PostNavigationWrapperStyles} {...otherProps}>
       <Style style={OtherPostGroupStyles}>
         <Style style={DividerStyles} elementName={HtmlConst.SPAN}/>
         <Style style={OtherPostsTextStyles}>
@@ -36,6 +35,7 @@ const PostNavigation = ({children, prevPost, nextPost, style, ...otherProps}: Po
           postLink={`/${AppConfig.POSTS_DIR}/${nextPost?.slug}`} 
         />
       </Style>
+
     </Style>
   )
 }
@@ -45,7 +45,6 @@ const PostNavigationWrapperStyles: CSS = {
 };
 
 const OtherPostGroupStyles: CSS = {
-  width: "100%",
   display: "grid",
   gridTemplateColumns: "1fr auto 1fr",
   alignItems: "center",

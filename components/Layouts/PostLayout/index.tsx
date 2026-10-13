@@ -29,11 +29,9 @@ const PostLayout = ({children, frontMatter, sourceContent, prevPost, nextPost, .
           <PostContent sourceContent={sourceContent}/>
         </Style>
         <TableOfContentWrapper style={PostTOCGroupStyles}/>
-        <PostNavigation
-          style={PostNavigationGroupStyles}
-          nextPost={nextPost}
-          prevPost={prevPost}
-        />
+        <Style style={PostNavigationGroupStyles}>
+          <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+        </Style>
       </Style>
     </ContentProvider>
   )
@@ -73,7 +71,6 @@ const PostTOCGroupStyles: CSS = {
 const PostNavigationGroupStyles: CSS = {
   gridArea: "content-nav",
   display: "flex",
-  flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
 
