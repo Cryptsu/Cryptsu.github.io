@@ -18,26 +18,4 @@ For visualization, I got my inspirations from these websites, which are from CTF
 ## Compatibility with Vanilla Markdown
 The markdowns on this page are compatible with normal markdown, with some exceptions of usages of `remark-directive`s *([https://github.com/remarkjs/remark-directive](Link))*:
 
-### `::ytembed`
-
-Embed `Youtube`'s video into the blog. **Usage**:
-
-```markdown
-::ytembed[Video's description]{#video-id}
-```
-
-### `:code`
-
-Mark a markdown block formatted as inine code like `this`. **Usage**:
-
-```markdown
-:code[some-text-or-markdown bla bla bla]
-```
-
-### `:text`
-
-You can create formatted text pieces! Currently only support `color` attributes.
-
-```markdown
-:text[some-text]{color=color-name}
-```
+For details, visit [directive-docs](docs/directives.md).
