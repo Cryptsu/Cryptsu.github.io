@@ -8,3 +8,7 @@ export const CLASS_TOO_SMALL = "device-too-small";
 // Detect when the codeblock button is pressed
 export const CLASS_CODEBLOCK_BTN = "codeblock-btn";
 
+// A hack class. Used to extend the radius of an
+// element when clicked.
+export const CLASS_HALO_CLICKER = "halo-clicker";
+

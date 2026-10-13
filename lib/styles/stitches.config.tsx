@@ -396,6 +396,22 @@ export const globalStyles = globalCss({
     }
   },
 
+  [`.${ClassConst.CLASS_HALO_CLICKER}`]: {
+    // A hack class. When a clickable element
+    // is pressed, a halo is created surrounding
+    // that element with radius size specified
+    // by inset. Because this method doesn't affect
+    // the webpage's layout, we may set this to
+    // be any size.
+    '&:active': {
+      "&::after": {
+        content: "",
+        position: "absolute",
+        inset: -100,
+      },
+    },
+  },
+
   // ==============================================================
   //
   //                THIS WHOLE SECTION IS DEDICATED
