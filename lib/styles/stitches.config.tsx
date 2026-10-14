@@ -136,7 +136,7 @@ export const {
       navLinkDropdownBackground: "$black",
 
       //   -> Blocks (general callout block)
-      blockBackgroundShade: `linear-gradient(90deg, #000000af 0%, #00000000 5%, #00000000 98%, #050505 100%)`,
+      blockBackgroundShade: `linear-gradient(90deg, #080808 0%, #00000000 calc(0% + 1.5em), #00000000 calc(100% - 1em), #050505 100%)`,
 
       //   -> Quoteblock
       quoteLegend: "$grey",
