@@ -14,32 +14,35 @@ type PostCoverProps = PropsWithChildren<{
   slug: string;
 }>
 
+const resolveImagePath = (slug: string, imageURL?: string): string => {
+  if (!imageURL)
+    return AssetsConfig.EMPTY_IMG;
+
+  // for relative paths, returns one relative to the post's asset directory
+  if (!imageURL.startsWith("/"))
+    return path.join('/', AppConfig.ATTACHPOST_DIR, slug, imageURL);
+
+  return imageURL;
+}
+
 const PostCover = ({children, slug, coverImageURL, link, ...otherProps}: PostCoverProps) => {
   // What the hell... If I put a component inside a function
   // then when Next.js compiles, it will register onError !?
   const renderImg = () => {
-    return <Style 
-              style={PostCoverStyles} 
-              elementName={HtmlConst.IMG} 
-              src={
-                coverImageURL 
-                  ? (
-                      coverImageURL.startsWith('/') 
-                        ? coverImageURL
-                        : path.join('/', AppConfig.ATTACHPOST_DIR, slug, coverImageURL)
-                    ) 
-                  : AssetsConfig.EMPTY_IMG
-              } 
-              onError={
-                (event: Event) => {
-                  (event.target as HTMLImageElement).src = AssetsConfig.NO_EXISTS_IMG
-                }
-              }
-              {...otherProps}
-            >
-              {children}
-            </Style>
-  }
+    return (
+      <Style
+        style={PostCoverStyles}
+        elementName={HtmlConst.IMG}
+        src={resolveImagePath(slug, coverImageURL)}
+        onError={(event: Event) => {
+          (event.target as HTMLImageElement).src = AssetsConfig.NO_EXISTS_IMG;
+        }}
+        {...otherProps}
+      >
+        {children}
+      </Style>
+    );
+  };
 
   return (
     <Style style={PostCoverWrapperWrapperStyles} >
@@ -69,7 +72,6 @@ const PostCoverWrapperStyles: CSS = {
   },
 
   // Custom "border" of the cover.
-
   '@media (hover: hover)': {
     '&:hover': {
       transition: "all 0.25s",
@@ -97,8 +99,14 @@ const PostCoverStyles: CSS = {
   borderRadius: "0.75rem",
 
   width: "100%",
-  height: "auto",
   objectFit: "cover",
+  objectPosition: "center",
+  "@supports (aspect-ratio: 1)": {
+    aspectRatio: 58/17,
+  },
+  "@supports (not (aspect-ratio: 1))": {
+    height: "auto",
+  },
 };
 
 export default PostCover;
