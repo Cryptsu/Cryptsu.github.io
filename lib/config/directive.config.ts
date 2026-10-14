@@ -30,5 +30,26 @@ export const DirectivesConfig: DirectivesConfigType = {
   ":text": {
     usage: ":text[Text]{[color=value]}",
     allowedAttributes: ["color"],
-  }
+  },
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  //    :::<callout>{[attr=value ...]}
+  //    Text
+  //    :::
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  ":::warning": {
+    allowedAttributes: ["title"],
+  },
+  ":::note": {
+    allowedAttributes: ["title"],
+  },
+  ":::tip": {
+    allowedAttributes: ["title"],
+  },
+  ":::caution": {
+    allowedAttributes: ["title"],
+  },
+  ":::important": {
+    allowedAttributes: ["title"],
+  },
 };

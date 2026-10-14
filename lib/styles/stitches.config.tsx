@@ -107,6 +107,10 @@ export const {
       success: "$green",
       error: "$red",
       warning: "$yellow",
+      caution: "$red",
+      tip: "$green",
+      important: "$purple",
+      note: "$blue",
 
       // ========================== Main page ==============================
       //   -> Author section
@@ -142,8 +146,12 @@ export const {
       quoteLegend: "$grey",
       quoteBackground: hexToRgba("#A8EFCD", 0.02),
 
-      //   -> Mathblock
-      mathBackground: "rgb(from $primary r g b / 0.05)",
+      //   -> Callouts
+      warningBackground: "#25221a",
+      noteBackground: "#0c1e2b",
+      tipBackground: "#101f17",
+      cautionBackground: "#2d1717",
+      importantBackground: "#1d1a22",
 
       //   -> Code area
       codeBlockFlare: "$grey",

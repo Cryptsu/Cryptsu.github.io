@@ -30,7 +30,7 @@ const MathBlockStyles: CSS = {
   margin: "0 -1em !important",
   padding: "0.75em 1.5em",
 
-  backgroundColor: theme.colors.mathBackground,
+  backgroundColor: `rgb(from ${theme.colors.primary} r g b / 0.05)`,
   backgroundImage: theme.colors.blockBackgroundShade,
   boxShadow: theme.shadows.depthShadow,
 };

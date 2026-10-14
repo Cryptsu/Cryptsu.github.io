@@ -16,6 +16,11 @@ import Table from "@/components/MDXComponents/Table";
 // ============= Custom components =============
 import YoutubeEmbed from "@/components/MDXComponents/YoutubeEmbed";
 import Text from "@/components/MDXComponents/Text";
+import Warning from "@/components/MDXComponents/Callouts/Warning";
+import Note from "@/components/MDXComponents/Callouts/Note";
+import Caution from "@/components/MDXComponents/Callouts/Caution";
+import Important from "@/components/MDXComponents/Callouts/Important";
+import Tip from "@/components/MDXComponents/Callouts/Tip";
 
 export type MDXComponentsConfigType = {
   [componentName: string]: {
@@ -58,6 +63,11 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
   // ============= Custom components =============
   ytembed: [{ replacedElement: YoutubeEmbed }],
   text: [{ replacedElement: Text }],
+  warning: [{ replacedElement: Warning }],
+  note: [{ replacedElement: Note }],
+  caution: [{ replacedElement: Caution }],
+  important: [{ replacedElement: Important }],
+  tip: [{ replacedElement: Tip }],
 };
 
 export default MDXComponentsConfig;

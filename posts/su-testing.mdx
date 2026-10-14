@@ -52,7 +52,7 @@ $$
 # Code block
 
 Beginning of this text will be some codeblocks. I'm implementing some changes to it!
-```toml
+```yaml
 import os
 
 while True:
@@ -82,7 +82,7 @@ while True:
 This text is :text[orange]{color=orange}, while this text is *:text[green and italic]{color=green}*.
 Why not adding **:text[red and bold]{color=red}**?
 
-> **:text[How about in a quoteblock?]{color=blue}**
+> **:text[How about in a quoteblock?]{color=white}**
 >
 > Wow! *:text[It works]{color=orange}*!
 
@@ -91,23 +91,23 @@ Why not adding **:text[red and bold]{color=red}**?
 *:text[Ah, but there isn't a brown color in here]{color=yellow}*. You will find an error in the console.
 
 # Callouts
-:::warning
+:::warning{title="This is a scary block!"}
 This is warning block.
 :::
 
 :::note{title="How to write a note"}
-This is a note block with a title *:text["How to write a note"]{color=yellow}*.
+This is a note block with a title *:text["How to write a note"]{color=yellow}*. And also how to blah blah guara guara gah gah gah gah gah gah gah!
 :::
 
-:::tip
+:::tip{title="Tipping em tips!"}
 This is a tip block on how to leave a tip.
 :::
 
-:::caution
+:::caution{title="Beware of this card!"}
 Oh no! You must stay away from this!
 :::
 
-:::important
+:::important{title="Oh! Look at that!"}
 What? 
 
 ![shocked](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsO6iaPC-Ta3YvQKJTfmsMgfyOZVdKlxsWeaCFbJm2aImKADiQuSmFqXyr&s=10)
