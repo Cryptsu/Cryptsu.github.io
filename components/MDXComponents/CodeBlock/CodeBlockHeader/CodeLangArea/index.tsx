@@ -1,5 +1,7 @@
+import { cloneElement } from "react";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stitches.config";
+import { getLangIcon } from "./iconfinder";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -13,7 +15,21 @@ const CodeLangArea = ({languageName="", ...otherProps}: CodeLangAreaProps) => {
   // (ex. sagemath -> python)
   return (
     <Style style={CodeLangAreaStyles} {...otherProps}>
-      {languageName} 
+      {cloneElement(
+        getLangIcon(languageName), {
+          style: {
+            position: "absolute",
+            inset: 0,               // top/right/bottom/left: 0
+            margin: "auto",         // centers it both ways
+            height: "80%",          // as tall as the row allows
+            width: "auto",          // width follows the aspect ratio
+            maxWidth: "100%",       // never wider than the cell
+
+            // default filler for fallback icons
+            fill: theme.colors.white,
+          }
+        }
+      )}
     </Style>
   )
 }
@@ -24,7 +40,8 @@ const CodeLangAreaStyles: CSS = {
   justifyContent: "center",
   alignItems: "center",
   userSelect: "none",
-  
+  position: "relative",
+
   color: theme.colors.textLess,
   fontSize: theme.fontSizes.h6,
   letterSpacing: theme.letterSpacings.h6,

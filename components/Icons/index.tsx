@@ -18,6 +18,12 @@ export { default as ListOrderedIcon } from "@primer/octicons/build/svg/list-orde
 export { default as ArrowLeftIcon } from "@primer/octicons/build/svg/arrow-left-16.svg";
 export { default as ArrowRightIcon } from "@primer/octicons/build/svg/arrow-right-16.svg";
 
+export { default as PencilIcon} from "@primer/octicons/build/svg/pencil-16.svg";
+export { default as LightBulbIcon } from "@primer/octicons/build/svg/light-bulb-16.svg";
+export { default as SparkleIcon } from "@primer/octicons/build/svg/sparkle-16.svg";
+export { default as AlertIcon } from "@primer/octicons/build/svg/alert-16.svg";
+export { default as ShieldIcon } from "@primer/octicons/build/svg/shield-16.svg";
+
 export { 
   AiFillFolder as FillFolderIcon,
   AiFillFolderOpen as FillFolderOpenIcon

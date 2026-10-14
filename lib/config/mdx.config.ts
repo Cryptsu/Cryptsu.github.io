@@ -1,33 +1,32 @@
-import { NextNode } from '@/types/next.d';
-import {
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-} from "@/components/MDXComponents/Headings";
-import Paragraph from '@/components/MDXComponents/Paragraph';
-import Blockquote from '@/components/MDXComponents/Blockquote';
-import ParsedLink from '@/components/MDXComponents/ParsedLink';
-import CodeInline from '@/components/MDXComponents/CodeInline';
-import CodeBlock from '@/components/MDXComponents/CodeBlock';
-import UnorderedList from '@/components/MDXComponents/Lists/UnorderedList';
-import OrderedList from '@/components/MDXComponents/Lists/OrderedList';
-import ListItem from '@/components/MDXComponents/Lists/ListItem';
-import BlogImg from '@/components/MDXComponents/BlogImg';
-import MathInline from '@/components/MDXComponents/MathInline';
-import MathBlock from '@/components/MDXComponents/MathBlock';
-import Table from '@/components/MDXComponents/Table';
+import { NextNode } from "@/types/next.d";
+import { H1, H2, H3, H4, H5, H6 } from "@/components/MDXComponents/Headings";
+import Paragraph from "@/components/MDXComponents/Paragraph";
+import Blockquote from "@/components/MDXComponents/Blockquote";
+import ParsedLink from "@/components/MDXComponents/ParsedLink";
+import CodeInline from "@/components/MDXComponents/CodeInline";
+import CodeBlock from "@/components/MDXComponents/CodeBlock";
+import UnorderedList from "@/components/MDXComponents/Lists/UnorderedList";
+import OrderedList from "@/components/MDXComponents/Lists/OrderedList";
+import ListItem from "@/components/MDXComponents/Lists/ListItem";
+import BlogImg from "@/components/MDXComponents/BlogImg";
+import MathInline from "@/components/MDXComponents/MathInline";
+import MathBlock from "@/components/MDXComponents/MathBlock";
+import Table from "@/components/MDXComponents/Table";
 
 // ============= Custom components =============
-import YoutubeEmbed from '@/components/MDXComponents/Customs/YoutubeEmbed';
+import YoutubeEmbed from "@/components/MDXComponents/YoutubeEmbed";
+import Text from "@/components/MDXComponents/Text";
+import Warning from "@/components/MDXComponents/Callouts/Warning";
+import Note from "@/components/MDXComponents/Callouts/Note";
+import Caution from "@/components/MDXComponents/Callouts/Caution";
+import Important from "@/components/MDXComponents/Callouts/Important";
+import Tip from "@/components/MDXComponents/Callouts/Tip";
 
 export type MDXComponentsConfigType = {
   [componentName: string]: {
-    replacedElement: NextNode,
-    classNames?: string[],
-  }[]
+    replacedElement: NextNode;
+    classNames?: string[];
+  }[];
 };
 
 // * TODO: Some of the configs here
@@ -36,33 +35,39 @@ export type MDXComponentsConfigType = {
 // * so some class name might not
 // * be true in the future.
 const MDXComponentsConfig: MDXComponentsConfigType = {
-  h1: [{replacedElement: H1}],
-  h2: [{replacedElement: H2}],
-  h3: [{replacedElement: H3}],
-  h4: [{replacedElement: H4}],
-  h5: [{replacedElement: H5}],
-  h6: [{replacedElement: H6}],
+  h1: [{ replacedElement: H1 }],
+  h2: [{ replacedElement: H2 }],
+  h3: [{ replacedElement: H3 }],
+  h4: [{ replacedElement: H4 }],
+  h5: [{ replacedElement: H5 }],
+  h6: [{ replacedElement: H6 }],
 
-  p: [{replacedElement: Paragraph}],
-  blockquote: [{replacedElement: Blockquote}],
-  a: [{replacedElement: ParsedLink}],
+  p: [{ replacedElement: Paragraph }],
+  blockquote: [{ replacedElement: Blockquote }],
+  a: [{ replacedElement: ParsedLink }],
   code: [
-    {replacedElement: CodeBlock, classNames: ["code-highlight"]},
-    {replacedElement: CodeInline}
+    { replacedElement: CodeBlock, classNames: ["code-highlight"] },
+    { replacedElement: CodeInline },
   ],
 
-  ul: [{replacedElement: UnorderedList}],
-  ol: [{replacedElement: OrderedList}],
-  img: [{replacedElement: BlogImg}],
+  ul: [{ replacedElement: UnorderedList }],
+  ol: [{ replacedElement: OrderedList }],
+  img: [{ replacedElement: BlogImg }],
   span: [
-    {replacedElement: MathInline, classNames: ["katex"]},
-    {replacedElement: MathBlock, classNames: ["katex-display"]},
+    { replacedElement: MathInline, classNames: ["katex"] },
+    { replacedElement: MathBlock, classNames: ["katex-display"] },
   ],
-  li: [{replacedElement: ListItem}],
-  table: [{replacedElement: Table}],
+  li: [{ replacedElement: ListItem }],
+  table: [{ replacedElement: Table }],
 
   // ============= Custom components =============
-  ytembed: [{replacedElement: YoutubeEmbed}]
+  ytembed: [{ replacedElement: YoutubeEmbed }],
+  text: [{ replacedElement: Text }],
+  warning: [{ replacedElement: Warning }],
+  note: [{ replacedElement: Note }],
+  caution: [{ replacedElement: Caution }],
+  important: [{ replacedElement: Important }],
+  tip: [{ replacedElement: Tip }],
 };
 
 export default MDXComponentsConfig;

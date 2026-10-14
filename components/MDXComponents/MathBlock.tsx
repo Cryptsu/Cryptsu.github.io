@@ -24,14 +24,14 @@ const MathBlockStyles: CSS = {
     overflowY: "hidden",
   },
 
-  backgroundColor: theme.colors.mathBackground,
-  borderLeft: `0.5em solid ${theme.colors.primary}`,
-  borderRadius: "1.5em",
+  borderLeft: `0.5em groove ${theme.colors.primary}`,
+  borderRadius: "1em",
 
   margin: "0 -1em !important",
-  paddingTop: 16,
-  paddingBottom: 16,
+  padding: "0.75em 1.5em",
 
+  backgroundColor: `rgb(from ${theme.colors.primary} r g b / 0.05)`,
+  backgroundImage: theme.colors.blockBackgroundShade,
   boxShadow: theme.shadows.depthShadow,
 };
 

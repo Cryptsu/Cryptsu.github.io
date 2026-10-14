@@ -1,9 +1,8 @@
-import React, { useContext, useRef, useLayoutEffect, useState, useEffect } from "react";
+import { useContext, useRef, useLayoutEffect } from "react";
 import { CodeBlockContext } from "@/contexts/CodeBlockContext";
 import Style from "@/components/Style";
 import CodeBlockContent from "./CodeBlockContent";
 import { theme, keyframes } from "@/lib/styles/stitches.config";
-import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -32,12 +31,8 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
       css={
         !shouldToggleAnimation
           ? {
-              height: showInner 
-                        ? "auto" 
-                        : "0px",
-              opacity: showInner
-                        ? 1
-                        : 0
+              height: showInner ? "auto" : "0px",
+              opacity: showInner ? 1 : 0
             }
           : {...(
                   showInner
@@ -48,10 +43,7 @@ const CodeBlockInner = ({children, ...otherProps}: CodeBlockInnerProps) => {
       }
       {...otherProps}
     >
-      <CodeBlockContent 
-        wrapCode={wrapCode} 
-        elementRef={innerRef}
-      >
+      <CodeBlockContent wrapCode={wrapCode} elementRef={innerRef}>
         {children}
       </CodeBlockContent>
     </Style>

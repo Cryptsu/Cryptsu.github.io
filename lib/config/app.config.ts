@@ -19,7 +19,7 @@ export const AUTHOR_SOCIAL = {
 export const DESCRIPTIONS = {
   AUTHOR: "I have no jobs so I do write-ups :-3",
   SHORT: "Mistsu's Blog",
-  FOOTER: "::: Made with (❤️ && 😭) by Mistsu :::",
+  FOOTER: "::: Made with (❤️ && 😭 && 🫩 && 🤪 && 🫠) by Mistsu :::",
 
   HOME: "Hello. Welcome to my blog :) This is where I share my thoughts on CTF challenges.",
   POSTS: "List all of my blog posts within a single page.",

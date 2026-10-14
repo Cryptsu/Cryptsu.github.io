@@ -6,37 +6,112 @@ draft: true
 ---
 
 Today. I'm adding and learning the `:ytembed` tag \:3
+# TODOs
+- [x] Youtube embeds
+- [x] Colored texts
+- [ ] Callout blocks
+- [ ] Little '#' on the headers
+- [ ] Thumbnail images are cropped to fit the ratio.
+- [ ] Implements checkboxes
+- [ ] Horizontal scrolling will be accompanied by a dashed line to indicate unfinished scrolling
+- [ ] Move away from `next-mdx-remote`
 
-# Target
+# Math block
 
-<div
-    style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    }}
+This math block has a problem. I'm implementing some changes to it!
+$$
+\begin{bmatrix}
+    \omega_N^0 & \omega_N^0     & \omega_N^0        & ... & \omega_N^0            & \omega_N^0             \\
+    \omega_N^0 & \omega_N^1     & \omega_N^2        & ... & \omega_N^{N-2}        & \omega_N^{N-1}         \\
+    \omega_N^0 & \omega_N^2     & \omega_N^4        & ... & \omega_N^{2N-4}       & \omega_N^{2N-2}       \\
+    ... \\
+    \omega_N^0 & \omega_N^{N-1} & \omega_N^{2(N-1)} & ... & \omega_N^{(N-2)(N-1)} & \omega_N^{(N-1)(N-1)} \\
+\end{bmatrix}
+
+\begin{bmatrix}
+f_0     \\
+f_1     \\
+f_2     \\
+...     \\
+f_{N-2} \\
+f_{N-1}
+\end{bmatrix}
+
+=
+
+\begin{bmatrix}
+f(\omega_N^0) \\
+f(\omega_N^1) \\
+f(\omega_N^2) \\
+... \\
+f(\omega_N^{N-2}) \\
+f(\omega_N^{N-1})
+\end{bmatrix}
+$$
+
+# Code block
+
+Beginning of this text will be some codeblocks. I'm implementing some changes to it!
+```yaml
+import os
+
+while True:
+    t = os.walkdir("psuedo-code-to-test")
+    if t is None:
+        break
+
+    f = open(t.path, "wb")
+    d = f.read(1234)
+    if d[:10] == f'{t.path}-header'.encode():
+        print(f'found special file: {t.path}')
+    f.close()
+```
+
+```html
+<head></head>
+<body></body>
+```
+
+```webmanifest
+{
+  key: "value",
+}
+```
+
+# Testing colored texts
+This text is :text[orange]{color=orange}, while this text is *:text[green and italic]{color=green}*.
+Why not adding **:text[red and bold]{color=red}**?
+
+> **:text[How about in a quoteblock?]{color=white}**
 >
-    <iframe 
-        width="90%" 
-        height="315" 
-        style={{
-            border: "3px dashed #73403F",
-            borderBottom: "0px",
-            borderRadius: "16px",
-            boxShadow: "0px 12px #B03836"
-        }}
-        src="https://www.youtube.com/embed/h7apO7q16V0" 
-        title="Reducible's Incredible Video" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowFullScreen="true" 
-        webkitallowfullscreen="true" 
-        mozallowfullscreen="true"
-    >
-    </iframe>
-</div>
-<br/>
+> Wow! *:text[It works]{color=orange}*!
 
-# Using directive
+## What about in :text[headers]{color=blue}?
+*:text[Okay... I did not know that it may work? (I'm trying to write in brown, but why is it displayed as white?)]{color=brown}*
+*:text[Ah, but there isn't a brown color in here]{color=yellow}*. You will find an error in the console.
 
+# Callouts
+:::warning{title="This is a scary block!"}
+This is warning block.
+:::
+
+:::note{title="How to write a note"}
+This is a note block with a title *:text["How to write a note"]{color=yellow}*. And also how to blah blah guara guara gah gah gah gah gah gah gah!
+:::
+
+:::tip{title="Tipping em tips!"}
+This is a tip block on how to leave a tip.
+:::
+
+:::caution{title="Beware of this card!"}
+Oh no! You must stay away from this!
+:::
+
+:::important{title="Oh! Look at that!"}
+What? 
+
+![shocked](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsO6iaPC-Ta3YvQKJTfmsMgfyOZVdKlxsWeaCFbJm2aImKADiQuSmFqXyr&s=10)
+:::
+
+# Youtube embedding
 ::ytembed[Very Good Music]{#MfSVrlvbQQA}

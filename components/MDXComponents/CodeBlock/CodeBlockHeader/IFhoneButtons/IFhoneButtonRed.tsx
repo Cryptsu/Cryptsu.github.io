@@ -1,23 +1,34 @@
 import Style from "@/components/Style";
 import { ChevronUpIcon, ChevronDownIcon } from "@/components/Icons";
 import { theme } from "@/lib/styles/stitches.config";
-import { HtmlConst } from "@/lib/consts";
+import { ClassConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type IFhoneButtonRedProps = PropsWithChildren<{
-  showInner: boolean,
-  onClick?: () => void,
-  title: string,
-}>
+  showInner: boolean;
+  onClick?: () => void;
+  title: string;
+}>;
 
-const IFhoneButtonRed = ({children, showInner, ...otherProps}: IFhoneButtonRedProps) => {
+const IFhoneButtonRed = ({
+  children,
+  showInner,
+  ...otherProps
+}: IFhoneButtonRedProps) => {
   return (
-    <Style style={IFhoneButtonRedStyles} {...otherProps}>
-      <Style style={IFhoneButtonIconStyles} as={showInner ? ChevronUpIcon : ChevronDownIcon} />
+    <Style
+      className={ClassConst.CLASS_CODEBLOCK_BTN}
+      style={IFhoneButtonRedStyles}
+      {...otherProps}
+    >
+      <Style
+        style={IFhoneButtonIconStyles}
+        as={showInner ? ChevronUpIcon : ChevronDownIcon}
+      />
     </Style>
-  )
-}
+  );
+};
 
 const IFhoneButtonRedStyles: CSS = {
   width: "0.75em",
@@ -27,12 +38,12 @@ const IFhoneButtonRedStyles: CSS = {
   display: "flex",
 
   backgroundColor: theme.colors.red,
-  '&:hover': {
+  "&:hover": {
     backgroundColor: theme.colors.brightRed,
   },
-  '&:active': {
+  "&:active": {
     backgroundColor: theme.colors.darkRed,
-  }
+  },
 };
 
 const IFhoneButtonIconStyles: CSS = {
@@ -41,8 +52,8 @@ const IFhoneButtonIconStyles: CSS = {
   height: "0.75em",
 
   opacity: "0%",
-  '&:hover': {
+  "&:hover": {
     opacity: "100%",
-  }
-}
+  },
+};
 export default IFhoneButtonRed;

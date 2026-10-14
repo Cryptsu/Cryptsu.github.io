@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import Style from "@/components/Style";
 import Button from "@/components/Button";
 import { theme } from "@/lib/styles/stitches.config";
-import { HtmlConst, TxtConst } from "@/lib/consts";
+import { TxtConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -25,11 +25,17 @@ const PostNavigationButton = ({children, direction, postTitle, postLink, ...othe
         as={Button} 
         {...otherProps}
       >
-        <Style style={PostNavigationArrowStyles}>
+        <Style style={PostNavigationArrowStyles}
+          css={{
+            color: direction === 'next'
+                    ? (postTitle ? "var(--arrow-idle-next)" : "inherit")
+                    : (postTitle ? "var(--arrow-idle-prev)" : "inherit")
+          }}
+        >
           {
             direction === 'next'
-              ? (postTitle ? "->" : "x")
-              : (postTitle ? "<-" : "x")
+              ? (postTitle ? "==>" : "x")
+              : (postTitle ? "<==" : "x")
           }
         </Style>
         <Style style={PostTitleStyles}>
@@ -50,6 +56,13 @@ const PostNavigationButtonStyles: CSS = {
   borderRadius: 16,
   borderWidth: 4,
 
+  '--arrow-idle-prev': theme.colors.prev,
+  '--arrow-idle-next': theme.colors.next,
+  '&:hover': {
+    '--arrow-idle-prev': theme.colors.prevShadow,
+    '--arrow-idle-next': theme.colors.nextShadow,
+  },
+
   fontSize: theme.fontSizes.h5,
   fontWeight: theme.fontWeights.h5,
   letterSpacing: theme.letterSpacings.h5,
@@ -68,6 +81,12 @@ const PostNavigationButtonStyles: CSS = {
 
 const PostNavigationButtonPrevStyles: CSS = {
   borderColor: theme.colors.prev,
+  borderBottomStyle: "4px solid",
+  borderLeft: `4px solid ${theme.colors.prev}`,
+  borderRight: `4px solid ${theme.colors.prev}`,
+  borderTop: `4px solid ${theme.colors.prev}`,
+
+  backgroundColor: theme.colors.postPrevNavBackground,
   boxShadow: theme.shadows.prevBtn,
   '&:hover': {
     backgroundColor: theme.colors.prev,
@@ -94,6 +113,13 @@ const PostNavigationButtonPrevInactiveStyles: CSS = {
 
 const PostNavigationButtonNextStyles: CSS = {
   borderColor: theme.colors.next,
+
+  borderBottomStyle: "4px solid",
+  borderLeft: `4px solid ${theme.colors.next}`,
+  borderRight: `4px solid ${theme.colors.next}`,
+  borderTop: `4px solid ${theme.colors.next}`,
+
+  backgroundColor: theme.colors.postNextNavBackground,
   boxShadow: theme.shadows.nextBtn,
   '&:hover': {
     backgroundColor: theme.colors.next,
@@ -119,7 +145,8 @@ const PostNavigationButtonNextInactiveStyles: CSS = {
 };
 
 const PostNavigationArrowStyles: CSS = {
-  fontWeight: theme.fontWeights.bold,
+  fontSize: theme.fontSizes.h4,
+  fontWeight: theme.fontWeights.extrabold,
 }
 
 const PostLinkStyles: CSS = {

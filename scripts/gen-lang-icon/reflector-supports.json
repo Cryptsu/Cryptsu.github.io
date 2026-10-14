@@ -1,0 +1,985 @@
+{
+  "arduino": {
+    "alias": ["ino"],
+    "devicon_name": "arduino"
+  },
+  "bash": {
+    "alias": ["sh", "shell"],
+    "devicon_name": "bash"
+  },
+  "basic": {
+    "alias": []
+  },
+  "c": {
+    "alias": [],
+    "devicon_name": "c"
+  },
+  "clike": {
+    "alias": []
+  },
+  "cpp": {
+    "alias": [],
+    "devicon_name": "cplusplus"
+  },
+  "csharp": {
+    "alias": ["cs", "dotnet"],
+    "devicon_name": "csharp"
+  },
+  "css": {
+    "alias": [],
+    "devicon_name": "css3"
+  },
+  "diff": {
+    "alias": []
+  },
+  "go": {
+    "alias": [],
+    "devicon_name": "go"
+  },
+  "ini": {
+    "alias": []
+  },
+  "java": {
+    "alias": [],
+    "devicon_name": "java"
+  },
+  "javascript": {
+    "alias": ["js"],
+    "devicon_name": "javascript"
+  },
+  "json": {
+    "alias": ["webmanifest"],
+    "devicon_name": "json"
+  },
+  "kotlin": {
+    "alias": ["kt", "kts"],
+    "devicon_name": "kotlin"
+  },
+  "less": {
+    "alias": [],
+    "devicon_name": "less"
+  },
+  "lua": {
+    "alias": [],
+    "devicon_name": "lua"
+  },
+  "makefile": {
+    "alias": []
+  },
+  "markdown": {
+    "alias": ["md"],
+    "devicon_name": "markdown"
+  },
+  "markup": {
+    "alias": ["mathml", "rss", "ssml", "svg"]
+  },
+  "html": {
+    "alias": [],
+    "devicon_name": "html5"
+  },
+  "xml": {
+    "alias": [],
+    "devicon_name": "xml"
+  },
+  "markup-templating": {
+    "alias": []
+  },
+  "objectivec": {
+    "alias": ["objc"],
+    "devicon_name": "objectivec"
+  },
+  "perl": {
+    "alias": [],
+    "devicon_name": "perl"
+  },
+  "php": {
+    "alias": [],
+    "devicon_name": "php"
+  },
+  "python": {
+    "alias": ["py"],
+    "devicon_name": "python"
+  },
+  "r": {
+    "alias": [],
+    "devicon_name": "r"
+  },
+  "regex": {
+    "alias": []
+  },
+  "ruby": {
+    "alias": ["rb"],
+    "devicon_name": "ruby"
+  },
+  "rust": {
+    "alias": [],
+    "devicon_name": "rust"
+  },
+  "sass": {
+    "alias": [],
+    "devicon_name": "sass"
+  },
+  "sql": {
+    "alias": [],
+    "devicon_name": "sqlite"
+  },
+  "swift": {
+    "alias": [],
+    "devicon_name": "swift"
+  },
+  "typescript": {
+    "alias": ["ts"],
+    "devicon_name": "typescript"
+  },
+  "vbnet": {
+    "alias": []
+  },
+  "yaml": {
+    "alias": ["yml"],
+    "devicon_name": "yaml"
+  },
+  "abap": {
+    "alias": []
+  },
+  "abnf": {
+    "alias": []
+  },
+  "actionscript": {
+    "alias": []
+  },
+  "ada": {
+    "alias": []
+  },
+  "agda": {
+    "alias": []
+  },
+  "al": {
+    "alias": []
+  },
+  "antlr4": {
+    "alias": ["g4"]
+  },
+  "apacheconf": {
+    "alias": []
+  },
+  "apex": {
+    "alias": [],
+    "devicon_name": "apex"
+  },
+  "apl": {
+    "alias": [],
+    "devicon_name": "apl"
+  },
+  "applescript": {
+    "alias": []
+  },
+  "aql": {
+    "alias": []
+  },
+  "arff": {
+    "alias": []
+  },
+  "armasm": {
+    "alias": ["arm-asm"]
+  },
+  "arturo": {
+    "alias": ["art"]
+  },
+  "asciidoc": {
+    "alias": ["adoc"]
+  },
+  "asm6502": {
+    "alias": []
+  },
+  "asmatmel": {
+    "alias": []
+  },
+  "aspnet": {
+    "alias": []
+  },
+  "autohotkey": {
+    "alias": []
+  },
+  "autoit": {
+    "alias": []
+  },
+  "avisynth": {
+    "alias": ["avs"]
+  },
+  "avro-idl": {
+    "alias": ["avdl"]
+  },
+  "awk": {
+    "alias": ["gawk"],
+    "devicon_name": "awk"
+  },
+  "batch": {
+    "alias": []
+  },
+  "bbcode": {
+    "alias": ["shortcode"]
+  },
+  "bbj": {
+    "alias": []
+  },
+  "bicep": {
+    "alias": []
+  },
+  "birb": {
+    "alias": []
+  },
+  "bison": {
+    "alias": []
+  },
+  "bnf": {
+    "alias": ["rbnf"]
+  },
+  "bqn": {
+    "alias": []
+  },
+  "brainfuck": {
+    "alias": []
+  },
+  "brightscript": {
+    "alias": []
+  },
+  "bro": {
+    "alias": []
+  },
+  "bsl": {
+    "alias": ["oscript"]
+  },
+  "cfscript": {
+    "alias": ["cfc"]
+  },
+  "chaiscript": {
+    "alias": []
+  },
+  "cil": {
+    "alias": []
+  },
+  "cilkc": {
+    "alias": ["cilk-c"]
+  },
+  "cilkcpp": {
+    "alias": ["cilk", "cilk-cpp"]
+  },
+  "clojure": {
+    "alias": [],
+    "devicon_name": "clojure"
+  },
+  "cmake": {
+    "alias": [],
+    "devicon_name": "cmake"
+  },
+  "cobol": {
+    "alias": [],
+    "devicon_name": "cobol"
+  },
+  "coffeescript": {
+    "alias": ["coffee"],
+    "devicon_name": "coffeescript"
+  },
+  "concurnas": {
+    "alias": ["conc"]
+  },
+  "cooklang": {
+    "alias": []
+  },
+  "coq": {
+    "alias": []
+  },
+  "crystal": {
+    "alias": [],
+    "devicon_name": "crystal"
+  },
+  "cshtml": {
+    "alias": ["razor"]
+  },
+  "csp": {
+    "alias": []
+  },
+  "css-extras": {
+    "alias": []
+  },
+  "csv": {
+    "alias": []
+  },
+  "cue": {
+    "alias": []
+  },
+  "cypher": {
+    "alias": []
+  },
+  "d": {
+    "alias": []
+  },
+  "dart": {
+    "alias": [],
+    "devicon_name": "dart"
+  },
+  "dataweave": {
+    "alias": []
+  },
+  "dax": {
+    "alias": []
+  },
+  "dhall": {
+    "alias": []
+  },
+  "django": {
+    "alias": ["jinja2"],
+    "devicon_name": "django"
+  },
+  "dns-zone-file": {
+    "alias": ["dns-zone"]
+  },
+  "docker": {
+    "alias": ["dockerfile"],
+    "devicon_name": "docker"
+  },
+  "dot": {
+    "alias": ["gv"]
+  },
+  "ebnf": {
+    "alias": []
+  },
+  "editorconfig": {
+    "alias": []
+  },
+  "eiffel": {
+    "alias": []
+  },
+  "ejs": {
+    "alias": ["eta"]
+  },
+  "elixir": {
+    "alias": [],
+    "devicon_name": "elixir"
+  },
+  "elm": {
+    "alias": [],
+    "devicon_name": "elm"
+  },
+  "erb": {
+    "alias": []
+  },
+  "erlang": {
+    "alias": [],
+    "devicon_name": "erlang"
+  },
+  "etlua": {
+    "alias": []
+  },
+  "excel-formula": {
+    "alias": ["xls", "xlsx"]
+  },
+  "factor": {
+    "alias": []
+  },
+  "false": {
+    "alias": []
+  },
+  "firestore-security-rules": {
+    "alias": []
+  },
+  "flow": {
+    "alias": []
+  },
+  "fortran": {
+    "alias": [],
+    "devicon_name": "fortran"
+  },
+  "fsharp": {
+    "alias": [],
+    "devicon_name": "fsharp"
+  },
+  "ftl": {
+    "alias": []
+  },
+  "gap": {
+    "alias": []
+  },
+  "gcode": {
+    "alias": []
+  },
+  "gdscript": {
+    "alias": []
+  },
+  "gedcom": {
+    "alias": []
+  },
+  "gettext": {
+    "alias": ["po"]
+  },
+  "gherkin": {
+    "alias": []
+  },
+  "git": {
+    "alias": [],
+    "devicon_name": "git"
+  },
+  "glsl": {
+    "alias": []
+  },
+  "gml": {
+    "alias": ["gamemakerlanguage"]
+  },
+  "gn": {
+    "alias": ["gni"]
+  },
+  "go-module": {
+    "alias": ["go-mod"]
+  },
+  "gradle": {
+    "alias": [],
+    "devicon_name": "gradle"
+  },
+  "graphql": {
+    "alias": [],
+    "devicon_name": "graphql"
+  },
+  "groovy": {
+    "alias": [],
+    "devicon_name": "groovy"
+  },
+  "haml": {
+    "alias": []
+  },
+  "handlebars": {
+    "alias": ["hbs", "mustache"],
+    "devicon_name": "handlebars"
+  },
+  "haskell": {
+    "alias": ["hs"],
+    "devicon_name": "haskell"
+  },
+  "haxe": {
+    "alias": [],
+    "devicon_name": "haxe"
+  },
+  "hcl": {
+    "alias": []
+  },
+  "hlsl": {
+    "alias": []
+  },
+  "hoon": {
+    "alias": []
+  },
+  "hpkp": {
+    "alias": []
+  },
+  "hsts": {
+    "alias": []
+  },
+  "http": {
+    "alias": []
+  },
+  "ichigojam": {
+    "alias": []
+  },
+  "icon": {
+    "alias": []
+  },
+  "icu-message-format": {
+    "alias": []
+  },
+  "idris": {
+    "alias": ["idr"]
+  },
+  "iecst": {
+    "alias": []
+  },
+  "ignore": {
+    "alias": ["gitignore", "hgignore", "npmignore"]
+  },
+  "inform7": {
+    "alias": []
+  },
+  "io": {
+    "alias": []
+  },
+  "j": {
+    "alias": []
+  },
+  "javadoc": {
+    "alias": []
+  },
+  "javadoclike": {
+    "alias": []
+  },
+  "javastacktrace": {
+    "alias": []
+  },
+  "jexl": {
+    "alias": []
+  },
+  "jolie": {
+    "alias": []
+  },
+  "jq": {
+    "alias": []
+  },
+  "js-extras": {
+    "alias": []
+  },
+  "js-templates": {
+    "alias": []
+  },
+  "jsdoc": {
+    "alias": []
+  },
+  "json5": {
+    "alias": []
+  },
+  "jsonp": {
+    "alias": []
+  },
+  "jsstacktrace": {
+    "alias": []
+  },
+  "jsx": {
+    "alias": []
+  },
+  "julia": {
+    "alias": [],
+    "devicon_name": "julia"
+  },
+  "keepalived": {
+    "alias": []
+  },
+  "keyman": {
+    "alias": []
+  },
+  "kumir": {
+    "alias": ["kum"]
+  },
+  "kusto": {
+    "alias": []
+  },
+  "latex": {
+    "alias": ["context", "tex"],
+    "devicon_name": "latex"
+  },
+  "latte": {
+    "alias": []
+  },
+  "lilypond": {
+    "alias": ["ly"]
+  },
+  "linker-script": {
+    "alias": ["ld"]
+  },
+  "liquid": {
+    "alias": []
+  },
+  "lisp": {
+    "alias": ["elisp", "emacs-lisp"]
+  },
+  "livescript": {
+    "alias": []
+  },
+  "llvm": {
+    "alias": [],
+    "devicon_name": "llvm"
+  },
+  "log": {
+    "alias": []
+  },
+  "lolcode": {
+    "alias": []
+  },
+  "magma": {
+    "alias": []
+  },
+  "mata": {
+    "alias": []
+  },
+  "matlab": {
+    "alias": [],
+    "devicon_name": "matlab"
+  },
+  "maxscript": {
+    "alias": []
+  },
+  "mel": {
+    "alias": []
+  },
+  "mermaid": {
+    "alias": []
+  },
+  "metafont": {
+    "alias": []
+  },
+  "mizar": {
+    "alias": []
+  },
+  "mongodb": {
+    "alias": [],
+    "devicon_name": "mongodb"
+  },
+  "monkey": {
+    "alias": []
+  },
+  "moonscript": {
+    "alias": ["moon"]
+  },
+  "n1ql": {
+    "alias": []
+  },
+  "n4js": {
+    "alias": ["n4jsd"]
+  },
+  "nand2tetris-hdl": {
+    "alias": []
+  },
+  "naniscript": {
+    "alias": ["nani"]
+  },
+  "nasm": {
+    "alias": []
+  },
+  "neon": {
+    "alias": []
+  },
+  "nevod": {
+    "alias": []
+  },
+  "nginx": {
+    "alias": [],
+    "devicon_name": "nginx"
+  },
+  "nim": {
+    "alias": [],
+    "devicon_name": "nim"
+  },
+  "nix": {
+    "alias": []
+  },
+  "nsis": {
+    "alias": []
+  },
+  "ocaml": {
+    "alias": [],
+    "devicon_name": "ocaml"
+  },
+  "odin": {
+    "alias": []
+  },
+  "opencl": {
+    "alias": [],
+    "devicon_name": "opencl"
+  },
+  "openqasm": {
+    "alias": ["qasm"]
+  },
+  "oz": {
+    "alias": []
+  },
+  "parigp": {
+    "alias": []
+  },
+  "parser": {
+    "alias": []
+  },
+  "pascal": {
+    "alias": ["objectpascal"]
+  },
+  "pascaligo": {
+    "alias": []
+  },
+  "pcaxis": {
+    "alias": ["px"]
+  },
+  "peoplecode": {
+    "alias": ["pcode"]
+  },
+  "php-extras": {
+    "alias": []
+  },
+  "phpdoc": {
+    "alias": []
+  },
+  "plant-uml": {
+    "alias": ["plantuml"]
+  },
+  "plsql": {
+    "alias": []
+  },
+  "powerquery": {
+    "alias": ["mscript", "pq"]
+  },
+  "powershell": {
+    "alias": [],
+    "devicon_name": "powershell"
+  },
+  "processing": {
+    "alias": [],
+    "devicon_name": "processing"
+  },
+  "prolog": {
+    "alias": [],
+    "devicon_name": "prolog"
+  },
+  "promql": {
+    "alias": []
+  },
+  "properties": {
+    "alias": []
+  },
+  "protobuf": {
+    "alias": []
+  },
+  "psl": {
+    "alias": []
+  },
+  "pug": {
+    "alias": [],
+    "devicon_name": "pug"
+  },
+  "puppet": {
+    "alias": []
+  },
+  "pure": {
+    "alias": []
+  },
+  "purebasic": {
+    "alias": ["pbfasm"]
+  },
+  "purescript": {
+    "alias": ["purs"],
+    "devicon_name": "purescript"
+  },
+  "q": {
+    "alias": []
+  },
+  "qml": {
+    "alias": []
+  },
+  "qore": {
+    "alias": []
+  },
+  "qsharp": {
+    "alias": ["qs"]
+  },
+  "racket": {
+    "alias": ["rkt"],
+    "devicon_name": "racket"
+  },
+  "reason": {
+    "alias": []
+  },
+  "rego": {
+    "alias": []
+  },
+  "renpy": {
+    "alias": ["rpy"],
+    "devicon_name": "renpy"
+  },
+  "rescript": {
+    "alias": ["res"]
+  },
+  "rest": {
+    "alias": []
+  },
+  "rip": {
+    "alias": []
+  },
+  "roboconf": {
+    "alias": []
+  },
+  "robotframework": {
+    "alias": ["robot"]
+  },
+  "sas": {
+    "alias": []
+  },
+  "scala": {
+    "alias": [],
+    "devicon_name": "scala"
+  },
+  "scheme": {
+    "alias": []
+  },
+  "shell-session": {
+    "alias": ["sh-session", "shellsession"]
+  },
+  "smali": {
+    "alias": []
+  },
+  "smalltalk": {
+    "alias": []
+  },
+  "smarty": {
+    "alias": []
+  },
+  "sml": {
+    "alias": ["smlnj"]
+  },
+  "solidity": {
+    "alias": ["sol"],
+    "devicon_name": "solidity"
+  },
+  "solution-file": {
+    "alias": ["sln"]
+  },
+  "soy": {
+    "alias": []
+  },
+  "sparql": {
+    "alias": ["rq"]
+  },
+  "splunk-spl": {
+    "alias": []
+  },
+  "sqf": {
+    "alias": []
+  },
+  "squirrel": {
+    "alias": []
+  },
+  "stan": {
+    "alias": []
+  },
+  "stata": {
+    "alias": [],
+    "devicon_name": "stata"
+  },
+  "stylus": {
+    "alias": [],
+    "devicon_name": "stylus"
+  },
+  "supercollider": {
+    "alias": ["sclang"]
+  },
+  "systemd": {
+    "alias": []
+  },
+  "t4-cs": {
+    "alias": ["t4"]
+  },
+  "t4-templating": {
+    "alias": []
+  },
+  "t4-vb": {
+    "alias": []
+  },
+  "tap": {
+    "alias": []
+  },
+  "tcl": {
+    "alias": []
+  },
+  "textile": {
+    "alias": []
+  },
+  "toml": {
+    "alias": []
+  },
+  "tremor": {
+    "alias": ["trickle", "troy"]
+  },
+  "tsx": {
+    "alias": []
+  },
+  "tt2": {
+    "alias": []
+  },
+  "turtle": {
+    "alias": ["trig"]
+  },
+  "twig": {
+    "alias": []
+  },
+  "typoscript": {
+    "alias": ["tsconfig"]
+  },
+  "unrealscript": {
+    "alias": ["uc", "uscript"]
+  },
+  "uorazor": {
+    "alias": []
+  },
+  "uri": {
+    "alias": ["url"]
+  },
+  "v": {
+    "alias": []
+  },
+  "vala": {
+    "alias": [],
+    "devicon_name": "vala"
+  },
+  "velocity": {
+    "alias": []
+  },
+  "verilog": {
+    "alias": []
+  },
+  "vhdl": {
+    "alias": []
+  },
+  "vim": {
+    "alias": [],
+    "devicon_name": "vim"
+  },
+  "visual-basic": {
+    "alias": ["vba"]
+  },
+  "warpscript": {
+    "alias": []
+  },
+  "wasm": {
+    "alias": [],
+    "devicon_name": "wasm"
+  },
+  "web-idl": {
+    "alias": ["webidl"]
+  },
+  "wgsl": {
+    "alias": []
+  },
+  "wiki": {
+    "alias": []
+  },
+  "wolfram": {
+    "alias": ["mathematica", "nb", "wl"],
+    "devicon_name": "wolfram"
+  },
+  "wren": {
+    "alias": []
+  },
+  "xeora": {
+    "alias": ["xeoracube"]
+  },
+  "xml-doc": {
+    "alias": []
+  },
+  "xojo": {
+    "alias": []
+  },
+  "xquery": {
+    "alias": []
+  },
+  "yang": {
+    "alias": []
+  },
+  "zig": {
+    "alias": [],
+    "devicon_name": "zig"
+  },
+  "atom": {
+    "alias": [],
+    "devicon_name": "atom"
+  },
+  "emacs": {
+    "alias": [],
+    "devicon_name": "emacs"
+  },
+  "vb": {
+    "alias": [],
+    "devicon_name": "visualbasic"
+  }
+}
+

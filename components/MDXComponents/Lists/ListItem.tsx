@@ -1,5 +1,4 @@
 import Style from "@/components/Style";
-import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -28,6 +27,7 @@ const ListItemWrapperStyles: CSS = {
 
 const ListItemStyles: CSS = {
   maxWidth: "100%",
+  minWidth: 0, // a codeblock as a list item in a non-wrap mode will fit the container
   [`&> :first-child`]: {
     marginTop: 0,
   },

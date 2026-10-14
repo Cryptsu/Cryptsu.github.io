@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import innerText from "react-innertext";
 import copy from "copy-to-clipboard";
 import Style from "@/components/Style";
-import Button from "@/components/Button";
 import { ClipboardIcon, CheckIcon } from "@/components/Icons";
+import { ClassConst } from "@/lib/consts";
 import { theme } from "@/lib/styles/stitches.config";
 import type { MouseEventHandler, ComponentPropsWithoutRef, ReactNode } from "react";
 import type { CSS } from "@stitches/react";
@@ -29,9 +29,8 @@ const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyBut
   };
 
   useEffect(() => {
-    if (!copied) {
+    if (!copied)
       return;
-    }
 
     // reset to original icon after given ms (defaults to 2 seconds)
     const reset = setTimeout(() => {
@@ -46,8 +45,8 @@ const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyBut
 
   return (
     <Style 
+      className={ClassConst.CLASS_CODEBLOCK_BTN}
       css={style}
-      as={Button} 
       style={CopyButtonStyles} 
       onClick={handleCopyFn}
       {...otherProps}
@@ -62,12 +61,18 @@ const CopyButton = ({content, refreshTime = 2000, style, ...otherProps}: CopyBut
 }
 
 const CopyButtonStyles: CSS = {
+  borderRadius: "8px !important",
   borderWidth: "0.125em",
+  borderStyle: "dashed !important",
   borderColor: theme.colors.next,
-  boxShadow: theme.shadows.codeCopyBtnNormal,
+  '@media (hover: hover)': {
+    '&:hover': {
+      backgroundColor: theme.colors.buttonHoverBackground,
+      cursor: "pointer",
+    },
+  },
   '&:active': {
     backgroundColor: theme.colors.next,
-    boxShadow: theme.shadows.codeCopyBtnClick,
   },
 
   // Size of button!

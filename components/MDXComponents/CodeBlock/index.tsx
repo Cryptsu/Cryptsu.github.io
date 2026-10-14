@@ -4,7 +4,7 @@ import Style from "@/components/Style";
 import CodeBlockHeader from "./CodeBlockHeader";
 import CodeBlockInner from "./CodeBlockInner";
 import { theme } from "@/lib/styles/stitches.config";
-import { HtmlConst } from "@/lib/consts";
+import { ClassConst, HtmlConst } from "@/lib/consts";
 
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
@@ -85,8 +85,8 @@ const CodeBlock = ({children, className, ...otherProps}: CodeBlockProps) => {
 const CodeBlockStyles: CSS = {
   fontFamily: theme.fonts.code,
 
-  marginTop: "1em",
-  marginBottom: "1em",
+  marginTop: "0.75em",
+  marginBottom: "1.6em",
   marginLeft: "-1em",
   marginRight: "-1em",
   borderRadius: "1em",
@@ -95,16 +95,28 @@ const CodeBlockStyles: CSS = {
     marginRight: "-1em",
   },
 
+  borderTop: `1px solid ${theme.colors.codeBlockFlare}`,
+  borderBottom: `1px solid ${theme.colors.codeBlockFlare}`,
+
   display: "flex",
   flexDirection: "column",
   padding: "1em",
+  paddingTop: "0.5em",
   gap: "1em",
 
   // This would create the effect of having opacity to the background
   // Stops phones from keeping selecting background image instead of content.
   // while making children elements selectable.
-  backgroundImage: `${theme.colors.codeBlockBackground}`,
-  boxShadow: theme.shadows.depthShadow,
+  backgroundImage: theme.colors.codeBlockBackground,
+  boxShadow: `${theme.shadows.depthShadow}, ${theme.shadows.codeBlock}`,
+
+  overflow: "clip",           // makes the buttons' click halos area clip
+  [`&:has(.${ClassConst.CLASS_CODEBLOCK_BTN}:active)`]: {
+    userSelect: "none",       // copy on the phone accidentally selects text.
+    transition: "all 0.25s",
+    boxShadow: `${theme.shadows.depthShadow}, ${theme.shadows.codeBlockPressed}`,
+    transform: "translateY(0.4em)",
+  },
 
   // Limit the height for code view...
   // maxHeight: 240,

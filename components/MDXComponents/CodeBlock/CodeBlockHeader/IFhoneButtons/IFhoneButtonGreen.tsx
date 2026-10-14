@@ -1,22 +1,29 @@
 import Style from "@/components/Style";
 import { DotIcon } from "@/components/Icons";
 import { theme } from "@/lib/styles/stitches.config";
-import { HtmlConst } from "@/lib/consts";
+import { ClassConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
 
 type IFhoneButtonGreenProps = PropsWithChildren<{
-  onClick?: () => void
-  title?: string,
-}>
+  onClick?: () => void;
+  title?: string;
+}>;
 
-const IFhoneButtonGreen = ({children, ...otherProps}: IFhoneButtonGreenProps) => {
+const IFhoneButtonGreen = ({
+  children,
+  ...otherProps
+}: IFhoneButtonGreenProps) => {
   return (
-    <Style style={IFhoneButtonGreenStyles} {...otherProps}>
+    <Style
+      className={ClassConst.CLASS_CODEBLOCK_BTN}
+      style={IFhoneButtonGreenStyles}
+      {...otherProps}
+    >
       <Style style={IFhoneButtonIconStyles} as={DotIcon} />
     </Style>
-  )
-}
+  );
+};
 
 const IFhoneButtonGreenStyles: CSS = {
   width: "0.75em",
@@ -24,14 +31,14 @@ const IFhoneButtonGreenStyles: CSS = {
   borderRadius: "100%",
   cursor: "pointer",
   display: "flex",
-  
-  backgroundColor: theme.colors.green,  
-  '&:hover': {
+
+  backgroundColor: theme.colors.green,
+  "&:hover": {
     backgroundColor: theme.colors.brightGreen,
   },
-  '&:active': {
+  "&:active": {
     backgroundColor: theme.colors.darkGreen,
-  }
+  },
 };
 
 const IFhoneButtonIconStyles: CSS = {
@@ -40,9 +47,9 @@ const IFhoneButtonIconStyles: CSS = {
   height: "0.75em",
 
   opacity: "0%",
-  '&:hover': {
+  "&:hover": {
     opacity: "100%",
-  }
-}
+  },
+};
 
 export default IFhoneButtonGreen;

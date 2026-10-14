@@ -66,6 +66,7 @@ export const {
       blackest: "#101010",
       grey: "#454C48",
       white: "#DCFFEE",
+      orange: "rgb(248, 179, 9)",
       veryWhite: "#fdfdfd",
       brightRed: "$tertiaryActive",
       brightGreen: "$primaryActive",
@@ -106,6 +107,10 @@ export const {
       success: "$green",
       error: "$red",
       warning: "$yellow",
+      caution: "$red",
+      tip: "$green",
+      important: "$purple",
+      note: "$blue",
 
       // ========================== Main page ==============================
       //   -> Author section
@@ -134,16 +139,24 @@ export const {
       pageBackground: "$blackest",
       navLinkDropdownBackground: "$black",
 
+      //   -> Blocks (general callout block)
+      blockBackgroundShade: `linear-gradient(90deg, #080808 0%, #00000000 calc(0% + 1.5em), #00000000 calc(100% - 1em), #050505 100%)`,
+
       //   -> Quoteblock
       quoteLegend: "$grey",
       quoteBackground: hexToRgba("#A8EFCD", 0.02),
 
-      //   -> Mathblock
-      mathBackground: "rgb(from $primary r g b / 0.05)",
+      //   -> Callouts
+      warningBackground: "#25221a",
+      noteBackground: "#0c1e2b",
+      tipBackground: "#101f17",
+      cautionBackground: "#2d1717",
+      importantBackground: "#1d1a22",
 
       //   -> Code area
+      codeBlockFlare: "$grey",
       codeInnerBackground: "$black",
-      codeBlockBackground: `linear-gradient(0deg, #181918, #181918)`,
+      codeBlockBackground: `linear-gradient(90deg, #101010 0%, #181918 2%, #181918 98%, #101010 100%)`,
 
       //      -> Code text area
       codeComment: "#8F8F8F",
@@ -158,9 +171,13 @@ export const {
       codeDeletion: "#ff1b1b",
       codeLiteral: "#fbe281",
 
-      // Scrollbar
+      // Scrollbar (for Chrome only)
       scrollbarThumb: "#4d4d4d",
       scrollbarTrack: "#44525F",
+
+      // Posts navigation buttons
+      postPrevNavBackground: "rgb(from $prev r g b / 0.05)",
+      postNextNavBackground: "rgb(from $next r g b / 0.05)",
     },
 
     fonts: {
@@ -239,6 +256,8 @@ export const {
       codeCopyBtnClick: "0 0.0625em #265D8B",
       codeBlockMobileBtnNormal: "0 0.25em #73403F",
       codeBlockMobileBtnClick: "0 0.0625em #73403F",
+      codeBlock: `0 0.6em #333333`,
+      codeBlockPressed: `0 0.2em #333333`,
       tocMobileBtnNormal: "0 0.375em #265D8B",
       tocMobileBtnClick: "0 0.125em #265D8B",
       prevBtn: "0 0.375em #B03836",
@@ -350,7 +369,8 @@ export const ThemeClassMap: ThemeClassMapType = {
 //                              GLOBAL CONFIG
 ///////////////////////////////////////////////////////////////////////////
 export const globalStyles = globalCss({
-  'html, body, ul': { 
+  'html, body, ul, pre': { 
+    // don't want default margin & padding
     margin: 0,
     padding: 0,
 
@@ -375,6 +395,12 @@ export const globalStyles = globalCss({
     backgroundColor: "$pageBackground",
     backgroundImage: `url("${AssetsConfig.GRAIN_WEBP}")`,
     pointerEvents: "none",  
+
+    // pressing copy-code button sometimes accidentally
+    // selects text, so this fix is made.
+    [`&:has(.${ClassConst.CLASS_CODEBLOCK_BTN}:active)`]: {
+      userSelect: "none",
+    },
   },
 
   [`.${ClassConst.CLASS_IOS}, .${ClassConst.CLASS_SAFARI}`]: {
@@ -387,6 +413,22 @@ export const globalStyles = globalCss({
       // really unbalanced :(
       textSizeAdjust: "100%",
     }
+  },
+
+  [`.${ClassConst.CLASS_CODEBLOCK_BTN}`]: {
+    // A hack class. When a clickable element
+    // is pressed, a halo is created surrounding
+    // that element with radius size specified
+    // by inset. Because this method doesn't affect
+    // the webpage's layout, we may set this to
+    // be any size.
+    '&:active': {
+      "&::after": {
+        content: "",
+        position: "absolute",
+        inset: -100,
+      },
+    },
   },
 
   // ==============================================================
