@@ -25,3 +25,19 @@ You can create formatted text pieces! Currently only support `color` attributes.
 ```markdown
 :text[some-text]{color=color-name}
 ```
+
+### Callouts
+
+Supports:
+- `:::warning`
+- `:::note`
+- `:::tip`
+- `:::caution`
+- `:::important`
+
+### `::img`
+
+Just for `<img>`, but supports adding attributes.
+
+
+

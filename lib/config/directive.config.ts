@@ -52,4 +52,13 @@ export const DirectivesConfig: DirectivesConfigType = {
   ":::important": {
     allowedAttributes: ["title"],
   },
+
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  //    ::img{alt=... src=... width=... height=...}
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  "::img": {
+    usage: "::img{src=... [alt=...] [width=...] [height=...]}",
+    allowedAttributes: ["src", "alt", "width", "height"],
+    requireAttributes: ["src"],
+  },
 };
