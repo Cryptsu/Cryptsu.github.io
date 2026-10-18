@@ -14,7 +14,7 @@ type BlogImgProps = PropsWithChildren<{
   height?: string | number, // Scale to your desire...
 }>
 
-const BlogImg = ({children, alt, width, height, src, ...otherProps}: BlogImgProps) => {
+const BlogImg = ({children: inlineAlt, alt, width, height, src, ...otherProps}: BlogImgProps) => {
   // If path does not starts with
   // '/', we can change it into relative
   // import :) A bit hacky method, though...
@@ -37,24 +37,27 @@ const BlogImg = ({children, alt, width, height, src, ...otherProps}: BlogImgProp
     )
   }
 
+  // Since <img> does not allow children,
+  // we reuse as alt :)
+  if (!alt && typeof inlineAlt === "string")
+    alt = inlineAlt;
+
   // What the hell... If I put a component inside a function  
   // then when Next.js compiles, it will register onError !?
   const renderImg = () => {
-    return <Style 
-              elementName={HtmlConst.IMG} 
-              style={BlogImgStyles} 
-              alt={alt} 
-              src={src}
-              css={{width, height}} 
-              onError={
-                (event: Event) => {
-                  (event.target as HTMLImageElement).src = AssetsConfig.NO_EXISTS_IMG
-                }
-              }
-              {...otherProps}
-            >
-              {children}
-           </Style>
+    return (
+      <Style
+        elementName={HtmlConst.IMG}
+        style={BlogImgStyles}
+        alt={alt}
+        src={src}
+        css={{ width, height }}
+        onError={(event: Event) => {
+          (event.target as HTMLImageElement).src = AssetsConfig.NO_EXISTS_IMG;
+        }}
+        {...otherProps}
+      />
+    );
   }
 
   const renderAlt = () => {
