@@ -1,10 +1,11 @@
 import path from "path";
+import { Children, isValidElement } from "react";
 import { useRouter } from "next/router";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
 import { AppConfig, AssetsConfig } from "@/lib/config";
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 import type { CSS } from "@stitches/react";
 
 type BlogImgProps = PropsWithChildren<{
@@ -14,7 +15,19 @@ type BlogImgProps = PropsWithChildren<{
   height?: string | number, // Scale to your desire...
 }>
 
-const BlogImg = ({children: inlineAlt, alt, width, height, src, ...otherProps}: BlogImgProps) => {
+const toText = (node: ReactNode): string => {
+  if (node == null || typeof node === "boolean") 
+    return "";
+  if (typeof node === "string" || typeof node === "number") 
+    return String(node);
+  if (Array.isArray(node)) 
+    return node.map(toText).join("");
+  if (isValidElement<{ children?: ReactNode }>(node)) 
+    return toText(node.props.children);
+  return "";
+};
+
+const BlogImg = ({children: styledAlt, alt, width, height, src, ...otherProps}: BlogImgProps) => {
   // If path does not starts with
   // '/', we can change it into relative
   // import :) A bit hacky method, though...
@@ -39,8 +52,7 @@ const BlogImg = ({children: inlineAlt, alt, width, height, src, ...otherProps}: 
 
   // Since <img> does not allow children,
   // we reuse as alt :)
-  if (!alt && typeof inlineAlt === "string")
-    alt = inlineAlt;
+  styledAlt = (alt ? alt : styledAlt);
 
   // What the hell... If I put a component inside a function  
   // then when Next.js compiles, it will register onError !?
@@ -49,7 +61,7 @@ const BlogImg = ({children: inlineAlt, alt, width, height, src, ...otherProps}: 
       <Style
         elementName={HtmlConst.IMG}
         style={BlogImgStyles}
-        alt={alt}
+        alt={toText(styledAlt)}
         src={src}
         css={{ width, height }}
         onError={(event: Event) => {
@@ -61,10 +73,12 @@ const BlogImg = ({children: inlineAlt, alt, width, height, src, ...otherProps}: 
   }
 
   const renderAlt = () => {
-    if (alt)
-      return <Style style={BlogImgDescriptionStyles}>
-               {alt}
-             </Style>
+    if (styledAlt)
+      return (
+        <Style style={BlogImgDescriptionStyles}>
+          {styledAlt}
+        </Style>
+      );
   }
 
   return (
