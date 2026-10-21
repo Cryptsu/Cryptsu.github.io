@@ -1,0 +1,100 @@
+---
+title: randrange and math
+date: Wed Oct 21 2026 03:48:55 GMT+0700 (Indochina Time)
+description: Who knows solving randrange can be this fun?
+---
+
+Hello, world. It has been a while.
+
+In recent months, I have a lot of free time due to unemployment. So, I decided to look into an old project that I worked on, which is finding a way to solve the internal states of Python's `random` module's RNG via its `randrange` outputs.
+
+<br/>
+# The basics
+
+## Mersenne Twister
+Python's `random` uses `MT19937`, a [Mersenne Twister](https://en.wikipedia.org/wiki/Mersenne_Twister) variant, as its PRNG. As [this ZKSecurity post](https://blog.zksecurity.xyz/posts/kalmar2026/) puts it:
+
+> By default, it produces 32-bit unsigned integers, and various higher-level random functions are built on top of this primitive.
+
+I will now refer to this primitive as `getrandbits32`, similar to the post. 
+
+<br/>
+There's `getrandbits(nbits)`, which takes arbitary non-negative `nbits` as input: 
+- If `nbits < 32`, `getrandbits32() >> (32-nbits)` will be returned. 
+- If `nbits > 32`, concatenate $\left\lfloor{\frac{\texttt{nbits}}{32}}\right\rfloor$ `getrandbits32()`s + one `getrandbits(nbits % 32)` and return the final value.
+
+
+<br/>
+`randrange(N)` takes input `N`, finds `l` such that $2^\texttt{l} < \texttt{N} < 2^\texttt{l+1}$ then calls `getrandbits(l)` until the returned value is `< N`. This process is called rejection sampling.
+
+<br/>
+It's hard to recover Mersenne Twister state from `randrange` outputs alone, as ZKSecurity post puts it eloquently:
+
+> Mersenne Twister is linear over $\mathbb{F}_2$ at the bit level, meaning that an attacker can easily recover its full internal state once `19937` independent output bits are known, rejection sampling obscures the exact alignment between observed outputs. In other words, the gaps between outputs become unknown, so the standard approach no longer applies directly and a different method is required.
+
+<br/>
+But there's a well-known method that helps you overcome the obstacle:
+
+> A standard trick for dealing with rejection sampling is to exploit structural relations between specific output indices that arise from the PRNG's internal recurrence.
+>
+> In particular, every triple of 32-bit outputs at indices `[i, i+396, i+623]` satisfies a specific relation. [...]
+>
+> [...] One tries many triples of observed outputs and checks whether they satisfy the corresponding consistency relation. Whenever a triple passes the test, it strongly suggests that those three outputs are separated by the exact internal offsets required by the Mersenne Twister recurrence. By collecting enough such relations and combining them with external tools such as an SMT solver, one can recover the missing index alignment and eventually reconstruct the full Mersenne Twister state.
+
+<br/>
+However, there's one thing that bugs me. It never quite explain how the relations are found, and how can we apply it to smaller `l < 32`. (?)
+
+<br/>
+## Notations
+Define a sequence of 32-bit vectors $s$ that represents the internal state of `MT19937`.
+- $T$: the matrix associated with the `temper()` function.
+- $\overrightarrow{s_i}$: the $i$-th element of $s$.
+- $\overrightarrow{o_i}$: the $i$-th invocation of `getrandbits32`: $\overrightarrow{o_i} = T \cdot \overrightarrow{s_i}$.
+
+I'll use Python's array notation *(i.e, $\overrightarrow{v}\texttt{[i:j]}$, $\overrightarrow{v}\texttt{[i]}$)* to denote a slice, indexing...
+
+<br/>
+## Encoding
+
+The convention I use to convert non-negative 32-bit integers $\leftrightarrow$ $\mathbb{F}_2$-vectors is:
+
+$$
+\begin{matrix}
+\texttt{encode(} \overrightarrow{v} \texttt{)} = \sum_\texttt{i} \overrightarrow{v}\texttt{[i]} \cdot 2^\texttt{i} \\
+\\
+\overrightarrow{v}\texttt{[i]} \texttt{ == } \texttt{(encode(} \overrightarrow{v} \texttt{) >> i) \& 0x1}
+\end{matrix}
+$$
+
+<br/>
+# The consistency relation
+
+Here's the relation for `getrandbits(l = 32)`:
+$$
+W\overrightarrow{o_i} + \overrightarrow{o_{i+396}} + \overrightarrow{o_{i+623}} = \overrightarrow{s_{i-1}}\texttt{[0]} \cdot \overrightarrow{r}
+$$
+
+where $W, \overrightarrow{r}$ are constant. Only $\overrightarrow{s_{i-1}}\texttt{[0]}$ is unknown, so we need to brute force it. The LHS is a constant while the RHS has 2 possibilities: ($0$, $\overrightarrow{r}$). For uniformly random outputs, this check pass with the probability $\frac{1}{2^{31}}$.
+
+<br/>
+If `0 < l < 32`, we only have $\overrightarrow{o_i}\texttt{[-l:]}$, hence can only compute $W\texttt{[:,-l:]} \cdot \overrightarrow{o_i}\texttt{[-l:]}$. But this product still gives a `32`-bit (`(32, l) x (l, 1) = (32, 1)`) vector, which doesn't fit in the new equation because $\overrightarrow{o_{i+396}}$, $\overrightarrow{o_{i+623}}$ also has to be truncated, so only the product $W\texttt{[-l:,-l:]} \cdot \overrightarrow{o_i}\texttt{[-l:]}$ is useful.
+
+Anyways, here is the generalized relation for any `0 < l <= 32`:
+
+$$
+\begin{matrix}
+  & \sum_{\texttt{j}=32-\texttt{l}}^{31} \text{ } W\texttt{[-l:,j]} \cdot \overrightarrow{o_i}\texttt{[j]} \\
++ & \overrightarrow{o_{i+396}}\texttt{[-l:]} \\
++ & \overrightarrow{o_{i+623}}\texttt{[-l:]} \\
+  & = \\
+  &
+\sum_{\texttt{k}=0}^{31-\texttt{l}} \text{ } W\texttt{[-l:,k]} \cdot \overrightarrow{o_i}\texttt{[k]} \\
++ & \overrightarrow{s_{i-1}}\texttt{[0]} \cdot \overrightarrow{r}\texttt{[-l:]}
+\end{matrix}
+$$
+
+<br/>
+You can see that I have expanded the product $W\texttt{[-l:,:]} \cdot \overrightarrow{o_i}$ into a weighted sum. Then I moved all of the terms with unknown coefficients on the RHS: $\overrightarrow{o_i}\texttt{[0]}, \cdots, \overrightarrow{o_i}\texttt{[31-l]}, \overrightarrow{s_{i-1}}\texttt{[0]}$.
+<br/>
+
+As `l` decreases by `1`, the RHS has `1` more basis vector while the size of the vectors in the relation decrease by `1`. You can see where this check fall short: *When the number of basis vectors on the RHS > the size of the vectors themselves.*
