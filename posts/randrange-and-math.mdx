@@ -171,7 +171,7 @@ $$
 
 ## Step 2: Apply the temper map
 
-Define a map `temper` that converts $\overrightarrow{o_i}\texttt{[j]}$ to $\sum_{\texttt{k} = \texttt{0}}^{31} T\texttt{[j,k]} \cdot \overrightarrow{s_i}\texttt{[k]}$ for a particular $i$. Apply this map with inputs $396, 623$ to the previous expression, and obtain this new expression:
+Define a map `temper` that converts $\overrightarrow{o_i}\texttt{[j]}$ to $\sum_{\texttt{k} = \texttt{0}}^{31} T\texttt{[j,k]} \cdot \overrightarrow{s_i}\texttt{[k]}$ for a particular $i$. Apply this map twice, with $i = \{396, 623\}$, to the previous expression, and obtain this new expression:
 
 $$
 E_1 = \texttt{temper(temper(}E_0\texttt{, 396), 623)} = 
@@ -198,5 +198,13 @@ E_1 = \texttt{temper(temper(}E_0\texttt{, 396), 623)} =
 $$
 
 Remember that the input and output of `temper` are equal, so $E_1 = E_0$.
+<br/>
+
+## Step 3: Merge $s_{396}, s_{623}$ symbols to $s_0, s_{-1}$ ones
+
+To do this, we need to recall the state transition function:
+
+$$
+$$
 
 
