@@ -50,6 +50,7 @@ Define a sequence of 32-bit vectors $s$ that represents the internal state of `M
 - $T$: the matrix associated with the `temper()` function.
 - $\overrightarrow{s_i}$: the $i$-th element of $s$.
 - $\overrightarrow{o_i}$: the $i$-th invocation of `getrandbits32`: $\overrightarrow{o_i} = T \cdot \overrightarrow{s_i}$.
+- $\overrightarrow{a}$: the vector representing the constant `0x9908B0DF`.
 
 I'll use Python's array notation *(i.e, $\overrightarrow{v}\texttt{[i:j]}$, $\overrightarrow{v}\texttt{[i]}$)* to denote a slice, indexing...
 
@@ -171,10 +172,14 @@ $$
 
 ## Step 2: Apply the temper map
 
-Define a map `temper` that converts $\overrightarrow{o_i}\texttt{[j]}$ to $\sum_{\texttt{k} = \texttt{0}}^{31} T\texttt{[j,k]} \cdot \overrightarrow{s_i}\texttt{[k]}$ for a particular $i$. Apply this map twice, with $i = \{396, 623\}$, to the previous expression, and obtain this new expression:
+Define a map `temper_map` that converts 
+$ \overrightarrow{o_i}\texttt{[j]} $ 
+*to* 
+$ \sum_{\texttt{k} = \texttt{0}}^{31} T\texttt{[j,k]} \cdot \overrightarrow{s_i}\texttt{[k]}$ 
+for a particular $i$. Apply this map twice, with $i = \{396, 623\}$, to $E_0$, and obtain this new expression:
 
 $$
-E_1 = \texttt{temper(temper(}E_0\texttt{, 396), 623)} = 
+E_1 = \texttt{temper\_map(temper\_map(}E_0\texttt{, 396), 623)} = 
 \begin{matrix}
   & T\texttt{[:,0]}
     & \cdot & \overrightarrow{s_{396}}\texttt{[0]} \\
@@ -197,7 +202,7 @@ E_1 = \texttt{temper(temper(}E_0\texttt{, 396), 623)} =
 \end{matrix}
 $$
 
-Remember that the input and output of `temper` are equal, so $E_1 = E_0$.
+Remember that the input and output of `temper_map` are equal, so $E_1 = E_0$.
 <br/>
 
 ## Step 3: Merge $s_{396}, s_{623}$ symbols to $s_0, s_{-1}$ ones
@@ -205,6 +210,91 @@ Remember that the input and output of `temper` are equal, so $E_1 = E_0$.
 To do this, we need to recall the state transition function:
 
 $$
+\overrightarrow{s_{i+623}} + \overrightarrow{s_{i+396}}
+
+=
+
+\begin{pmatrix}
+\Big\vert \\
+\Big\vert \\
+\overrightarrow{s_{i}}\texttt{[1:31]} \\
+\Big\vert \\
+\Big\vert \\
+\overrightarrow{s_{i-1}}\texttt{[31]} \\
+0
+\end{pmatrix}
+
++
+
+\overrightarrow{a} \cdot \overrightarrow{s_i}\texttt{[0]}
 $$
 
+<br/>
+Let's create a map `merge_396_623` for a particular $i$ to convert:
+- `j <= 29`: 
+  $ \overrightarrow{s_{i+396}}\texttt{[j]} +
+    \overrightarrow{s_{i+623}}\texttt{[j]}
+  $ *to*
+  $ \overrightarrow{s_i}\texttt{[j+1]} + 
+    \overrightarrow{a}\texttt{[j]} \cdot \overrightarrow{s_i}\texttt{[0]}
+  $
+- `j == 30`:
+  $ \overrightarrow{s_{i+396}}\texttt{[30]} +
+    \overrightarrow{s_{i+623}}\texttt{[30]}
+  $ *to*
+  $ \overrightarrow{s_{i-1}}\texttt{[31]} + 
+    \overrightarrow{a}\texttt{[30]} \cdot \overrightarrow{s_i}\texttt{[0]}
+  $
+- `j == 31`:
+  $ \overrightarrow{s_{i+396}}\texttt{[31]} +
+    \overrightarrow{s_{i+623}}\texttt{[31]}
+  $ *to*
+  $ \overrightarrow{a}\texttt{[31]} \cdot \overrightarrow{s_i}\texttt{[0]}
+  $
+
+<br/>
+This map requires a hidden asssumption that $\overrightarrow{s_{i+396}}\texttt{[j]}$ and $\overrightarrow{s_{i+623}}\texttt{[j]}$ must have the same vector coefficient. Luckily, it can be applied safely to $E_1$, because these two symbols always share the same vector: $T\texttt{[:,j]}$. Applying `merge_396_623` with $i = 0$, gives us:
+
+$$
+E_2 = \texttt{merge\_396\_623(} E_1 \texttt{, 0)} =
+\begin{matrix}
+  & \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix}
+    & \cdot & \overrightarrow{s_{0}}\texttt{[0]} \\
++ & \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix}
+    & \cdot & \overrightarrow{s_{0}}\texttt{[1]} \\
++ & \cdots \\
++ & \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix}
+    & \cdot & \overrightarrow{s_{0}}\texttt{[30]} \\
++ & \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix}
+    & \cdot & \overrightarrow{s_{-1}}\texttt{[31]}
+\end{matrix}
+$$
+<br/>
+
+## Step 4: Apply the untemper map
+
+We now define the map `untemper_map` that does the opposite of `temper_map`: converts 
+$ \overrightarrow{s_i}\texttt{[j]} $ 
+*to* 
+$\sum_{\texttt{k} = \texttt{0}}^{31} T^{-1}\texttt{[j,k]} \cdot \overrightarrow{o_i}\texttt{[k]}$ 
+for a particular $i$. Apply to $E_2$ with $i = 0$, we now have:
+
+$$
+E_3 = \texttt{untemper\_map(} E_2 \texttt{, 0)} =
+\begin{matrix}
+  & \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix}
+    & \cdot & \overrightarrow{o_{0}}\texttt{[0]} \\
++ & \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix}
+    & \cdot & \overrightarrow{o_{0}}\texttt{[1]} \\
++ & \cdots \\
++ & \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix}
+    & \cdot & \overrightarrow{o_{0}}\texttt{[30]} \\
++ & \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix}
+    & \cdot & \overrightarrow{o_{0}}\texttt{[31]} \\
++ & \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix}
+    & \cdot & \overrightarrow{s_{-1}}\texttt{[31]}
+\end{matrix}
+$$
+
+The first 31 vectors terms define the columns of $W$, while the last one define $\overrightarrow{r}$.
 
