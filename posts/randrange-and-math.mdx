@@ -143,27 +143,60 @@ I never really explained how I found the relation. Turns out this process can be
 
 ## Step 1: Create the initial symbolic vector-sum expression
 
-We will start by creating this boring symbolic expression that represents $\overrightarrow{o_{i+396}} + \overrightarrow{o_{i+396}}$:
+We will start by creating this boring symbolic expression that represents $\overrightarrow{o_{396}} + \overrightarrow{o_{623}}$:
 $$
+E_0 = 
 \begin{matrix}
   & \begin{pmatrix} 1 & 0 & 0 & \cdots & 0 & 0 & 0 \end{pmatrix}
-    & \cdot & \overrightarrow{o_{i+396}}\texttt{[0]} \\
+    & \cdot & \overrightarrow{o_{396}}\texttt{[0]} \\
 + & \begin{pmatrix} 0 & 1 & 0 & \cdots & 0 & 0 & 0 \end{pmatrix}
-    & \cdot & \overrightarrow{o_{i+396}}\texttt{[1]} \\
+    & \cdot & \overrightarrow{o_{396}}\texttt{[1]} \\
 + & \cdots \\
 + & \begin{pmatrix} 0 & 0 & 0 & \cdots & 0 & 1 & 0 \end{pmatrix}
-    & \cdot & \overrightarrow{o_{i+396}}\texttt{[30]} \\
+    & \cdot & \overrightarrow{o_{396}}\texttt{[30]} \\
 + & \begin{pmatrix} 0 & 0 & 0 & \cdots & 0 & 0 & 1 \end{pmatrix}
-    & \cdot & \overrightarrow{o_{i+396}}\texttt{[31]} \\
+    & \cdot & \overrightarrow{o_{396}}\texttt{[31]} \\
 + & \begin{pmatrix} 1 & 0 & 0 & \cdots & 0 & 0 & 0 \end{pmatrix}
-    & \cdot & \overrightarrow{o_{i+623}}\texttt{[0]} \\
+    & \cdot & \overrightarrow{o_{623}}\texttt{[0]} \\
 + & \begin{pmatrix} 0 & 1 & 0 & \cdots & 0 & 0 & 0 \end{pmatrix}
-    & \cdot & \overrightarrow{o_{i+623}}\texttt{[1]} \\
+    & \cdot & \overrightarrow{o_{623}}\texttt{[1]} \\
 + & \cdots \\
 + & \begin{pmatrix} 0 & 0 & 0 & \cdots & 0 & 1 & 0 \end{pmatrix}
-    & \cdot & \overrightarrow{o_{i+623}}\texttt{[30]} \\
+    & \cdot & \overrightarrow{o_{623}}\texttt{[30]} \\
 + & \begin{pmatrix} 0 & 0 & 0 & \cdots & 0 & 0 & 1 \end{pmatrix}
-    & \cdot & \overrightarrow{o_{i+623}}\texttt{[31]} \\
+    & \cdot & \overrightarrow{o_{623}}\texttt{[31]} \\
 \end{matrix}
 $$
+<br/>
+
+## Step 2: Apply the temper map
+
+Define a map `temper` that converts $\overrightarrow{o_i}\texttt{[j]}$ to $\sum_{\texttt{k} = \texttt{0}}^{31} T\texttt{[j,k]} \cdot \overrightarrow{s_i}\texttt{[k]}$ for a particular $i$. Apply this map with inputs $396, 623$ to the previous expression, and obtain this new expression:
+
+$$
+E_1 = \texttt{temper(temper(}E_0\texttt{, 396), 623)} = 
+\begin{matrix}
+  & T\texttt{[:,0]}
+    & \cdot & \overrightarrow{s_{396}}\texttt{[0]} \\
++ & T\texttt{[:,1]}
+    & \cdot & \overrightarrow{s_{396}}\texttt{[1]} \\
++ & \cdots \\
++ & T\texttt{[:,30]}
+    & \cdot & \overrightarrow{s_{396}}\texttt{[30]} \\
++ & T\texttt{[:,31]}
+    & \cdot & \overrightarrow{s_{396}}\texttt{[31]} \\
++ & T\texttt{[:,0]}
+    & \cdot & \overrightarrow{s_{623}}\texttt{[0]} \\
++ & T\texttt{[:,1]}
+    & \cdot & \overrightarrow{s_{623}}\texttt{[1]} \\
++ & \cdots \\
++ & T\texttt{[:,30]}
+    & \cdot & \overrightarrow{s_{623}}\texttt{[30]} \\
++ & T\texttt{[:,31]}
+    & \cdot & \overrightarrow{s_{623}}\texttt{[31]} \\
+\end{matrix}
+$$
+
+Remember that the input and output of `temper` are equal, so $E_1 = E_0$.
+
 
