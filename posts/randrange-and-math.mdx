@@ -69,17 +69,30 @@ $$
 <br/>
 # The consistency relation
 
-Here's the relation for `getrandbits(l = 32)`:
+Here's the relation for `getrandbits(l = 32)` *(detail: link(?))*:
 $$
-W\overrightarrow{o_i} + \overrightarrow{o_{i+396}} + \overrightarrow{o_{i+623}} = \overrightarrow{s_{i-1}}\texttt{[0]} \cdot \overrightarrow{r}
+W\overrightarrow{o_i} + \overrightarrow{o_{i+396}} + \overrightarrow{o_{i+623}} = \overrightarrow{r} \cdot \overrightarrow{s_{i-1}}\texttt{[0]}
 $$
 
 where $W, \overrightarrow{r}$ are constant. Only $\overrightarrow{s_{i-1}}\texttt{[0]}$ is unknown, so we need to brute force it. The LHS is a constant while the RHS has 2 possibilities: ($0$, $\overrightarrow{r}$). For uniformly random outputs, this check pass with the probability $\frac{1}{2^{31}}$.
 
 <br/>
-If `0 < l < 32`, we only have $\overrightarrow{o_i}\texttt{[-l:]}$, hence can only compute $W\texttt{[:,-l:]} \cdot \overrightarrow{o_i}\texttt{[-l:]}$. But this product still gives a `32`-bit (`(32, l) x (l, 1) = (32, 1)`) vector, which doesn't fit in the new equation because $\overrightarrow{o_{i+396}}$, $\overrightarrow{o_{i+623}}$ also has to be truncated, so only the product $W\texttt{[-l:,-l:]} \cdot \overrightarrow{o_i}\texttt{[-l:]}$ is useful.
+If `0 < l < 32`, we only have $\overrightarrow{o_i}\texttt{[-l:]}$ for every $i$. So the vectors in the relation must be truncated to be verifiable.
 
-Anyways, here is the generalized relation for any `0 < l <= 32`:
+$$
+\begin{matrix}
+& W\texttt{[-l:,:]} \cdot \overrightarrow{o_i} \\
++ & \overrightarrow{o_{i+396}}\texttt{[-l:]} \\
++ & \overrightarrow{o_{i+623}}\texttt{[-l:]} \\
+& = \\
+& \overrightarrow{r}\texttt{[-l:]} \cdot \overrightarrow{s_{i-1}}\texttt{[0]}
+\end{matrix}
+$$
+
+<br/>
+However, $\overrightarrow{o_i}$ still has some unknown bits $\overrightarrow{o_i}\texttt{[0]}, \cdots, \overrightarrow{o_i}\texttt{[31-l]}$. Let's expand $W\texttt{[-l:,:]} \cdot \overrightarrow{o_i} = \sum_\texttt{j=0}^{31} W\texttt{[-l:,j]} \cdot \overrightarrow{o_i}\texttt{[j]}$ and move all the terms with unknown coefficients to the RHS.
+
+Finally, here is the generalized relation for any `0 < l <= 32`:
 
 $$
 \begin{matrix}
@@ -87,14 +100,70 @@ $$
 + & \overrightarrow{o_{i+396}}\texttt{[-l:]} \\
 + & \overrightarrow{o_{i+623}}\texttt{[-l:]} \\
   & = \\
-  &
-\sum_{\texttt{k}=0}^{31-\texttt{l}} \text{ } W\texttt{[-l:,k]} \cdot \overrightarrow{o_i}\texttt{[k]} \\
-+ & \overrightarrow{s_{i-1}}\texttt{[0]} \cdot \overrightarrow{r}\texttt{[-l:]}
+  & \overrightarrow{r}\texttt{[-l:]} \cdot \overrightarrow{s_{i-1}}\texttt{[0]} \\
++ &
+\sum_{\texttt{k}=0}^{31-\texttt{l}} \text{ } W\texttt{[-l:,k]} \cdot \overrightarrow{o_i}\texttt{[k]}
+\end{matrix}
+$$
+<br/>
+
+As `l` decreases by `1`, the RHS gains `1` more basis vector while the size of the vectors decrease by `1`. You can see when this check falls short: *When the number of basis vectors on the RHS > the size of the vectors themselves.* For `l = 32`, these two values are 1 and 32, so this check works.
+
+We now can compute the value of `l` in which this method completely fails: 
+
+$$
+\begin{matrix}
+         & 1+(32-l) & >    & 32-(32-l) \\
+\implies & 1-l      & >    & l-32 \\
+\implies & 2l       & <    & 33   \\
+\implies & l        & \leq & 16   \\
 \end{matrix}
 $$
 
 <br/>
-You can see that I have expanded the product $W\texttt{[-l:,:]} \cdot \overrightarrow{o_i}$ into a weighted sum. Then I moved all of the terms with unknown coefficients on the RHS: $\overrightarrow{o_i}\texttt{[0]}, \cdots, \overrightarrow{o_i}\texttt{[31-l]}, \overrightarrow{s_{i-1}}\texttt{[0]}$.
+:::warning{title="Do you see a problem with this reasoning?"}
+In reality, as we decrease `l`, some of the vectors in the set:
+- $\overrightarrow{r}\texttt{[-l:]}$
+- $W\texttt{[-l:,0]}$
+- $W\texttt{[-l:,1]}$
+- $\cdots$
+- $W\texttt{[-l:,31-l]}$
+
+may collide.
+
+In such cases, the number of basis vectors may decrease! But I've yet found an usage for this.
+
+Experimentally, no basis collision happens until `l = 18`.
+:::
 <br/>
 
-As `l` decreases by `1`, the RHS has `1` more basis vector while the size of the vectors in the relation decrease by `1`. You can see where this check fall short: *When the number of basis vectors on the RHS > the size of the vectors themselves.*
+# How to find $W$ and $\overrightarrow{r}$
+
+I never really explained how I found the relation. Turns out this process can be automated.
+
+## Step 1: Create the initial symbolic vector-sum expression
+
+We will start by creating this boring symbolic expression that represents $\overrightarrow{o_{i+396}} + \overrightarrow{o_{i+396}}$:
+$$
+\begin{matrix}
+  & \begin{pmatrix} 1 & 0 & 0 & \cdots & 0 & 0 & 0 \end{pmatrix}
+    & \cdot & \overrightarrow{o_{i+396}}\texttt{[0]} \\
++ & \begin{pmatrix} 0 & 1 & 0 & \cdots & 0 & 0 & 0 \end{pmatrix}
+    & \cdot & \overrightarrow{o_{i+396}}\texttt{[1]} \\
++ & \cdots \\
++ & \begin{pmatrix} 0 & 0 & 0 & \cdots & 0 & 1 & 0 \end{pmatrix}
+    & \cdot & \overrightarrow{o_{i+396}}\texttt{[30]} \\
++ & \begin{pmatrix} 0 & 0 & 0 & \cdots & 0 & 0 & 1 \end{pmatrix}
+    & \cdot & \overrightarrow{o_{i+396}}\texttt{[31]} \\
++ & \begin{pmatrix} 1 & 0 & 0 & \cdots & 0 & 0 & 0 \end{pmatrix}
+    & \cdot & \overrightarrow{o_{i+623}}\texttt{[0]} \\
++ & \begin{pmatrix} 0 & 1 & 0 & \cdots & 0 & 0 & 0 \end{pmatrix}
+    & \cdot & \overrightarrow{o_{i+623}}\texttt{[1]} \\
++ & \cdots \\
++ & \begin{pmatrix} 0 & 0 & 0 & \cdots & 0 & 1 & 0 \end{pmatrix}
+    & \cdot & \overrightarrow{o_{i+623}}\texttt{[30]} \\
++ & \begin{pmatrix} 0 & 0 & 0 & \cdots & 0 & 0 & 1 \end{pmatrix}
+    & \cdot & \overrightarrow{o_{i+623}}\texttt{[31]} \\
+\end{matrix}
+$$
+
