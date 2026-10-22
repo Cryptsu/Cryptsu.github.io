@@ -427,7 +427,12 @@ And I wonder if there's a pattern. This is why I decided to visualize a tree whe
 - the root node is $0$.
 <br/>
 
-By construction, level $d$ is the set of offsets $\Delta$ such that $\overrightarrow{o_{i+\Delta}}$ appears in the expansion of $(2)$ after $d$ iterations.
+
+Here's what the tree looks like for the first 6 levels:
+
+![](dependency-graph-simple.svg)
+
+By construction, level $d$ is the set of offsets $\Delta$ such that $\overrightarrow{o_{i+\Delta}}$ *(supposedly)* appears in the expansion of $(2)$ after $d$ iterations.
 
 For example, level $3$, which contains $\Delta \in \{1188, 1415, 1642, 1869\}$, corresponds to the relation:
 
@@ -440,13 +445,20 @@ $$
   + \overrightarrow{o_{i+1869}}
 ) + \cdots
 $$
+
+While looking at level $5$, one may imagine that there's a relation such that:
+$$
+\overrightarrow{o_i} 
+= M^5(
+    \overrightarrow{o_{i+1980}}
+  + \overrightarrow{o_{i+2207}}
+  + \overrightarrow{o_{i+2888}}
+  + \overrightarrow{o_{i+3115}}
+) + \cdots
+$$
 <br/>
 
-Here's what the tree looks like for the first 6 levels:
-
-![](dependency-graph-simple.svg)
-
-As we zoom out to 16 levels, a familiar picture appears:
+As we zoom out the tree graph to 16 levels, a familiar picture appears:
 
 ![](dependency-graph.svg)
 
@@ -459,5 +471,27 @@ At first, I thought I was hallucinating until I checked the coefficients of the 
 
 ![](dependency-graph-coefficients.svg)
 
-Of course! The underlying structure is a binary Pascal triangle! All of the terms repeated an even number of times are cancelled out!
+Of course! The underlying structure is a binary Pascal triangle! The terms repeated an even number of times are cancelled out!
+<br/>
 
+
+We still need to brute force the locations of the $\overrightarrow{o_{i+\Delta}}$ involved before we do the check, so it's important to determine which relations depend on the least amount of $\overrightarrow{o_{i+\Delta}}$ to reduce the brute force effort. In other words, we need to find the levels with as few green nodes as possible.
+
+<br/>
+:::note{title="Gould's Sequence"}
+According to [Wikipedia](https://en.wikipedia.org/wiki/Gould%27s_sequence):
+
+*"Gould's sequence is an integer sequence [...] that counts how many odd numbers are in each row of Pascal's triangle."*
+
+<br/>
+The $n$-th value in the Gould's sequence is:
+
+$$
+2^{\#_1(n)}
+$$
+
+where $\#_1(n)$ denotes the number of $1$ in the binary expansion of $n$.
+:::
+
+This means that there are $2^{\#_1(d)}$ green nodes in level $d$. It motivates us to look at $d$ that has small amounts of $1$ in its binary expansion.
+<br/>
