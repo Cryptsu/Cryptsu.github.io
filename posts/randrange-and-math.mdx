@@ -301,9 +301,35 @@ E_3 = \texttt{untemper\_map(} E_2 \texttt{, 0)} =
 \end{matrix}
 $$
 
-The first 31 vectors terms define the columns of $W$, while the last one define $\overrightarrow{r}$.
+Because $E_3 = \overrightarrow{o_{396}} + \overrightarrow{o_{623}}$, the first 31 vectors terms define the columns of $W$, while the last one define $\overrightarrow{r}$.
+<br/>
 
-Here is the full code: *[link](/attachments/posts/randrange-and-math/find-rel.tar.gz)*
+
+## The script
+Here is the scripts I use: *[find-rel.tar.gz](/attachments/posts/randrange-and-math/find-rel.tar.gz)*.
+
+```python
+from sage.all import *
+from lib.maps import (
+    temper_map,
+    merge_396_623_map,
+    untemper_map
+)
+from lib.symexprs import oi
+
+t = oi(396) + oi(623)
+t = t(temper_map(396))(temper_map(623))
+t = t(merge_396_623_map(0))
+t = t(untemper_map(0))
+# print(t)
+
+W_columns = [ t[f'O{0}_{i}'] for i in range(32) ]
+W = Matrix(GF(2), W_columns).T
+r = vector(GF(2), t['S-1_31'])
+
+# print(W)
+# print(r)
+```
 <br/>
 
 # Extending the `3`-relation
@@ -357,6 +383,25 @@ $$
 &+& M\overrightarrow{q} \cdot (\overrightarrow{s_{i+395}}\texttt{[0]} + \overrightarrow{s_{i+622}}\texttt{[0]}) \\
 &+&  \overrightarrow{q} \cdot \overrightarrow{s_{i-1}}\texttt{[0]} 
 \end{matrix}
+\tag{2}
 $$
 
-For uniformly random 32-bit outputs, this check pass with the probability $\frac{1}{2^{30}}$!
+The RHS has `4` different possibilities. For uniformly random 32-bit outputs, this check pass with the probability $\frac{1}{2^{30}}$!
+<br/>
+
+## The end?
+
+Both $\overrightarrow{s_{i+395}}\texttt{[0]}$ and $\overrightarrow{s_{i+622}}\texttt{[0]}$ share the same vector coefficients, so what's stopping us from applying `merge_396_623` with $i = -1$ to $(2)$?
+
+$$
+\begin{matrix}
+\overrightarrow{o_i} = & 
+  & M^2\overrightarrow{o_{i+792}} \\
+&+& M^2\overrightarrow{o_{i+1246}} \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[1]} \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[0]} 
+\end{matrix}
+$$
+
