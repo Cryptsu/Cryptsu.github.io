@@ -72,7 +72,12 @@ $$
 
 Here's the relation for `getrandbits(l = 32)` *(detail: link(?))*:
 $$
-W\overrightarrow{o_i} + \overrightarrow{o_{i+396}} + \overrightarrow{o_{i+623}} = \overrightarrow{r} \cdot \overrightarrow{s_{i-1}}\texttt{[0]}
+W\overrightarrow{o_i} 
++ \overrightarrow{o_{i+396}} 
++ \overrightarrow{o_{i+623}} 
+= \overrightarrow{r} \cdot \overrightarrow{s_{i-1}}\texttt{[0]} 
+
+\tag{1}
 $$
 
 where $W, \overrightarrow{r}$ are constant. Only $\overrightarrow{s_{i-1}}\texttt{[0]}$ is unknown, so we need to brute force it. The LHS is a constant while the RHS has 2 possibilities: ($0$, $\overrightarrow{r}$). For uniformly random outputs, this check pass with the probability $\frac{1}{2^{31}}$.
@@ -123,16 +128,16 @@ $$
 
 <br/>
 :::warning{title="Do you see a problem with this reasoning?"}
-In reality, as we decrease `l`, some of the vectors in the set:
+In reality, as `l` decreases, some of the vectors in the set:
 - $\overrightarrow{r}\texttt{[-l:]}$
 - $W\texttt{[-l:,0]}$
 - $W\texttt{[-l:,1]}$
 - $\cdots$
 - $W\texttt{[-l:,31-l]}$
 
-may collide.
+may collide, or become linearly dependent more often, which increases the chance for the check to succeed.
 
-In such cases, the number of basis vectors may decrease! But I've yet found an usage for this.
+But I couldn't really put this analysis into use, because it seems like the gain is overshadowed by the loss.
 
 Experimentally, no basis collision happens until `l = 18`.
 :::
@@ -301,4 +306,57 @@ The first 31 vectors terms define the columns of $W$, while the last one define 
 Here is the full code: *[link](/attachments/posts/randrange-and-math/find-rel.tar.gz)*
 <br/>
 
-# From `3`-relation to `n`-relation
+# Extending the `3`-relation
+
+## Finding a `[0, 792, 1246]`-relation
+
+The KalmarCTF blog says that they've found a `[0, 792, 1246]`-relation from the `[0, 396, 623]` one. Now that we have $W$ and $\overrightarrow{r}$, we can do the same:
+
+Let's multiply $W^{-1}$ to $(1)$:
+$$
+\begin{matrix}
+        \overrightarrow{o_i} 
++ W^{-1}\overrightarrow{o_{i+396}} 
++ W^{-1}\overrightarrow{o_{i+623}} 
+= W^{-1}\overrightarrow{r} \cdot \overrightarrow{s_{i-1}}\texttt{[0]} \\
+
+   \overrightarrow{o_i} 
++ M\overrightarrow{o_{i+396}} 
++ M\overrightarrow{o_{i+623}} 
+=  \overrightarrow{q} \cdot \overrightarrow{s_{i-1}}\texttt{[0]} 
+& (M = W^{-1} \texttt{,} \overrightarrow{q} = W^{-1}\overrightarrow{r}) \\
+
+   \overrightarrow{o_i}
+= M\overrightarrow{o_{i+396}}
++ M\overrightarrow{o_{i+623}}
++  \overrightarrow{q} \cdot \overrightarrow{s_{i-1}}\texttt{[0]} 
+\end{matrix}
+$$
+
+Applying this recurrence relation to itself gives you:
+$$
+\begin{matrix}
+\overrightarrow{o_i} = & 
+  & M^2\overrightarrow{o_{i+792}} \\
+&+& M^2\overrightarrow{o_{i+1019}} \\
+&+& M^2\overrightarrow{o_{i+1019}} \\
+&+& M^2\overrightarrow{o_{i+1246}} \\
+&+& M\overrightarrow{q} \cdot \overrightarrow{s_{i+395}}\texttt{[0]} \\
+&+& M\overrightarrow{q} \cdot \overrightarrow{s_{i+622}}\texttt{[0]} \\
+&+&  \overrightarrow{q} \cdot \overrightarrow{s_{i-1}}\texttt{[0]} 
+\end{matrix}
+$$
+
+Wow, this gets messy real quick! Luckily, $M^2\overrightarrow{o_{i+1019}}$ is repeated twice, so they cancel out. But you can also see that $\overrightarrow{s_{i+395}}\texttt{[0]}$ and $\overrightarrow{s_{i+622}}\texttt{[0]}$ have the same vector coefficients!
+
+$$
+\begin{matrix}
+\overrightarrow{o_i} = & 
+  & M^2\overrightarrow{o_{i+792}} \\
+&+& M^2\overrightarrow{o_{i+1246}} \\
+&+& M\overrightarrow{q} \cdot (\overrightarrow{s_{i+395}}\texttt{[0]} + \overrightarrow{s_{i+622}}\texttt{[0]}) \\
+&+&  \overrightarrow{q} \cdot \overrightarrow{s_{i-1}}\texttt{[0]} 
+\end{matrix}
+$$
+
+For uniformly random 32-bit outputs, this check pass with the probability $\frac{1}{2^{30}}$!
