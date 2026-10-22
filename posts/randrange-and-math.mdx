@@ -413,28 +413,51 @@ t = t(untemper_map(0))
 
 ## The Sierpiński triangle
 
-It seems like we can keep applying $(2)$ to itself to find new relations of $\overrightarrow{o_i}$ with a new set of $\overrightarrow{o_{i+d}}$. We can derive that $d$ is always in the form of $396j + 623k$.
+It seems like we can keep applying $(2)$ to itself to find new relations of $\overrightarrow{o_i}$ with a new set of $\overrightarrow{o_{i+\Delta}}$. We can derive that $\Delta$ is always in the form of $396j + 623k$.
 
-But as we go along, some $\overrightarrow{o_{i+d}}$ that are supposed to be involved in the equation, are magically cancelled out. For instance, the term with $\overrightarrow{o_{i+1019}}$ in the previous section.
+But as we go along, some $\overrightarrow{o_{i+\Delta}}$ that are supposed to be involved in the equation, are magically cancelled out. For instance, the term with $\overrightarrow{o_{i+1019}}$ in the previous section.
 
 <br/>
 And I wonder if there's a pattern. This is why I decided to visualize a tree where:
 
-- each node represents an offset $d$.
-  - if $\overrightarrow{o_{i+d}}$ has a relation with $\overrightarrow{o_i}$ through $(2)$, it is colored **:text[green]{color=green}**.
+- each node represents an offset $\Delta$.
+  - if $\overrightarrow{o_{i+\Delta}}$ appears in the equation with $\overrightarrow{o_i}$ through repeated application of $(2)$ to itself, it is colored **:text[green]{color=green}**.
   - otherwise, it is colored **:text[grey]{color=grey}**.
-- the children's nodes are $d+396$ and $d+623$
-- the root node is `0`.
-
+- the children of a node are $d+396$ and $d+623$
+- the root node is $0$.
 <br/>
-Here's what the tree looks like:
+
+By construction, level $d$ is the set of offsets $\Delta$ such that $\overrightarrow{o_{i+\Delta}}$ appears in the expansion of $(2)$ after $d$ iterations.
+
+For example, level $3$, which contains $\Delta \in \{1188, 1415, 1642, 1869\}$, corresponds to the relation:
+
+$$
+\overrightarrow{o_i} 
+= M^3(
+    \overrightarrow{o_{i+1188}}
+  + \overrightarrow{o_{i+1415}}
+  + \overrightarrow{o_{i+1642}}
+  + \overrightarrow{o_{i+1869}}
+) + \cdots
+$$
+<br/>
+
+Here's what the tree looks like for the first 6 levels:
 
 ![](dependency-graph-simple.svg)
 
-As we zoom out, a familiar picture appears:
+As we zoom out to 16 levels, a familiar picture appears:
 
 ![](dependency-graph.svg)
 
-It's the [Sierpiński Triangle](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle)!
+It's the [Sierpiński Triangle](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle) *(but a little bit low-res...)*!
 
-::img[]{src="Sierpinski_triangle.svg" width=150}
+::img[]{src="Sierpinski_triangle.svg" width="200px"}
+
+<br/>
+At first, I thought I was hallucinating until I checked the coefficients of the terms in the repeated expansion:
+
+![](dependency-graph-coefficients.svg)
+
+Of course! The underlying structure is a binary Pascal triangle! All of the terms repeated an even number of times are cancelled out!
+
