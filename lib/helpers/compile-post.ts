@@ -3,7 +3,6 @@ import { minify } from "uglify-js";
 import { getPostData } from "./process-posts";
 import { customRemarkDirective } from "./compile-directive";
 
-// remark/rehype markdown plugins
 import remarkGfm from "remark-gfm";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
@@ -28,30 +27,16 @@ export const compilePost
     parseFrontmatter: false,
     mdxOptions: {
       remarkPlugins: [
-        [
-          remarkGfm,  // Supports tables, footnotes, etc...
-        ],
-
-        [
-          remarkMath  // To display one-line latex.
-        ],
-
-        [
-          remarkEmoji // Add supports for Emojis.
-        ],
-
-        [
-          remarkDirective
-        ],
-
-        [
-          customRemarkDirective
-        ],
+        remarkGfm,             // Supports tables, footnotes, etc...
+        remarkMath,            // To display one-line latex.
+        remarkEmoji,           // Add supports for Emojis.
+        remarkDirective,
+        customRemarkDirective,
       ],
 
       rehypePlugins: [
         [
-          rehypeKatex,  // To display multi-line latex.
+          rehypeKatex,        // To display multi-line latex.
           {
             // Configure error handling
             strict: (errorCode: string, errorMsg: string) => {
@@ -64,20 +49,16 @@ export const compilePost
           }
         ],
 
-        [
-          rehypeSlug    // Attaches IDs to headers based on the content. Maybe useful for table of content?
-        ],
+        rehypeSlug,           // Attaches IDs to headers based on the content. Maybe useful for table of content?
 
         [
-          rehypePrism,  // Syntax highlighting for code.
+          rehypePrism,        // Syntax highlighting for code.
           {
             ignoreMissing: true,
           }
         ],
 
-        [
-          rehypeUnwrapImages, // Remove redundant lines in paragraphs?
-        ]
+        rehypeUnwrapImages,   // Remove redundant lines in paragraphs?
       ]
     }
   });
