@@ -415,7 +415,7 @@ t = t(untemper_map(0))
 
 It seems like we can keep applying $(2)$ to itself to find new relations of $\overrightarrow{o_i}$ with a new set of $\overrightarrow{o_{i+\Delta}}$.
 
-After $d$ iterations, $(2)$ becomes *(we're only considering $d \leq 32$)*:
+After $d$ expansions, $(2)$ becomes *(we're only considering $d \leq 32$)*:
 $$
 \begin{matrix}
 \overrightarrow{o_i} = & 
@@ -435,9 +435,9 @@ $$
 $$
 <br/>
 
-We can derive that $\Delta$ is always in the form of $396j + 623k$.
+We can see that $\Delta$ is always in the form of $396j + 623k$. However, not all $\overrightarrow{o_{i + 396j + 623k}}$ appears.
 
-But as we go along, some $\overrightarrow{o_{i+\Delta}}$ that are supposed to be involved in the equation, are magically cancelled out. For instance, the term with $\overrightarrow{o_{i+1019}}$ in the previous section.
+As we expand $(2)$, some $\overrightarrow{o_{i+\Delta}}$ that are supposed to be involved in the equation, are magically cancelled out. For instance, the term with $\overrightarrow{o_{i+1019}}$ in the previous section.
 
 <br/>
 And I wonder if there's a pattern. This is why I decided to visualize a tree where:
