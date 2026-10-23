@@ -393,7 +393,7 @@ The RHS has `4` different possibilities. For uniformly random 32-bit outputs, th
 
 Implementation-wise, I did this process in backwards: 
 
-I start from two expressions $\overrightarrow{o_{792}} + \overrightarrow{o_{1019}}$, $\overrightarrow{o_{1019}} + \overrightarrow{o_{1246}}$ then work my way back. Only after applying `merge_396_623_map` to each of them, I merge them together.
+I start from two expressions $\overrightarrow{o_{792}} + \overrightarrow{o_{1019}}$, $\overrightarrow{o_{1019}} + \overrightarrow{o_{1246}}$ then work my way back. Only after applying `merge_396_623_map` to each of them, I add them together.
 
 ```python
 t0 = oi(792) + oi(1019)
@@ -495,3 +495,7 @@ where $\#_1(n)$ denotes the number of $1$ in the binary expansion of $n$.
 
 This means that there are $2^{\#_1(d)}$ green nodes in level $d$. It motivates us to look at $d$ that has small amounts of $1$ in its binary expansion.
 <br/>
+
+## Concatenating multiple `n`-relations
+
+
