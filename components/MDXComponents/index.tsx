@@ -2,7 +2,7 @@ import Style from "@/components/Style";
 import MDXComponentsConfig from "@/lib/config/mdx.config";
 import type { MDXComponentsConfigType } from "@/lib/config/mdx.config";
 import type { MDXRemoteProps } from "next-mdx-remote";
-import type { MDXComponents } from "mdx/types.d.ts";
+import type { MDXComponents } from "mdx/types";
 
 const CompileComponentsConfig 
   = (MDXComponentsConfig: MDXComponentsConfigType)
