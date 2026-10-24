@@ -369,7 +369,7 @@ export const ThemeClassMap: ThemeClassMapType = {
 //                              GLOBAL CONFIG
 ///////////////////////////////////////////////////////////////////////////
 export const globalStyles = globalCss({
-  'html, body, ul, pre': { 
+  'html, body, ul, pre, ol': { 
     // don't want default margin & padding
     margin: 0,
     padding: 0,
