@@ -2,7 +2,7 @@ import { NextNode } from "@/types/next.d";
 import { H1, H2, H3, H4, H5, H6 } from "@/components/MDXComponents/Headings";
 import Paragraph from "@/components/MDXComponents/Paragraph";
 import Blockquote from "@/components/MDXComponents/Blockquote";
-import ParsedLink from "@/components/MDXComponents/ParsedLink";
+import BlogLink from "@/components/MDXComponents/BlogLink";
 import CodeInline from "@/components/MDXComponents/CodeInline";
 import CodeBlock from "@/components/MDXComponents/CodeBlock";
 import UnorderedList from "@/components/MDXComponents/Lists/UnorderedList";
@@ -44,7 +44,7 @@ const MDXComponentsConfig: MDXComponentsConfigType = {
 
   p: [{ replacedElement: Paragraph }],
   blockquote: [{ replacedElement: Blockquote }],
-  a: [{ replacedElement: ParsedLink }],
+  a: [{ replacedElement: BlogLink }],
   code: [
     { replacedElement: CodeBlock, classNames: ["code-highlight"] },
     { replacedElement: CodeInline },

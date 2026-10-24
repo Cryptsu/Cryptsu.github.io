@@ -21,8 +21,8 @@ const OrderedListStyles: CSS = {
 
   listStyle: 'none',
   margin: 0,
-  marginLeft: 48,
-  marginRight: 48,
+  marginLeft: 32,
+  marginRight: 32,
   '@small': {
     marginLeft: 16,
     marginRight: 16,
