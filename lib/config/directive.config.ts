@@ -7,7 +7,7 @@ export type DirectiveSpec = {
 
 type DirectivesConfigType = Record<string, DirectiveSpec>;
 
-export const DirectivesConfig: DirectivesConfigType = {
+const DirectivesConfig: DirectivesConfigType = {
   ////////////////////////////////////////////////////////////////////////////////////////////
   //    :code[Some text or HTML here]
   ////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,3 +62,5 @@ export const DirectivesConfig: DirectivesConfigType = {
     requireAttributes: ["src"],
   },
 };
+
+export default DirectivesConfig;
