@@ -15,13 +15,25 @@ type BlogLinkProps = PropsWithChildren<{
 const BlogLink = ({ children, href, ...otherProps }: BlogLinkProps) => {
   href = resolveBlogLink(href, useRouter());
 
-  // prevents re-rendering of the page
+  // If the tag exists within the page, scroll to it :)
+  // Using NextLink causes re-rendering of the page
   if (href.startsWith("#")) {
     return (
       <Style
         elementName={HtmlConst.A}
-        href={href}
         style={BlogLinkStyles}
+        // Copied from Headings.tsx
+        onClick={
+          () => {
+            let element = document.getElementById(href.substring(1));
+            let headingRect = element?.getBoundingClientRect();
+            if (headingRect)
+              window.scrollTo({ 
+                top: window.scrollY + headingRect.y, 
+                behavior: "smooth" 
+              })
+          }
+        }
         {...otherProps}
       >
         {children}
@@ -46,7 +58,9 @@ const BlogLinkStyles: CSS = {
   "&:active": {
     color: theme.colors.secondary,
     movUnderlineColor: theme.colors.gSecondary,
+    userSelect: "none",
   },
+  cursor: "pointer",
 };
 
 export default BlogLink;
