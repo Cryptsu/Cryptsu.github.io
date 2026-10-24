@@ -1,5 +1,5 @@
 import path from "path";
-import { Children, isValidElement } from "react";
+import { isValidElement } from "react";
 import { useRouter } from "next/router";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stitches.config";
@@ -15,32 +15,34 @@ type BlogImgProps = PropsWithChildren<{
   height?: string | number, // Scale to your desire...
 }>
 
-const toText = (node: ReactNode): string => {
+const getAltText = (node: ReactNode): string => {
   if (node == null || typeof node === "boolean") 
     return "";
   if (typeof node === "string" || typeof node === "number") 
     return String(node);
   if (Array.isArray(node)) 
-    return node.map(toText).join("");
+    return node.map(getAltText).join("");
   if (isValidElement<{ children?: ReactNode }>(node)) 
-    return toText(node.props.children);
+    return getAltText(node.props.children);
   return "";
 };
 
-const BlogImg = ({children: styledAlt, alt, width, height, src, ...otherProps}: BlogImgProps) => {
-  // If path does not starts with
-  // '/', we can change it into relative
-  // import :) A bit hacky method, though...
+const resolveImageSource = (src: string): string => {
+  if (src.startsWith("/"))
+    return src;
+
+  // ignore:
+  //    - http / https link
+  //    - inline base64 image
+  if ((new RegExp("(^(http|https)://)|(^data:image/)", "i")).test(src))
+    return src;
+
   const router = useRouter();
-  const currentURL = router.asPath.split('/')
+  const currentURL = router.pathname.split('/');
   const possibleSlug = currentURL.pop();
   const possibleCategory = currentURL.pop();
-  if (
-    !src.startsWith('/') 
-      && !(new RegExp("(^(http|https)://)|(^data:image/)", "i")).test(src)
-      && possibleSlug 
-      && possibleCategory
-  ) {
+
+  if (possibleSlug && possibleCategory) {
     src = path.join(
       '/',
       AppConfig.ATTACH_DIR,
@@ -49,6 +51,12 @@ const BlogImg = ({children: styledAlt, alt, width, height, src, ...otherProps}: 
       src
     )
   }
+
+  return src;
+}
+
+const BlogImg = ({children: styledAlt, alt, width, height, src, ...otherProps}: BlogImgProps) => {
+  src = resolveImageSource(src);
 
   // Since <img> does not allow children,
   // we reuse as alt :)
@@ -61,7 +69,7 @@ const BlogImg = ({children: styledAlt, alt, width, height, src, ...otherProps}: 
       <Style
         elementName={HtmlConst.IMG}
         style={BlogImgStyles}
-        alt={toText(styledAlt)}
+        alt={getAltText(styledAlt)}
         src={src}
         css={{ width, height }}
         onError={(event: Event) => {
