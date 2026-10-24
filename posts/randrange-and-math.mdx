@@ -338,7 +338,7 @@ r = vector(GF(2), t['S-1_31'])
 
 The KalmarCTF blog says that they've found a `[0, 792, 1246]`-relation from the `[0, 396, 623]` one. Now that we have $W$ and $\overrightarrow{r}$, we can do the same:
 
-Let's multiply $W^{-1}$ to $(1)$:
+Let's multiply $W^{-1}$ to [$(1)$](#the-consistency-relation):
 $$
 \begin{matrix}
         \overrightarrow{o_i} 
@@ -360,7 +360,7 @@ $$
 \end{matrix}
 $$
 
-Applying $(2)$ to itself gives you:
+Applying [$(2)$](#finding-the-0-792-1246-relation) to itself gives you:
 $$
 \begin{matrix}
 \overrightarrow{o_i} = & 
@@ -413,9 +413,9 @@ t = t(untemper_map(0))
 
 ## The Sierpiński triangle
 
-It seems like we can keep applying $(2)$ to itself to find new relations of $\overrightarrow{o_i}$ with a new set of $\overrightarrow{o_{i+\Delta}}$.
+It seems like we can keep applying [$(2)$](#finding-the-0-792-1246-relation) to itself to find new relations of $\overrightarrow{o_i}$ with a new set of $\overrightarrow{o_{i+\Delta}}$ on the RHS.
 
-After $d$ expansions, $(2)$ becomes *(we're only considering $d \leq 32$)*:
+After $d$ expansions, [$(2)$](#finding-the-0-792-1246-relation) becomes *(we're only considering $d \leq 32$)*:
 $$
 \begin{matrix}
 \overrightarrow{o_i} = & 
@@ -432,20 +432,22 @@ $$
 &+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
        \cdot \overrightarrow{s_{i-1}}\texttt{[31]} \\
 \end{matrix}
+
+\tag{3}
 $$
 <br/>
 
-We can see that $\Delta$ is always in the form of $396j + 623k$. However, not all $\overrightarrow{o_{i + 396j + 623k}}$ appears.
+We can see that $\Delta$ is always in the form of $396j + 623k$. However, not every term with $\overrightarrow{o_{i + 396j + 623k}}$ appears.
 
-As we expand $(2)$, some $\overrightarrow{o_{i+\Delta}}$ that are supposed to be involved in the equation, are magically cancelled out. For instance, the term with $\overrightarrow{o_{i+1019}}$ in the previous section.
+As we expand [$(2)$](#finding-the-0-792-1246-relation), some $\overrightarrow{o_{i+\Delta}}$ that are supposed to be involved in the equation, are magically cancelled out. For instance, the term with $\overrightarrow{o_{i+1019}}$ in the previous section.
 
 <br/>
 And I wonder if there's a pattern. This is why I decided to visualize a tree where:
 
 - each node represents an offset $\Delta$.
-  - if $\overrightarrow{o_{i+\Delta}}$ appears in the equation with $\overrightarrow{o_i}$ through repeated application of $(2)$ to itself, it is colored **:text[green]{color=green}**.
+  - if $\overrightarrow{o_{i+\Delta}}$ appears in the equation with $\overrightarrow{o_i}$ through repeated application of [$(2)$](#finding-the-0-792-1246-relation) to itself, it is colored **:text[green]{color=green}**.
   - otherwise, it is colored **:text[grey]{color=grey}**.
-- the children of a node are $d+396$ and $d+623$
+- the children of a node are $\Delta+396$ and $\Delta+623$
 - the root node is $0$.
 <br/>
 
@@ -454,7 +456,7 @@ Here's what the tree looks like for the first 6 levels:
 
 ![](dependency-graph-simple.svg)
 
-By construction, level $d$ is the set of offsets $\Delta$ such that $\overrightarrow{o_{i+\Delta}}$ *(supposedly)* appears in the expansion of $(2)$ after $d$ iterations.
+By construction, level $d$ is the set of offsets $\Delta$ such that $\overrightarrow{o_{i+\Delta}}$ *(supposedly)* appears in the expansion of [$(2)$](#finding-the-0-792-1246-relation) after $d$ iterations.
 
 For example, level $3$, which contains $\Delta \in \{1188, 1415, 1642, 1869\}$, corresponds to the relation:
 
@@ -497,7 +499,7 @@ Of course! The underlying structure is a binary Pascal triangle! The terms repea
 <br/>
 
 
-We still need to brute force the locations of the $\overrightarrow{o_{i+\Delta}}$ involved before we do the check, so it's important to determine which relations depend on the least amount of $\overrightarrow{o_{i+\Delta}}$ to reduce the brute force effort. In other words, we need to find the levels with as few green nodes as possible.
+We still need to brute force the locations of the $\overrightarrow{o_{i+\Delta}}$ involved before we do the check, so it's important to determine which relations depend on the least amount of $\overrightarrow{o_{i+\Delta}}$ to reduce the brute force effort. In other words, we need to **find the levels with as few green nodes as possible**.
 
 <br/>
 :::note{title="Gould's Sequence"}
@@ -518,9 +520,28 @@ where $\#_1(n)$ denotes the number of $1$ in the binary expansion of $n$.
 This means that there are $2^{\#_1(d)}$ green nodes in level $d$. It motivates us to look at $d$ that has small amounts of $1$ in its binary expansion.
 <br/>
 
-## Concatenating multiple `n`-relations
+## Concatenating relations
 
-Given two relations:
+The original `3`-relation [$(1)$](#the-consistency-relation) can be used to 
+
 $$
+\begin{matrix}
+\begin{bmatrix}
+1 & 0 & 0 & 1 \\
+1 & 0 & 0 & 1 \\
+1 & 0 & 0 & 1 \\
+1 & 0 & 0 & 1 \\
+1 & 0 & 0 & 1 \\
+\end{bmatrix}
 
+&
+
+\begin{matrix}
+\to 1 \\
+\to 1 \\
+\to 1 \\
+\to 1 \\
+\to 1 \\
+\end{matrix}
+\end{matrix}
 $$
