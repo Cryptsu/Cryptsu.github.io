@@ -1,6 +1,6 @@
 import { visit } from "unist-util-visit";
 import { h } from "hastscript";
-import { DirectivesConfig } from "@/lib/config/directive.config";
+import DirectivesConfig from "@/lib/config/directive.config";
 import type { Root } from "mdast";
 import type { VFile } from "vfile";
 
