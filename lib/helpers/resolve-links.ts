@@ -6,7 +6,6 @@ import type { NextRouter } from "next/router";
 const URI_SCHEME_REGEX = /^[a-z][a-z0-9+.-]*:/i;
 
 export const resolveBlogLink = (href: string, router: NextRouter): string => {
-  console.log(router.query)
   if (href.startsWith("/")) 
     return href;
   if (href.startsWith("#")) 
