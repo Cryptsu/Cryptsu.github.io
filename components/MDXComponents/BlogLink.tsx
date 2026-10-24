@@ -1,15 +1,20 @@
+import { useRouter } from "next/router";
 import Style from "@/components/Style";
 import NextLink from "next/link";
 import { theme } from "@/lib/styles/stitches.config";
+import { resolveBlogLink } from "@/lib/helpers/resolve-links";
+import { HtmlConst } from "@/lib/consts";
 import type { PropsWithChildren } from "react";
 import type { CSS } from "@stitches/react";
-import { HtmlConst } from "@/lib/consts";
 
 type BlogLinkProps = PropsWithChildren<{
   href: string;
 }>;
 
+
 const BlogLink = ({ children, href, ...otherProps }: BlogLinkProps) => {
+  href = resolveBlogLink(href, useRouter());
+
   // prevents re-rendering of the page
   if (href.startsWith("#")) {
     return (

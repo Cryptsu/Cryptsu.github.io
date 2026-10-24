@@ -1,10 +1,10 @@
-import path from "path";
 import { isValidElement } from "react";
 import { useRouter } from "next/router";
 import Style from "@/components/Style";
 import { theme } from "@/lib/styles/stitches.config";
 import { HtmlConst } from "@/lib/consts";
-import { AppConfig, AssetsConfig } from "@/lib/config";
+import { AssetsConfig } from "@/lib/config";
+import { resolveBlogLink } from "@/lib/helpers/resolve-links";
 import type { PropsWithChildren, ReactNode } from "react";
 import type { CSS } from "@stitches/react";
 
@@ -27,36 +27,8 @@ const getAltText = (node: ReactNode): string => {
   return "";
 };
 
-const resolveImageSource = (src: string): string => {
-  if (src.startsWith("/"))
-    return src;
-
-  // ignore:
-  //    - http / https link
-  //    - inline base64 image
-  if ((new RegExp("(^(http|https)://)|(^data:image/)", "i")).test(src))
-    return src;
-
-  const router = useRouter();
-  const currentURL = router.pathname.split('/');
-  const possibleSlug = currentURL.pop();
-  const possibleCategory = currentURL.pop();
-
-  if (possibleSlug && possibleCategory) {
-    src = path.join(
-      '/',
-      AppConfig.ATTACH_DIR,
-      possibleCategory,
-      possibleSlug,
-      src
-    )
-  }
-
-  return src;
-}
-
 const BlogImg = ({children: styledAlt, alt, width, height, src, ...otherProps}: BlogImgProps) => {
-  src = resolveImageSource(src);
+  src = resolveBlogLink(src, useRouter());
 
   // Since <img> does not allow children,
   // we reuse as alt :)
