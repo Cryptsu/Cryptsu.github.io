@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import useContent from "@/hooks/useContent";
 import useOnce from "@/hooks/useOnce";
 import Style from "@/components/Style";
