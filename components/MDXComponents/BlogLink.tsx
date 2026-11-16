@@ -25,7 +25,7 @@ const BlogLink = ({ children, href, ...otherProps }: BlogLinkProps) => {
         // Copied from Headings.tsx
         onClick={
           () => {
-            let element = document.getElementById(href.substring(1));
+            let element = document.getElementById(decodeURI(href.substring(1)));
             let headingRect = element?.getBoundingClientRect();
             if (headingRect)
               window.scrollTo({ 
