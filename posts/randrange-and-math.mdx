@@ -93,7 +93,7 @@ W\overrightarrow{o_i}
 \tag{1}
 $$
 
-where $W, \overrightarrow{r}$ are constant. Only $\overrightarrow{s_{i-1}}\texttt{[31]}$ is unknown, so we need to brute force it. The LHS is a constant while the RHS has 2 possibilities: ($0$, $\overrightarrow{r}$). For uniformly random inputs, this check pass with the probability $\frac{1}{2^{31}}$.
+where $W, \overrightarrow{r}$ are constant. Only $\overrightarrow{s_{i-1}}\texttt{[31]}$ is unknown, so we need to brute force it. The LHS is a constant while the RHS has 2 possibilities: ($0$, $\overrightarrow{r}$). For uniformly random inputs, this relation is satisfied with probability $\frac{1}{2^{31}}$.
 
 <br/>
 If `0 < l < 32`, we only have $\overrightarrow{o_i}\texttt{[-l:]}$ for every $i$. So the vectors in the relation must be truncated to be verifiable.
@@ -109,9 +109,9 @@ $$
 $$
 
 <br/>
-However, $\overrightarrow{o_i}$ still has some unknown bits $\overrightarrow{o_i}\texttt{[0]}, \cdots, \overrightarrow{o_i}\texttt{[31-l]}$. Let's expand $W\texttt{[-l:,:]} \cdot \overrightarrow{o_i} = \sum_\texttt{j=0}^{31} W\texttt{[-l:,j]} \cdot \overrightarrow{o_i}\texttt{[j]}$ and move all the terms with unknown coefficients to the RHS.
+However, $\overrightarrow{o_i}$ still has some unknown bits $\overrightarrow{o_i}\texttt{[0]}, \cdots, \overrightarrow{o_i}\texttt{[31-l]}$. Let's expand $W\texttt{[-l:,:]} \cdot \overrightarrow{o_i} = \sum_\texttt{j=0}^{31} W\texttt{[-l:,j]} \cdot \overrightarrow{o_i}\texttt{[j]}$ and move all the terms with unknown $\overrightarrow{o_i}\texttt{[j]}$ to the RHS.
 
-Finally, here is the generalized relation for any `0 < l <= 32`:
+Finally, here is the relation modified to work for any `0 < l <= 32`:
 
 $$
 \begin{matrix}
@@ -126,24 +126,28 @@ $$
 $$
 <br/>
 
-As `l` decreases by `1`, the RHS gains `1` more basis vector while the size of the vectors involved decreases by `1`. As a consequence, the RHS generates more candidates, from $2^x$ to $2^{x+1}$, which drastically increases the chance the check is passed for random inputs *(false positives)*, unfortunately.
+As `l` decreases by `1`, the RHS:
+- gains `1` more unknown term $\overrightarrow{o_i}\texttt{[k]}$, while 
+- the size of the vectors involved decreases by `1`. 
+
+As a consequence, more random inputs can satisfy the relation, causes more false positives to happen, unfortunately.
 <br/>
 
-You can see when this check completely fails: *When the number of basis vectors on the RHS > the size of the vectors themselves.* For `l = 32`, these two values are 1 and 32, so this check works.
+The relation is completely unusable when *the number of terms on the RHS > the size of the vectors coefficients.* For `l = 32`, these two values are 1 and 32, so it works.
 
-Let's compute the lower threshold of `l`: 
+Let's compute the lower bound of `l`: 
 
 $$
 \begin{matrix}
-         & 1+(32-l) & >    & 32-(32-l) \\
-\implies & 1-l      & >    & l-32 \\
-\implies & 2l       & <    & 33   \\
-\implies & l        & \leq & 16   \\
+         & 1+(32-l) & \leq & 32-(32-l) \\
+\implies & 1-l      & \leq & l-32 \\
+\implies & 2l       & \leq & 33   \\
+\implies & l        & >    & 16   \\
 \end{matrix}
 $$
 
 <br/>
-:::warning{title="Do you see a problem with this reasoning?"}
+:::warning{title="But..."}
 In reality, as `l` decreases, some of the vectors in the set:
 - $\overrightarrow{r}\texttt{[-l:]}$
 - $W\texttt{[-l:,0]}$
@@ -151,11 +155,9 @@ In reality, as `l` decreases, some of the vectors in the set:
 - $\cdots$
 - $W\texttt{[-l:,31-l]}$
 
-may collide, or become linearly dependent more often, which increases the chance for the check to succeed.
+may collide, or become linearly dependent more often. This event makes the number of RHS vectors decreases.
 
-But I couldn't really put this analysis into use, because it seems like the gain is overshadowed by the loss.
-
-Experimentally, no basis collision happens until `l = 18`.
+But I couldn't really put this analysis into use, because in practice, this event doesn't happen until `l = 18`, and by then, the relation is already unusable because of the high false positives rate.
 :::
 <br/>
 
@@ -404,7 +406,7 @@ $$
 \end{matrix}
 $$
 
-The RHS has `4` different possibilities. For uniformly random 32-bit outputs, this check pass with the probability $\frac{1}{2^{30}}$!
+The RHS has `4` different possibilities. For uniformly random 32-bit outputs, this relation satisfies with probability $\frac{1}{2^{30}}$!
 <br/>
 
 Implementation-wise, I did this process in backwards: 
@@ -515,7 +517,7 @@ Of course! The underlying structure is a binary Pascal triangle! The terms repea
 <br/>
 
 
-We still need to brute force the locations of the $\overrightarrow{o_{i+\Delta}}$ involved before we do the check, so it's important to determine which relations depend on the least amount of $\overrightarrow{o_{i+\Delta}}$ to reduce the brute force effort. This motivates me to **look at the levels with as few green nodes as possible**.
+We still need to brute force the locations of the $\overrightarrow{o_{i+\Delta}}$ involved before inputting them to the relation. To reduce the brute force effort, it's important to determine which relations depend on the least amount of $\overrightarrow{o_{i+\Delta}}$. This motivates me to **look at the tree levels with as few green nodes as possible**.
 
 <br/>
 :::note{title="Gould's Sequence"}
@@ -533,12 +535,47 @@ $$
 where $\#_1(n)$ denotes the number of $1$ digits in $n$'s binary representation.
 :::
 
-This means that there are $2^{\#_1(d)}$ :text[green nodes]{color=green} in level $d$. It motivates us to look at $d$ that has small amounts of $1$ in its binary representation. Some candidates came to my mind: $1, 2, 4, \cdots, 2^k$, $2^m + 2^n$.
+This means that there are $2^{\#_1(d)}$ :text[green nodes]{color=green} in level $d$. It motivates us to look at $d$ that has low Hamming weight: $2^k, 2^m + 2^n, 2^a + 2^b + 2^c, \cdots$.
 <br/>
 
-From now on, instead of referring to a particular recurrence relation by their indices, I'll refer to them by **the level $d$ where the corresponding nodes in the tree lives**. $\Delta_d$ refers to the set of green nodes values.
+From now on, instead of referring to a particular recurrence relation by the offsets relative to `i`, I'll use **the level $d$ where the corresponding nodes in the tree lives**. $\Delta_d$ refers to the set of green nodes values.
 
 So instead of saying **`[0,1584,2492]`-relation**, I'll say the **level-`4` relation**, because $\Delta_4 = \{ 1584, 2492 \}$.
+
+<br/>
+
+## Find Level-$d$ Relation Using Code
+
+The process applied to find the `[0, 792, 1246]`-relation *(the level-`2` relation)* can be recursively implemented to find any level-`d` relation.
+
+```python
+def get_relation(state_index: int, lvl: int) -> tuple[VectorExpr, VectorExpr]:
+    """
+    Get relation at level lvl such that:
+        lhs = rhs
+    """
+    if lvl <= 1:
+        lhs = rhs = (
+              oi(state_index + 396)
+            + oi(state_index + 623)
+        )
+    else:
+        lhs0, rhs0 = get_relation(state_index + 396, lvl-1)
+        lhs1, rhs1 = get_relation(state_index + 623, lvl-1)
+
+        lhs = lhs0 + lhs1
+        rhs = rhs0 + rhs1
+
+    lhs = lhs(temper_map(state_index + 396))(temper_map(state_index + 623))
+    lhs = lhs(merge_396_623_map(state_index))
+    lhs = lhs(merge_396_623_map(state_index - 1))
+    lhs = lhs(untemper_map(state_index))
+
+    return lhs, rhs
+
+d = 5   # Example
+get_relation(0, d)
+```
 
 <br/>
 
@@ -551,9 +588,147 @@ As I said in *[The Consistency Relation](#the-consistency-relation)*, as the num
 
 The idea is really simple: 
 
-Merge different relations to form one with bigger vector size. Take [$(3)$](#the-sierpiński-triangle), multiply both sides by $W^d = M^{-d}$ to normalize the coefficients of $\overrightarrow{o_{i+\Delta}}$.
+Merge different relations to form one with bigger vector size. Take [$(3)$](#the-sierpiński-triangle), multiply both sides by $W^d = M^{-d}$ to normalize the coefficients of $\overrightarrow{o_{i+\Delta}}$, to get:
+
+$$
+\begin{matrix}
+W^d\overrightarrow{o_i} = & 
+  & \sum_{\Delta \in \Delta_d}\overrightarrow{o_{i+\Delta}} \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[0]} \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[1]} \\
+&+&    \cdots \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[d-1]} \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[d-2]} \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[31]} \\
+\end{matrix}
+\tag{4}
+$$
+<br/>
+
+For any two relations at levels $a < b$, notice each relation can be divided into 3 groups:
+- $W^d\overrightarrow{o_i}$
+- $\sum_{\Delta \in \Delta_d}\overrightarrow{o_{i+\Delta}}$
+- $\sum_\texttt{j} \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} \cdot \overrightarrow{s_{i-1}}\texttt{[j]}$
+
+for which we can merge them as such:
 
 ![](merge-relation-part1.png)
 ![](merge-relation-part2.png)
 ![](merge-relation-part3.png)
 
+This merge thing is implemented as a `concat_map`: a loop that runs through the terms of the two input expressions and concatenates the vector coefficients of matching symbols.
+
+$$
+\begin{matrix}
+
+\begin{matrix}
+S_1 = & \sum_{\overrightarrow{v}} \begin{pmatrix} a_0 & a_1 & \cdots \end{pmatrix} \overrightarrow{v} \\
+S_2 = & \sum_{\overrightarrow{v}} \begin{pmatrix} b_0 & b_1 & b_2 & \cdots \end{pmatrix} \overrightarrow{v} \\
+\end{matrix}
+
+&
+
+\implies
+
+&
+
+\begin{matrix}
+S_{1,2} = \texttt{concat\_map(}S_1\texttt{,}S_2\texttt{)} = \\
+\sum_{\overrightarrow{v}} \begin{pmatrix} a_0 & a_1 & \cdots & b_0 & b_1 & b_2 & \cdots \end{pmatrix} \overrightarrow{v} \\
+\end{matrix}
+
+\end{matrix}
+$$
+<br/>
+
+We can stack however many `concat_map`s there be. So instead of using just either level-`1` relation, or level-`4` relation, or level-`5` relation to build a check function, we can concatenate them to become a singular level `1,4,5`-relation, which is much longer thus less error prone!
+<br/>
+
+This is the final form of the concatenation when we don't use more than the first 33 levels of the tree:
+$$
+\begin{matrix}
+
+\begin{bmatrix}
+\\
+W^a \\
+\begin{matrix} \overline{\hspace{4em}} \end{matrix} \\
+\\
+W^b \\
+\begin{matrix} \overline{\hspace{4em}} \end{matrix} \\
+\\
+W^c \\
+\begin{matrix} \overline{\hspace{4em}} \end{matrix} \\
+\\
+\cdots \\
+\end{bmatrix}
+\overrightarrow{o_i} 
+
+= 
+
+\sum_{\Delta \in \Delta_a}
+
+\begin{pmatrix}
+\\
+\overrightarrow{o_{i+\Delta}}
+\\
+\begin{matrix} \overline{\hspace{2em}} \end{matrix} \\
+\\
+0
+\\
+\begin{matrix} \overline{\hspace{2em}} \end{matrix} \\
+\\
+0
+\\
+\begin{matrix} \overline{\hspace{2em}} \end{matrix} \\
+\\
+\cdots
+\end{pmatrix}
+
++ 
+
+\sum_{\Delta \in \Delta_b}
+
+\begin{pmatrix}
+\\
+0
+\\
+\begin{matrix} \overline{\hspace{2em}} \end{matrix} \\
+\\
+\overrightarrow{o_{i+\Delta}}
+\\
+\begin{matrix} \overline{\hspace{2em}} \end{matrix} \\
+\\
+0
+\\
+\begin{matrix} \overline{\hspace{2em}} \end{matrix} \\
+\\
+\cdots
+\end{pmatrix}
+
++ 
+
+\cdots
+
+\begin{matrix}
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[0]} \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[1]} \\
+&+&    \cdots \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[L-1]} \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[L-2]} \\
+&+&    \begin{pmatrix} \overline{\hspace{4em}} \end{pmatrix} 
+       \cdot \overrightarrow{s_{i-1}}\texttt{[31]} \\
+\\
+& &    \text{(}\texttt{L} = \text{max}(a,b,c,\cdots)\text{)}\\
+\end{matrix}
+
+\end{matrix}
+$$
